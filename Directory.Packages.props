@@ -1,0 +1,13 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- The versions the pinned generator's own project file names. -->
+    <PackageVersion Include="JsonSubTypes" Version="2.0.1" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="Polly" Version="8.1.0" />
+    <PackageVersion Include="xunit.v3" Version="4.0.1" />
+    <PackageVersion Include="coverlet.MTP" Version="10.1.0" />
+  </ItemGroup>
+</Project>

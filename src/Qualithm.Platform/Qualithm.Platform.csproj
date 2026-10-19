@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <PackageTags>qualithm;platform;iot;openapi</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="../../README.md" Pack="true" PackagePath="/" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- What the generated code (Generated/, from scripts/generate) needs. -->
+    <PackageReference Include="JsonSubTypes" />
+    <PackageReference Include="Newtonsoft.Json" />
+    <PackageReference Include="Polly" />
+  </ItemGroup>
+</Project>

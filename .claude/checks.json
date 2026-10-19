@@ -1,0 +1,35 @@
+{
+  "version": 1,
+  "commands": [
+    {
+      "run": "dotnet restore --locked-mode",
+      "timeout": "10m",
+      "dir": "."
+    },
+    {
+      "run": "dotnet format --verify-no-changes --no-restore",
+      "timeout": "10m",
+      "dir": "."
+    },
+    {
+      "run": "dotnet build --no-restore -c Release",
+      "timeout": "10m",
+      "dir": "."
+    },
+    {
+      "run": "python3 .claude/checks/ci-jobs.py --skip-ci-only coverage",
+      "timeout": "20m",
+      "dir": "."
+    },
+    {
+      "run": "python3 .claude/checks/ci-jobs.py pack",
+      "timeout": "10m",
+      "dir": "."
+    },
+    {
+      "run": "python3 .claude/checks/ci-jobs.py docs",
+      "timeout": "10m",
+      "dir": "."
+    }
+  ]
+}

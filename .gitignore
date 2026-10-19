@@ -1,0 +1,24 @@
+.DS_Store
+.env*
+.idea/
+.vscode/
+
+# Build outputs
+bin/
+obj/
+nupkg/
+
+# API docs (docfx)
+docs/api/
+docs/_site/
+
+# Coverage
+coverage/
+lcov.info
+
+# Editors
+.vs/
+*.user
+
+# Generator scratch output
+/.generated

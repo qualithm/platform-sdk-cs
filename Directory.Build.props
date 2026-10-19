@@ -1,0 +1,29 @@
+<Project>
+  <PropertyGroup>
+    <!-- The release version: tag-on-release tags main when it changes. 0.0.0 never tags. -->
+    <Version>0.0.0</Version>
+    <Description>C# client for the Qualithm Platform API, generated from its OpenAPI spec.</Description>
+    <Authors>Qualithm</Authors>
+    <Company>Qualithm</Company>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <PackageProjectUrl>https://github.com/qualithm/platform-sdk-cs</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/qualithm/platform-sdk-cs</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <LangVersion>latest</LangVersion>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest-recommended</AnalysisLevel>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+    <!-- Advisories are checked by the daily audit workflow, not at every restore,
+         so a new advisory never fails an unrelated pull request. -->
+    <NuGetAudit>false</NuGetAudit>
+    <!-- Symbols ship as a .snupkg beside the .nupkg; Source Link points them at this repo. -->
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">true</ContinuousIntegrationBuild>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,11 @@
+#!/bin/sh
+# Runs the non-CI-only commands in .claude/checks.json, in order.
+# Enable with: git config core.hooksPath .githooks
+set -e
+
+dotnet restore --locked-mode
+dotnet format --verify-no-changes --no-restore
+dotnet build --no-restore -c Release
+python3 .claude/checks/ci-jobs.py --skip-ci-only coverage
+python3 .claude/checks/ci-jobs.py pack
+python3 .claude/checks/ci-jobs.py docs

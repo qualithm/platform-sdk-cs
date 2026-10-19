@@ -1,0 +1,11 @@
+# Generator options for scripts/generate (Decision qualithm/pm#2394). The
+# generator version is the image pinned in scripts/generate.
+generatorName: csharp
+library: httpclient
+inputSpec: /local/openapi.json
+outputDir: /local/.generated
+additionalProperties:
+  packageName: Qualithm.Platform
+  targetFramework: net10.0
+  nullableReferenceTypes: true
+  enumUnknownDefaultCase: true

@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/examples/">
+    <Project Path="examples/ListDevices/ListDevices.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/Qualithm.Platform/Qualithm.Platform.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Qualithm.Platform.Tests/Qualithm.Platform.Tests.csproj" />
+  </Folder>
+</Solution>
