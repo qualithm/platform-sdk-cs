@@ -30,7 +30,7 @@ namespace Qualithm.Platform.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Revoke an API token
+        /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenId"></param>
@@ -38,7 +38,7 @@ namespace Qualithm.Platform.Api
         DeleteApiTokenResponse DeleteApiToken(Guid tokenId);
 
         /// <summary>
-        /// Revoke an API token
+        /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own
         /// </summary>
         /// <remarks>
         /// 
@@ -48,7 +48,7 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of DeleteApiTokenResponse</returns>
         ApiResponse<DeleteApiTokenResponse> DeleteApiTokenWithHttpInfo(Guid tokenId);
         /// <summary>
-        /// List the team&#39;s API tokens
+        /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -57,7 +57,7 @@ namespace Qualithm.Platform.Api
         ListApiTokensResponse ListApiTokens(long? page = default, int? limit = default);
 
         /// <summary>
-        /// List the team&#39;s API tokens
+        /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own
         /// </summary>
         /// <remarks>
         /// 
@@ -77,7 +77,7 @@ namespace Qualithm.Platform.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Revoke an API token
+        /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own
         /// </summary>
         /// <remarks>
         /// 
@@ -89,7 +89,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<DeleteApiTokenResponse> DeleteApiTokenAsync(Guid tokenId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Revoke an API token
+        /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own
         /// </summary>
         /// <remarks>
         /// 
@@ -100,7 +100,7 @@ namespace Qualithm.Platform.Api
         /// <returns>Task of ApiResponse (DeleteApiTokenResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<DeleteApiTokenResponse>> DeleteApiTokenWithHttpInfoAsync(Guid tokenId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List the team&#39;s API tokens
+        /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own
         /// </summary>
         /// <remarks>
         /// 
@@ -113,7 +113,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<ListApiTokensResponse> ListApiTokensAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// List the team&#39;s API tokens
+        /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own
         /// </summary>
         /// <remarks>
         /// 
@@ -338,7 +338,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Revoke an API token 
+        /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenId"></param>
@@ -350,7 +350,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Revoke an API token 
+        /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenId"></param>
@@ -395,7 +395,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Revoke an API token 
+        /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenId"></param>
@@ -408,7 +408,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Revoke an API token 
+        /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="tokenId"></param>
@@ -457,7 +457,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the team&#39;s API tokens 
+        /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -470,7 +470,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the team&#39;s API tokens 
+        /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -523,7 +523,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the team&#39;s API tokens 
+        /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -537,7 +537,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the team&#39;s API tokens 
+        /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>

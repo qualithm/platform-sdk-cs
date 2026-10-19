@@ -53,7 +53,7 @@ namespace Qualithm.Platform.Api
         /// Remove a member from the team
         /// </summary>
         /// <remarks>
-        /// A guest can remove only themselves; a manager only guests and themselves.
+        /// A viewer can remove only themselves; a manager only viewers and themselves.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -65,7 +65,7 @@ namespace Qualithm.Platform.Api
         /// Remove a member from the team
         /// </summary>
         /// <remarks>
-        /// A guest can remove only themselves; a manager only guests and themselves.
+        /// A viewer can remove only themselves; a manager only viewers and themselves.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -174,7 +174,7 @@ namespace Qualithm.Platform.Api
         /// Remove a member from the team
         /// </summary>
         /// <remarks>
-        /// A guest can remove only themselves; a manager only guests and themselves.
+        /// A viewer can remove only themselves; a manager only viewers and themselves.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -187,7 +187,7 @@ namespace Qualithm.Platform.Api
         /// Remove a member from the team
         /// </summary>
         /// <remarks>
-        /// A guest can remove only themselves; a manager only guests and themselves.
+        /// A viewer can remove only themselves; a manager only viewers and themselves.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -623,7 +623,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Remove a member from the team A guest can remove only themselves; a manager only guests and themselves.
+        /// Remove a member from the team A viewer can remove only themselves; a manager only viewers and themselves.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -636,7 +636,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Remove a member from the team A guest can remove only themselves; a manager only guests and themselves.
+        /// Remove a member from the team A viewer can remove only themselves; a manager only viewers and themselves.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -683,7 +683,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Remove a member from the team A guest can remove only themselves; a manager only guests and themselves.
+        /// Remove a member from the team A viewer can remove only themselves; a manager only viewers and themselves.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -697,7 +697,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Remove a member from the team A guest can remove only themselves; a manager only guests and themselves.
+        /// Remove a member from the team A viewer can remove only themselves; a manager only viewers and themselves.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
