@@ -47,10 +47,10 @@ namespace Qualithm.Platform.Model
         Manager = 2,
 
         /// <summary>
-        /// Enum Guest for value: guest
+        /// Enum Viewer for value: viewer
         /// </summary>
-        [EnumMember(Value = "guest")]
-        Guest = 3,
+        [EnumMember(Value = "viewer")]
+        Viewer = 3,
 
         /// <summary>
         /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
