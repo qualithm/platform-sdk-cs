@@ -35,6 +35,49 @@ namespace Qualithm.Platform.Model
     public partial class Usage : IValidatableObject
     {
         /// <summary>
+        /// Defines Tier
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum TierEnum
+        {
+            /// <summary>
+            /// Enum Free for value: free
+            /// </summary>
+            [EnumMember(Value = "free")]
+            Free = 1,
+
+            /// <summary>
+            /// Enum Plus for value: plus
+            /// </summary>
+            [EnumMember(Value = "plus")]
+            Plus = 2,
+
+            /// <summary>
+            /// Enum Pro for value: pro
+            /// </summary>
+            [EnumMember(Value = "pro")]
+            Pro = 3,
+
+            /// <summary>
+            /// Enum Max for value: max
+            /// </summary>
+            [EnumMember(Value = "max")]
+            Max = 4,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 5
+        }
+
+
+        /// <summary>
+        /// Gets or Sets Tier
+        /// </summary>
+        [DataMember(Name = "tier", IsRequired = true, EmitDefaultValue = true)]
+        public TierEnum Tier { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="Usage" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -45,11 +88,41 @@ namespace Qualithm.Platform.Model
         /// <param name="deviceTotal">deviceTotal (required).</param>
         /// <param name="deviceMax">The tier&#39;s device limit (required).</param>
         /// <param name="spaceTotal">spaceTotal (required).</param>
-        public Usage(long deviceTotal = default, long deviceMax = default, long spaceTotal = default)
+        /// <param name="tier">tier (required).</param>
+        /// <param name="month">The month usage counts over: &#x60;YYYY-MM&#x60;, UTC (required).</param>
+        /// <param name="limitGrace">limitGrace (required).</param>
+        /// <param name="limits">limits (required).</param>
+        /// <param name="varUsage">varUsage (required).</param>
+        public Usage(long deviceTotal = default, long deviceMax = default, long spaceTotal = default, TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage varUsage = default)
         {
             this.DeviceTotal = deviceTotal;
             this.DeviceMax = deviceMax;
             this.SpaceTotal = spaceTotal;
+            this.Tier = tier;
+            // to ensure "month" is required (not null)
+            if (month == null)
+            {
+                throw new ArgumentNullException("month is a required property for Usage and cannot be null");
+            }
+            this.Month = month;
+            // to ensure "limitGrace" is required (not null)
+            if (limitGrace == null)
+            {
+                throw new ArgumentNullException("limitGrace is a required property for Usage and cannot be null");
+            }
+            this.LimitGrace = limitGrace;
+            // to ensure "limits" is required (not null)
+            if (limits == null)
+            {
+                throw new ArgumentNullException("limits is a required property for Usage and cannot be null");
+            }
+            this.Limits = limits;
+            // to ensure "varUsage" is required (not null)
+            if (varUsage == null)
+            {
+                throw new ArgumentNullException("varUsage is a required property for Usage and cannot be null");
+            }
+            this.VarUsage = varUsage;
         }
 
         /// <summary>
@@ -72,6 +145,31 @@ namespace Qualithm.Platform.Model
         public long SpaceTotal { get; set; }
 
         /// <summary>
+        /// The month usage counts over: &#x60;YYYY-MM&#x60;, UTC
+        /// </summary>
+        /// <value>The month usage counts over: &#x60;YYYY-MM&#x60;, UTC</value>
+        [DataMember(Name = "month", IsRequired = true, EmitDefaultValue = true)]
+        public string Month { get; set; }
+
+        /// <summary>
+        /// Gets or Sets LimitGrace
+        /// </summary>
+        [DataMember(Name = "limitGrace", IsRequired = true, EmitDefaultValue = true)]
+        public BillingSummaryLimitGrace LimitGrace { get; set; }
+
+        /// <summary>
+        /// Gets or Sets Limits
+        /// </summary>
+        [DataMember(Name = "limits", IsRequired = true, EmitDefaultValue = true)]
+        public BillingSummaryLimits Limits { get; set; }
+
+        /// <summary>
+        /// Gets or Sets VarUsage
+        /// </summary>
+        [DataMember(Name = "usage", IsRequired = true, EmitDefaultValue = true)]
+        public BillingSummaryUsage VarUsage { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -82,6 +180,11 @@ namespace Qualithm.Platform.Model
             sb.Append("  DeviceTotal: ").Append(DeviceTotal).Append("\n");
             sb.Append("  DeviceMax: ").Append(DeviceMax).Append("\n");
             sb.Append("  SpaceTotal: ").Append(SpaceTotal).Append("\n");
+            sb.Append("  Tier: ").Append(Tier).Append("\n");
+            sb.Append("  Month: ").Append(Month).Append("\n");
+            sb.Append("  LimitGrace: ").Append(LimitGrace).Append("\n");
+            sb.Append("  Limits: ").Append(Limits).Append("\n");
+            sb.Append("  VarUsage: ").Append(VarUsage).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

@@ -30,14 +30,14 @@ namespace Qualithm.Platform.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get the workspace&#39;s plan, usage and add-ons
+        /// Get the workspace&#39;s plan, usage, price and add-ons
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetBillingSummaryResponse</returns>
         GetBillingSummaryResponse GetBillingSummary();
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage and add-ons
+        /// Get the workspace&#39;s plan, usage, price and add-ons
         /// </summary>
         /// <remarks>
         /// 
@@ -93,7 +93,7 @@ namespace Qualithm.Platform.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Get the workspace&#39;s plan, usage and add-ons
+        /// Get the workspace&#39;s plan, usage, price and add-ons
         /// </summary>
         /// <remarks>
         /// 
@@ -104,7 +104,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage and add-ons
+        /// Get the workspace&#39;s plan, usage, price and add-ons
         /// </summary>
         /// <remarks>
         /// 
@@ -375,7 +375,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage and add-ons 
+        /// Get the workspace&#39;s plan, usage, price and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetBillingSummaryResponse</returns>
@@ -386,7 +386,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage and add-ons 
+        /// Get the workspace&#39;s plan, usage, price and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetBillingSummaryResponse</returns>
@@ -429,7 +429,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage and add-ons 
+        /// Get the workspace&#39;s plan, usage, price and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -441,7 +441,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage and add-ons 
+        /// Get the workspace&#39;s plan, usage, price and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
