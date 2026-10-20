@@ -73,6 +73,217 @@ namespace Qualithm.Platform.Model
         [DataMember(Name = "role", IsRequired = true, EmitDefaultValue = true)]
         public MemberRole Role { get; set; }
         /// <summary>
+        /// Defines Permissions
+        /// </summary>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum PermissionsEnum
+        {
+            /// <summary>
+            /// Enum TeamRead for value: team.read
+            /// </summary>
+            [EnumMember(Value = "team.read")]
+            TeamRead = 1,
+
+            /// <summary>
+            /// Enum TeamUpdate for value: team.update
+            /// </summary>
+            [EnumMember(Value = "team.update")]
+            TeamUpdate = 2,
+
+            /// <summary>
+            /// Enum TeamDelete for value: team.delete
+            /// </summary>
+            [EnumMember(Value = "team.delete")]
+            TeamDelete = 3,
+
+            /// <summary>
+            /// Enum MemberInvite for value: member.invite
+            /// </summary>
+            [EnumMember(Value = "member.invite")]
+            MemberInvite = 4,
+
+            /// <summary>
+            /// Enum MemberUpdate for value: member.update
+            /// </summary>
+            [EnumMember(Value = "member.update")]
+            MemberUpdate = 5,
+
+            /// <summary>
+            /// Enum MemberRemove for value: member.remove
+            /// </summary>
+            [EnumMember(Value = "member.remove")]
+            MemberRemove = 6,
+
+            /// <summary>
+            /// Enum BillingRead for value: billing.read
+            /// </summary>
+            [EnumMember(Value = "billing.read")]
+            BillingRead = 7,
+
+            /// <summary>
+            /// Enum BillingManage for value: billing.manage
+            /// </summary>
+            [EnumMember(Value = "billing.manage")]
+            BillingManage = 8,
+
+            /// <summary>
+            /// Enum UsageRead for value: usage.read
+            /// </summary>
+            [EnumMember(Value = "usage.read")]
+            UsageRead = 9,
+
+            /// <summary>
+            /// Enum AuditRead for value: audit.read
+            /// </summary>
+            [EnumMember(Value = "audit.read")]
+            AuditRead = 10,
+
+            /// <summary>
+            /// Enum TokenRead for value: token.read
+            /// </summary>
+            [EnumMember(Value = "token.read")]
+            TokenRead = 11,
+
+            /// <summary>
+            /// Enum TokenCreate for value: token.create
+            /// </summary>
+            [EnumMember(Value = "token.create")]
+            TokenCreate = 12,
+
+            /// <summary>
+            /// Enum TokenRevoke for value: token.revoke
+            /// </summary>
+            [EnumMember(Value = "token.revoke")]
+            TokenRevoke = 13,
+
+            /// <summary>
+            /// Enum TokenRevokeAny for value: token.revoke_any
+            /// </summary>
+            [EnumMember(Value = "token.revoke_any")]
+            TokenRevokeAny = 14,
+
+            /// <summary>
+            /// Enum SpaceRead for value: space.read
+            /// </summary>
+            [EnumMember(Value = "space.read")]
+            SpaceRead = 15,
+
+            /// <summary>
+            /// Enum SpaceWrite for value: space.write
+            /// </summary>
+            [EnumMember(Value = "space.write")]
+            SpaceWrite = 16,
+
+            /// <summary>
+            /// Enum DeviceRead for value: device.read
+            /// </summary>
+            [EnumMember(Value = "device.read")]
+            DeviceRead = 17,
+
+            /// <summary>
+            /// Enum DeviceWrite for value: device.write
+            /// </summary>
+            [EnumMember(Value = "device.write")]
+            DeviceWrite = 18,
+
+            /// <summary>
+            /// Enum DeviceCommand for value: device.command
+            /// </summary>
+            [EnumMember(Value = "device.command")]
+            DeviceCommand = 19,
+
+            /// <summary>
+            /// Enum CredentialRead for value: credential.read
+            /// </summary>
+            [EnumMember(Value = "credential.read")]
+            CredentialRead = 20,
+
+            /// <summary>
+            /// Enum CredentialManage for value: credential.manage
+            /// </summary>
+            [EnumMember(Value = "credential.manage")]
+            CredentialManage = 21,
+
+            /// <summary>
+            /// Enum EnrollmentRead for value: enrollment.read
+            /// </summary>
+            [EnumMember(Value = "enrollment.read")]
+            EnrollmentRead = 22,
+
+            /// <summary>
+            /// Enum EnrollmentManage for value: enrollment.manage
+            /// </summary>
+            [EnumMember(Value = "enrollment.manage")]
+            EnrollmentManage = 23,
+
+            /// <summary>
+            /// Enum AuthorityRead for value: authority.read
+            /// </summary>
+            [EnumMember(Value = "authority.read")]
+            AuthorityRead = 24,
+
+            /// <summary>
+            /// Enum AuthorityManage for value: authority.manage
+            /// </summary>
+            [EnumMember(Value = "authority.manage")]
+            AuthorityManage = 25,
+
+            /// <summary>
+            /// Enum TelemetryRead for value: telemetry.read
+            /// </summary>
+            [EnumMember(Value = "telemetry.read")]
+            TelemetryRead = 26,
+
+            /// <summary>
+            /// Enum CapabilityRead for value: capability.read
+            /// </summary>
+            [EnumMember(Value = "capability.read")]
+            CapabilityRead = 27,
+
+            /// <summary>
+            /// Enum CapabilityUpdate for value: capability.update
+            /// </summary>
+            [EnumMember(Value = "capability.update")]
+            CapabilityUpdate = 28,
+
+            /// <summary>
+            /// Enum DashboardRead for value: dashboard.read
+            /// </summary>
+            [EnumMember(Value = "dashboard.read")]
+            DashboardRead = 29,
+
+            /// <summary>
+            /// Enum DashboardWrite for value: dashboard.write
+            /// </summary>
+            [EnumMember(Value = "dashboard.write")]
+            DashboardWrite = 30,
+
+            /// <summary>
+            /// Enum AutomationRead for value: automation.read
+            /// </summary>
+            [EnumMember(Value = "automation.read")]
+            AutomationRead = 31,
+
+            /// <summary>
+            /// Enum AutomationWrite for value: automation.write
+            /// </summary>
+            [EnumMember(Value = "automation.write")]
+            AutomationWrite = 32,
+
+            /// <summary>
+            /// Enum AutomationRun for value: automation.run
+            /// </summary>
+            [EnumMember(Value = "automation.run")]
+            AutomationRun = 33,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 34
+        }
+
+        /// <summary>
         /// Initializes a new instance of the <see cref="ApiToken" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -86,11 +297,12 @@ namespace Qualithm.Platform.Model
         /// <param name="name">name (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="role">The token&#39;s role ceiling; null means the creator&#39;s current role (required).</param>
+        /// <param name="permissions">What the token can do now: its creator&#39;s current role lowered to its ceiling. Listed tokens only..</param>
         /// <param name="expiresAt">ISO 8601 time (required).</param>
         /// <param name="lastUsedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
         /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
         /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public ApiToken(Guid id = default, Guid accountId = default, Guid teamId = default, string name = default, StatusEnum status = default, MemberRole role = default, string expiresAt = default, string lastUsedAt = default, string createdAt = default, string updatedAt = default)
+        public ApiToken(Guid id = default, Guid accountId = default, Guid teamId = default, string name = default, StatusEnum status = default, MemberRole role = default, List<PermissionsEnum> permissions = default, string expiresAt = default, string lastUsedAt = default, string createdAt = default, string updatedAt = default)
         {
             this.Id = id;
             this.AccountId = accountId;
@@ -127,6 +339,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("updatedAt is a required property for ApiToken and cannot be null");
             }
             this.UpdatedAt = updatedAt;
+            this.Permissions = permissions;
         }
 
         /// <summary>
@@ -152,6 +365,13 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// What the token can do now: its creator&#39;s current role lowered to its ceiling. Listed tokens only.
+        /// </summary>
+        /// <value>What the token can do now: its creator&#39;s current role lowered to its ceiling. Listed tokens only.</value>
+        [DataMember(Name = "permissions", EmitDefaultValue = false)]
+        public List<ApiToken.PermissionsEnum> Permissions { get; set; }
 
         /// <summary>
         /// ISO 8601 time
@@ -195,6 +415,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
+            sb.Append("  Permissions: ").Append(Permissions).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  LastUsedAt: ").Append(LastUsedAt).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
