@@ -30,14 +30,14 @@ namespace Qualithm.Platform.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get the workspace&#39;s device and space counts
+        /// Get the workspace&#39;s device and space counts and its plan quota
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetUsageResponse</returns>
         GetUsageResponse GetUsage();
 
         /// <summary>
-        /// Get the workspace&#39;s device and space counts
+        /// Get the workspace&#39;s device and space counts and its plan quota
         /// </summary>
         /// <remarks>
         /// 
@@ -55,7 +55,7 @@ namespace Qualithm.Platform.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Get the workspace&#39;s device and space counts
+        /// Get the workspace&#39;s device and space counts and its plan quota
         /// </summary>
         /// <remarks>
         /// 
@@ -66,7 +66,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<GetUsageResponse> GetUsageAsync(System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the workspace&#39;s device and space counts
+        /// Get the workspace&#39;s device and space counts and its plan quota
         /// </summary>
         /// <remarks>
         /// 
@@ -289,7 +289,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s device and space counts 
+        /// Get the workspace&#39;s device and space counts and its plan quota 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetUsageResponse</returns>
@@ -300,7 +300,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s device and space counts 
+        /// Get the workspace&#39;s device and space counts and its plan quota 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetUsageResponse</returns>
@@ -343,7 +343,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s device and space counts 
+        /// Get the workspace&#39;s device and space counts and its plan quota 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -355,7 +355,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s device and space counts 
+        /// Get the workspace&#39;s device and space counts and its plan quota 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>

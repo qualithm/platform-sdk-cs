@@ -65,6 +65,13 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
         public StatusEnum Status { get; set; }
+
+        /// <summary>
+        /// The token&#39;s role ceiling; null means the creator&#39;s current role
+        /// </summary>
+        /// <value>The token&#39;s role ceiling; null means the creator&#39;s current role</value>
+        [DataMember(Name = "role", IsRequired = true, EmitDefaultValue = true)]
+        public MemberRole Role { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiToken" /> class.
         /// </summary>
@@ -78,11 +85,12 @@ namespace Qualithm.Platform.Model
         /// <param name="teamId">teamId (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="status">status (required).</param>
+        /// <param name="role">The token&#39;s role ceiling; null means the creator&#39;s current role (required).</param>
         /// <param name="expiresAt">ISO 8601 time (required).</param>
         /// <param name="lastUsedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
         /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
         /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public ApiToken(Guid id = default, Guid accountId = default, Guid teamId = default, string name = default, StatusEnum status = default, string expiresAt = default, string lastUsedAt = default, string createdAt = default, string updatedAt = default)
+        public ApiToken(Guid id = default, Guid accountId = default, Guid teamId = default, string name = default, StatusEnum status = default, MemberRole role = default, string expiresAt = default, string lastUsedAt = default, string createdAt = default, string updatedAt = default)
         {
             this.Id = id;
             this.AccountId = accountId;
@@ -94,6 +102,7 @@ namespace Qualithm.Platform.Model
             }
             this.Name = name;
             this.Status = status;
+            this.Role = role;
             // to ensure "expiresAt" is required (not null)
             if (expiresAt == null)
             {
@@ -185,6 +194,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Role: ").Append(Role).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  LastUsedAt: ").Append(LastUsedAt).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
