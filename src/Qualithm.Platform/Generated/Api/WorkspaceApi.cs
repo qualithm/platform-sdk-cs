@@ -30,14 +30,14 @@ namespace Qualithm.Platform.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get the caller&#39;s current workspace
+        /// Get the caller&#39;s current workspace and their effective permissions in it
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetWorkspaceResponse</returns>
         GetWorkspaceResponse GetWorkspace();
 
         /// <summary>
-        /// Get the caller&#39;s current workspace
+        /// Get the caller&#39;s current workspace and their effective permissions in it
         /// </summary>
         /// <remarks>
         /// 
@@ -55,7 +55,7 @@ namespace Qualithm.Platform.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Get the caller&#39;s current workspace
+        /// Get the caller&#39;s current workspace and their effective permissions in it
         /// </summary>
         /// <remarks>
         /// 
@@ -66,7 +66,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<GetWorkspaceResponse> GetWorkspaceAsync(System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the caller&#39;s current workspace
+        /// Get the caller&#39;s current workspace and their effective permissions in it
         /// </summary>
         /// <remarks>
         /// 
@@ -289,7 +289,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the caller&#39;s current workspace 
+        /// Get the caller&#39;s current workspace and their effective permissions in it 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>GetWorkspaceResponse</returns>
@@ -300,7 +300,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the caller&#39;s current workspace 
+        /// Get the caller&#39;s current workspace and their effective permissions in it 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of GetWorkspaceResponse</returns>
@@ -343,7 +343,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the caller&#39;s current workspace 
+        /// Get the caller&#39;s current workspace and their effective permissions in it 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -355,7 +355,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the caller&#39;s current workspace 
+        /// Get the caller&#39;s current workspace and their effective permissions in it 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
