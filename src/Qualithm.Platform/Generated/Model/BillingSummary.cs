@@ -86,16 +86,15 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="BillingSummary" /> class.
         /// </summary>
         /// <param name="tier">tier (required).</param>
-        /// <param name="monthlyTotal">The plan&#39;s monthly price with add-ons, in USD (required).</param>
         /// <param name="month">The month usage counts over: &#x60;YYYY-MM&#x60;, UTC (required).</param>
         /// <param name="limitGrace">limitGrace (required).</param>
         /// <param name="limits">limits (required).</param>
         /// <param name="usage">usage (required).</param>
+        /// <param name="monthlyTotal">The plan&#39;s monthly price with add-ons, in USD (required).</param>
         /// <param name="addons">addons (required).</param>
-        public BillingSummary(TierEnum tier = default, decimal monthlyTotal = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, BillingSummaryAddons addons = default)
+        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, decimal monthlyTotal = default, BillingSummaryAddons addons = default)
         {
             this.Tier = tier;
-            this.MonthlyTotal = monthlyTotal;
             // to ensure "month" is required (not null)
             if (month == null)
             {
@@ -120,6 +119,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("usage is a required property for BillingSummary and cannot be null");
             }
             this.Usage = usage;
+            this.MonthlyTotal = monthlyTotal;
             // to ensure "addons" is required (not null)
             if (addons == null)
             {
@@ -127,13 +127,6 @@ namespace Qualithm.Platform.Model
             }
             this.Addons = addons;
         }
-
-        /// <summary>
-        /// The plan&#39;s monthly price with add-ons, in USD
-        /// </summary>
-        /// <value>The plan&#39;s monthly price with add-ons, in USD</value>
-        [DataMember(Name = "monthlyTotal", IsRequired = true, EmitDefaultValue = true)]
-        public decimal MonthlyTotal { get; set; }
 
         /// <summary>
         /// The month usage counts over: &#x60;YYYY-MM&#x60;, UTC
@@ -161,6 +154,13 @@ namespace Qualithm.Platform.Model
         public BillingSummaryUsage Usage { get; set; }
 
         /// <summary>
+        /// The plan&#39;s monthly price with add-ons, in USD
+        /// </summary>
+        /// <value>The plan&#39;s monthly price with add-ons, in USD</value>
+        [DataMember(Name = "monthlyTotal", IsRequired = true, EmitDefaultValue = true)]
+        public decimal MonthlyTotal { get; set; }
+
+        /// <summary>
         /// Gets or Sets Addons
         /// </summary>
         [DataMember(Name = "addons", IsRequired = true, EmitDefaultValue = true)]
@@ -175,11 +175,11 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class BillingSummary {\n");
             sb.Append("  Tier: ").Append(Tier).Append("\n");
-            sb.Append("  MonthlyTotal: ").Append(MonthlyTotal).Append("\n");
             sb.Append("  Month: ").Append(Month).Append("\n");
             sb.Append("  LimitGrace: ").Append(LimitGrace).Append("\n");
             sb.Append("  Limits: ").Append(Limits).Append("\n");
             sb.Append("  Usage: ").Append(Usage).Append("\n");
+            sb.Append("  MonthlyTotal: ").Append(MonthlyTotal).Append("\n");
             sb.Append("  Addons: ").Append(Addons).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
