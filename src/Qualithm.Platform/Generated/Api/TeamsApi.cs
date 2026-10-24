@@ -67,7 +67,7 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of DeleteTeamResponse</returns>
         ApiResponse<DeleteTeamResponse> DeleteTeamWithHttpInfo(Guid teamId);
         /// <summary>
-        /// Get one of the caller&#39;s teams
+        /// Get one of the caller&#39;s teams, with their role and permissions in it
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -75,7 +75,7 @@ namespace Qualithm.Platform.Api
         GetTeamResponse GetTeam(Guid teamId);
 
         /// <summary>
-        /// Get one of the caller&#39;s teams
+        /// Get one of the caller&#39;s teams, with their role and permissions in it
         /// </summary>
         /// <remarks>
         /// 
@@ -85,7 +85,7 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of GetTeamResponse</returns>
         ApiResponse<GetTeamResponse> GetTeamWithHttpInfo(Guid teamId);
         /// <summary>
-        /// List the caller&#39;s teams
+        /// List the caller&#39;s teams; an API token sees only its own
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -94,7 +94,7 @@ namespace Qualithm.Platform.Api
         ListTeamsResponse ListTeams(long? page = default, int? limit = default);
 
         /// <summary>
-        /// List the caller&#39;s teams
+        /// List the caller&#39;s teams; an API token sees only its own
         /// </summary>
         /// <remarks>
         /// 
@@ -178,7 +178,7 @@ namespace Qualithm.Platform.Api
         /// <returns>Task of ApiResponse (DeleteTeamResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<DeleteTeamResponse>> DeleteTeamWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get one of the caller&#39;s teams
+        /// Get one of the caller&#39;s teams, with their role and permissions in it
         /// </summary>
         /// <remarks>
         /// 
@@ -190,7 +190,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<GetTeamResponse> GetTeamAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get one of the caller&#39;s teams
+        /// Get one of the caller&#39;s teams, with their role and permissions in it
         /// </summary>
         /// <remarks>
         /// 
@@ -201,7 +201,7 @@ namespace Qualithm.Platform.Api
         /// <returns>Task of ApiResponse (GetTeamResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetTeamResponse>> GetTeamWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List the caller&#39;s teams
+        /// List the caller&#39;s teams; an API token sees only its own
         /// </summary>
         /// <remarks>
         /// 
@@ -214,7 +214,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<ListTeamsResponse> ListTeamsAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// List the caller&#39;s teams
+        /// List the caller&#39;s teams; an API token sees only its own
         /// </summary>
         /// <remarks>
         /// 
@@ -506,7 +506,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateTeamResponse>("/teams", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateTeamResponse>("/v1/teams", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -565,7 +565,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamResponse>("/teams", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamResponse>("/v1/teams", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -622,7 +622,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteTeamResponse>("/teams/{teamId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<DeleteTeamResponse>("/v1/teams/{teamId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -684,7 +684,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteTeamResponse>("/teams/{teamId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteTeamResponse>("/v1/teams/{teamId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -696,7 +696,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get one of the caller&#39;s teams 
+        /// Get one of the caller&#39;s teams, with their role and permissions in it 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -708,7 +708,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get one of the caller&#39;s teams 
+        /// Get one of the caller&#39;s teams, with their role and permissions in it 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -741,7 +741,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetTeamResponse>("/teams/{teamId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetTeamResponse>("/v1/teams/{teamId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -753,7 +753,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get one of the caller&#39;s teams 
+        /// Get one of the caller&#39;s teams, with their role and permissions in it 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -766,7 +766,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get one of the caller&#39;s teams 
+        /// Get one of the caller&#39;s teams, with their role and permissions in it 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId"></param>
@@ -803,7 +803,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetTeamResponse>("/teams/{teamId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetTeamResponse>("/v1/teams/{teamId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -815,7 +815,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the caller&#39;s teams 
+        /// List the caller&#39;s teams; an API token sees only its own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -828,7 +828,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the caller&#39;s teams 
+        /// List the caller&#39;s teams; an API token sees only its own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -869,7 +869,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListTeamsResponse>("/teams", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListTeamsResponse>("/v1/teams", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -881,7 +881,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the caller&#39;s teams 
+        /// List the caller&#39;s teams; an API token sees only its own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -895,7 +895,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the caller&#39;s teams 
+        /// List the caller&#39;s teams; an API token sees only its own 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
@@ -940,7 +940,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamsResponse>("/teams", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamsResponse>("/v1/teams", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1005,7 +1005,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<UpdateTeamResponse>("/teams/{teamId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<UpdateTeamResponse>("/v1/teams/{teamId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1075,7 +1075,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateTeamResponse>("/teams/{teamId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateTeamResponse>("/v1/teams/{teamId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

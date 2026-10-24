@@ -33,10 +33,11 @@ namespace Qualithm.Platform.Api
         /// Issue a client certificate for a device from its CSR
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCertificateRequest"></param>
         /// <returns>CreateDeviceCertificateResponse</returns>
-        CreateDeviceCertificateResponse CreateDeviceCertificate(Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest);
+        CreateDeviceCertificateResponse CreateDeviceCertificate(Guid teamId, Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest);
 
         /// <summary>
         /// Issue a client certificate for a device from its CSR
@@ -45,18 +46,20 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCertificateRequest"></param>
         /// <returns>ApiResponse of CreateDeviceCertificateResponse</returns>
-        ApiResponse<CreateDeviceCertificateResponse> CreateDeviceCertificateWithHttpInfo(Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest);
+        ApiResponse<CreateDeviceCertificateResponse> CreateDeviceCertificateWithHttpInfo(Guid teamId, Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest);
         /// <summary>
         /// Mint a token credential for a device
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <returns>CreateDeviceCredentialResponse</returns>
-        CreateDeviceCredentialResponse CreateDeviceCredential(Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default);
+        CreateDeviceCredentialResponse CreateDeviceCredential(Guid teamId, Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default);
 
         /// <summary>
         /// Mint a token credential for a device
@@ -65,18 +68,20 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateDeviceCredentialResponse</returns>
-        ApiResponse<CreateDeviceCredentialResponse> CreateDeviceCredentialWithHttpInfo(Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default);
+        ApiResponse<CreateDeviceCredentialResponse> CreateDeviceCredentialWithHttpInfo(Guid teamId, Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default);
         /// <summary>
         /// Revoke a device&#39;s credential
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <returns>DeleteDeviceCredentialResponse</returns>
-        DeleteDeviceCredentialResponse DeleteDeviceCredential(Guid deviceId, Guid credentialId);
+        DeleteDeviceCredentialResponse DeleteDeviceCredential(Guid teamId, Guid deviceId, Guid credentialId);
 
         /// <summary>
         /// Revoke a device&#39;s credential
@@ -85,17 +90,19 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <returns>ApiResponse of DeleteDeviceCredentialResponse</returns>
-        ApiResponse<DeleteDeviceCredentialResponse> DeleteDeviceCredentialWithHttpInfo(Guid deviceId, Guid credentialId);
+        ApiResponse<DeleteDeviceCredentialResponse> DeleteDeviceCredentialWithHttpInfo(Guid teamId, Guid deviceId, Guid credentialId);
         /// <summary>
         /// List a device&#39;s credentials
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <returns>ListDeviceCredentialsResponse</returns>
-        ListDeviceCredentialsResponse ListDeviceCredentials(Guid deviceId);
+        ListDeviceCredentialsResponse ListDeviceCredentials(Guid teamId, Guid deviceId);
 
         /// <summary>
         /// List a device&#39;s credentials
@@ -104,19 +111,21 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <returns>ApiResponse of ListDeviceCredentialsResponse</returns>
-        ApiResponse<ListDeviceCredentialsResponse> ListDeviceCredentialsWithHttpInfo(Guid deviceId);
+        ApiResponse<ListDeviceCredentialsResponse> ListDeviceCredentialsWithHttpInfo(Guid teamId, Guid deviceId);
         /// <summary>
         /// Rotate a device&#39;s token credential
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <returns>RotateDeviceCredentialResponse</returns>
-        RotateDeviceCredentialResponse RotateDeviceCredential(Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default);
+        RotateDeviceCredentialResponse RotateDeviceCredential(Guid teamId, Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default);
 
         /// <summary>
         /// Rotate a device&#39;s token credential
@@ -125,12 +134,13 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <returns>ApiResponse of RotateDeviceCredentialResponse</returns>
-        ApiResponse<RotateDeviceCredentialResponse> RotateDeviceCredentialWithHttpInfo(Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default);
+        ApiResponse<RotateDeviceCredentialResponse> RotateDeviceCredentialWithHttpInfo(Guid teamId, Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default);
         #endregion Synchronous Operations
     }
 
@@ -147,11 +157,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCertificateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCertificateResponse</returns>
-        System.Threading.Tasks.Task<CreateDeviceCertificateResponse> CreateDeviceCertificateAsync(Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDeviceCertificateResponse> CreateDeviceCertificateAsync(Guid teamId, Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Issue a client certificate for a device from its CSR
@@ -160,11 +171,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCertificateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCertificateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCertificateResponse>> CreateDeviceCertificateWithHttpInfoAsync(Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCertificateResponse>> CreateDeviceCertificateWithHttpInfoAsync(Guid teamId, Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Mint a token credential for a device
         /// </summary>
@@ -172,11 +184,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCredentialResponse</returns>
-        System.Threading.Tasks.Task<CreateDeviceCredentialResponse> CreateDeviceCredentialAsync(Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDeviceCredentialResponse> CreateDeviceCredentialAsync(Guid teamId, Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Mint a token credential for a device
@@ -185,11 +198,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCredentialResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCredentialResponse>> CreateDeviceCredentialWithHttpInfoAsync(Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCredentialResponse>> CreateDeviceCredentialWithHttpInfoAsync(Guid teamId, Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Revoke a device&#39;s credential
         /// </summary>
@@ -197,11 +211,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteDeviceCredentialResponse</returns>
-        System.Threading.Tasks.Task<DeleteDeviceCredentialResponse> DeleteDeviceCredentialAsync(Guid deviceId, Guid credentialId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DeleteDeviceCredentialResponse> DeleteDeviceCredentialAsync(Guid teamId, Guid deviceId, Guid credentialId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Revoke a device&#39;s credential
@@ -210,11 +225,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteDeviceCredentialResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteDeviceCredentialResponse>> DeleteDeviceCredentialWithHttpInfoAsync(Guid deviceId, Guid credentialId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DeleteDeviceCredentialResponse>> DeleteDeviceCredentialWithHttpInfoAsync(Guid teamId, Guid deviceId, Guid credentialId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List a device&#39;s credentials
         /// </summary>
@@ -222,10 +238,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceCredentialsResponse</returns>
-        System.Threading.Tasks.Task<ListDeviceCredentialsResponse> ListDeviceCredentialsAsync(Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListDeviceCredentialsResponse> ListDeviceCredentialsAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List a device&#39;s credentials
@@ -234,10 +251,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceCredentialsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDeviceCredentialsResponse>> ListDeviceCredentialsWithHttpInfoAsync(Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListDeviceCredentialsResponse>> ListDeviceCredentialsWithHttpInfoAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rotate a device&#39;s token credential
         /// </summary>
@@ -245,13 +263,14 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RotateDeviceCredentialResponse</returns>
-        System.Threading.Tasks.Task<RotateDeviceCredentialResponse> RotateDeviceCredentialAsync(Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<RotateDeviceCredentialResponse> RotateDeviceCredentialAsync(Guid teamId, Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Rotate a device&#39;s token credential
@@ -260,13 +279,14 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotateDeviceCredentialResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RotateDeviceCredentialResponse>> RotateDeviceCredentialWithHttpInfoAsync(Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<RotateDeviceCredentialResponse>> RotateDeviceCredentialWithHttpInfoAsync(Guid teamId, Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -484,12 +504,13 @@ namespace Qualithm.Platform.Api
         /// Issue a client certificate for a device from its CSR 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCertificateRequest"></param>
         /// <returns>CreateDeviceCertificateResponse</returns>
-        public CreateDeviceCertificateResponse CreateDeviceCertificate(Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest)
+        public CreateDeviceCertificateResponse CreateDeviceCertificate(Guid teamId, Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> localVarResponse = CreateDeviceCertificateWithHttpInfo(deviceId, createDeviceCertificateRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> localVarResponse = CreateDeviceCertificateWithHttpInfo(teamId, deviceId, createDeviceCertificateRequest);
             return localVarResponse.Data;
         }
 
@@ -497,10 +518,11 @@ namespace Qualithm.Platform.Api
         /// Issue a client certificate for a device from its CSR 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCertificateRequest"></param>
         /// <returns>ApiResponse of CreateDeviceCertificateResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> CreateDeviceCertificateWithHttpInfo(Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> CreateDeviceCertificateWithHttpInfo(Guid teamId, Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest)
         {
             // verify the required parameter 'createDeviceCertificateRequest' is set
             if (createDeviceCertificateRequest == null)
@@ -523,6 +545,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
             localVarRequestOptions.Data = createDeviceCertificateRequest;
 
@@ -534,7 +557,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateDeviceCertificateResponse>("/devices/{deviceId}/credentials/cert", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateDeviceCertificateResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials/cert", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -549,13 +572,14 @@ namespace Qualithm.Platform.Api
         /// Issue a client certificate for a device from its CSR 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCertificateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCertificateResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDeviceCertificateResponse> CreateDeviceCertificateAsync(Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDeviceCertificateResponse> CreateDeviceCertificateAsync(Guid teamId, Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> localVarResponse = await CreateDeviceCertificateWithHttpInfoAsync(deviceId, createDeviceCertificateRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> localVarResponse = await CreateDeviceCertificateWithHttpInfoAsync(teamId, deviceId, createDeviceCertificateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -563,11 +587,12 @@ namespace Qualithm.Platform.Api
         /// Issue a client certificate for a device from its CSR 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCertificateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCertificateResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse>> CreateDeviceCertificateWithHttpInfoAsync(Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse>> CreateDeviceCertificateWithHttpInfoAsync(Guid teamId, Guid deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'createDeviceCertificateRequest' is set
             if (createDeviceCertificateRequest == null)
@@ -592,6 +617,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
             localVarRequestOptions.Data = createDeviceCertificateRequest;
 
@@ -604,7 +630,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDeviceCertificateResponse>("/devices/{deviceId}/credentials/cert", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDeviceCertificateResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials/cert", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -619,12 +645,13 @@ namespace Qualithm.Platform.Api
         /// Mint a token credential for a device 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <returns>CreateDeviceCredentialResponse</returns>
-        public CreateDeviceCredentialResponse CreateDeviceCredential(Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default)
+        public CreateDeviceCredentialResponse CreateDeviceCredential(Guid teamId, Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> localVarResponse = CreateDeviceCredentialWithHttpInfo(deviceId, createDeviceCredentialRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> localVarResponse = CreateDeviceCredentialWithHttpInfo(teamId, deviceId, createDeviceCredentialRequest);
             return localVarResponse.Data;
         }
 
@@ -632,10 +659,11 @@ namespace Qualithm.Platform.Api
         /// Mint a token credential for a device 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateDeviceCredentialResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> CreateDeviceCredentialWithHttpInfo(Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default)
+        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> CreateDeviceCredentialWithHttpInfo(Guid teamId, Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -654,6 +682,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
             localVarRequestOptions.Data = createDeviceCredentialRequest;
 
@@ -665,7 +694,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateDeviceCredentialResponse>("/devices/{deviceId}/credentials", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateDeviceCredentialResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -680,13 +709,14 @@ namespace Qualithm.Platform.Api
         /// Mint a token credential for a device 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCredentialResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDeviceCredentialResponse> CreateDeviceCredentialAsync(Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDeviceCredentialResponse> CreateDeviceCredentialAsync(Guid teamId, Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> localVarResponse = await CreateDeviceCredentialWithHttpInfoAsync(deviceId, createDeviceCredentialRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> localVarResponse = await CreateDeviceCredentialWithHttpInfoAsync(teamId, deviceId, createDeviceCredentialRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -694,11 +724,12 @@ namespace Qualithm.Platform.Api
         /// Mint a token credential for a device 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCredentialResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse>> CreateDeviceCredentialWithHttpInfoAsync(Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse>> CreateDeviceCredentialWithHttpInfoAsync(Guid teamId, Guid deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -719,6 +750,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
             localVarRequestOptions.Data = createDeviceCredentialRequest;
 
@@ -731,7 +763,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDeviceCredentialResponse>("/devices/{deviceId}/credentials", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDeviceCredentialResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -746,12 +778,13 @@ namespace Qualithm.Platform.Api
         /// Revoke a device&#39;s credential 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <returns>DeleteDeviceCredentialResponse</returns>
-        public DeleteDeviceCredentialResponse DeleteDeviceCredential(Guid deviceId, Guid credentialId)
+        public DeleteDeviceCredentialResponse DeleteDeviceCredential(Guid teamId, Guid deviceId, Guid credentialId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteDeviceCredentialResponse> localVarResponse = DeleteDeviceCredentialWithHttpInfo(deviceId, credentialId);
+            Qualithm.Platform.Client.ApiResponse<DeleteDeviceCredentialResponse> localVarResponse = DeleteDeviceCredentialWithHttpInfo(teamId, deviceId, credentialId);
             return localVarResponse.Data;
         }
 
@@ -759,10 +792,11 @@ namespace Qualithm.Platform.Api
         /// Revoke a device&#39;s credential 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <returns>ApiResponse of DeleteDeviceCredentialResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteDeviceCredentialResponse> DeleteDeviceCredentialWithHttpInfo(Guid deviceId, Guid credentialId)
+        public Qualithm.Platform.Client.ApiResponse<DeleteDeviceCredentialResponse> DeleteDeviceCredentialWithHttpInfo(Guid teamId, Guid deviceId, Guid credentialId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -780,6 +814,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("credentialId", Qualithm.Platform.Client.ClientUtils.ParameterToString(credentialId)); // path parameter
 
@@ -791,7 +826,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteDeviceCredentialResponse>("/devices/{deviceId}/credentials/{credentialId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<DeleteDeviceCredentialResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials/{credentialId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -806,13 +841,14 @@ namespace Qualithm.Platform.Api
         /// Revoke a device&#39;s credential 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteDeviceCredentialResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteDeviceCredentialResponse> DeleteDeviceCredentialAsync(Guid deviceId, Guid credentialId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DeleteDeviceCredentialResponse> DeleteDeviceCredentialAsync(Guid teamId, Guid deviceId, Guid credentialId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteDeviceCredentialResponse> localVarResponse = await DeleteDeviceCredentialWithHttpInfoAsync(deviceId, credentialId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<DeleteDeviceCredentialResponse> localVarResponse = await DeleteDeviceCredentialWithHttpInfoAsync(teamId, deviceId, credentialId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -820,11 +856,12 @@ namespace Qualithm.Platform.Api
         /// Revoke a device&#39;s credential 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteDeviceCredentialResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteDeviceCredentialResponse>> DeleteDeviceCredentialWithHttpInfoAsync(Guid deviceId, Guid credentialId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteDeviceCredentialResponse>> DeleteDeviceCredentialWithHttpInfoAsync(Guid teamId, Guid deviceId, Guid credentialId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -844,6 +881,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("credentialId", Qualithm.Platform.Client.ClientUtils.ParameterToString(credentialId)); // path parameter
 
@@ -856,7 +894,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteDeviceCredentialResponse>("/devices/{deviceId}/credentials/{credentialId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteDeviceCredentialResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials/{credentialId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -871,11 +909,12 @@ namespace Qualithm.Platform.Api
         /// List a device&#39;s credentials 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <returns>ListDeviceCredentialsResponse</returns>
-        public ListDeviceCredentialsResponse ListDeviceCredentials(Guid deviceId)
+        public ListDeviceCredentialsResponse ListDeviceCredentials(Guid teamId, Guid deviceId)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDeviceCredentialsResponse> localVarResponse = ListDeviceCredentialsWithHttpInfo(deviceId);
+            Qualithm.Platform.Client.ApiResponse<ListDeviceCredentialsResponse> localVarResponse = ListDeviceCredentialsWithHttpInfo(teamId, deviceId);
             return localVarResponse.Data;
         }
 
@@ -883,9 +922,10 @@ namespace Qualithm.Platform.Api
         /// List a device&#39;s credentials 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <returns>ApiResponse of ListDeviceCredentialsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListDeviceCredentialsResponse> ListDeviceCredentialsWithHttpInfo(Guid deviceId)
+        public Qualithm.Platform.Client.ApiResponse<ListDeviceCredentialsResponse> ListDeviceCredentialsWithHttpInfo(Guid teamId, Guid deviceId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -903,6 +943,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
 
             // authentication (apiToken) required
@@ -913,7 +954,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListDeviceCredentialsResponse>("/devices/{deviceId}/credentials", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListDeviceCredentialsResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -928,12 +969,13 @@ namespace Qualithm.Platform.Api
         /// List a device&#39;s credentials 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceCredentialsResponse</returns>
-        public async System.Threading.Tasks.Task<ListDeviceCredentialsResponse> ListDeviceCredentialsAsync(Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListDeviceCredentialsResponse> ListDeviceCredentialsAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDeviceCredentialsResponse> localVarResponse = await ListDeviceCredentialsWithHttpInfoAsync(deviceId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListDeviceCredentialsResponse> localVarResponse = await ListDeviceCredentialsWithHttpInfoAsync(teamId, deviceId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -941,10 +983,11 @@ namespace Qualithm.Platform.Api
         /// List a device&#39;s credentials 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceCredentialsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceCredentialsResponse>> ListDeviceCredentialsWithHttpInfoAsync(Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceCredentialsResponse>> ListDeviceCredentialsWithHttpInfoAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -964,6 +1007,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
 
             // authentication (apiToken) required
@@ -975,7 +1019,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListDeviceCredentialsResponse>("/devices/{deviceId}/credentials", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListDeviceCredentialsResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -990,14 +1034,15 @@ namespace Qualithm.Platform.Api
         /// Rotate a device&#39;s token credential 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <returns>RotateDeviceCredentialResponse</returns>
-        public RotateDeviceCredentialResponse RotateDeviceCredential(Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default)
+        public RotateDeviceCredentialResponse RotateDeviceCredential(Guid teamId, Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default)
         {
-            Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> localVarResponse = RotateDeviceCredentialWithHttpInfo(deviceId, credentialId, revoke, rotateDeviceCredentialRequest);
+            Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> localVarResponse = RotateDeviceCredentialWithHttpInfo(teamId, deviceId, credentialId, revoke, rotateDeviceCredentialRequest);
             return localVarResponse.Data;
         }
 
@@ -1005,12 +1050,13 @@ namespace Qualithm.Platform.Api
         /// Rotate a device&#39;s token credential 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <returns>ApiResponse of RotateDeviceCredentialResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> RotateDeviceCredentialWithHttpInfo(Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default)
+        public Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> RotateDeviceCredentialWithHttpInfo(Guid teamId, Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1029,6 +1075,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("credentialId", Qualithm.Platform.Client.ClientUtils.ParameterToString(credentialId)); // path parameter
             if (revoke != null)
@@ -1045,7 +1092,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<RotateDeviceCredentialResponse>("/devices/{deviceId}/credentials/{credentialId}/rotate", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<RotateDeviceCredentialResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials/{credentialId}/rotate", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1060,15 +1107,16 @@ namespace Qualithm.Platform.Api
         /// Rotate a device&#39;s token credential 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RotateDeviceCredentialResponse</returns>
-        public async System.Threading.Tasks.Task<RotateDeviceCredentialResponse> RotateDeviceCredentialAsync(Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<RotateDeviceCredentialResponse> RotateDeviceCredentialAsync(Guid teamId, Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> localVarResponse = await RotateDeviceCredentialWithHttpInfoAsync(deviceId, credentialId, revoke, rotateDeviceCredentialRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> localVarResponse = await RotateDeviceCredentialWithHttpInfoAsync(teamId, deviceId, credentialId, revoke, rotateDeviceCredentialRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1076,13 +1124,14 @@ namespace Qualithm.Platform.Api
         /// Rotate a device&#39;s token credential 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="credentialId"></param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotateDeviceCredentialResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse>> RotateDeviceCredentialWithHttpInfoAsync(Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse>> RotateDeviceCredentialWithHttpInfoAsync(Guid teamId, Guid deviceId, Guid credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -1103,6 +1152,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
             localVarRequestOptions.PathParameters.Add("credentialId", Qualithm.Platform.Client.ClientUtils.ParameterToString(credentialId)); // path parameter
             if (revoke != null)
@@ -1120,7 +1170,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<RotateDeviceCredentialResponse>("/devices/{deviceId}/credentials/{credentialId}/rotate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RotateDeviceCredentialResponse>("/v1/teams/{teamId}/devices/{deviceId}/credentials/{credentialId}/rotate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

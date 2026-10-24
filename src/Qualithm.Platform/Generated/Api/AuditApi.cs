@@ -33,10 +33,11 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s audit trail, newest first
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListAuditEventsResponse</returns>
-        ListAuditEventsResponse ListAuditEvents(long? page = default, int? limit = default);
+        ListAuditEventsResponse ListAuditEvents(Guid teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the workspace&#39;s audit trail, newest first
@@ -45,10 +46,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListAuditEventsResponse</returns>
-        ApiResponse<ListAuditEventsResponse> ListAuditEventsWithHttpInfo(long? page = default, int? limit = default);
+        ApiResponse<ListAuditEventsResponse> ListAuditEventsWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
         #endregion Synchronous Operations
     }
 
@@ -65,11 +67,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAuditEventsResponse</returns>
-        System.Threading.Tasks.Task<ListAuditEventsResponse> ListAuditEventsAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListAuditEventsResponse> ListAuditEventsAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s audit trail, newest first
@@ -78,11 +81,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAuditEventsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListAuditEventsResponse>> ListAuditEventsWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListAuditEventsResponse>> ListAuditEventsWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -300,12 +304,13 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s audit trail, newest first 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListAuditEventsResponse</returns>
-        public ListAuditEventsResponse ListAuditEvents(long? page = default, int? limit = default)
+        public ListAuditEventsResponse ListAuditEvents(Guid teamId, long? page = default, int? limit = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAuditEventsResponse> localVarResponse = ListAuditEventsWithHttpInfo(page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListAuditEventsResponse> localVarResponse = ListAuditEventsWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
         }
 
@@ -313,10 +318,11 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s audit trail, newest first 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListAuditEventsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListAuditEventsResponse> ListAuditEventsWithHttpInfo(long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListAuditEventsResponse> ListAuditEventsWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -334,6 +340,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -351,7 +358,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListAuditEventsResponse>("/audit", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListAuditEventsResponse>("/v1/teams/{teamId}/audit-events", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -366,13 +373,14 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s audit trail, newest first 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAuditEventsResponse</returns>
-        public async System.Threading.Tasks.Task<ListAuditEventsResponse> ListAuditEventsAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListAuditEventsResponse> ListAuditEventsAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAuditEventsResponse> localVarResponse = await ListAuditEventsWithHttpInfoAsync(page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListAuditEventsResponse> localVarResponse = await ListAuditEventsWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -380,11 +388,12 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s audit trail, newest first 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAuditEventsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAuditEventsResponse>> ListAuditEventsWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAuditEventsResponse>> ListAuditEventsWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -404,6 +413,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -422,7 +432,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAuditEventsResponse>("/audit", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAuditEventsResponse>("/v1/teams/{teamId}/audit-events", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
