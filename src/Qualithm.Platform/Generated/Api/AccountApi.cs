@@ -368,7 +368,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetAccountResponse>("/account", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetAccountResponse>("/v1/account", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -427,7 +427,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAccountResponse>("/account", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAccountResponse>("/v1/account", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -481,7 +481,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetCommunicationPreferencesResponse>("/account/communication-preferences", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetCommunicationPreferencesResponse>("/v1/account/communication-preferences", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -540,7 +540,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetCommunicationPreferencesResponse>("/account/communication-preferences", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetCommunicationPreferencesResponse>("/v1/account/communication-preferences", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

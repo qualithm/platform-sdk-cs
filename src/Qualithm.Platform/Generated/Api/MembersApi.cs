@@ -541,7 +541,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateTeamMemberResponse>("/teams/{teamId}/members", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateTeamMemberResponse>("/v1/teams/{teamId}/members", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -611,7 +611,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamMemberResponse>("/teams/{teamId}/members", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamMemberResponse>("/v1/teams/{teamId}/members", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -671,7 +671,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteTeamMemberResponse>("/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<DeleteTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -736,7 +736,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteTeamMemberResponse>("/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -796,7 +796,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetTeamMemberResponse>("/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -861,7 +861,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetTeamMemberResponse>("/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -930,7 +930,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListTeamMembersResponse>("/teams/{teamId}/members", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListTeamMembersResponse>("/v1/teams/{teamId}/members", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1004,7 +1004,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamMembersResponse>("/teams/{teamId}/members", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamMembersResponse>("/v1/teams/{teamId}/members", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1072,7 +1072,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<UpdateTeamMemberResponse>("/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<UpdateTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1145,7 +1145,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateTeamMemberResponse>("/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
