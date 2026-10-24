@@ -33,9 +33,10 @@ namespace Qualithm.Platform.Api
         /// Create a dashboard
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
         /// <returns>CreateDashboardResponse</returns>
-        CreateDashboardResponse CreateDashboard(CreateDashboardRequest createDashboardRequest);
+        CreateDashboardResponse CreateDashboard(Guid teamId, CreateDashboardRequest createDashboardRequest);
 
         /// <summary>
         /// Create a dashboard
@@ -44,16 +45,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
         /// <returns>ApiResponse of CreateDashboardResponse</returns>
-        ApiResponse<CreateDashboardResponse> CreateDashboardWithHttpInfo(CreateDashboardRequest createDashboardRequest);
+        ApiResponse<CreateDashboardResponse> CreateDashboardWithHttpInfo(Guid teamId, CreateDashboardRequest createDashboardRequest);
         /// <summary>
         /// Delete a dashboard
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <returns>DeleteDashboardResponse</returns>
-        DeleteDashboardResponse DeleteDashboard(Guid dashboardId);
+        DeleteDashboardResponse DeleteDashboard(Guid teamId, Guid dashboardId);
 
         /// <summary>
         /// Delete a dashboard
@@ -62,16 +65,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <returns>ApiResponse of DeleteDashboardResponse</returns>
-        ApiResponse<DeleteDashboardResponse> DeleteDashboardWithHttpInfo(Guid dashboardId);
+        ApiResponse<DeleteDashboardResponse> DeleteDashboardWithHttpInfo(Guid teamId, Guid dashboardId);
         /// <summary>
         /// Get a dashboard
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <returns>GetDashboardResponse</returns>
-        GetDashboardResponse GetDashboard(Guid dashboardId);
+        GetDashboardResponse GetDashboard(Guid teamId, Guid dashboardId);
 
         /// <summary>
         /// Get a dashboard
@@ -80,17 +85,19 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <returns>ApiResponse of GetDashboardResponse</returns>
-        ApiResponse<GetDashboardResponse> GetDashboardWithHttpInfo(Guid dashboardId);
+        ApiResponse<GetDashboardResponse> GetDashboardWithHttpInfo(Guid teamId, Guid dashboardId);
         /// <summary>
         /// List the workspace&#39;s dashboards
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListDashboardsResponse</returns>
-        ListDashboardsResponse ListDashboards(long? page = default, int? limit = default);
+        ListDashboardsResponse ListDashboards(Guid teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the workspace&#39;s dashboards
@@ -99,18 +106,20 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListDashboardsResponse</returns>
-        ApiResponse<ListDashboardsResponse> ListDashboardsWithHttpInfo(long? page = default, int? limit = default);
+        ApiResponse<ListDashboardsResponse> ListDashboardsWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
         /// <summary>
         /// Update a dashboard
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="updateDashboardRequest"></param>
         /// <returns>UpdateDashboardResponse</returns>
-        UpdateDashboardResponse UpdateDashboard(Guid dashboardId, UpdateDashboardRequest updateDashboardRequest);
+        UpdateDashboardResponse UpdateDashboard(Guid teamId, Guid dashboardId, UpdateDashboardRequest updateDashboardRequest);
 
         /// <summary>
         /// Update a dashboard
@@ -119,10 +128,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="updateDashboardRequest"></param>
         /// <returns>ApiResponse of UpdateDashboardResponse</returns>
-        ApiResponse<UpdateDashboardResponse> UpdateDashboardWithHttpInfo(Guid dashboardId, UpdateDashboardRequest updateDashboardRequest);
+        ApiResponse<UpdateDashboardResponse> UpdateDashboardWithHttpInfo(Guid teamId, Guid dashboardId, UpdateDashboardRequest updateDashboardRequest);
         #endregion Synchronous Operations
     }
 
@@ -139,10 +149,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDashboardResponse</returns>
-        System.Threading.Tasks.Task<CreateDashboardResponse> CreateDashboardAsync(CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDashboardResponse> CreateDashboardAsync(Guid teamId, CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a dashboard
@@ -151,10 +162,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDashboardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDashboardResponse>> CreateDashboardWithHttpInfoAsync(CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDashboardResponse>> CreateDashboardWithHttpInfoAsync(Guid teamId, CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete a dashboard
         /// </summary>
@@ -162,10 +174,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteDashboardResponse</returns>
-        System.Threading.Tasks.Task<DeleteDashboardResponse> DeleteDashboardAsync(Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DeleteDashboardResponse> DeleteDashboardAsync(Guid teamId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete a dashboard
@@ -174,10 +187,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteDashboardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteDashboardResponse>> DeleteDashboardWithHttpInfoAsync(Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DeleteDashboardResponse>> DeleteDashboardWithHttpInfoAsync(Guid teamId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get a dashboard
         /// </summary>
@@ -185,10 +199,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetDashboardResponse</returns>
-        System.Threading.Tasks.Task<GetDashboardResponse> GetDashboardAsync(Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetDashboardResponse> GetDashboardAsync(Guid teamId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get a dashboard
@@ -197,10 +212,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetDashboardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetDashboardResponse>> GetDashboardWithHttpInfoAsync(Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetDashboardResponse>> GetDashboardWithHttpInfoAsync(Guid teamId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s dashboards
         /// </summary>
@@ -208,11 +224,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDashboardsResponse</returns>
-        System.Threading.Tasks.Task<ListDashboardsResponse> ListDashboardsAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListDashboardsResponse> ListDashboardsAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s dashboards
@@ -221,11 +238,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDashboardsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDashboardsResponse>> ListDashboardsWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListDashboardsResponse>> ListDashboardsWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Update a dashboard
         /// </summary>
@@ -233,11 +251,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="updateDashboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateDashboardResponse</returns>
-        System.Threading.Tasks.Task<UpdateDashboardResponse> UpdateDashboardAsync(Guid dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateDashboardResponse> UpdateDashboardAsync(Guid teamId, Guid dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a dashboard
@@ -246,11 +265,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="updateDashboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateDashboardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateDashboardResponse>> UpdateDashboardWithHttpInfoAsync(Guid dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateDashboardResponse>> UpdateDashboardWithHttpInfoAsync(Guid teamId, Guid dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -468,11 +488,12 @@ namespace Qualithm.Platform.Api
         /// Create a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
         /// <returns>CreateDashboardResponse</returns>
-        public CreateDashboardResponse CreateDashboard(CreateDashboardRequest createDashboardRequest)
+        public CreateDashboardResponse CreateDashboard(Guid teamId, CreateDashboardRequest createDashboardRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> localVarResponse = CreateDashboardWithHttpInfo(createDashboardRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> localVarResponse = CreateDashboardWithHttpInfo(teamId, createDashboardRequest);
             return localVarResponse.Data;
         }
 
@@ -480,9 +501,10 @@ namespace Qualithm.Platform.Api
         /// Create a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
         /// <returns>ApiResponse of CreateDashboardResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> CreateDashboardWithHttpInfo(CreateDashboardRequest createDashboardRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> CreateDashboardWithHttpInfo(Guid teamId, CreateDashboardRequest createDashboardRequest)
         {
             // verify the required parameter 'createDashboardRequest' is set
             if (createDashboardRequest == null)
@@ -505,6 +527,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = createDashboardRequest;
 
             // authentication (apiToken) required
@@ -515,7 +538,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateDashboardResponse>("/dashboards", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateDashboardResponse>("/v1/teams/{teamId}/dashboards", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -530,12 +553,13 @@ namespace Qualithm.Platform.Api
         /// Create a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDashboardResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDashboardResponse> CreateDashboardAsync(CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDashboardResponse> CreateDashboardAsync(Guid teamId, CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> localVarResponse = await CreateDashboardWithHttpInfoAsync(createDashboardRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> localVarResponse = await CreateDashboardWithHttpInfoAsync(teamId, createDashboardRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -543,10 +567,11 @@ namespace Qualithm.Platform.Api
         /// Create a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDashboardResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse>> CreateDashboardWithHttpInfoAsync(CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse>> CreateDashboardWithHttpInfoAsync(Guid teamId, CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'createDashboardRequest' is set
             if (createDashboardRequest == null)
@@ -571,6 +596,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = createDashboardRequest;
 
             // authentication (apiToken) required
@@ -582,7 +608,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDashboardResponse>("/dashboards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateDashboardResponse>("/v1/teams/{teamId}/dashboards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -597,11 +623,12 @@ namespace Qualithm.Platform.Api
         /// Delete a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <returns>DeleteDashboardResponse</returns>
-        public DeleteDashboardResponse DeleteDashboard(Guid dashboardId)
+        public DeleteDashboardResponse DeleteDashboard(Guid teamId, Guid dashboardId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteDashboardResponse> localVarResponse = DeleteDashboardWithHttpInfo(dashboardId);
+            Qualithm.Platform.Client.ApiResponse<DeleteDashboardResponse> localVarResponse = DeleteDashboardWithHttpInfo(teamId, dashboardId);
             return localVarResponse.Data;
         }
 
@@ -609,9 +636,10 @@ namespace Qualithm.Platform.Api
         /// Delete a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <returns>ApiResponse of DeleteDashboardResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteDashboardResponse> DeleteDashboardWithHttpInfo(Guid dashboardId)
+        public Qualithm.Platform.Client.ApiResponse<DeleteDashboardResponse> DeleteDashboardWithHttpInfo(Guid teamId, Guid dashboardId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -629,6 +657,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
 
             // authentication (apiToken) required
@@ -639,7 +668,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteDashboardResponse>("/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<DeleteDashboardResponse>("/v1/teams/{teamId}/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -654,12 +683,13 @@ namespace Qualithm.Platform.Api
         /// Delete a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteDashboardResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteDashboardResponse> DeleteDashboardAsync(Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DeleteDashboardResponse> DeleteDashboardAsync(Guid teamId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteDashboardResponse> localVarResponse = await DeleteDashboardWithHttpInfoAsync(dashboardId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<DeleteDashboardResponse> localVarResponse = await DeleteDashboardWithHttpInfoAsync(teamId, dashboardId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -667,10 +697,11 @@ namespace Qualithm.Platform.Api
         /// Delete a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteDashboardResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteDashboardResponse>> DeleteDashboardWithHttpInfoAsync(Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteDashboardResponse>> DeleteDashboardWithHttpInfoAsync(Guid teamId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -690,6 +721,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
 
             // authentication (apiToken) required
@@ -701,7 +733,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteDashboardResponse>("/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteDashboardResponse>("/v1/teams/{teamId}/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -716,11 +748,12 @@ namespace Qualithm.Platform.Api
         /// Get a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <returns>GetDashboardResponse</returns>
-        public GetDashboardResponse GetDashboard(Guid dashboardId)
+        public GetDashboardResponse GetDashboard(Guid teamId, Guid dashboardId)
         {
-            Qualithm.Platform.Client.ApiResponse<GetDashboardResponse> localVarResponse = GetDashboardWithHttpInfo(dashboardId);
+            Qualithm.Platform.Client.ApiResponse<GetDashboardResponse> localVarResponse = GetDashboardWithHttpInfo(teamId, dashboardId);
             return localVarResponse.Data;
         }
 
@@ -728,9 +761,10 @@ namespace Qualithm.Platform.Api
         /// Get a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <returns>ApiResponse of GetDashboardResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<GetDashboardResponse> GetDashboardWithHttpInfo(Guid dashboardId)
+        public Qualithm.Platform.Client.ApiResponse<GetDashboardResponse> GetDashboardWithHttpInfo(Guid teamId, Guid dashboardId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -748,6 +782,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
 
             // authentication (apiToken) required
@@ -758,7 +793,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetDashboardResponse>("/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetDashboardResponse>("/v1/teams/{teamId}/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -773,12 +808,13 @@ namespace Qualithm.Platform.Api
         /// Get a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetDashboardResponse</returns>
-        public async System.Threading.Tasks.Task<GetDashboardResponse> GetDashboardAsync(Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetDashboardResponse> GetDashboardAsync(Guid teamId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<GetDashboardResponse> localVarResponse = await GetDashboardWithHttpInfoAsync(dashboardId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<GetDashboardResponse> localVarResponse = await GetDashboardWithHttpInfoAsync(teamId, dashboardId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -786,10 +822,11 @@ namespace Qualithm.Platform.Api
         /// Get a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetDashboardResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetDashboardResponse>> GetDashboardWithHttpInfoAsync(Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetDashboardResponse>> GetDashboardWithHttpInfoAsync(Guid teamId, Guid dashboardId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -809,6 +846,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
 
             // authentication (apiToken) required
@@ -820,7 +858,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetDashboardResponse>("/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetDashboardResponse>("/v1/teams/{teamId}/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -835,12 +873,13 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s dashboards 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListDashboardsResponse</returns>
-        public ListDashboardsResponse ListDashboards(long? page = default, int? limit = default)
+        public ListDashboardsResponse ListDashboards(Guid teamId, long? page = default, int? limit = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDashboardsResponse> localVarResponse = ListDashboardsWithHttpInfo(page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListDashboardsResponse> localVarResponse = ListDashboardsWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
         }
 
@@ -848,10 +887,11 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s dashboards 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListDashboardsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListDashboardsResponse> ListDashboardsWithHttpInfo(long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListDashboardsResponse> ListDashboardsWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -869,6 +909,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -886,7 +927,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListDashboardsResponse>("/dashboards", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListDashboardsResponse>("/v1/teams/{teamId}/dashboards", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -901,13 +942,14 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s dashboards 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDashboardsResponse</returns>
-        public async System.Threading.Tasks.Task<ListDashboardsResponse> ListDashboardsAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListDashboardsResponse> ListDashboardsAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDashboardsResponse> localVarResponse = await ListDashboardsWithHttpInfoAsync(page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListDashboardsResponse> localVarResponse = await ListDashboardsWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -915,11 +957,12 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s dashboards 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDashboardsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDashboardsResponse>> ListDashboardsWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDashboardsResponse>> ListDashboardsWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -939,6 +982,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -957,7 +1001,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListDashboardsResponse>("/dashboards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListDashboardsResponse>("/v1/teams/{teamId}/dashboards", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -972,12 +1016,13 @@ namespace Qualithm.Platform.Api
         /// Update a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="updateDashboardRequest"></param>
         /// <returns>UpdateDashboardResponse</returns>
-        public UpdateDashboardResponse UpdateDashboard(Guid dashboardId, UpdateDashboardRequest updateDashboardRequest)
+        public UpdateDashboardResponse UpdateDashboard(Guid teamId, Guid dashboardId, UpdateDashboardRequest updateDashboardRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> localVarResponse = UpdateDashboardWithHttpInfo(dashboardId, updateDashboardRequest);
+            Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> localVarResponse = UpdateDashboardWithHttpInfo(teamId, dashboardId, updateDashboardRequest);
             return localVarResponse.Data;
         }
 
@@ -985,10 +1030,11 @@ namespace Qualithm.Platform.Api
         /// Update a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="updateDashboardRequest"></param>
         /// <returns>ApiResponse of UpdateDashboardResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> UpdateDashboardWithHttpInfo(Guid dashboardId, UpdateDashboardRequest updateDashboardRequest)
+        public Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> UpdateDashboardWithHttpInfo(Guid teamId, Guid dashboardId, UpdateDashboardRequest updateDashboardRequest)
         {
             // verify the required parameter 'updateDashboardRequest' is set
             if (updateDashboardRequest == null)
@@ -1011,6 +1057,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
             localVarRequestOptions.Data = updateDashboardRequest;
 
@@ -1022,7 +1069,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<UpdateDashboardResponse>("/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<UpdateDashboardResponse>("/v1/teams/{teamId}/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1037,13 +1084,14 @@ namespace Qualithm.Platform.Api
         /// Update a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="updateDashboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateDashboardResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateDashboardResponse> UpdateDashboardAsync(Guid dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateDashboardResponse> UpdateDashboardAsync(Guid teamId, Guid dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> localVarResponse = await UpdateDashboardWithHttpInfoAsync(dashboardId, updateDashboardRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> localVarResponse = await UpdateDashboardWithHttpInfoAsync(teamId, dashboardId, updateDashboardRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1051,11 +1099,12 @@ namespace Qualithm.Platform.Api
         /// Update a dashboard 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId"></param>
         /// <param name="updateDashboardRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateDashboardResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse>> UpdateDashboardWithHttpInfoAsync(Guid dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse>> UpdateDashboardWithHttpInfoAsync(Guid teamId, Guid dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'updateDashboardRequest' is set
             if (updateDashboardRequest == null)
@@ -1080,6 +1129,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
             localVarRequestOptions.Data = updateDashboardRequest;
 
@@ -1092,7 +1142,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateDashboardResponse>("/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateDashboardResponse>("/v1/teams/{teamId}/dashboards/{dashboardId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

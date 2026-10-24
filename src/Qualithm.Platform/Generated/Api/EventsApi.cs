@@ -33,8 +33,9 @@ namespace Qualithm.Platform.Api
         /// Stream the team&#39;s live events
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>string</returns>
-        string StreamEvents();
+        string StreamEvents(Guid teamId);
 
         /// <summary>
         /// Stream the team&#39;s live events
@@ -43,8 +44,9 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>ApiResponse of string</returns>
-        ApiResponse<string> StreamEventsWithHttpInfo();
+        ApiResponse<string> StreamEventsWithHttpInfo(Guid teamId);
         #endregion Synchronous Operations
     }
 
@@ -61,9 +63,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        System.Threading.Tasks.Task<string> StreamEventsAsync(System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<string> StreamEventsAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Stream the team&#39;s live events
@@ -72,9 +75,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        System.Threading.Tasks.Task<ApiResponse<string>> StreamEventsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<string>> StreamEventsWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -292,10 +296,11 @@ namespace Qualithm.Platform.Api
         /// Stream the team&#39;s live events 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>string</returns>
-        public string StreamEvents()
+        public string StreamEvents(Guid teamId)
         {
-            Qualithm.Platform.Client.ApiResponse<string> localVarResponse = StreamEventsWithHttpInfo();
+            Qualithm.Platform.Client.ApiResponse<string> localVarResponse = StreamEventsWithHttpInfo(teamId);
             return localVarResponse.Data;
         }
 
@@ -303,8 +308,9 @@ namespace Qualithm.Platform.Api
         /// Stream the team&#39;s live events 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>ApiResponse of string</returns>
-        public Qualithm.Platform.Client.ApiResponse<string> StreamEventsWithHttpInfo()
+        public Qualithm.Platform.Client.ApiResponse<string> StreamEventsWithHttpInfo(Guid teamId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -323,6 +329,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -332,7 +339,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<string>("/events/stream", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<string>("/v1/teams/{teamId}/events", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -347,11 +354,12 @@ namespace Qualithm.Platform.Api
         /// Stream the team&#39;s live events 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of string</returns>
-        public async System.Threading.Tasks.Task<string> StreamEventsAsync(System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<string> StreamEventsAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<string> localVarResponse = await StreamEventsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<string> localVarResponse = await StreamEventsWithHttpInfoAsync(teamId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -359,9 +367,10 @@ namespace Qualithm.Platform.Api
         /// Stream the team&#39;s live events 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (string)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<string>> StreamEventsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<string>> StreamEventsWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -382,6 +391,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -392,7 +402,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<string>("/events/stream", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<string>("/v1/teams/{teamId}/events", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

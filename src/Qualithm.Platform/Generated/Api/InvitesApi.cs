@@ -444,7 +444,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateTeamInviteResponse>("/teams/{teamId}/invites", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateTeamInviteResponse>("/v1/teams/{teamId}/invites", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -514,7 +514,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamInviteResponse>("/teams/{teamId}/invites", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateTeamInviteResponse>("/v1/teams/{teamId}/invites", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -574,7 +574,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteTeamInviteResponse>("/teams/{teamId}/invites/{inviteId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<DeleteTeamInviteResponse>("/v1/teams/{teamId}/invites/{inviteId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -639,7 +639,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteTeamInviteResponse>("/teams/{teamId}/invites/{inviteId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteTeamInviteResponse>("/v1/teams/{teamId}/invites/{inviteId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -708,7 +708,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListTeamInvitesResponse>("/teams/{teamId}/invites", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListTeamInvitesResponse>("/v1/teams/{teamId}/invites", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -782,7 +782,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamInvitesResponse>("/teams/{teamId}/invites", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListTeamInvitesResponse>("/v1/teams/{teamId}/invites", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
