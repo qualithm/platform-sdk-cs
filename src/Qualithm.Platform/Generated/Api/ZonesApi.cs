@@ -30,28 +30,6 @@ namespace Qualithm.Platform.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// List the workspace&#39;s spaces in a zone
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="zone"></param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
-        /// <returns>ListZoneSpacesResponse</returns>
-        ListZoneSpacesResponse ListZoneSpaces(string zone, long? page = default, int? limit = default);
-
-        /// <summary>
-        /// List the workspace&#39;s spaces in a zone
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="zone"></param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
-        /// <returns>ApiResponse of ListZoneSpacesResponse</returns>
-        ApiResponse<ListZoneSpacesResponse> ListZoneSpacesWithHttpInfo(string zone, long? page = default, int? limit = default);
-        /// <summary>
         /// List the environment&#39;s zones and their public endpoints
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
@@ -76,33 +54,6 @@ namespace Qualithm.Platform.Api
     public interface IZonesApiAsync : IApiAccessor
     {
         #region Asynchronous Operations
-        /// <summary>
-        /// List the workspace&#39;s spaces in a zone
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="zone"></param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListZoneSpacesResponse</returns>
-        System.Threading.Tasks.Task<ListZoneSpacesResponse> ListZoneSpacesAsync(string zone, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// List the workspace&#39;s spaces in a zone
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="zone"></param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListZoneSpacesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListZoneSpacesResponse>> ListZoneSpacesWithHttpInfoAsync(string zone, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the environment&#39;s zones and their public endpoints
         /// </summary>
@@ -338,157 +289,6 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s spaces in a zone 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="zone"></param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
-        /// <returns>ListZoneSpacesResponse</returns>
-        public ListZoneSpacesResponse ListZoneSpaces(string zone, long? page = default, int? limit = default)
-        {
-            Qualithm.Platform.Client.ApiResponse<ListZoneSpacesResponse> localVarResponse = ListZoneSpacesWithHttpInfo(zone, page, limit);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// List the workspace&#39;s spaces in a zone 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="zone"></param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
-        /// <returns>ApiResponse of ListZoneSpacesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListZoneSpacesResponse> ListZoneSpacesWithHttpInfo(string zone, long? page = default, int? limit = default)
-        {
-            // verify the required parameter 'zone' is set
-            if (zone == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'zone' when calling ZonesApi->ListZoneSpaces");
-
-            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("zone", Qualithm.Platform.Client.ClientUtils.ParameterToString(zone)); // path parameter
-            if (page != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
-            }
-            if (limit != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
-            }
-
-            // authentication (apiToken) required
-            // bearer authentication required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Get<ListZoneSpacesResponse>("/zones/{zone}/spaces", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ListZoneSpaces", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// List the workspace&#39;s spaces in a zone 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="zone"></param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListZoneSpacesResponse</returns>
-        public async System.Threading.Tasks.Task<ListZoneSpacesResponse> ListZoneSpacesAsync(string zone, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
-        {
-            Qualithm.Platform.Client.ApiResponse<ListZoneSpacesResponse> localVarResponse = await ListZoneSpacesWithHttpInfoAsync(zone, page, limit, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
-        }
-
-        /// <summary>
-        /// List the workspace&#39;s spaces in a zone 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="zone"></param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListZoneSpacesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListZoneSpacesResponse>> ListZoneSpacesWithHttpInfoAsync(string zone, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
-        {
-            // verify the required parameter 'zone' is set
-            if (zone == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'zone' when calling ZonesApi->ListZoneSpaces");
-
-
-            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("zone", Qualithm.Platform.Client.ClientUtils.ParameterToString(zone)); // path parameter
-            if (page != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
-            }
-            if (limit != null)
-            {
-                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
-            }
-
-            // authentication (apiToken) required
-            // bearer authentication required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListZoneSpacesResponse>("/zones/{zone}/spaces", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ListZoneSpaces", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
         /// List the environment&#39;s zones and their public endpoints 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
@@ -525,7 +325,7 @@ namespace Qualithm.Platform.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListZonesResponse>("/zones", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListZonesResponse>("/v1/zones", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -578,7 +378,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListZonesResponse>("/zones", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListZonesResponse>("/v1/zones", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
