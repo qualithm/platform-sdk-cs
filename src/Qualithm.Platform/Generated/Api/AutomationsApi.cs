@@ -33,9 +33,10 @@ namespace Qualithm.Platform.Api
         /// Create an automation
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationRequest"></param>
         /// <returns>CreateAutomationResponse</returns>
-        CreateAutomationResponse CreateAutomation(CreateAutomationRequest createAutomationRequest);
+        CreateAutomationResponse CreateAutomation(Guid teamId, CreateAutomationRequest createAutomationRequest);
 
         /// <summary>
         /// Create an automation
@@ -44,16 +45,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationRequest"></param>
         /// <returns>ApiResponse of CreateAutomationResponse</returns>
-        ApiResponse<CreateAutomationResponse> CreateAutomationWithHttpInfo(CreateAutomationRequest createAutomationRequest);
+        ApiResponse<CreateAutomationResponse> CreateAutomationWithHttpInfo(Guid teamId, CreateAutomationRequest createAutomationRequest);
         /// <summary>
         /// Create an automation from a template
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationFromTemplateRequest"></param>
         /// <returns>CreateAutomationFromTemplateResponse</returns>
-        CreateAutomationFromTemplateResponse CreateAutomationFromTemplate(CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest);
+        CreateAutomationFromTemplateResponse CreateAutomationFromTemplate(Guid teamId, CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest);
 
         /// <summary>
         /// Create an automation from a template
@@ -62,16 +65,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationFromTemplateRequest"></param>
         /// <returns>ApiResponse of CreateAutomationFromTemplateResponse</returns>
-        ApiResponse<CreateAutomationFromTemplateResponse> CreateAutomationFromTemplateWithHttpInfo(CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest);
+        ApiResponse<CreateAutomationFromTemplateResponse> CreateAutomationFromTemplateWithHttpInfo(Guid teamId, CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest);
         /// <summary>
         /// Issue or rotate an automation&#39;s trigger secret
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>CreateAutomationTriggerSecretResponse</returns>
-        CreateAutomationTriggerSecretResponse CreateAutomationTriggerSecret(Guid automationId);
+        CreateAutomationTriggerSecretResponse CreateAutomationTriggerSecret(Guid teamId, Guid automationId);
 
         /// <summary>
         /// Issue or rotate an automation&#39;s trigger secret
@@ -80,16 +85,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of CreateAutomationTriggerSecretResponse</returns>
-        ApiResponse<CreateAutomationTriggerSecretResponse> CreateAutomationTriggerSecretWithHttpInfo(Guid automationId);
+        ApiResponse<CreateAutomationTriggerSecretResponse> CreateAutomationTriggerSecretWithHttpInfo(Guid teamId, Guid automationId);
         /// <summary>
         /// Delete an automation
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>DeleteAutomationResponse</returns>
-        DeleteAutomationResponse DeleteAutomation(Guid automationId);
+        DeleteAutomationResponse DeleteAutomation(Guid teamId, Guid automationId);
 
         /// <summary>
         /// Delete an automation
@@ -98,16 +105,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of DeleteAutomationResponse</returns>
-        ApiResponse<DeleteAutomationResponse> DeleteAutomationWithHttpInfo(Guid automationId);
+        ApiResponse<DeleteAutomationResponse> DeleteAutomationWithHttpInfo(Guid teamId, Guid automationId);
         /// <summary>
         /// Disable an automation
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>DisableAutomationResponse</returns>
-        DisableAutomationResponse DisableAutomation(Guid automationId);
+        DisableAutomationResponse DisableAutomation(Guid teamId, Guid automationId);
 
         /// <summary>
         /// Disable an automation
@@ -116,16 +125,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of DisableAutomationResponse</returns>
-        ApiResponse<DisableAutomationResponse> DisableAutomationWithHttpInfo(Guid automationId);
+        ApiResponse<DisableAutomationResponse> DisableAutomationWithHttpInfo(Guid teamId, Guid automationId);
         /// <summary>
         /// Enable an automation
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>EnableAutomationResponse</returns>
-        EnableAutomationResponse EnableAutomation(Guid automationId);
+        EnableAutomationResponse EnableAutomation(Guid teamId, Guid automationId);
 
         /// <summary>
         /// Enable an automation
@@ -134,16 +145,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of EnableAutomationResponse</returns>
-        ApiResponse<EnableAutomationResponse> EnableAutomationWithHttpInfo(Guid automationId);
+        ApiResponse<EnableAutomationResponse> EnableAutomationWithHttpInfo(Guid teamId, Guid automationId);
         /// <summary>
         /// Get an automation
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>GetAutomationResponse</returns>
-        GetAutomationResponse GetAutomation(Guid automationId);
+        GetAutomationResponse GetAutomation(Guid teamId, Guid automationId);
 
         /// <summary>
         /// Get an automation
@@ -152,18 +165,20 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of GetAutomationResponse</returns>
-        ApiResponse<GetAutomationResponse> GetAutomationWithHttpInfo(Guid automationId);
+        ApiResponse<GetAutomationResponse> GetAutomationWithHttpInfo(Guid teamId, Guid automationId);
         /// <summary>
         /// List an automation&#39;s runs
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListAutomationRunsResponse</returns>
-        ListAutomationRunsResponse ListAutomationRuns(Guid automationId, long? page = default, int? limit = default);
+        ListAutomationRunsResponse ListAutomationRuns(Guid teamId, Guid automationId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List an automation&#39;s runs
@@ -172,19 +187,21 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListAutomationRunsResponse</returns>
-        ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(Guid automationId, long? page = default, int? limit = default);
+        ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(Guid teamId, Guid automationId, long? page = default, int? limit = default);
         /// <summary>
         /// List the workspace&#39;s automations
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListAutomationsResponse</returns>
-        ListAutomationsResponse ListAutomations(long? page = default, int? limit = default);
+        ListAutomationsResponse ListAutomations(Guid teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the workspace&#39;s automations
@@ -193,17 +210,19 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListAutomationsResponse</returns>
-        ApiResponse<ListAutomationsResponse> ListAutomationsWithHttpInfo(long? page = default, int? limit = default);
+        ApiResponse<ListAutomationsResponse> ListAutomationsWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
         /// <summary>
         /// List the automation templates a device supports
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <returns>ListDeviceAutomationTemplatesResponse</returns>
-        ListDeviceAutomationTemplatesResponse ListDeviceAutomationTemplates(Guid deviceId);
+        ListDeviceAutomationTemplatesResponse ListDeviceAutomationTemplates(Guid teamId, Guid deviceId);
 
         /// <summary>
         /// List the automation templates a device supports
@@ -212,16 +231,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <returns>ApiResponse of ListDeviceAutomationTemplatesResponse</returns>
-        ApiResponse<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesWithHttpInfo(Guid deviceId);
+        ApiResponse<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesWithHttpInfo(Guid teamId, Guid deviceId);
         /// <summary>
         /// Run an automation&#39;s chain now
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>RunAutomationResponse</returns>
-        RunAutomationResponse RunAutomation(Guid automationId);
+        RunAutomationResponse RunAutomation(Guid teamId, Guid automationId);
 
         /// <summary>
         /// Run an automation&#39;s chain now
@@ -230,9 +251,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of RunAutomationResponse</returns>
-        ApiResponse<RunAutomationResponse> RunAutomationWithHttpInfo(Guid automationId);
+        ApiResponse<RunAutomationResponse> RunAutomationWithHttpInfo(Guid teamId, Guid automationId);
         /// <summary>
         /// Trigger a webhook automation
         /// </summary>
@@ -255,10 +277,11 @@ namespace Qualithm.Platform.Api
         /// Update an automation
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="updateAutomationRequest"></param>
         /// <returns>UpdateAutomationResponse</returns>
-        UpdateAutomationResponse UpdateAutomation(Guid automationId, UpdateAutomationRequest updateAutomationRequest);
+        UpdateAutomationResponse UpdateAutomation(Guid teamId, Guid automationId, UpdateAutomationRequest updateAutomationRequest);
 
         /// <summary>
         /// Update an automation
@@ -267,10 +290,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="updateAutomationRequest"></param>
         /// <returns>ApiResponse of UpdateAutomationResponse</returns>
-        ApiResponse<UpdateAutomationResponse> UpdateAutomationWithHttpInfo(Guid automationId, UpdateAutomationRequest updateAutomationRequest);
+        ApiResponse<UpdateAutomationResponse> UpdateAutomationWithHttpInfo(Guid teamId, Guid automationId, UpdateAutomationRequest updateAutomationRequest);
         #endregion Synchronous Operations
     }
 
@@ -287,10 +311,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationResponse</returns>
-        System.Threading.Tasks.Task<CreateAutomationResponse> CreateAutomationAsync(CreateAutomationRequest createAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateAutomationResponse> CreateAutomationAsync(Guid teamId, CreateAutomationRequest createAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create an automation
@@ -299,10 +324,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAutomationResponse>> CreateAutomationWithHttpInfoAsync(CreateAutomationRequest createAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateAutomationResponse>> CreateAutomationWithHttpInfoAsync(Guid teamId, CreateAutomationRequest createAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Create an automation from a template
         /// </summary>
@@ -310,10 +336,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationFromTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationFromTemplateResponse</returns>
-        System.Threading.Tasks.Task<CreateAutomationFromTemplateResponse> CreateAutomationFromTemplateAsync(CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateAutomationFromTemplateResponse> CreateAutomationFromTemplateAsync(Guid teamId, CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create an automation from a template
@@ -322,10 +349,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationFromTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationFromTemplateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAutomationFromTemplateResponse>> CreateAutomationFromTemplateWithHttpInfoAsync(CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateAutomationFromTemplateResponse>> CreateAutomationFromTemplateWithHttpInfoAsync(Guid teamId, CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Issue or rotate an automation&#39;s trigger secret
         /// </summary>
@@ -333,10 +361,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationTriggerSecretResponse</returns>
-        System.Threading.Tasks.Task<CreateAutomationTriggerSecretResponse> CreateAutomationTriggerSecretAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateAutomationTriggerSecretResponse> CreateAutomationTriggerSecretAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Issue or rotate an automation&#39;s trigger secret
@@ -345,10 +374,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationTriggerSecretResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAutomationTriggerSecretResponse>> CreateAutomationTriggerSecretWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateAutomationTriggerSecretResponse>> CreateAutomationTriggerSecretWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete an automation
         /// </summary>
@@ -356,10 +386,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteAutomationResponse</returns>
-        System.Threading.Tasks.Task<DeleteAutomationResponse> DeleteAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DeleteAutomationResponse> DeleteAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete an automation
@@ -368,10 +399,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteAutomationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteAutomationResponse>> DeleteAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DeleteAutomationResponse>> DeleteAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Disable an automation
         /// </summary>
@@ -379,10 +411,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DisableAutomationResponse</returns>
-        System.Threading.Tasks.Task<DisableAutomationResponse> DisableAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DisableAutomationResponse> DisableAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Disable an automation
@@ -391,10 +424,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DisableAutomationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DisableAutomationResponse>> DisableAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DisableAutomationResponse>> DisableAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Enable an automation
         /// </summary>
@@ -402,10 +436,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EnableAutomationResponse</returns>
-        System.Threading.Tasks.Task<EnableAutomationResponse> EnableAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<EnableAutomationResponse> EnableAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Enable an automation
@@ -414,10 +449,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EnableAutomationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EnableAutomationResponse>> EnableAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<EnableAutomationResponse>> EnableAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get an automation
         /// </summary>
@@ -425,10 +461,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAutomationResponse</returns>
-        System.Threading.Tasks.Task<GetAutomationResponse> GetAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetAutomationResponse> GetAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get an automation
@@ -437,10 +474,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAutomationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetAutomationResponse>> GetAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetAutomationResponse>> GetAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List an automation&#39;s runs
         /// </summary>
@@ -448,12 +486,13 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRunsResponse</returns>
-        System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(Guid automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(Guid teamId, Guid automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List an automation&#39;s runs
@@ -462,12 +501,13 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRunsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(Guid automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(Guid teamId, Guid automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s automations
         /// </summary>
@@ -475,11 +515,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationsResponse</returns>
-        System.Threading.Tasks.Task<ListAutomationsResponse> ListAutomationsAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListAutomationsResponse> ListAutomationsAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s automations
@@ -488,11 +529,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListAutomationsResponse>> ListAutomationsWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListAutomationsResponse>> ListAutomationsWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the automation templates a device supports
         /// </summary>
@@ -500,10 +542,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceAutomationTemplatesResponse</returns>
-        System.Threading.Tasks.Task<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesAsync(Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the automation templates a device supports
@@ -512,10 +555,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceAutomationTemplatesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDeviceAutomationTemplatesResponse>> ListDeviceAutomationTemplatesWithHttpInfoAsync(Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListDeviceAutomationTemplatesResponse>> ListDeviceAutomationTemplatesWithHttpInfoAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Run an automation&#39;s chain now
         /// </summary>
@@ -523,10 +567,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RunAutomationResponse</returns>
-        System.Threading.Tasks.Task<RunAutomationResponse> RunAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<RunAutomationResponse> RunAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Run an automation&#39;s chain now
@@ -535,10 +580,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RunAutomationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RunAutomationResponse>> RunAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<RunAutomationResponse>> RunAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Trigger a webhook automation
         /// </summary>
@@ -569,11 +615,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="updateAutomationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateAutomationResponse</returns>
-        System.Threading.Tasks.Task<UpdateAutomationResponse> UpdateAutomationAsync(Guid automationId, UpdateAutomationRequest updateAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateAutomationResponse> UpdateAutomationAsync(Guid teamId, Guid automationId, UpdateAutomationRequest updateAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update an automation
@@ -582,11 +629,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="updateAutomationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateAutomationResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateAutomationResponse>> UpdateAutomationWithHttpInfoAsync(Guid automationId, UpdateAutomationRequest updateAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateAutomationResponse>> UpdateAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, UpdateAutomationRequest updateAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -804,11 +852,12 @@ namespace Qualithm.Platform.Api
         /// Create an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationRequest"></param>
         /// <returns>CreateAutomationResponse</returns>
-        public CreateAutomationResponse CreateAutomation(CreateAutomationRequest createAutomationRequest)
+        public CreateAutomationResponse CreateAutomation(Guid teamId, CreateAutomationRequest createAutomationRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAutomationResponse> localVarResponse = CreateAutomationWithHttpInfo(createAutomationRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateAutomationResponse> localVarResponse = CreateAutomationWithHttpInfo(teamId, createAutomationRequest);
             return localVarResponse.Data;
         }
 
@@ -816,9 +865,10 @@ namespace Qualithm.Platform.Api
         /// Create an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationRequest"></param>
         /// <returns>ApiResponse of CreateAutomationResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateAutomationResponse> CreateAutomationWithHttpInfo(CreateAutomationRequest createAutomationRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateAutomationResponse> CreateAutomationWithHttpInfo(Guid teamId, CreateAutomationRequest createAutomationRequest)
         {
             // verify the required parameter 'createAutomationRequest' is set
             if (createAutomationRequest == null)
@@ -841,6 +891,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = createAutomationRequest;
 
             // authentication (apiToken) required
@@ -851,7 +902,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateAutomationResponse>("/automations", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateAutomationResponse>("/v1/teams/{teamId}/automations", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -866,12 +917,13 @@ namespace Qualithm.Platform.Api
         /// Create an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAutomationResponse> CreateAutomationAsync(CreateAutomationRequest createAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateAutomationResponse> CreateAutomationAsync(Guid teamId, CreateAutomationRequest createAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAutomationResponse> localVarResponse = await CreateAutomationWithHttpInfoAsync(createAutomationRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateAutomationResponse> localVarResponse = await CreateAutomationWithHttpInfoAsync(teamId, createAutomationRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -879,10 +931,11 @@ namespace Qualithm.Platform.Api
         /// Create an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAutomationResponse>> CreateAutomationWithHttpInfoAsync(CreateAutomationRequest createAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAutomationResponse>> CreateAutomationWithHttpInfoAsync(Guid teamId, CreateAutomationRequest createAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'createAutomationRequest' is set
             if (createAutomationRequest == null)
@@ -907,6 +960,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = createAutomationRequest;
 
             // authentication (apiToken) required
@@ -918,7 +972,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAutomationResponse>("/automations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAutomationResponse>("/v1/teams/{teamId}/automations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -933,11 +987,12 @@ namespace Qualithm.Platform.Api
         /// Create an automation from a template 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationFromTemplateRequest"></param>
         /// <returns>CreateAutomationFromTemplateResponse</returns>
-        public CreateAutomationFromTemplateResponse CreateAutomationFromTemplate(CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest)
+        public CreateAutomationFromTemplateResponse CreateAutomationFromTemplate(Guid teamId, CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAutomationFromTemplateResponse> localVarResponse = CreateAutomationFromTemplateWithHttpInfo(createAutomationFromTemplateRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateAutomationFromTemplateResponse> localVarResponse = CreateAutomationFromTemplateWithHttpInfo(teamId, createAutomationFromTemplateRequest);
             return localVarResponse.Data;
         }
 
@@ -945,9 +1000,10 @@ namespace Qualithm.Platform.Api
         /// Create an automation from a template 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationFromTemplateRequest"></param>
         /// <returns>ApiResponse of CreateAutomationFromTemplateResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateAutomationFromTemplateResponse> CreateAutomationFromTemplateWithHttpInfo(CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateAutomationFromTemplateResponse> CreateAutomationFromTemplateWithHttpInfo(Guid teamId, CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest)
         {
             // verify the required parameter 'createAutomationFromTemplateRequest' is set
             if (createAutomationFromTemplateRequest == null)
@@ -970,6 +1026,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = createAutomationFromTemplateRequest;
 
             // authentication (apiToken) required
@@ -980,7 +1037,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateAutomationFromTemplateResponse>("/automations/from-template", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateAutomationFromTemplateResponse>("/v1/teams/{teamId}/automations/from-template", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -995,12 +1052,13 @@ namespace Qualithm.Platform.Api
         /// Create an automation from a template 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationFromTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationFromTemplateResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAutomationFromTemplateResponse> CreateAutomationFromTemplateAsync(CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateAutomationFromTemplateResponse> CreateAutomationFromTemplateAsync(Guid teamId, CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAutomationFromTemplateResponse> localVarResponse = await CreateAutomationFromTemplateWithHttpInfoAsync(createAutomationFromTemplateRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateAutomationFromTemplateResponse> localVarResponse = await CreateAutomationFromTemplateWithHttpInfoAsync(teamId, createAutomationFromTemplateRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1008,10 +1066,11 @@ namespace Qualithm.Platform.Api
         /// Create an automation from a template 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAutomationFromTemplateRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationFromTemplateResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAutomationFromTemplateResponse>> CreateAutomationFromTemplateWithHttpInfoAsync(CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAutomationFromTemplateResponse>> CreateAutomationFromTemplateWithHttpInfoAsync(Guid teamId, CreateAutomationFromTemplateRequest createAutomationFromTemplateRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'createAutomationFromTemplateRequest' is set
             if (createAutomationFromTemplateRequest == null)
@@ -1036,6 +1095,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = createAutomationFromTemplateRequest;
 
             // authentication (apiToken) required
@@ -1047,7 +1107,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAutomationFromTemplateResponse>("/automations/from-template", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAutomationFromTemplateResponse>("/v1/teams/{teamId}/automations/from-template", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1062,11 +1122,12 @@ namespace Qualithm.Platform.Api
         /// Issue or rotate an automation&#39;s trigger secret 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>CreateAutomationTriggerSecretResponse</returns>
-        public CreateAutomationTriggerSecretResponse CreateAutomationTriggerSecret(Guid automationId)
+        public CreateAutomationTriggerSecretResponse CreateAutomationTriggerSecret(Guid teamId, Guid automationId)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAutomationTriggerSecretResponse> localVarResponse = CreateAutomationTriggerSecretWithHttpInfo(automationId);
+            Qualithm.Platform.Client.ApiResponse<CreateAutomationTriggerSecretResponse> localVarResponse = CreateAutomationTriggerSecretWithHttpInfo(teamId, automationId);
             return localVarResponse.Data;
         }
 
@@ -1074,9 +1135,10 @@ namespace Qualithm.Platform.Api
         /// Issue or rotate an automation&#39;s trigger secret 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of CreateAutomationTriggerSecretResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateAutomationTriggerSecretResponse> CreateAutomationTriggerSecretWithHttpInfo(Guid automationId)
+        public Qualithm.Platform.Client.ApiResponse<CreateAutomationTriggerSecretResponse> CreateAutomationTriggerSecretWithHttpInfo(Guid teamId, Guid automationId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1094,6 +1156,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1104,7 +1167,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateAutomationTriggerSecretResponse>("/automations/{automationId}/trigger-secret", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateAutomationTriggerSecretResponse>("/v1/teams/{teamId}/automations/{automationId}/trigger-secret", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1119,12 +1182,13 @@ namespace Qualithm.Platform.Api
         /// Issue or rotate an automation&#39;s trigger secret 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAutomationTriggerSecretResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAutomationTriggerSecretResponse> CreateAutomationTriggerSecretAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateAutomationTriggerSecretResponse> CreateAutomationTriggerSecretAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAutomationTriggerSecretResponse> localVarResponse = await CreateAutomationTriggerSecretWithHttpInfoAsync(automationId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateAutomationTriggerSecretResponse> localVarResponse = await CreateAutomationTriggerSecretWithHttpInfoAsync(teamId, automationId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1132,10 +1196,11 @@ namespace Qualithm.Platform.Api
         /// Issue or rotate an automation&#39;s trigger secret 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAutomationTriggerSecretResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAutomationTriggerSecretResponse>> CreateAutomationTriggerSecretWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAutomationTriggerSecretResponse>> CreateAutomationTriggerSecretWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -1155,6 +1220,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1166,7 +1232,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAutomationTriggerSecretResponse>("/automations/{automationId}/trigger-secret", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAutomationTriggerSecretResponse>("/v1/teams/{teamId}/automations/{automationId}/trigger-secret", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1181,11 +1247,12 @@ namespace Qualithm.Platform.Api
         /// Delete an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>DeleteAutomationResponse</returns>
-        public DeleteAutomationResponse DeleteAutomation(Guid automationId)
+        public DeleteAutomationResponse DeleteAutomation(Guid teamId, Guid automationId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteAutomationResponse> localVarResponse = DeleteAutomationWithHttpInfo(automationId);
+            Qualithm.Platform.Client.ApiResponse<DeleteAutomationResponse> localVarResponse = DeleteAutomationWithHttpInfo(teamId, automationId);
             return localVarResponse.Data;
         }
 
@@ -1193,9 +1260,10 @@ namespace Qualithm.Platform.Api
         /// Delete an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of DeleteAutomationResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteAutomationResponse> DeleteAutomationWithHttpInfo(Guid automationId)
+        public Qualithm.Platform.Client.ApiResponse<DeleteAutomationResponse> DeleteAutomationWithHttpInfo(Guid teamId, Guid automationId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1213,6 +1281,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1223,7 +1292,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteAutomationResponse>("/automations/{automationId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<DeleteAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1238,12 +1307,13 @@ namespace Qualithm.Platform.Api
         /// Delete an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteAutomationResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteAutomationResponse> DeleteAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DeleteAutomationResponse> DeleteAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteAutomationResponse> localVarResponse = await DeleteAutomationWithHttpInfoAsync(automationId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<DeleteAutomationResponse> localVarResponse = await DeleteAutomationWithHttpInfoAsync(teamId, automationId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1251,10 +1321,11 @@ namespace Qualithm.Platform.Api
         /// Delete an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteAutomationResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteAutomationResponse>> DeleteAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteAutomationResponse>> DeleteAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -1274,6 +1345,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1285,7 +1357,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteAutomationResponse>("/automations/{automationId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1300,11 +1372,12 @@ namespace Qualithm.Platform.Api
         /// Disable an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>DisableAutomationResponse</returns>
-        public DisableAutomationResponse DisableAutomation(Guid automationId)
+        public DisableAutomationResponse DisableAutomation(Guid teamId, Guid automationId)
         {
-            Qualithm.Platform.Client.ApiResponse<DisableAutomationResponse> localVarResponse = DisableAutomationWithHttpInfo(automationId);
+            Qualithm.Platform.Client.ApiResponse<DisableAutomationResponse> localVarResponse = DisableAutomationWithHttpInfo(teamId, automationId);
             return localVarResponse.Data;
         }
 
@@ -1312,9 +1385,10 @@ namespace Qualithm.Platform.Api
         /// Disable an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of DisableAutomationResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DisableAutomationResponse> DisableAutomationWithHttpInfo(Guid automationId)
+        public Qualithm.Platform.Client.ApiResponse<DisableAutomationResponse> DisableAutomationWithHttpInfo(Guid teamId, Guid automationId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1332,6 +1406,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1342,7 +1417,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<DisableAutomationResponse>("/automations/{automationId}/disable", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<DisableAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}/disable", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1357,12 +1432,13 @@ namespace Qualithm.Platform.Api
         /// Disable an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DisableAutomationResponse</returns>
-        public async System.Threading.Tasks.Task<DisableAutomationResponse> DisableAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DisableAutomationResponse> DisableAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DisableAutomationResponse> localVarResponse = await DisableAutomationWithHttpInfoAsync(automationId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<DisableAutomationResponse> localVarResponse = await DisableAutomationWithHttpInfoAsync(teamId, automationId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1370,10 +1446,11 @@ namespace Qualithm.Platform.Api
         /// Disable an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DisableAutomationResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DisableAutomationResponse>> DisableAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DisableAutomationResponse>> DisableAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -1393,6 +1470,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1404,7 +1482,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<DisableAutomationResponse>("/automations/{automationId}/disable", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<DisableAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}/disable", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1419,11 +1497,12 @@ namespace Qualithm.Platform.Api
         /// Enable an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>EnableAutomationResponse</returns>
-        public EnableAutomationResponse EnableAutomation(Guid automationId)
+        public EnableAutomationResponse EnableAutomation(Guid teamId, Guid automationId)
         {
-            Qualithm.Platform.Client.ApiResponse<EnableAutomationResponse> localVarResponse = EnableAutomationWithHttpInfo(automationId);
+            Qualithm.Platform.Client.ApiResponse<EnableAutomationResponse> localVarResponse = EnableAutomationWithHttpInfo(teamId, automationId);
             return localVarResponse.Data;
         }
 
@@ -1431,9 +1510,10 @@ namespace Qualithm.Platform.Api
         /// Enable an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of EnableAutomationResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<EnableAutomationResponse> EnableAutomationWithHttpInfo(Guid automationId)
+        public Qualithm.Platform.Client.ApiResponse<EnableAutomationResponse> EnableAutomationWithHttpInfo(Guid teamId, Guid automationId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1451,6 +1531,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1461,7 +1542,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<EnableAutomationResponse>("/automations/{automationId}/enable", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<EnableAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}/enable", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1476,12 +1557,13 @@ namespace Qualithm.Platform.Api
         /// Enable an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of EnableAutomationResponse</returns>
-        public async System.Threading.Tasks.Task<EnableAutomationResponse> EnableAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<EnableAutomationResponse> EnableAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<EnableAutomationResponse> localVarResponse = await EnableAutomationWithHttpInfoAsync(automationId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<EnableAutomationResponse> localVarResponse = await EnableAutomationWithHttpInfoAsync(teamId, automationId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1489,10 +1571,11 @@ namespace Qualithm.Platform.Api
         /// Enable an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (EnableAutomationResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<EnableAutomationResponse>> EnableAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<EnableAutomationResponse>> EnableAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -1512,6 +1595,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1523,7 +1607,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<EnableAutomationResponse>("/automations/{automationId}/enable", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<EnableAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}/enable", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1538,11 +1622,12 @@ namespace Qualithm.Platform.Api
         /// Get an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>GetAutomationResponse</returns>
-        public GetAutomationResponse GetAutomation(Guid automationId)
+        public GetAutomationResponse GetAutomation(Guid teamId, Guid automationId)
         {
-            Qualithm.Platform.Client.ApiResponse<GetAutomationResponse> localVarResponse = GetAutomationWithHttpInfo(automationId);
+            Qualithm.Platform.Client.ApiResponse<GetAutomationResponse> localVarResponse = GetAutomationWithHttpInfo(teamId, automationId);
             return localVarResponse.Data;
         }
 
@@ -1550,9 +1635,10 @@ namespace Qualithm.Platform.Api
         /// Get an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of GetAutomationResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<GetAutomationResponse> GetAutomationWithHttpInfo(Guid automationId)
+        public Qualithm.Platform.Client.ApiResponse<GetAutomationResponse> GetAutomationWithHttpInfo(Guid teamId, Guid automationId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1570,6 +1656,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1580,7 +1667,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetAutomationResponse>("/automations/{automationId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1595,12 +1682,13 @@ namespace Qualithm.Platform.Api
         /// Get an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetAutomationResponse</returns>
-        public async System.Threading.Tasks.Task<GetAutomationResponse> GetAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetAutomationResponse> GetAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<GetAutomationResponse> localVarResponse = await GetAutomationWithHttpInfoAsync(automationId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<GetAutomationResponse> localVarResponse = await GetAutomationWithHttpInfoAsync(teamId, automationId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1608,10 +1696,11 @@ namespace Qualithm.Platform.Api
         /// Get an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetAutomationResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetAutomationResponse>> GetAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetAutomationResponse>> GetAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -1631,6 +1720,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -1642,7 +1732,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAutomationResponse>("/automations/{automationId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1657,13 +1747,14 @@ namespace Qualithm.Platform.Api
         /// List an automation&#39;s runs 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListAutomationRunsResponse</returns>
-        public ListAutomationRunsResponse ListAutomationRuns(Guid automationId, long? page = default, int? limit = default)
+        public ListAutomationRunsResponse ListAutomationRuns(Guid teamId, Guid automationId, long? page = default, int? limit = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = ListAutomationRunsWithHttpInfo(automationId, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = ListAutomationRunsWithHttpInfo(teamId, automationId, page, limit);
             return localVarResponse.Data;
         }
 
@@ -1671,11 +1762,12 @@ namespace Qualithm.Platform.Api
         /// List an automation&#39;s runs 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListAutomationRunsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(Guid automationId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(Guid teamId, Guid automationId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1693,6 +1785,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
             if (page != null)
             {
@@ -1711,7 +1804,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListAutomationRunsResponse>("/automations/{automationId}/runs", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListAutomationRunsResponse>("/v1/teams/{teamId}/automations/{automationId}/runs", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1726,14 +1819,15 @@ namespace Qualithm.Platform.Api
         /// List an automation&#39;s runs 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRunsResponse</returns>
-        public async System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(Guid automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(Guid teamId, Guid automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = await ListAutomationRunsWithHttpInfoAsync(automationId, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = await ListAutomationRunsWithHttpInfoAsync(teamId, automationId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1741,12 +1835,13 @@ namespace Qualithm.Platform.Api
         /// List an automation&#39;s runs 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRunsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(Guid automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(Guid teamId, Guid automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -1766,6 +1861,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
             if (page != null)
             {
@@ -1785,7 +1881,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAutomationRunsResponse>("/automations/{automationId}/runs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAutomationRunsResponse>("/v1/teams/{teamId}/automations/{automationId}/runs", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1800,12 +1896,13 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s automations 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListAutomationsResponse</returns>
-        public ListAutomationsResponse ListAutomations(long? page = default, int? limit = default)
+        public ListAutomationsResponse ListAutomations(Guid teamId, long? page = default, int? limit = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> localVarResponse = ListAutomationsWithHttpInfo(page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> localVarResponse = ListAutomationsWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
         }
 
@@ -1813,10 +1910,11 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s automations 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListAutomationsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> ListAutomationsWithHttpInfo(long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> ListAutomationsWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1834,6 +1932,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -1851,7 +1950,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListAutomationsResponse>("/automations", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListAutomationsResponse>("/v1/teams/{teamId}/automations", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1866,13 +1965,14 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s automations 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationsResponse</returns>
-        public async System.Threading.Tasks.Task<ListAutomationsResponse> ListAutomationsAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListAutomationsResponse> ListAutomationsAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> localVarResponse = await ListAutomationsWithHttpInfoAsync(page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> localVarResponse = await ListAutomationsWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1880,11 +1980,12 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s automations 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse>> ListAutomationsWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse>> ListAutomationsWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -1904,6 +2005,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -1922,7 +2024,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAutomationsResponse>("/automations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAutomationsResponse>("/v1/teams/{teamId}/automations", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1937,11 +2039,12 @@ namespace Qualithm.Platform.Api
         /// List the automation templates a device supports 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <returns>ListDeviceAutomationTemplatesResponse</returns>
-        public ListDeviceAutomationTemplatesResponse ListDeviceAutomationTemplates(Guid deviceId)
+        public ListDeviceAutomationTemplatesResponse ListDeviceAutomationTemplates(Guid teamId, Guid deviceId)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDeviceAutomationTemplatesResponse> localVarResponse = ListDeviceAutomationTemplatesWithHttpInfo(deviceId);
+            Qualithm.Platform.Client.ApiResponse<ListDeviceAutomationTemplatesResponse> localVarResponse = ListDeviceAutomationTemplatesWithHttpInfo(teamId, deviceId);
             return localVarResponse.Data;
         }
 
@@ -1949,9 +2052,10 @@ namespace Qualithm.Platform.Api
         /// List the automation templates a device supports 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <returns>ApiResponse of ListDeviceAutomationTemplatesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesWithHttpInfo(Guid deviceId)
+        public Qualithm.Platform.Client.ApiResponse<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesWithHttpInfo(Guid teamId, Guid deviceId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1969,6 +2073,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
 
             // authentication (apiToken) required
@@ -1979,7 +2084,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListDeviceAutomationTemplatesResponse>("/devices/{deviceId}/automation-templates", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListDeviceAutomationTemplatesResponse>("/v1/teams/{teamId}/devices/{deviceId}/automation-templates", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1994,12 +2099,13 @@ namespace Qualithm.Platform.Api
         /// List the automation templates a device supports 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceAutomationTemplatesResponse</returns>
-        public async System.Threading.Tasks.Task<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesAsync(Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDeviceAutomationTemplatesResponse> localVarResponse = await ListDeviceAutomationTemplatesWithHttpInfoAsync(deviceId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListDeviceAutomationTemplatesResponse> localVarResponse = await ListDeviceAutomationTemplatesWithHttpInfoAsync(teamId, deviceId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2007,10 +2113,11 @@ namespace Qualithm.Platform.Api
         /// List the automation templates a device supports 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceAutomationTemplatesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceAutomationTemplatesResponse>> ListDeviceAutomationTemplatesWithHttpInfoAsync(Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceAutomationTemplatesResponse>> ListDeviceAutomationTemplatesWithHttpInfoAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -2030,6 +2137,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
 
             // authentication (apiToken) required
@@ -2041,7 +2149,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListDeviceAutomationTemplatesResponse>("/devices/{deviceId}/automation-templates", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListDeviceAutomationTemplatesResponse>("/v1/teams/{teamId}/devices/{deviceId}/automation-templates", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2056,11 +2164,12 @@ namespace Qualithm.Platform.Api
         /// Run an automation&#39;s chain now 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>RunAutomationResponse</returns>
-        public RunAutomationResponse RunAutomation(Guid automationId)
+        public RunAutomationResponse RunAutomation(Guid teamId, Guid automationId)
         {
-            Qualithm.Platform.Client.ApiResponse<RunAutomationResponse> localVarResponse = RunAutomationWithHttpInfo(automationId);
+            Qualithm.Platform.Client.ApiResponse<RunAutomationResponse> localVarResponse = RunAutomationWithHttpInfo(teamId, automationId);
             return localVarResponse.Data;
         }
 
@@ -2068,9 +2177,10 @@ namespace Qualithm.Platform.Api
         /// Run an automation&#39;s chain now 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <returns>ApiResponse of RunAutomationResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<RunAutomationResponse> RunAutomationWithHttpInfo(Guid automationId)
+        public Qualithm.Platform.Client.ApiResponse<RunAutomationResponse> RunAutomationWithHttpInfo(Guid teamId, Guid automationId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -2088,6 +2198,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -2098,7 +2209,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<RunAutomationResponse>("/automations/{automationId}/run", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<RunAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}/run", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -2113,12 +2224,13 @@ namespace Qualithm.Platform.Api
         /// Run an automation&#39;s chain now 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RunAutomationResponse</returns>
-        public async System.Threading.Tasks.Task<RunAutomationResponse> RunAutomationAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<RunAutomationResponse> RunAutomationAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<RunAutomationResponse> localVarResponse = await RunAutomationWithHttpInfoAsync(automationId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<RunAutomationResponse> localVarResponse = await RunAutomationWithHttpInfoAsync(teamId, automationId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2126,10 +2238,11 @@ namespace Qualithm.Platform.Api
         /// Run an automation&#39;s chain now 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RunAutomationResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<RunAutomationResponse>> RunAutomationWithHttpInfoAsync(Guid automationId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<RunAutomationResponse>> RunAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -2149,6 +2262,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
 
             // authentication (apiToken) required
@@ -2160,7 +2274,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<RunAutomationResponse>("/automations/{automationId}/run", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<RunAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}/run", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2212,7 +2326,7 @@ namespace Qualithm.Platform.Api
 
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<TriggerAutomationResponse>("/automations/trigger", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<TriggerAutomationResponse>("/v1/automations/trigger", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -2269,7 +2383,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<TriggerAutomationResponse>("/automations/trigger", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TriggerAutomationResponse>("/v1/automations/trigger", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -2284,12 +2398,13 @@ namespace Qualithm.Platform.Api
         /// Update an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="updateAutomationRequest"></param>
         /// <returns>UpdateAutomationResponse</returns>
-        public UpdateAutomationResponse UpdateAutomation(Guid automationId, UpdateAutomationRequest updateAutomationRequest)
+        public UpdateAutomationResponse UpdateAutomation(Guid teamId, Guid automationId, UpdateAutomationRequest updateAutomationRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateAutomationResponse> localVarResponse = UpdateAutomationWithHttpInfo(automationId, updateAutomationRequest);
+            Qualithm.Platform.Client.ApiResponse<UpdateAutomationResponse> localVarResponse = UpdateAutomationWithHttpInfo(teamId, automationId, updateAutomationRequest);
             return localVarResponse.Data;
         }
 
@@ -2297,10 +2412,11 @@ namespace Qualithm.Platform.Api
         /// Update an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="updateAutomationRequest"></param>
         /// <returns>ApiResponse of UpdateAutomationResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<UpdateAutomationResponse> UpdateAutomationWithHttpInfo(Guid automationId, UpdateAutomationRequest updateAutomationRequest)
+        public Qualithm.Platform.Client.ApiResponse<UpdateAutomationResponse> UpdateAutomationWithHttpInfo(Guid teamId, Guid automationId, UpdateAutomationRequest updateAutomationRequest)
         {
             // verify the required parameter 'updateAutomationRequest' is set
             if (updateAutomationRequest == null)
@@ -2323,6 +2439,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
             localVarRequestOptions.Data = updateAutomationRequest;
 
@@ -2334,7 +2451,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<UpdateAutomationResponse>("/automations/{automationId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<UpdateAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -2349,13 +2466,14 @@ namespace Qualithm.Platform.Api
         /// Update an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="updateAutomationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateAutomationResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateAutomationResponse> UpdateAutomationAsync(Guid automationId, UpdateAutomationRequest updateAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateAutomationResponse> UpdateAutomationAsync(Guid teamId, Guid automationId, UpdateAutomationRequest updateAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateAutomationResponse> localVarResponse = await UpdateAutomationWithHttpInfoAsync(automationId, updateAutomationRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<UpdateAutomationResponse> localVarResponse = await UpdateAutomationWithHttpInfoAsync(teamId, automationId, updateAutomationRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -2363,11 +2481,12 @@ namespace Qualithm.Platform.Api
         /// Update an automation 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId"></param>
         /// <param name="updateAutomationRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateAutomationResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateAutomationResponse>> UpdateAutomationWithHttpInfoAsync(Guid automationId, UpdateAutomationRequest updateAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateAutomationResponse>> UpdateAutomationWithHttpInfoAsync(Guid teamId, Guid automationId, UpdateAutomationRequest updateAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'updateAutomationRequest' is set
             if (updateAutomationRequest == null)
@@ -2392,6 +2511,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
             localVarRequestOptions.Data = updateAutomationRequest;
 
@@ -2404,7 +2524,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateAutomationResponse>("/automations/{automationId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

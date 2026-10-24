@@ -6,6 +6,7 @@ namespace Qualithm.Platform.Tests;
 
 public class PlatformClientTests
 {
+    private static readonly Guid _teamId = Guid.Parse("1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f");
     private static readonly Guid _deviceId = Guid.Parse("0b9f8a1e-8c1d-4b6f-9a51-2f6c1e3d4a5b");
 
     private static Func<string, string?> Env(params (string Name, string Value)[] values)
@@ -20,11 +21,11 @@ public class PlatformClientTests
         var stub = new StubHandler(body: """{"data":{"current":1,"items":[],"last":1}}""");
         using var platform = new PlatformClient(token: "qmt_test", environment: Env(), handler: stub);
 
-        var page = await platform.Api<DevicesApi>().ListDevicesAsync(page: 2, limit: 10, TestContext.Current.CancellationToken);
+        var page = await platform.Api<DevicesApi>().ListDevicesAsync(_teamId, page: 2, limit: 10, cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.Empty(page.Data.Items);
         var request = Assert.Single(stub.Requests);
-        Assert.Equal("https://api.qualithm.com/devices?page=2&limit=10", request.RequestUri?.ToString());
+        Assert.Equal($"https://api.qualithm.com/v1/teams/{_teamId}/devices?page=2&limit=10", request.RequestUri?.ToString());
         Assert.Equal("Bearer qmt_test", request.Headers.Authorization?.ToString());
     }
 
@@ -92,7 +93,7 @@ public class PlatformClientTests
     {
         using var platform = new PlatformClient(token: "qmt_test", environment: Env(), handler: stub);
         return await Assert.ThrowsAsync<PlatformException>(
-            () => platform.Api<DevicesApi>().GetDeviceAsync(_deviceId, TestContext.Current.CancellationToken));
+            () => platform.Api<DevicesApi>().GetDeviceAsync(_teamId, _deviceId, TestContext.Current.CancellationToken));
     }
 
     [Fact]

@@ -33,8 +33,9 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s device and space counts and its plan quota
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>GetUsageResponse</returns>
-        GetUsageResponse GetUsage();
+        GetUsageResponse GetUsage(Guid teamId);
 
         /// <summary>
         /// Get the workspace&#39;s device and space counts and its plan quota
@@ -43,8 +44,9 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>ApiResponse of GetUsageResponse</returns>
-        ApiResponse<GetUsageResponse> GetUsageWithHttpInfo();
+        ApiResponse<GetUsageResponse> GetUsageWithHttpInfo(Guid teamId);
         #endregion Synchronous Operations
     }
 
@@ -61,9 +63,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetUsageResponse</returns>
-        System.Threading.Tasks.Task<GetUsageResponse> GetUsageAsync(System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetUsageResponse> GetUsageAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get the workspace&#39;s device and space counts and its plan quota
@@ -72,9 +75,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetUsageResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetUsageResponse>> GetUsageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetUsageResponse>> GetUsageWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -292,10 +296,11 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s device and space counts and its plan quota 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>GetUsageResponse</returns>
-        public GetUsageResponse GetUsage()
+        public GetUsageResponse GetUsage(Guid teamId)
         {
-            Qualithm.Platform.Client.ApiResponse<GetUsageResponse> localVarResponse = GetUsageWithHttpInfo();
+            Qualithm.Platform.Client.ApiResponse<GetUsageResponse> localVarResponse = GetUsageWithHttpInfo(teamId);
             return localVarResponse.Data;
         }
 
@@ -303,8 +308,9 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s device and space counts and its plan quota 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>ApiResponse of GetUsageResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<GetUsageResponse> GetUsageWithHttpInfo()
+        public Qualithm.Platform.Client.ApiResponse<GetUsageResponse> GetUsageWithHttpInfo(Guid teamId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -322,6 +328,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -331,7 +338,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetUsageResponse>("/usage", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetUsageResponse>("/v1/teams/{teamId}/usage", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -346,11 +353,12 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s device and space counts and its plan quota 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetUsageResponse</returns>
-        public async System.Threading.Tasks.Task<GetUsageResponse> GetUsageAsync(System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetUsageResponse> GetUsageAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<GetUsageResponse> localVarResponse = await GetUsageWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<GetUsageResponse> localVarResponse = await GetUsageWithHttpInfoAsync(teamId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -358,9 +366,10 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s device and space counts and its plan quota 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetUsageResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetUsageResponse>> GetUsageWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetUsageResponse>> GetUsageWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -380,6 +389,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -390,7 +400,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetUsageResponse>("/usage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetUsageResponse>("/v1/teams/{teamId}/usage", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

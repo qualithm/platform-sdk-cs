@@ -30,7 +30,12 @@ using Qualithm.Platform;
 using Qualithm.Platform.Api;
 
 using var platform = new PlatformClient(token: "<your-api-token>");
-var page = await platform.Api<DevicesApi>().ListDevicesAsync();
+
+// An API token belongs to one team, so its team list has exactly that team.
+var teams = await platform.Api<TeamsApi>().ListTeamsAsync();
+var teamId = teams.Data.Items[0].Id;
+
+var page = await platform.Api<DevicesApi>().ListDevicesAsync(teamId);
 
 foreach (var device in page.Data.Items)
 {
@@ -54,10 +59,11 @@ using var platform = new PlatformClient(baseUrl: "https://api.qualithm.com");
 
 Each generated `…Api` class in `Qualithm.Platform.Api` is one resource group. `platform.Api<T>()`
 returns it bound to your client, created once. Method names match the spec's `operationId`s. Every
-response is the API's envelope, so the result is in `Data`:
+response is the API's envelope, so the result is in `Data`. Operations on a team's resources take
+its `teamId`:
 
 ```csharp
-var automations = await platform.Api<AutomationsApi>().ListAutomationsAsync(page: 1, limit: 50);
+var automations = await platform.Api<AutomationsApi>().ListAutomationsAsync(teamId, page: 1, limit: 50);
 ```
 
 ### Error Handling
@@ -71,11 +77,11 @@ using Qualithm.Platform.Model;
 
 try
 {
-    await platform.Api<DevicesApi>().GetDeviceAsync(deviceId);
+    await platform.Api<DevicesApi>().GetDeviceAsync(teamId, deviceId);
 }
 catch (PlatformException e) when (e.Code == ApiErrorCode.NotFound)
 {
-    // the device doesn't exist, or isn't in this workspace
+    // the device doesn't exist, or isn't in this team
 }
 ```
 
@@ -94,9 +100,9 @@ dotnet docfx docs/docfx.json --serve
 
 See [`examples/`](examples/README.md):
 
-| Example                              | Description                                                    |
-| ------------------------------------ | -------------------------------------------------------------- |
-| [ListDevices](examples/ListDevices/) | List the workspace's devices, and report a `PlatformException` |
+| Example                              | Description                                                            |
+| ------------------------------------ | ---------------------------------------------------------------------- |
+| [ListDevices](examples/ListDevices/) | List the devices in the token's team, and report a `PlatformException` |
 
 ```bash
 QUALITHM_API_TOKEN=<your-api-token> dotnet run --project examples/ListDevices

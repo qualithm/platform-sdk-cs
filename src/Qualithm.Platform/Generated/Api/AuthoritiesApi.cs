@@ -33,9 +33,10 @@ namespace Qualithm.Platform.Api
         /// Register a certificate authority
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
         /// <returns>CreateAuthorityResponse</returns>
-        CreateAuthorityResponse CreateAuthority(CreateAuthorityRequest createAuthorityRequest);
+        CreateAuthorityResponse CreateAuthority(Guid teamId, CreateAuthorityRequest createAuthorityRequest);
 
         /// <summary>
         /// Register a certificate authority
@@ -44,16 +45,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
         /// <returns>ApiResponse of CreateAuthorityResponse</returns>
-        ApiResponse<CreateAuthorityResponse> CreateAuthorityWithHttpInfo(CreateAuthorityRequest createAuthorityRequest);
+        ApiResponse<CreateAuthorityResponse> CreateAuthorityWithHttpInfo(Guid teamId, CreateAuthorityRequest createAuthorityRequest);
         /// <summary>
         /// Revoke a certificate authority and every credential it issued
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="authorityId"></param>
         /// <returns>DeleteAuthorityResponse</returns>
-        DeleteAuthorityResponse DeleteAuthority(Guid authorityId);
+        DeleteAuthorityResponse DeleteAuthority(Guid teamId, Guid authorityId);
 
         /// <summary>
         /// Revoke a certificate authority and every credential it issued
@@ -62,17 +65,19 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="authorityId"></param>
         /// <returns>ApiResponse of DeleteAuthorityResponse</returns>
-        ApiResponse<DeleteAuthorityResponse> DeleteAuthorityWithHttpInfo(Guid authorityId);
+        ApiResponse<DeleteAuthorityResponse> DeleteAuthorityWithHttpInfo(Guid teamId, Guid authorityId);
         /// <summary>
         /// List the workspace&#39;s certificate authorities
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListAuthoritiesResponse</returns>
-        ListAuthoritiesResponse ListAuthorities(long? page = default, int? limit = default);
+        ListAuthoritiesResponse ListAuthorities(Guid teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the workspace&#39;s certificate authorities
@@ -81,10 +86,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListAuthoritiesResponse</returns>
-        ApiResponse<ListAuthoritiesResponse> ListAuthoritiesWithHttpInfo(long? page = default, int? limit = default);
+        ApiResponse<ListAuthoritiesResponse> ListAuthoritiesWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
         #endregion Synchronous Operations
     }
 
@@ -101,10 +107,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAuthorityResponse</returns>
-        System.Threading.Tasks.Task<CreateAuthorityResponse> CreateAuthorityAsync(CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateAuthorityResponse> CreateAuthorityAsync(Guid teamId, CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Register a certificate authority
@@ -113,10 +120,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAuthorityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAuthorityResponse>> CreateAuthorityWithHttpInfoAsync(CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateAuthorityResponse>> CreateAuthorityWithHttpInfoAsync(Guid teamId, CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Revoke a certificate authority and every credential it issued
         /// </summary>
@@ -124,10 +132,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="authorityId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteAuthorityResponse</returns>
-        System.Threading.Tasks.Task<DeleteAuthorityResponse> DeleteAuthorityAsync(Guid authorityId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<DeleteAuthorityResponse> DeleteAuthorityAsync(Guid teamId, Guid authorityId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Revoke a certificate authority and every credential it issued
@@ -136,10 +145,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="authorityId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteAuthorityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteAuthorityResponse>> DeleteAuthorityWithHttpInfoAsync(Guid authorityId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<DeleteAuthorityResponse>> DeleteAuthorityWithHttpInfoAsync(Guid teamId, Guid authorityId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s certificate authorities
         /// </summary>
@@ -147,11 +157,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAuthoritiesResponse</returns>
-        System.Threading.Tasks.Task<ListAuthoritiesResponse> ListAuthoritiesAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListAuthoritiesResponse> ListAuthoritiesAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s certificate authorities
@@ -160,11 +171,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAuthoritiesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListAuthoritiesResponse>> ListAuthoritiesWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListAuthoritiesResponse>> ListAuthoritiesWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -382,11 +394,12 @@ namespace Qualithm.Platform.Api
         /// Register a certificate authority 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
         /// <returns>CreateAuthorityResponse</returns>
-        public CreateAuthorityResponse CreateAuthority(CreateAuthorityRequest createAuthorityRequest)
+        public CreateAuthorityResponse CreateAuthority(Guid teamId, CreateAuthorityRequest createAuthorityRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> localVarResponse = CreateAuthorityWithHttpInfo(createAuthorityRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> localVarResponse = CreateAuthorityWithHttpInfo(teamId, createAuthorityRequest);
             return localVarResponse.Data;
         }
 
@@ -394,9 +407,10 @@ namespace Qualithm.Platform.Api
         /// Register a certificate authority 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
         /// <returns>ApiResponse of CreateAuthorityResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> CreateAuthorityWithHttpInfo(CreateAuthorityRequest createAuthorityRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> CreateAuthorityWithHttpInfo(Guid teamId, CreateAuthorityRequest createAuthorityRequest)
         {
             // verify the required parameter 'createAuthorityRequest' is set
             if (createAuthorityRequest == null)
@@ -419,6 +433,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = createAuthorityRequest;
 
             // authentication (apiToken) required
@@ -429,7 +444,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<CreateAuthorityResponse>("/authorities", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<CreateAuthorityResponse>("/v1/teams/{teamId}/authorities", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -444,12 +459,13 @@ namespace Qualithm.Platform.Api
         /// Register a certificate authority 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAuthorityResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAuthorityResponse> CreateAuthorityAsync(CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateAuthorityResponse> CreateAuthorityAsync(Guid teamId, CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> localVarResponse = await CreateAuthorityWithHttpInfoAsync(createAuthorityRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> localVarResponse = await CreateAuthorityWithHttpInfoAsync(teamId, createAuthorityRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -457,10 +473,11 @@ namespace Qualithm.Platform.Api
         /// Register a certificate authority 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAuthorityResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse>> CreateAuthorityWithHttpInfoAsync(CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse>> CreateAuthorityWithHttpInfoAsync(Guid teamId, CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'createAuthorityRequest' is set
             if (createAuthorityRequest == null)
@@ -485,6 +502,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = createAuthorityRequest;
 
             // authentication (apiToken) required
@@ -496,7 +514,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAuthorityResponse>("/authorities", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<CreateAuthorityResponse>("/v1/teams/{teamId}/authorities", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -511,11 +529,12 @@ namespace Qualithm.Platform.Api
         /// Revoke a certificate authority and every credential it issued 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="authorityId"></param>
         /// <returns>DeleteAuthorityResponse</returns>
-        public DeleteAuthorityResponse DeleteAuthority(Guid authorityId)
+        public DeleteAuthorityResponse DeleteAuthority(Guid teamId, Guid authorityId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteAuthorityResponse> localVarResponse = DeleteAuthorityWithHttpInfo(authorityId);
+            Qualithm.Platform.Client.ApiResponse<DeleteAuthorityResponse> localVarResponse = DeleteAuthorityWithHttpInfo(teamId, authorityId);
             return localVarResponse.Data;
         }
 
@@ -523,9 +542,10 @@ namespace Qualithm.Platform.Api
         /// Revoke a certificate authority and every credential it issued 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="authorityId"></param>
         /// <returns>ApiResponse of DeleteAuthorityResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteAuthorityResponse> DeleteAuthorityWithHttpInfo(Guid authorityId)
+        public Qualithm.Platform.Client.ApiResponse<DeleteAuthorityResponse> DeleteAuthorityWithHttpInfo(Guid teamId, Guid authorityId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -543,6 +563,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("authorityId", Qualithm.Platform.Client.ClientUtils.ParameterToString(authorityId)); // path parameter
 
             // authentication (apiToken) required
@@ -553,7 +574,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteAuthorityResponse>("/authorities/{authorityId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<DeleteAuthorityResponse>("/v1/teams/{teamId}/authorities/{authorityId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -568,12 +589,13 @@ namespace Qualithm.Platform.Api
         /// Revoke a certificate authority and every credential it issued 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="authorityId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of DeleteAuthorityResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteAuthorityResponse> DeleteAuthorityAsync(Guid authorityId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<DeleteAuthorityResponse> DeleteAuthorityAsync(Guid teamId, Guid authorityId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteAuthorityResponse> localVarResponse = await DeleteAuthorityWithHttpInfoAsync(authorityId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<DeleteAuthorityResponse> localVarResponse = await DeleteAuthorityWithHttpInfoAsync(teamId, authorityId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -581,10 +603,11 @@ namespace Qualithm.Platform.Api
         /// Revoke a certificate authority and every credential it issued 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="authorityId"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (DeleteAuthorityResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteAuthorityResponse>> DeleteAuthorityWithHttpInfoAsync(Guid authorityId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteAuthorityResponse>> DeleteAuthorityWithHttpInfoAsync(Guid teamId, Guid authorityId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -604,6 +627,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("authorityId", Qualithm.Platform.Client.ClientUtils.ParameterToString(authorityId)); // path parameter
 
             // authentication (apiToken) required
@@ -615,7 +639,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteAuthorityResponse>("/authorities/{authorityId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteAuthorityResponse>("/v1/teams/{teamId}/authorities/{authorityId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -630,12 +654,13 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s certificate authorities 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListAuthoritiesResponse</returns>
-        public ListAuthoritiesResponse ListAuthorities(long? page = default, int? limit = default)
+        public ListAuthoritiesResponse ListAuthorities(Guid teamId, long? page = default, int? limit = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAuthoritiesResponse> localVarResponse = ListAuthoritiesWithHttpInfo(page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListAuthoritiesResponse> localVarResponse = ListAuthoritiesWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
         }
 
@@ -643,10 +668,11 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s certificate authorities 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListAuthoritiesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListAuthoritiesResponse> ListAuthoritiesWithHttpInfo(long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListAuthoritiesResponse> ListAuthoritiesWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -664,6 +690,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -681,7 +708,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListAuthoritiesResponse>("/authorities", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListAuthoritiesResponse>("/v1/teams/{teamId}/authorities", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -696,13 +723,14 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s certificate authorities 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAuthoritiesResponse</returns>
-        public async System.Threading.Tasks.Task<ListAuthoritiesResponse> ListAuthoritiesAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListAuthoritiesResponse> ListAuthoritiesAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAuthoritiesResponse> localVarResponse = await ListAuthoritiesWithHttpInfoAsync(page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListAuthoritiesResponse> localVarResponse = await ListAuthoritiesWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -710,11 +738,12 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s certificate authorities 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAuthoritiesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAuthoritiesResponse>> ListAuthoritiesWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAuthoritiesResponse>> ListAuthoritiesWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -734,6 +763,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -752,7 +782,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAuthoritiesResponse>("/authorities", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAuthoritiesResponse>("/v1/teams/{teamId}/authorities", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

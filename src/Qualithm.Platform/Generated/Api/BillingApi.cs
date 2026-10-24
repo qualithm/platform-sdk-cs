@@ -33,8 +33,9 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s plan, usage, price and add-ons
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>GetBillingSummaryResponse</returns>
-        GetBillingSummaryResponse GetBillingSummary();
+        GetBillingSummaryResponse GetBillingSummary(Guid teamId);
 
         /// <summary>
         /// Get the workspace&#39;s plan, usage, price and add-ons
@@ -43,16 +44,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>ApiResponse of GetBillingSummaryResponse</returns>
-        ApiResponse<GetBillingSummaryResponse> GetBillingSummaryWithHttpInfo();
+        ApiResponse<GetBillingSummaryResponse> GetBillingSummaryWithHttpInfo(Guid teamId);
         /// <summary>
         /// List the workspace&#39;s invoices
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListInvoicesResponse</returns>
-        ListInvoicesResponse ListInvoices(long? page = default, int? limit = default);
+        ListInvoicesResponse ListInvoices(Guid teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the workspace&#39;s invoices
@@ -61,17 +64,19 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListInvoicesResponse</returns>
-        ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(long? page = default, int? limit = default);
+        ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
         /// <summary>
         /// Preview what moving to another paid tier would cost
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <returns>PreviewTierChangeResponse</returns>
-        PreviewTierChangeResponse PreviewTierChange(PreviewTierChangeRequest previewTierChangeRequest);
+        PreviewTierChangeResponse PreviewTierChange(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest);
 
         /// <summary>
         /// Preview what moving to another paid tier would cost
@@ -80,9 +85,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <returns>ApiResponse of PreviewTierChangeResponse</returns>
-        ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(PreviewTierChangeRequest previewTierChangeRequest);
+        ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest);
         #endregion Synchronous Operations
     }
 
@@ -99,9 +105,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBillingSummaryResponse</returns>
-        System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get the workspace&#39;s plan, usage, price and add-ons
@@ -110,9 +117,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBillingSummaryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBillingSummaryResponse>> GetBillingSummaryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetBillingSummaryResponse>> GetBillingSummaryWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s invoices
         /// </summary>
@@ -120,11 +128,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInvoicesResponse</returns>
-        System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s invoices
@@ -133,11 +142,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInvoicesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Preview what moving to another paid tier would cost
         /// </summary>
@@ -145,10 +155,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PreviewTierChangeResponse</returns>
-        System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Preview what moving to another paid tier would cost
@@ -157,10 +168,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PreviewTierChangeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -378,10 +390,11 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s plan, usage, price and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>GetBillingSummaryResponse</returns>
-        public GetBillingSummaryResponse GetBillingSummary()
+        public GetBillingSummaryResponse GetBillingSummary(Guid teamId)
         {
-            Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> localVarResponse = GetBillingSummaryWithHttpInfo();
+            Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> localVarResponse = GetBillingSummaryWithHttpInfo(teamId);
             return localVarResponse.Data;
         }
 
@@ -389,8 +402,9 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s plan, usage, price and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <returns>ApiResponse of GetBillingSummaryResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> GetBillingSummaryWithHttpInfo()
+        public Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> GetBillingSummaryWithHttpInfo(Guid teamId)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -408,6 +422,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -417,7 +432,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<GetBillingSummaryResponse>("/billing/summary", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<GetBillingSummaryResponse>("/v1/teams/{teamId}/billing/summary", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -432,11 +447,12 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s plan, usage, price and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBillingSummaryResponse</returns>
-        public async System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> localVarResponse = await GetBillingSummaryWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> localVarResponse = await GetBillingSummaryWithHttpInfoAsync(teamId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -444,9 +460,10 @@ namespace Qualithm.Platform.Api
         /// Get the workspace&#39;s plan, usage, price and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBillingSummaryResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse>> GetBillingSummaryWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse>> GetBillingSummaryWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -466,6 +483,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -476,7 +494,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetBillingSummaryResponse>("/billing/summary", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetBillingSummaryResponse>("/v1/teams/{teamId}/billing/summary", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -491,12 +509,13 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s invoices 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListInvoicesResponse</returns>
-        public ListInvoicesResponse ListInvoices(long? page = default, int? limit = default)
+        public ListInvoicesResponse ListInvoices(Guid teamId, long? page = default, int? limit = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = ListInvoicesWithHttpInfo(page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = ListInvoicesWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
         }
 
@@ -504,10 +523,11 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s invoices 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListInvoicesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -525,6 +545,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -542,7 +563,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Get<ListInvoicesResponse>("/invoices", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Get<ListInvoicesResponse>("/v1/teams/{teamId}/invoices", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -557,13 +578,14 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s invoices 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInvoicesResponse</returns>
-        public async System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = await ListInvoicesWithHttpInfoAsync(page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = await ListInvoicesWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -571,11 +593,12 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s invoices 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInvoicesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -595,6 +618,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             if (page != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
@@ -613,7 +637,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListInvoicesResponse>("/invoices", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListInvoicesResponse>("/v1/teams/{teamId}/invoices", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -628,11 +652,12 @@ namespace Qualithm.Platform.Api
         /// Preview what moving to another paid tier would cost 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <returns>PreviewTierChangeResponse</returns>
-        public PreviewTierChangeResponse PreviewTierChange(PreviewTierChangeRequest previewTierChangeRequest)
+        public PreviewTierChangeResponse PreviewTierChange(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = PreviewTierChangeWithHttpInfo(previewTierChangeRequest);
+            Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = PreviewTierChangeWithHttpInfo(teamId, previewTierChangeRequest);
             return localVarResponse.Data;
         }
 
@@ -640,9 +665,10 @@ namespace Qualithm.Platform.Api
         /// Preview what moving to another paid tier would cost 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <returns>ApiResponse of PreviewTierChangeResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(PreviewTierChangeRequest previewTierChangeRequest)
+        public Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest)
         {
             // verify the required parameter 'previewTierChangeRequest' is set
             if (previewTierChangeRequest == null)
@@ -665,6 +691,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = previewTierChangeRequest;
 
             // authentication (apiToken) required
@@ -675,7 +702,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Post<PreviewTierChangeResponse>("/billing/tier/preview", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Post<PreviewTierChangeResponse>("/v1/teams/{teamId}/billing/tier/preview", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -690,12 +717,13 @@ namespace Qualithm.Platform.Api
         /// Preview what moving to another paid tier would cost 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PreviewTierChangeResponse</returns>
-        public async System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = await PreviewTierChangeWithHttpInfoAsync(previewTierChangeRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = await PreviewTierChangeWithHttpInfoAsync(teamId, previewTierChangeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -703,10 +731,11 @@ namespace Qualithm.Platform.Api
         /// Preview what moving to another paid tier would cost 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PreviewTierChangeResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'previewTierChangeRequest' is set
             if (previewTierChangeRequest == null)
@@ -731,6 +760,7 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.Data = previewTierChangeRequest;
 
             // authentication (apiToken) required
@@ -742,7 +772,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PostAsync<PreviewTierChangeResponse>("/billing/tier/preview", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<PreviewTierChangeResponse>("/v1/teams/{teamId}/billing/tier/preview", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
