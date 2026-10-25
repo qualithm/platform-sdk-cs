@@ -42,9 +42,8 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="ListTelemetryResponse" /> class.
         /// </summary>
-        /// <param name="message">message.</param>
         /// <param name="data">data (required).</param>
-        public ListTelemetryResponse(string message = default, ListTelemetryResponseData data = default)
+        public ListTelemetryResponse(ListTelemetryResponseData data = default)
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -52,14 +51,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("data is a required property for ListTelemetryResponse and cannot be null");
             }
             this.Data = data;
-            this.Message = message;
         }
-
-        /// <summary>
-        /// Gets or Sets Message
-        /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = false)]
-        public string Message { get; set; }
 
         /// <summary>
         /// Gets or Sets Data
@@ -75,7 +67,6 @@ namespace Qualithm.Platform.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ListTelemetryResponse {\n");
-            sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

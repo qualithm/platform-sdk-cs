@@ -43,8 +43,13 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="RunAutomationResponseData" /> class.
         /// </summary>
         /// <param name="id">The queued run&#39;s id (required).</param>
-        public RunAutomationResponseData(Guid id = default)
+        public RunAutomationResponseData(string id = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for RunAutomationResponseData and cannot be null");
+            }
             this.Id = id;
         }
 
@@ -52,8 +57,11 @@ namespace Qualithm.Platform.Model
         /// The queued run&#39;s id
         /// </summary>
         /// <value>The queued run&#39;s id</value>
+        /*
+        <example>run_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,9 +93,9 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^run_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }

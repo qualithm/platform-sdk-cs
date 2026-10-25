@@ -43,8 +43,13 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="CreateTeamMemberRequest" /> class.
         /// </summary>
         /// <param name="inviteId">The invite to accept (required).</param>
-        public CreateTeamMemberRequest(Guid inviteId = default)
+        public CreateTeamMemberRequest(string inviteId = default)
         {
+            // to ensure "inviteId" is required (not null)
+            if (inviteId == null)
+            {
+                throw new ArgumentNullException("inviteId is a required property for CreateTeamMemberRequest and cannot be null");
+            }
             this.InviteId = inviteId;
         }
 
@@ -52,8 +57,11 @@ namespace Qualithm.Platform.Model
         /// The invite to accept
         /// </summary>
         /// <value>The invite to accept</value>
+        /*
+        <example>mem_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "inviteId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid InviteId { get; set; }
+        public string InviteId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,9 +93,9 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.InviteId != null) {
-                // InviteId (Guid) pattern
-                Regex regexInviteId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexInviteId.Match(this.InviteId.ToString()).Success)
+                // InviteId (string) pattern
+                Regex regexInviteId = new Regex(@"^mem_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexInviteId.Match(this.InviteId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for InviteId, must match a pattern of " + regexInviteId, new [] { "InviteId" });
                 }

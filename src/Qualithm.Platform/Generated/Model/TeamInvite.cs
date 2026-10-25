@@ -74,8 +74,8 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="TeamInvite" /> class.
         /// </summary>
         /// <param name="id">The invite&#39;s id: the invited membership&#39;s id (required).</param>
-        /// <param name="accountId">accountId (required).</param>
-        /// <param name="teamId">teamId (required).</param>
+        /// <param name="accountId">An account ID (required).</param>
+        /// <param name="teamId">A team ID (required).</param>
         /// <param name="role">role (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
@@ -83,10 +83,25 @@ namespace Qualithm.Platform.Model
         /// <param name="accountEmail">accountEmail (required).</param>
         /// <param name="accountName">accountName (required).</param>
         /// <param name="teamName">Absent in the create response.</param>
-        public TeamInvite(Guid id = default, Guid accountId = default, Guid teamId = default, MemberRole role = default, StatusEnum status = default, string createdAt = default, string updatedAt = default, string accountEmail = default, string accountName = default, string teamName = default)
+        public TeamInvite(string id = default, string accountId = default, string teamId = default, MemberRole role = default, StatusEnum status = default, string createdAt = default, string updatedAt = default, string accountEmail = default, string accountName = default, string teamName = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for TeamInvite and cannot be null");
+            }
             this.Id = id;
+            // to ensure "accountId" is required (not null)
+            if (accountId == null)
+            {
+                throw new ArgumentNullException("accountId is a required property for TeamInvite and cannot be null");
+            }
             this.AccountId = accountId;
+            // to ensure "teamId" is required (not null)
+            if (teamId == null)
+            {
+                throw new ArgumentNullException("teamId is a required property for TeamInvite and cannot be null");
+            }
             this.TeamId = teamId;
             this.Role = role;
             this.Status = status;
@@ -121,20 +136,31 @@ namespace Qualithm.Platform.Model
         /// The invite&#39;s id: the invited membership&#39;s id
         /// </summary>
         /// <value>The invite&#39;s id: the invited membership&#39;s id</value>
+        /*
+        <example>mem_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccountId
+        /// An account ID
         /// </summary>
+        /// <value>An account ID</value>
+        /*
+        <example>acc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "accountId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid AccountId { get; set; }
+        public string AccountId { get; set; }
 
         /// <summary>
-        /// Gets or Sets TeamId
+        /// A team ID
         /// </summary>
+        /// <value>A team ID</value>
+        /*
+        <example>tm_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "teamId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid TeamId { get; set; }
+        public string TeamId { get; set; }
 
         /// <summary>
         /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
@@ -208,27 +234,27 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^mem_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }
             }
 
             if (this.AccountId != null) {
-                // AccountId (Guid) pattern
-                Regex regexAccountId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexAccountId.Match(this.AccountId.ToString()).Success)
+                // AccountId (string) pattern
+                Regex regexAccountId = new Regex(@"^acc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexAccountId.Match(this.AccountId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountId, must match a pattern of " + regexAccountId, new [] { "AccountId" });
                 }
             }
 
             if (this.TeamId != null) {
-                // TeamId (Guid) pattern
-                Regex regexTeamId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexTeamId.Match(this.TeamId.ToString()).Success)
+                // TeamId (string) pattern
+                Regex regexTeamId = new Regex(@"^tm_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexTeamId.Match(this.TeamId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TeamId, must match a pattern of " + regexTeamId, new [] { "TeamId" });
                 }

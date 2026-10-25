@@ -33,10 +33,10 @@ namespace Qualithm.Platform.Api
         /// Invite an account to the team by email
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
         /// <returns>CreateTeamInviteResponse</returns>
-        CreateTeamInviteResponse CreateTeamInvite(Guid teamId, CreateTeamInviteRequest createTeamInviteRequest);
+        CreateTeamInviteResponse CreateTeamInvite(string teamId, CreateTeamInviteRequest createTeamInviteRequest);
 
         /// <summary>
         /// Invite an account to the team by email
@@ -45,18 +45,18 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
         /// <returns>ApiResponse of CreateTeamInviteResponse</returns>
-        ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(Guid teamId, CreateTeamInviteRequest createTeamInviteRequest);
+        ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(string teamId, CreateTeamInviteRequest createTeamInviteRequest);
         /// <summary>
         /// Revoke a pending invite
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="inviteId"></param>
-        /// <returns>DeleteTeamInviteResponse</returns>
-        DeleteTeamInviteResponse DeleteTeamInvite(Guid teamId, Guid inviteId);
+        /// <param name="teamId">A team ID</param>
+        /// <param name="inviteId">A member ID</param>
+        /// <returns></returns>
+        void DeleteTeamInvite(string teamId, string inviteId);
 
         /// <summary>
         /// Revoke a pending invite
@@ -65,19 +65,19 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="inviteId"></param>
-        /// <returns>ApiResponse of DeleteTeamInviteResponse</returns>
-        ApiResponse<DeleteTeamInviteResponse> DeleteTeamInviteWithHttpInfo(Guid teamId, Guid inviteId);
+        /// <param name="teamId">A team ID</param>
+        /// <param name="inviteId">A member ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteTeamInviteWithHttpInfo(string teamId, string inviteId);
         /// <summary>
         /// List the team&#39;s pending invites
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListTeamInvitesResponse</returns>
-        ListTeamInvitesResponse ListTeamInvites(Guid teamId, long? page = default, int? limit = default);
+        ListTeamInvitesResponse ListTeamInvites(string teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the team&#39;s pending invites
@@ -86,11 +86,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListTeamInvitesResponse</returns>
-        ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
+        ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(string teamId, long? page = default, int? limit = default);
         #endregion Synchronous Operations
     }
 
@@ -107,11 +107,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamInviteResponse</returns>
-        System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(Guid teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Invite an account to the team by email
@@ -120,11 +120,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamInviteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(Guid teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Revoke a pending invite
         /// </summary>
@@ -132,11 +132,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="inviteId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="inviteId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteTeamInviteResponse</returns>
-        System.Threading.Tasks.Task<DeleteTeamInviteResponse> DeleteTeamInviteAsync(Guid teamId, Guid inviteId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteTeamInviteAsync(string teamId, string inviteId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Revoke a pending invite
@@ -145,11 +145,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="inviteId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="inviteId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteTeamInviteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteTeamInviteResponse>> DeleteTeamInviteWithHttpInfoAsync(Guid teamId, Guid inviteId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTeamInviteWithHttpInfoAsync(string teamId, string inviteId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the team&#39;s pending invites
         /// </summary>
@@ -157,12 +157,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTeamInvitesResponse</returns>
-        System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the team&#39;s pending invites
@@ -171,12 +171,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTeamInvitesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -394,10 +394,10 @@ namespace Qualithm.Platform.Api
         /// Invite an account to the team by email 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
         /// <returns>CreateTeamInviteResponse</returns>
-        public CreateTeamInviteResponse CreateTeamInvite(Guid teamId, CreateTeamInviteRequest createTeamInviteRequest)
+        public CreateTeamInviteResponse CreateTeamInvite(string teamId, CreateTeamInviteRequest createTeamInviteRequest)
         {
             Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = CreateTeamInviteWithHttpInfo(teamId, createTeamInviteRequest);
             return localVarResponse.Data;
@@ -407,11 +407,15 @@ namespace Qualithm.Platform.Api
         /// Invite an account to the team by email 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
         /// <returns>ApiResponse of CreateTeamInviteResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(Guid teamId, CreateTeamInviteRequest createTeamInviteRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(string teamId, CreateTeamInviteRequest createTeamInviteRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling InvitesApi->CreateTeamInvite");
+
             // verify the required parameter 'createTeamInviteRequest' is set
             if (createTeamInviteRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createTeamInviteRequest' when calling InvitesApi->CreateTeamInvite");
@@ -459,11 +463,11 @@ namespace Qualithm.Platform.Api
         /// Invite an account to the team by email 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamInviteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(Guid teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = await CreateTeamInviteWithHttpInfoAsync(teamId, createTeamInviteRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -473,12 +477,16 @@ namespace Qualithm.Platform.Api
         /// Invite an account to the team by email 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamInviteResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(Guid teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling InvitesApi->CreateTeamInvite");
+
             // verify the required parameter 'createTeamInviteRequest' is set
             if (createTeamInviteRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createTeamInviteRequest' when calling InvitesApi->CreateTeamInvite");
@@ -529,24 +537,31 @@ namespace Qualithm.Platform.Api
         /// Revoke a pending invite 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="inviteId"></param>
-        /// <returns>DeleteTeamInviteResponse</returns>
-        public DeleteTeamInviteResponse DeleteTeamInvite(Guid teamId, Guid inviteId)
+        /// <param name="teamId">A team ID</param>
+        /// <param name="inviteId">A member ID</param>
+        /// <returns></returns>
+        public void DeleteTeamInvite(string teamId, string inviteId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteTeamInviteResponse> localVarResponse = DeleteTeamInviteWithHttpInfo(teamId, inviteId);
-            return localVarResponse.Data;
+            DeleteTeamInviteWithHttpInfo(teamId, inviteId);
         }
 
         /// <summary>
         /// Revoke a pending invite 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="inviteId"></param>
-        /// <returns>ApiResponse of DeleteTeamInviteResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteTeamInviteResponse> DeleteTeamInviteWithHttpInfo(Guid teamId, Guid inviteId)
+        /// <param name="teamId">A team ID</param>
+        /// <param name="inviteId">A member ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteTeamInviteWithHttpInfo(string teamId, string inviteId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling InvitesApi->DeleteTeamInvite");
+
+            // verify the required parameter 'inviteId' is set
+            if (inviteId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'inviteId' when calling InvitesApi->DeleteTeamInvite");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -574,7 +589,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteTeamInviteResponse>("/v1/teams/{teamId}/invites/{inviteId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Object>("/v1/teams/{teamId}/invites/{inviteId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -589,26 +604,33 @@ namespace Qualithm.Platform.Api
         /// Revoke a pending invite 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="inviteId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="inviteId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteTeamInviteResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteTeamInviteResponse> DeleteTeamInviteAsync(Guid teamId, Guid inviteId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteTeamInviteAsync(string teamId, string inviteId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteTeamInviteResponse> localVarResponse = await DeleteTeamInviteWithHttpInfoAsync(teamId, inviteId, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await DeleteTeamInviteWithHttpInfoAsync(teamId, inviteId, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Revoke a pending invite 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="inviteId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="inviteId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteTeamInviteResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteTeamInviteResponse>> DeleteTeamInviteWithHttpInfoAsync(Guid teamId, Guid inviteId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteTeamInviteWithHttpInfoAsync(string teamId, string inviteId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling InvitesApi->DeleteTeamInvite");
+
+            // verify the required parameter 'inviteId' is set
+            if (inviteId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'inviteId' when calling InvitesApi->DeleteTeamInvite");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -639,7 +661,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteTeamInviteResponse>("/v1/teams/{teamId}/invites/{inviteId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/v1/teams/{teamId}/invites/{inviteId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -654,11 +676,11 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s pending invites 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListTeamInvitesResponse</returns>
-        public ListTeamInvitesResponse ListTeamInvites(Guid teamId, long? page = default, int? limit = default)
+        public ListTeamInvitesResponse ListTeamInvites(string teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> localVarResponse = ListTeamInvitesWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
@@ -668,12 +690,16 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s pending invites 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListTeamInvitesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(string teamId, long? page = default, int? limit = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling InvitesApi->ListTeamInvites");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -723,12 +749,12 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s pending invites 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTeamInvitesResponse</returns>
-        public async System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> localVarResponse = await ListTeamInvitesWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -738,13 +764,17 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s pending invites 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTeamInvitesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling InvitesApi->ListTeamInvites");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 

@@ -42,19 +42,28 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="QueuedCommand" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
+        /// <param name="id">A command ID (required).</param>
         /// <param name="duplicate">True when the dedup key was already used: no second command was sent (required).</param>
-        public QueuedCommand(Guid id = default, bool duplicate = default)
+        public QueuedCommand(string id = default, bool duplicate = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for QueuedCommand and cannot be null");
+            }
             this.Id = id;
             this.Duplicate = duplicate;
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// A command ID
         /// </summary>
+        /// <value>A command ID</value>
+        /*
+        <example>cmd_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
         /// True when the dedup key was already used: no second command was sent
@@ -94,9 +103,9 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^cmd_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }

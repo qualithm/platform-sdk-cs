@@ -36,7 +36,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
         /// <returns>CreateEnrollmentResponse</returns>
-        CreateEnrollmentResponse CreateEnrollment(Guid teamId, CreateEnrollmentRequest createEnrollmentRequest);
+        CreateEnrollmentResponse CreateEnrollment(string teamId, CreateEnrollmentRequest createEnrollmentRequest);
 
         /// <summary>
         /// Create a claim code for a device to enroll into a space
@@ -48,15 +48,15 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
         /// <returns>ApiResponse of CreateEnrollmentResponse</returns>
-        ApiResponse<CreateEnrollmentResponse> CreateEnrollmentWithHttpInfo(Guid teamId, CreateEnrollmentRequest createEnrollmentRequest);
+        ApiResponse<CreateEnrollmentResponse> CreateEnrollmentWithHttpInfo(string teamId, CreateEnrollmentRequest createEnrollmentRequest);
         /// <summary>
         /// Revoke a pending enrollment
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="enrollmentId"></param>
-        /// <returns>DeleteEnrollmentResponse</returns>
-        DeleteEnrollmentResponse DeleteEnrollment(Guid teamId, Guid enrollmentId);
+        /// <param name="enrollmentId">An enrollment ID</param>
+        /// <returns></returns>
+        void DeleteEnrollment(string teamId, string enrollmentId);
 
         /// <summary>
         /// Revoke a pending enrollment
@@ -66,9 +66,9 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="enrollmentId"></param>
-        /// <returns>ApiResponse of DeleteEnrollmentResponse</returns>
-        ApiResponse<DeleteEnrollmentResponse> DeleteEnrollmentWithHttpInfo(Guid teamId, Guid enrollmentId);
+        /// <param name="enrollmentId">An enrollment ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteEnrollmentWithHttpInfo(string teamId, string enrollmentId);
         /// <summary>
         /// List the workspace&#39;s enrollments
         /// </summary>
@@ -77,7 +77,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListEnrollmentsResponse</returns>
-        ListEnrollmentsResponse ListEnrollments(Guid teamId, long? page = default, int? limit = default);
+        ListEnrollmentsResponse ListEnrollments(string teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the workspace&#39;s enrollments
@@ -90,7 +90,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListEnrollmentsResponse</returns>
-        ApiResponse<ListEnrollmentsResponse> ListEnrollmentsWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
+        ApiResponse<ListEnrollmentsResponse> ListEnrollmentsWithHttpInfo(string teamId, long? page = default, int? limit = default);
         #endregion Synchronous Operations
     }
 
@@ -111,7 +111,7 @@ namespace Qualithm.Platform.Api
         /// <param name="createEnrollmentRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateEnrollmentResponse</returns>
-        System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(Guid teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a claim code for a device to enroll into a space
@@ -124,7 +124,7 @@ namespace Qualithm.Platform.Api
         /// <param name="createEnrollmentRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateEnrollmentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateEnrollmentResponse>> CreateEnrollmentWithHttpInfoAsync(Guid teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateEnrollmentResponse>> CreateEnrollmentWithHttpInfoAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Revoke a pending enrollment
         /// </summary>
@@ -133,10 +133,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="enrollmentId"></param>
+        /// <param name="enrollmentId">An enrollment ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteEnrollmentResponse</returns>
-        System.Threading.Tasks.Task<DeleteEnrollmentResponse> DeleteEnrollmentAsync(Guid teamId, Guid enrollmentId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteEnrollmentAsync(string teamId, string enrollmentId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Revoke a pending enrollment
@@ -146,10 +146,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="enrollmentId"></param>
+        /// <param name="enrollmentId">An enrollment ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteEnrollmentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteEnrollmentResponse>> DeleteEnrollmentWithHttpInfoAsync(Guid teamId, Guid enrollmentId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEnrollmentWithHttpInfoAsync(string teamId, string enrollmentId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s enrollments
         /// </summary>
@@ -162,7 +162,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListEnrollmentsResponse</returns>
-        System.Threading.Tasks.Task<ListEnrollmentsResponse> ListEnrollmentsAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListEnrollmentsResponse> ListEnrollmentsAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s enrollments
@@ -176,7 +176,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListEnrollmentsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListEnrollmentsResponse>> ListEnrollmentsWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListEnrollmentsResponse>> ListEnrollmentsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -397,7 +397,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
         /// <returns>CreateEnrollmentResponse</returns>
-        public CreateEnrollmentResponse CreateEnrollment(Guid teamId, CreateEnrollmentRequest createEnrollmentRequest)
+        public CreateEnrollmentResponse CreateEnrollment(string teamId, CreateEnrollmentRequest createEnrollmentRequest)
         {
             Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> localVarResponse = CreateEnrollmentWithHttpInfo(teamId, createEnrollmentRequest);
             return localVarResponse.Data;
@@ -410,8 +410,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
         /// <returns>ApiResponse of CreateEnrollmentResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> CreateEnrollmentWithHttpInfo(Guid teamId, CreateEnrollmentRequest createEnrollmentRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> CreateEnrollmentWithHttpInfo(string teamId, CreateEnrollmentRequest createEnrollmentRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling EnrollmentsApi->CreateEnrollment");
+
             // verify the required parameter 'createEnrollmentRequest' is set
             if (createEnrollmentRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createEnrollmentRequest' when calling EnrollmentsApi->CreateEnrollment");
@@ -463,7 +467,7 @@ namespace Qualithm.Platform.Api
         /// <param name="createEnrollmentRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateEnrollmentResponse</returns>
-        public async System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(Guid teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> localVarResponse = await CreateEnrollmentWithHttpInfoAsync(teamId, createEnrollmentRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -477,8 +481,12 @@ namespace Qualithm.Platform.Api
         /// <param name="createEnrollmentRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateEnrollmentResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse>> CreateEnrollmentWithHttpInfoAsync(Guid teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse>> CreateEnrollmentWithHttpInfoAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling EnrollmentsApi->CreateEnrollment");
+
             // verify the required parameter 'createEnrollmentRequest' is set
             if (createEnrollmentRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createEnrollmentRequest' when calling EnrollmentsApi->CreateEnrollment");
@@ -530,12 +538,11 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="enrollmentId"></param>
-        /// <returns>DeleteEnrollmentResponse</returns>
-        public DeleteEnrollmentResponse DeleteEnrollment(Guid teamId, Guid enrollmentId)
+        /// <param name="enrollmentId">An enrollment ID</param>
+        /// <returns></returns>
+        public void DeleteEnrollment(string teamId, string enrollmentId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteEnrollmentResponse> localVarResponse = DeleteEnrollmentWithHttpInfo(teamId, enrollmentId);
-            return localVarResponse.Data;
+            DeleteEnrollmentWithHttpInfo(teamId, enrollmentId);
         }
 
         /// <summary>
@@ -543,10 +550,18 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="enrollmentId"></param>
-        /// <returns>ApiResponse of DeleteEnrollmentResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteEnrollmentResponse> DeleteEnrollmentWithHttpInfo(Guid teamId, Guid enrollmentId)
+        /// <param name="enrollmentId">An enrollment ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteEnrollmentWithHttpInfo(string teamId, string enrollmentId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling EnrollmentsApi->DeleteEnrollment");
+
+            // verify the required parameter 'enrollmentId' is set
+            if (enrollmentId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'enrollmentId' when calling EnrollmentsApi->DeleteEnrollment");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -574,7 +589,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteEnrollmentResponse>("/v1/teams/{teamId}/enrollments/{enrollmentId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Object>("/v1/teams/{teamId}/enrollments/{enrollmentId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -590,13 +605,12 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="enrollmentId"></param>
+        /// <param name="enrollmentId">An enrollment ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteEnrollmentResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteEnrollmentResponse> DeleteEnrollmentAsync(Guid teamId, Guid enrollmentId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteEnrollmentAsync(string teamId, string enrollmentId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteEnrollmentResponse> localVarResponse = await DeleteEnrollmentWithHttpInfoAsync(teamId, enrollmentId, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await DeleteEnrollmentWithHttpInfoAsync(teamId, enrollmentId, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -604,11 +618,19 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="enrollmentId"></param>
+        /// <param name="enrollmentId">An enrollment ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteEnrollmentResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteEnrollmentResponse>> DeleteEnrollmentWithHttpInfoAsync(Guid teamId, Guid enrollmentId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteEnrollmentWithHttpInfoAsync(string teamId, string enrollmentId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling EnrollmentsApi->DeleteEnrollment");
+
+            // verify the required parameter 'enrollmentId' is set
+            if (enrollmentId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'enrollmentId' when calling EnrollmentsApi->DeleteEnrollment");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -639,7 +661,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteEnrollmentResponse>("/v1/teams/{teamId}/enrollments/{enrollmentId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/v1/teams/{teamId}/enrollments/{enrollmentId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -658,7 +680,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListEnrollmentsResponse</returns>
-        public ListEnrollmentsResponse ListEnrollments(Guid teamId, long? page = default, int? limit = default)
+        public ListEnrollmentsResponse ListEnrollments(string teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> localVarResponse = ListEnrollmentsWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
@@ -672,8 +694,12 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListEnrollmentsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> ListEnrollmentsWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> ListEnrollmentsWithHttpInfo(string teamId, long? page = default, int? limit = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling EnrollmentsApi->ListEnrollments");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -728,7 +754,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListEnrollmentsResponse</returns>
-        public async System.Threading.Tasks.Task<ListEnrollmentsResponse> ListEnrollmentsAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListEnrollmentsResponse> ListEnrollmentsAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> localVarResponse = await ListEnrollmentsWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -743,8 +769,12 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListEnrollmentsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse>> ListEnrollmentsWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse>> ListEnrollmentsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling EnrollmentsApi->ListEnrollments");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 

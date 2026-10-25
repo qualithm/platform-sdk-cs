@@ -104,9 +104,9 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Credential" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="deviceId">deviceId (required).</param>
-        /// <param name="authorityId">The authority that issued a cert credential (required).</param>
+        /// <param name="id">A credential ID (required).</param>
+        /// <param name="deviceId">A device ID (required).</param>
+        /// <param name="authorityId">A device authority ID (required).</param>
         /// <param name="kind">kind (required).</param>
         /// <param name="certFingerprint">SHA-256 of a cert credential&#39;s certificate (required).</param>
         /// <param name="certSubject">certSubject (required).</param>
@@ -114,13 +114,23 @@ namespace Qualithm.Platform.Model
         /// <param name="status">status (required).</param>
         /// <param name="expiresAt">ISO 8601 time (required).</param>
         /// <param name="lastUsedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="rotatedFrom">The credential this one replaced on rotation (required).</param>
+        /// <param name="rotatedFrom">A credential ID (required).</param>
         /// <param name="payload">JSON text (required).</param>
         /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
         /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public Credential(Guid id = default, Guid deviceId = default, Guid? authorityId = default, KindEnum kind = default, string certFingerprint = default, string certSubject = default, string label = default, StatusEnum status = default, string expiresAt = default, string lastUsedAt = default, Guid? rotatedFrom = default, string payload = default, string createdAt = default, string updatedAt = default)
+        public Credential(string id = default, string deviceId = default, string authorityId = default, KindEnum kind = default, string certFingerprint = default, string certSubject = default, string label = default, StatusEnum status = default, string expiresAt = default, string lastUsedAt = default, string rotatedFrom = default, string payload = default, string createdAt = default, string updatedAt = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Credential and cannot be null");
+            }
             this.Id = id;
+            // to ensure "deviceId" is required (not null)
+            if (deviceId == null)
+            {
+                throw new ArgumentNullException("deviceId is a required property for Credential and cannot be null");
+            }
             this.DeviceId = deviceId;
             // to ensure "authorityId" is required (not null)
             if (authorityId == null)
@@ -187,23 +197,34 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// A credential ID
         /// </summary>
+        /// <value>A credential ID</value>
+        /*
+        <example>cred_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets DeviceId
+        /// A device ID
         /// </summary>
+        /// <value>A device ID</value>
+        /*
+        <example>dev_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "deviceId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid DeviceId { get; set; }
+        public string DeviceId { get; set; }
 
         /// <summary>
-        /// The authority that issued a cert credential
+        /// A device authority ID
         /// </summary>
-        /// <value>The authority that issued a cert credential</value>
+        /// <value>A device authority ID</value>
+        /*
+        <example>auth_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "authorityId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid? AuthorityId { get; set; }
+        public string AuthorityId { get; set; }
 
         /// <summary>
         /// SHA-256 of a cert credential&#39;s certificate
@@ -239,11 +260,14 @@ namespace Qualithm.Platform.Model
         public string LastUsedAt { get; set; }
 
         /// <summary>
-        /// The credential this one replaced on rotation
+        /// A credential ID
         /// </summary>
-        /// <value>The credential this one replaced on rotation</value>
+        /// <value>A credential ID</value>
+        /*
+        <example>cred_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "rotatedFrom", IsRequired = true, EmitDefaultValue = true)]
-        public Guid? RotatedFrom { get; set; }
+        public string RotatedFrom { get; set; }
 
         /// <summary>
         /// JSON text
@@ -309,36 +333,36 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^cred_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }
             }
 
             if (this.DeviceId != null) {
-                // DeviceId (Guid) pattern
-                Regex regexDeviceId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexDeviceId.Match(this.DeviceId.ToString()).Success)
+                // DeviceId (string) pattern
+                Regex regexDeviceId = new Regex(@"^dev_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexDeviceId.Match(this.DeviceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DeviceId, must match a pattern of " + regexDeviceId, new [] { "DeviceId" });
                 }
             }
 
             if (this.AuthorityId != null) {
-                // AuthorityId (Guid?) pattern
-                Regex regexAuthorityId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexAuthorityId.Match(this.AuthorityId.ToString()).Success)
+                // AuthorityId (string) pattern
+                Regex regexAuthorityId = new Regex(@"^auth_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexAuthorityId.Match(this.AuthorityId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AuthorityId, must match a pattern of " + regexAuthorityId, new [] { "AuthorityId" });
                 }
             }
 
             if (this.RotatedFrom != null) {
-                // RotatedFrom (Guid?) pattern
-                Regex regexRotatedFrom = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexRotatedFrom.Match(this.RotatedFrom.ToString()).Success)
+                // RotatedFrom (string) pattern
+                Regex regexRotatedFrom = new Regex(@"^cred_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexRotatedFrom.Match(this.RotatedFrom).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RotatedFrom, must match a pattern of " + regexRotatedFrom, new [] { "RotatedFrom" });
                 }

@@ -43,7 +43,7 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="CreateDashboardRequest" /> class.
         /// </summary>
         /// <param name="name">name (required).</param>
-        /// <param name="spaceId">A space id to scope the dashboard to; null or empty for team-wide.</param>
+        /// <param name="spaceId">A space ID.</param>
         /// <param name="payload">The widgets; null or absent for none.</param>
         public CreateDashboardRequest(string name = default, string spaceId = default, List<DashboardWidget> payload = default)
         {
@@ -64,9 +64,12 @@ namespace Qualithm.Platform.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// A space id to scope the dashboard to; null or empty for team-wide
+        /// A space ID
         /// </summary>
-        /// <value>A space id to scope the dashboard to; null or empty for team-wide</value>
+        /// <value>A space ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "spaceId", EmitDefaultValue = true)]
         public string SpaceId { get; set; }
 
@@ -108,6 +111,15 @@ namespace Qualithm.Platform.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            if (this.SpaceId != null) {
+                // SpaceId (string) pattern
+                Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexSpaceId.Match(this.SpaceId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
+                }
+            }
+
             yield break;
         }
     }

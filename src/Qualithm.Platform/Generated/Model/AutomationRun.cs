@@ -140,17 +140,27 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AutomationRun" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="automationId">automationId (required).</param>
+        /// <param name="id">An automation run ID (required).</param>
+        /// <param name="automationId">An automation ID (required).</param>
         /// <param name="triggerType">triggerType (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="steps">steps (required).</param>
         /// <param name="lastError">lastError (required).</param>
         /// <param name="triggeredAt">ISO 8601 time (required).</param>
         /// <param name="executedAt">ISO 8601 time (required).</param>
-        public AutomationRun(Guid id = default, Guid automationId = default, TriggerTypeEnum triggerType = default, StatusEnum status = default, List<AutomationRunStep> steps = default, string lastError = default, string triggeredAt = default, string executedAt = default)
+        public AutomationRun(string id = default, string automationId = default, TriggerTypeEnum triggerType = default, StatusEnum status = default, List<AutomationRunStep> steps = default, string lastError = default, string triggeredAt = default, string executedAt = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for AutomationRun and cannot be null");
+            }
             this.Id = id;
+            // to ensure "automationId" is required (not null)
+            if (automationId == null)
+            {
+                throw new ArgumentNullException("automationId is a required property for AutomationRun and cannot be null");
+            }
             this.AutomationId = automationId;
             this.TriggerType = triggerType;
             this.Status = status;
@@ -181,16 +191,24 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// An automation run ID
         /// </summary>
+        /// <value>An automation run ID</value>
+        /*
+        <example>run_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets AutomationId
+        /// An automation ID
         /// </summary>
+        /// <value>An automation ID</value>
+        /*
+        <example>aut_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "automationId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid AutomationId { get; set; }
+        public string AutomationId { get; set; }
 
         /// <summary>
         /// Gets or Sets Steps
@@ -255,18 +273,18 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^run_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }
             }
 
             if (this.AutomationId != null) {
-                // AutomationId (Guid) pattern
-                Regex regexAutomationId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexAutomationId.Match(this.AutomationId.ToString()).Success)
+                // AutomationId (string) pattern
+                Regex regexAutomationId = new Regex(@"^aut_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexAutomationId.Match(this.AutomationId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AutomationId, must match a pattern of " + regexAutomationId, new [] { "AutomationId" });
                 }

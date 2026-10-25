@@ -55,6 +55,9 @@ namespace Qualithm.Platform.Model
         /// A space in the device&#39;s zone
         /// </summary>
         /// <value>A space in the device&#39;s zone</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "spaceId", EmitDefaultValue = false)]
         public string SpaceId { get; set; }
 
@@ -88,6 +91,15 @@ namespace Qualithm.Platform.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            if (this.SpaceId != null) {
+                // SpaceId (string) pattern
+                Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexSpaceId.Match(this.SpaceId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
+                }
+            }
+
             yield break;
         }
     }
