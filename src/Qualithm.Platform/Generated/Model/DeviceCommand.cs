@@ -116,17 +116,27 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeviceCommand" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="deviceId">deviceId (required).</param>
+        /// <param name="id">A command ID (required).</param>
+        /// <param name="deviceId">A device ID (required).</param>
         /// <param name="source">source (required).</param>
         /// <param name="topic">topic (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="lastError">lastError (required).</param>
         /// <param name="enqueuedAt">ISO 8601 time (required).</param>
         /// <param name="settledAt">ISO 8601 time (required).</param>
-        public DeviceCommand(Guid id = default, Guid deviceId = default, SourceEnum source = default, string topic = default, StatusEnum status = default, string lastError = default, string enqueuedAt = default, string settledAt = default)
+        public DeviceCommand(string id = default, string deviceId = default, SourceEnum source = default, string topic = default, StatusEnum status = default, string lastError = default, string enqueuedAt = default, string settledAt = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for DeviceCommand and cannot be null");
+            }
             this.Id = id;
+            // to ensure "deviceId" is required (not null)
+            if (deviceId == null)
+            {
+                throw new ArgumentNullException("deviceId is a required property for DeviceCommand and cannot be null");
+            }
             this.DeviceId = deviceId;
             this.Source = source;
             // to ensure "topic" is required (not null)
@@ -157,16 +167,24 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// A command ID
         /// </summary>
+        /// <value>A command ID</value>
+        /*
+        <example>cmd_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets DeviceId
+        /// A device ID
         /// </summary>
+        /// <value>A device ID</value>
+        /*
+        <example>dev_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "deviceId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid DeviceId { get; set; }
+        public string DeviceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Topic
@@ -231,18 +249,18 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^cmd_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }
             }
 
             if (this.DeviceId != null) {
-                // DeviceId (Guid) pattern
-                Regex regexDeviceId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexDeviceId.Match(this.DeviceId.ToString()).Success)
+                // DeviceId (string) pattern
+                Regex regexDeviceId = new Regex(@"^dev_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexDeviceId.Match(this.DeviceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DeviceId, must match a pattern of " + regexDeviceId, new [] { "DeviceId" });
                 }

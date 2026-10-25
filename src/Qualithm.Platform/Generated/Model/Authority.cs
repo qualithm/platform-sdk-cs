@@ -104,8 +104,8 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Authority" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="teamId">teamId (required).</param>
+        /// <param name="id">A device authority ID (required).</param>
+        /// <param name="teamId">A team ID (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="kind">kind (required).</param>
         /// <param name="certificatePem">certificatePem (required).</param>
@@ -114,9 +114,19 @@ namespace Qualithm.Platform.Model
         /// <param name="payload">JSON text (required).</param>
         /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
         /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public Authority(Guid id = default, Guid teamId = default, string name = default, KindEnum kind = default, string certificatePem = default, string fingerprint = default, StatusEnum status = default, string payload = default, string createdAt = default, string updatedAt = default)
+        public Authority(string id = default, string teamId = default, string name = default, KindEnum kind = default, string certificatePem = default, string fingerprint = default, StatusEnum status = default, string payload = default, string createdAt = default, string updatedAt = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Authority and cannot be null");
+            }
             this.Id = id;
+            // to ensure "teamId" is required (not null)
+            if (teamId == null)
+            {
+                throw new ArgumentNullException("teamId is a required property for Authority and cannot be null");
+            }
             this.TeamId = teamId;
             // to ensure "name" is required (not null)
             if (name == null)
@@ -159,16 +169,24 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// A device authority ID
         /// </summary>
+        /// <value>A device authority ID</value>
+        /*
+        <example>auth_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets TeamId
+        /// A team ID
         /// </summary>
+        /// <value>A team ID</value>
+        /*
+        <example>tm_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "teamId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid TeamId { get; set; }
+        public string TeamId { get; set; }
 
         /// <summary>
         /// Gets or Sets Name
@@ -249,18 +267,18 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^auth_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }
             }
 
             if (this.TeamId != null) {
-                // TeamId (Guid) pattern
-                Regex regexTeamId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexTeamId.Match(this.TeamId.ToString()).Success)
+                // TeamId (string) pattern
+                Regex regexTeamId = new Regex(@"^tm_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexTeamId.Match(this.TeamId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TeamId, must match a pattern of " + regexTeamId, new [] { "TeamId" });
                 }

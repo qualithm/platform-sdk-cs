@@ -33,9 +33,9 @@ namespace Qualithm.Platform.Api
         /// Get one of the caller&#39;s live sessions
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionId"></param>
+        /// <param name="sessionId">A session ID</param>
         /// <returns>GetSessionResponse</returns>
-        GetSessionResponse GetSession(Guid sessionId);
+        GetSessionResponse GetSession(string sessionId);
 
         /// <summary>
         /// Get one of the caller&#39;s live sessions
@@ -44,9 +44,9 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionId"></param>
+        /// <param name="sessionId">A session ID</param>
         /// <returns>ApiResponse of GetSessionResponse</returns>
-        ApiResponse<GetSessionResponse> GetSessionWithHttpInfo(Guid sessionId);
+        ApiResponse<GetSessionResponse> GetSessionWithHttpInfo(string sessionId);
         /// <summary>
         /// List the caller&#39;s live sessions
         /// </summary>
@@ -85,10 +85,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionId"></param>
+        /// <param name="sessionId">A session ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSessionResponse</returns>
-        System.Threading.Tasks.Task<GetSessionResponse> GetSessionAsync(Guid sessionId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetSessionResponse> GetSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get one of the caller&#39;s live sessions
@@ -97,10 +97,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionId"></param>
+        /// <param name="sessionId">A session ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSessionResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSessionResponse>> GetSessionWithHttpInfoAsync(Guid sessionId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetSessionResponse>> GetSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the caller&#39;s live sessions
         /// </summary>
@@ -345,9 +345,9 @@ namespace Qualithm.Platform.Api
         /// Get one of the caller&#39;s live sessions 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionId"></param>
+        /// <param name="sessionId">A session ID</param>
         /// <returns>GetSessionResponse</returns>
-        public GetSessionResponse GetSession(Guid sessionId)
+        public GetSessionResponse GetSession(string sessionId)
         {
             Qualithm.Platform.Client.ApiResponse<GetSessionResponse> localVarResponse = GetSessionWithHttpInfo(sessionId);
             return localVarResponse.Data;
@@ -357,10 +357,14 @@ namespace Qualithm.Platform.Api
         /// Get one of the caller&#39;s live sessions 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionId"></param>
+        /// <param name="sessionId">A session ID</param>
         /// <returns>ApiResponse of GetSessionResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<GetSessionResponse> GetSessionWithHttpInfo(Guid sessionId)
+        public Qualithm.Platform.Client.ApiResponse<GetSessionResponse> GetSessionWithHttpInfo(string sessionId)
         {
+            // verify the required parameter 'sessionId' is set
+            if (sessionId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'sessionId' when calling SessionsApi->GetSession");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -402,10 +406,10 @@ namespace Qualithm.Platform.Api
         /// Get one of the caller&#39;s live sessions 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionId"></param>
+        /// <param name="sessionId">A session ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSessionResponse</returns>
-        public async System.Threading.Tasks.Task<GetSessionResponse> GetSessionAsync(Guid sessionId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetSessionResponse> GetSessionAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<GetSessionResponse> localVarResponse = await GetSessionWithHttpInfoAsync(sessionId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -415,11 +419,15 @@ namespace Qualithm.Platform.Api
         /// Get one of the caller&#39;s live sessions 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="sessionId"></param>
+        /// <param name="sessionId">A session ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSessionResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetSessionResponse>> GetSessionWithHttpInfoAsync(Guid sessionId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetSessionResponse>> GetSessionWithHttpInfoAsync(string sessionId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'sessionId' is set
+            if (sessionId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'sessionId' when calling SessionsApi->GetSession");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 

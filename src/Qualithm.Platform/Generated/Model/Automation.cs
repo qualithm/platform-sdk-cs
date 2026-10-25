@@ -42,9 +42,9 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Automation" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="teamId">teamId (required).</param>
-        /// <param name="spaceId">Null for a team-wide automation (required).</param>
+        /// <param name="id">An automation ID (required).</param>
+        /// <param name="teamId">A team ID (required).</param>
+        /// <param name="spaceId">A space ID (required).</param>
         /// <param name="spaceName">spaceName (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="enabled">enabled (required).</param>
@@ -52,9 +52,19 @@ namespace Qualithm.Platform.Model
         /// <param name="createdAt">ISO 8601 time (required).</param>
         /// <param name="updatedAt">ISO 8601 time (required).</param>
         /// <param name="templateDrift">On a single read of a template-built automation: true when its chain no longer matches its template.</param>
-        public Automation(Guid id = default, Guid teamId = default, Guid? spaceId = default, string spaceName = default, string name = default, bool enabled = default, AutomationPayload payload = default, string createdAt = default, string updatedAt = default, bool templateDrift = default)
+        public Automation(string id = default, string teamId = default, string spaceId = default, string spaceName = default, string name = default, bool enabled = default, AutomationPayload payload = default, string createdAt = default, string updatedAt = default, bool templateDrift = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Automation and cannot be null");
+            }
             this.Id = id;
+            // to ensure "teamId" is required (not null)
+            if (teamId == null)
+            {
+                throw new ArgumentNullException("teamId is a required property for Automation and cannot be null");
+            }
             this.TeamId = teamId;
             // to ensure "spaceId" is required (not null)
             if (spaceId == null)
@@ -97,23 +107,34 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// An automation ID
         /// </summary>
+        /// <value>An automation ID</value>
+        /*
+        <example>aut_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets TeamId
+        /// A team ID
         /// </summary>
+        /// <value>A team ID</value>
+        /*
+        <example>tm_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "teamId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid TeamId { get; set; }
+        public string TeamId { get; set; }
 
         /// <summary>
-        /// Null for a team-wide automation
+        /// A space ID
         /// </summary>
-        /// <value>Null for a team-wide automation</value>
+        /// <value>A space ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "spaceId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid? SpaceId { get; set; }
+        public string SpaceId { get; set; }
 
         /// <summary>
         /// Gets or Sets SpaceName
@@ -199,27 +220,27 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^aut_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }
             }
 
             if (this.TeamId != null) {
-                // TeamId (Guid) pattern
-                Regex regexTeamId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexTeamId.Match(this.TeamId.ToString()).Success)
+                // TeamId (string) pattern
+                Regex regexTeamId = new Regex(@"^tm_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexTeamId.Match(this.TeamId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TeamId, must match a pattern of " + regexTeamId, new [] { "TeamId" });
                 }
             }
 
             if (this.SpaceId != null) {
-                // SpaceId (Guid?) pattern
-                Regex regexSpaceId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId.ToString()).Success)
+                // SpaceId (string) pattern
+                Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexSpaceId.Match(this.SpaceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }

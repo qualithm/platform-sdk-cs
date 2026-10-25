@@ -35,7 +35,7 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <returns>GetBillingSummaryResponse</returns>
-        GetBillingSummaryResponse GetBillingSummary(Guid teamId);
+        GetBillingSummaryResponse GetBillingSummary(string teamId);
 
         /// <summary>
         /// Get the workspace&#39;s plan, usage, price and add-ons
@@ -46,7 +46,7 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <returns>ApiResponse of GetBillingSummaryResponse</returns>
-        ApiResponse<GetBillingSummaryResponse> GetBillingSummaryWithHttpInfo(Guid teamId);
+        ApiResponse<GetBillingSummaryResponse> GetBillingSummaryWithHttpInfo(string teamId);
         /// <summary>
         /// List the workspace&#39;s invoices
         /// </summary>
@@ -55,7 +55,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListInvoicesResponse</returns>
-        ListInvoicesResponse ListInvoices(Guid teamId, long? page = default, int? limit = default);
+        ListInvoicesResponse ListInvoices(string teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the workspace&#39;s invoices
@@ -68,7 +68,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListInvoicesResponse</returns>
-        ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
+        ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(string teamId, long? page = default, int? limit = default);
         /// <summary>
         /// Preview what moving to another paid tier would cost
         /// </summary>
@@ -76,7 +76,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <returns>PreviewTierChangeResponse</returns>
-        PreviewTierChangeResponse PreviewTierChange(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest);
+        PreviewTierChangeResponse PreviewTierChange(string teamId, PreviewTierChangeRequest previewTierChangeRequest);
 
         /// <summary>
         /// Preview what moving to another paid tier would cost
@@ -88,7 +88,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <returns>ApiResponse of PreviewTierChangeResponse</returns>
-        ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest);
+        ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(string teamId, PreviewTierChangeRequest previewTierChangeRequest);
         #endregion Synchronous Operations
     }
 
@@ -108,7 +108,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBillingSummaryResponse</returns>
-        System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get the workspace&#39;s plan, usage, price and add-ons
@@ -120,7 +120,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBillingSummaryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetBillingSummaryResponse>> GetBillingSummaryWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetBillingSummaryResponse>> GetBillingSummaryWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s invoices
         /// </summary>
@@ -133,7 +133,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInvoicesResponse</returns>
-        System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s invoices
@@ -147,7 +147,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInvoicesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Preview what moving to another paid tier would cost
         /// </summary>
@@ -159,7 +159,7 @@ namespace Qualithm.Platform.Api
         /// <param name="previewTierChangeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PreviewTierChangeResponse</returns>
-        System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Preview what moving to another paid tier would cost
@@ -172,7 +172,7 @@ namespace Qualithm.Platform.Api
         /// <param name="previewTierChangeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PreviewTierChangeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -392,7 +392,7 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <returns>GetBillingSummaryResponse</returns>
-        public GetBillingSummaryResponse GetBillingSummary(Guid teamId)
+        public GetBillingSummaryResponse GetBillingSummary(string teamId)
         {
             Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> localVarResponse = GetBillingSummaryWithHttpInfo(teamId);
             return localVarResponse.Data;
@@ -404,8 +404,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <returns>ApiResponse of GetBillingSummaryResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> GetBillingSummaryWithHttpInfo(Guid teamId)
+        public Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> GetBillingSummaryWithHttpInfo(string teamId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling BillingApi->GetBillingSummary");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -450,7 +454,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetBillingSummaryResponse</returns>
-        public async System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(string teamId, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse> localVarResponse = await GetBillingSummaryWithHttpInfoAsync(teamId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -463,8 +467,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetBillingSummaryResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse>> GetBillingSummaryWithHttpInfoAsync(Guid teamId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetBillingSummaryResponse>> GetBillingSummaryWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling BillingApi->GetBillingSummary");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -513,7 +521,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListInvoicesResponse</returns>
-        public ListInvoicesResponse ListInvoices(Guid teamId, long? page = default, int? limit = default)
+        public ListInvoicesResponse ListInvoices(string teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = ListInvoicesWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
@@ -527,8 +535,12 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListInvoicesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(string teamId, long? page = default, int? limit = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling BillingApi->ListInvoices");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -583,7 +595,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInvoicesResponse</returns>
-        public async System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = await ListInvoicesWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -598,8 +610,12 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInvoicesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling BillingApi->ListInvoices");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -655,7 +671,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <returns>PreviewTierChangeResponse</returns>
-        public PreviewTierChangeResponse PreviewTierChange(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest)
+        public PreviewTierChangeResponse PreviewTierChange(string teamId, PreviewTierChangeRequest previewTierChangeRequest)
         {
             Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = PreviewTierChangeWithHttpInfo(teamId, previewTierChangeRequest);
             return localVarResponse.Data;
@@ -668,8 +684,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
         /// <returns>ApiResponse of PreviewTierChangeResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest)
+        public Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(string teamId, PreviewTierChangeRequest previewTierChangeRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling BillingApi->PreviewTierChange");
+
             // verify the required parameter 'previewTierChangeRequest' is set
             if (previewTierChangeRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'previewTierChangeRequest' when calling BillingApi->PreviewTierChange");
@@ -721,7 +741,7 @@ namespace Qualithm.Platform.Api
         /// <param name="previewTierChangeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PreviewTierChangeResponse</returns>
-        public async System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = await PreviewTierChangeWithHttpInfoAsync(teamId, previewTierChangeRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -735,8 +755,12 @@ namespace Qualithm.Platform.Api
         /// <param name="previewTierChangeRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PreviewTierChangeResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(Guid teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling BillingApi->PreviewTierChange");
+
             // verify the required parameter 'previewTierChangeRequest' is set
             if (previewTierChangeRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'previewTierChangeRequest' when calling BillingApi->PreviewTierChange");

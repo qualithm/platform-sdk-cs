@@ -38,7 +38,7 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="UpdateAutomationRequest" /> class.
         /// </summary>
         /// <param name="name">name.</param>
-        /// <param name="spaceId">A space id; null or empty clears the scope.</param>
+        /// <param name="spaceId">A space ID.</param>
         /// <param name="payload">payload.</param>
         /// <param name="template">A template id to re-expand the chain from; exclusive with &#x60;payload&#x60;.</param>
         /// <param name="varParams">The template&#39;s slot values, keyed by slot name; used with &#x60;template&#x60;.</param>
@@ -58,9 +58,12 @@ namespace Qualithm.Platform.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// A space id; null or empty clears the scope
+        /// A space ID
         /// </summary>
-        /// <value>A space id; null or empty clears the scope</value>
+        /// <value>A space ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "spaceId", EmitDefaultValue = true)]
         public string SpaceId { get; set; }
 
@@ -117,6 +120,15 @@ namespace Qualithm.Platform.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            if (this.SpaceId != null) {
+                // SpaceId (string) pattern
+                Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexSpaceId.Match(this.SpaceId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
+                }
+            }
+
             yield break;
         }
     }
