@@ -42,8 +42,8 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="Session" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="accountId">accountId (required).</param>
+        /// <param name="id">A session ID (required).</param>
+        /// <param name="accountId">An account ID (required).</param>
         /// <param name="userAgent">userAgent (required).</param>
         /// <param name="ipAddress">ipAddress (required).</param>
         /// <param name="mfaVerified">Whether the session passed MFA (required).</param>
@@ -52,9 +52,19 @@ namespace Qualithm.Platform.Model
         /// <param name="lastUsedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
         /// <param name="expiresAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
         /// <param name="revokedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public Session(Guid id = default, Guid accountId = default, string userAgent = default, string ipAddress = default, bool mfaVerified = default, bool thisDevice = default, string createdAt = default, string lastUsedAt = default, string expiresAt = default, string revokedAt = default)
+        public Session(string id = default, string accountId = default, string userAgent = default, string ipAddress = default, bool mfaVerified = default, bool thisDevice = default, string createdAt = default, string lastUsedAt = default, string expiresAt = default, string revokedAt = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for Session and cannot be null");
+            }
             this.Id = id;
+            // to ensure "accountId" is required (not null)
+            if (accountId == null)
+            {
+                throw new ArgumentNullException("accountId is a required property for Session and cannot be null");
+            }
             this.AccountId = accountId;
             // to ensure "userAgent" is required (not null)
             if (userAgent == null)
@@ -97,16 +107,24 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// A session ID
         /// </summary>
+        /// <value>A session ID</value>
+        /*
+        <example>ses_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets AccountId
+        /// An account ID
         /// </summary>
+        /// <value>An account ID</value>
+        /*
+        <example>acc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "accountId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid AccountId { get; set; }
+        public string AccountId { get; set; }
 
         /// <summary>
         /// Gets or Sets UserAgent
@@ -201,18 +219,18 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^ses_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }
             }
 
             if (this.AccountId != null) {
-                // AccountId (Guid) pattern
-                Regex regexAccountId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexAccountId.Match(this.AccountId.ToString()).Success)
+                // AccountId (string) pattern
+                Regex regexAccountId = new Regex(@"^acc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexAccountId.Match(this.AccountId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AccountId, must match a pattern of " + regexAccountId, new [] { "AccountId" });
                 }

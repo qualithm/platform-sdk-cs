@@ -79,18 +79,28 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="AuditEvent" /> class.
         /// </summary>
-        /// <param name="id">id (required).</param>
-        /// <param name="teamId">teamId (required).</param>
+        /// <param name="id">An audit event ID (required).</param>
+        /// <param name="teamId">A team ID (required).</param>
         /// <param name="actorKind">actorKind (required).</param>
-        /// <param name="actorId">The member or device that acted; null for the system (required).</param>
+        /// <param name="actorId">An ID of any type (required).</param>
         /// <param name="action">Dot-namespaced action, e.g. &#x60;device.claim&#x60; (required).</param>
         /// <param name="targetKind">What the action acted on, e.g. &#x60;device&#x60; (required).</param>
-        /// <param name="targetId">targetId (required).</param>
+        /// <param name="targetId">An ID of any type (required).</param>
         /// <param name="metadata">Non-sensitive context for the action (required).</param>
         /// <param name="occurredAt">ISO 8601 time (required).</param>
-        public AuditEvent(Guid id = default, Guid teamId = default, ActorKindEnum actorKind = default, string actorId = default, string action = default, string targetKind = default, string targetId = default, Object metadata = default, string occurredAt = default)
+        public AuditEvent(string id = default, string teamId = default, ActorKindEnum actorKind = default, string actorId = default, string action = default, string targetKind = default, string targetId = default, Object metadata = default, string occurredAt = default)
         {
+            // to ensure "id" is required (not null)
+            if (id == null)
+            {
+                throw new ArgumentNullException("id is a required property for AuditEvent and cannot be null");
+            }
             this.Id = id;
+            // to ensure "teamId" is required (not null)
+            if (teamId == null)
+            {
+                throw new ArgumentNullException("teamId is a required property for AuditEvent and cannot be null");
+            }
             this.TeamId = teamId;
             this.ActorKind = actorKind;
             // to ensure "actorId" is required (not null)
@@ -132,21 +142,32 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// Gets or Sets Id
+        /// An audit event ID
         /// </summary>
+        /// <value>An audit event ID</value>
+        /*
+        <example>evt_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         /// <summary>
-        /// Gets or Sets TeamId
+        /// A team ID
         /// </summary>
+        /// <value>A team ID</value>
+        /*
+        <example>tm_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "teamId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid TeamId { get; set; }
+        public string TeamId { get; set; }
 
         /// <summary>
-        /// The member or device that acted; null for the system
+        /// An ID of any type
         /// </summary>
-        /// <value>The member or device that acted; null for the system</value>
+        /// <value>An ID of any type</value>
+        /*
+        <example>dev_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "actorId", IsRequired = true, EmitDefaultValue = true)]
         public string ActorId { get; set; }
 
@@ -165,8 +186,12 @@ namespace Qualithm.Platform.Model
         public string TargetKind { get; set; }
 
         /// <summary>
-        /// Gets or Sets TargetId
+        /// An ID of any type
         /// </summary>
+        /// <value>An ID of any type</value>
+        /*
+        <example>dev_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "targetId", IsRequired = true, EmitDefaultValue = true)]
         public string TargetId { get; set; }
 
@@ -222,20 +247,38 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.Id != null) {
-                // Id (Guid) pattern
-                Regex regexId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id.ToString()).Success)
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^evt_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
                 }
             }
 
             if (this.TeamId != null) {
-                // TeamId (Guid) pattern
-                Regex regexTeamId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexTeamId.Match(this.TeamId.ToString()).Success)
+                // TeamId (string) pattern
+                Regex regexTeamId = new Regex(@"^tm_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexTeamId.Match(this.TeamId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TeamId, must match a pattern of " + regexTeamId, new [] { "TeamId" });
+                }
+            }
+
+            if (this.ActorId != null) {
+                // ActorId (string) pattern
+                Regex regexActorId = new Regex(@"^(?:acc|tok|evt|auth|aut|cmpn|cap|cmd|cred|dash|dev|eml|enr|inv|doc|mem|otp|plan|psh|sub|run|ses|spc|dgst|sev|tm|tev|upt|use|wks)_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexActorId.Match(this.ActorId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ActorId, must match a pattern of " + regexActorId, new [] { "ActorId" });
+                }
+            }
+
+            if (this.TargetId != null) {
+                // TargetId (string) pattern
+                Regex regexTargetId = new Regex(@"^(?:acc|tok|evt|auth|aut|cmpn|cap|cmd|cred|dash|dev|eml|enr|inv|doc|mem|otp|plan|psh|sub|run|ses|spc|dgst|sev|tm|tev|upt|use|wks)_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexTargetId.Match(this.TargetId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TargetId, must match a pattern of " + regexTargetId, new [] { "TargetId" });
                 }
             }
 

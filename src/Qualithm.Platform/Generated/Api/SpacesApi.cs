@@ -36,7 +36,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
         /// <returns>CreateSpaceResponse</returns>
-        CreateSpaceResponse CreateSpace(Guid teamId, CreateSpaceRequest createSpaceRequest);
+        CreateSpaceResponse CreateSpace(string teamId, CreateSpaceRequest createSpaceRequest);
 
         /// <summary>
         /// Create a space in a zone
@@ -48,15 +48,15 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
         /// <returns>ApiResponse of CreateSpaceResponse</returns>
-        ApiResponse<CreateSpaceResponse> CreateSpaceWithHttpInfo(Guid teamId, CreateSpaceRequest createSpaceRequest);
+        ApiResponse<CreateSpaceResponse> CreateSpaceWithHttpInfo(string teamId, CreateSpaceRequest createSpaceRequest);
         /// <summary>
         /// Delete a space and its devices
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
-        /// <returns>DeleteSpaceResponse</returns>
-        DeleteSpaceResponse DeleteSpace(Guid teamId, Guid spaceId);
+        /// <param name="spaceId">A space ID</param>
+        /// <returns></returns>
+        void DeleteSpace(string teamId, string spaceId);
 
         /// <summary>
         /// Delete a space and its devices
@@ -66,17 +66,17 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
-        /// <returns>ApiResponse of DeleteSpaceResponse</returns>
-        ApiResponse<DeleteSpaceResponse> DeleteSpaceWithHttpInfo(Guid teamId, Guid spaceId);
+        /// <param name="spaceId">A space ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteSpaceWithHttpInfo(string teamId, string spaceId);
         /// <summary>
         /// Get a space
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <returns>GetSpaceResponse</returns>
-        GetSpaceResponse GetSpace(Guid teamId, Guid spaceId);
+        GetSpaceResponse GetSpace(string teamId, string spaceId);
 
         /// <summary>
         /// Get a space
@@ -86,9 +86,9 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <returns>ApiResponse of GetSpaceResponse</returns>
-        ApiResponse<GetSpaceResponse> GetSpaceWithHttpInfo(Guid teamId, Guid spaceId);
+        ApiResponse<GetSpaceResponse> GetSpaceWithHttpInfo(string teamId, string spaceId);
         /// <summary>
         /// List the workspace&#39;s spaces
         /// </summary>
@@ -98,7 +98,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListSpacesResponse</returns>
-        ListSpacesResponse ListSpaces(Guid teamId, string? zone = default, long? page = default, int? limit = default);
+        ListSpacesResponse ListSpaces(string teamId, string? zone = default, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the workspace&#39;s spaces
@@ -112,16 +112,16 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListSpacesResponse</returns>
-        ApiResponse<ListSpacesResponse> ListSpacesWithHttpInfo(Guid teamId, string? zone = default, long? page = default, int? limit = default);
+        ApiResponse<ListSpacesResponse> ListSpacesWithHttpInfo(string teamId, string? zone = default, long? page = default, int? limit = default);
         /// <summary>
         /// Rename a space
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
-        /// <returns>UpdateSpaceResponse</returns>
-        UpdateSpaceResponse UpdateSpace(Guid teamId, Guid spaceId, UpdateSpaceRequest updateSpaceRequest);
+        /// <returns></returns>
+        void UpdateSpace(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest);
 
         /// <summary>
         /// Rename a space
@@ -131,10 +131,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
-        /// <returns>ApiResponse of UpdateSpaceResponse</returns>
-        ApiResponse<UpdateSpaceResponse> UpdateSpaceWithHttpInfo(Guid teamId, Guid spaceId, UpdateSpaceRequest updateSpaceRequest);
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdateSpaceWithHttpInfo(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest);
         #endregion Synchronous Operations
     }
 
@@ -155,7 +155,7 @@ namespace Qualithm.Platform.Api
         /// <param name="createSpaceRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSpaceResponse</returns>
-        System.Threading.Tasks.Task<CreateSpaceResponse> CreateSpaceAsync(Guid teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateSpaceResponse> CreateSpaceAsync(string teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a space in a zone
@@ -168,7 +168,7 @@ namespace Qualithm.Platform.Api
         /// <param name="createSpaceRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSpaceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSpaceResponse>> CreateSpaceWithHttpInfoAsync(Guid teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateSpaceResponse>> CreateSpaceWithHttpInfoAsync(string teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete a space and its devices
         /// </summary>
@@ -177,10 +177,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteSpaceResponse</returns>
-        System.Threading.Tasks.Task<DeleteSpaceResponse> DeleteSpaceAsync(Guid teamId, Guid spaceId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteSpaceAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete a space and its devices
@@ -190,10 +190,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteSpaceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteSpaceResponse>> DeleteSpaceWithHttpInfoAsync(Guid teamId, Guid spaceId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSpaceWithHttpInfoAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get a space
         /// </summary>
@@ -202,10 +202,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSpaceResponse</returns>
-        System.Threading.Tasks.Task<GetSpaceResponse> GetSpaceAsync(Guid teamId, Guid spaceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetSpaceResponse> GetSpaceAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get a space
@@ -215,10 +215,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSpaceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetSpaceResponse>> GetSpaceWithHttpInfoAsync(Guid teamId, Guid spaceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetSpaceResponse>> GetSpaceWithHttpInfoAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s spaces
         /// </summary>
@@ -232,7 +232,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSpacesResponse</returns>
-        System.Threading.Tasks.Task<ListSpacesResponse> ListSpacesAsync(Guid teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListSpacesResponse> ListSpacesAsync(string teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s spaces
@@ -247,7 +247,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSpacesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSpacesResponse>> ListSpacesWithHttpInfoAsync(Guid teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListSpacesResponse>> ListSpacesWithHttpInfoAsync(string teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rename a space
         /// </summary>
@@ -256,11 +256,11 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UpdateSpaceResponse</returns>
-        System.Threading.Tasks.Task<UpdateSpaceResponse> UpdateSpaceAsync(Guid teamId, Guid spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdateSpaceAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Rename a space
@@ -270,11 +270,11 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UpdateSpaceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateSpaceResponse>> UpdateSpaceWithHttpInfoAsync(Guid teamId, Guid spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateSpaceWithHttpInfoAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -495,7 +495,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
         /// <returns>CreateSpaceResponse</returns>
-        public CreateSpaceResponse CreateSpace(Guid teamId, CreateSpaceRequest createSpaceRequest)
+        public CreateSpaceResponse CreateSpace(string teamId, CreateSpaceRequest createSpaceRequest)
         {
             Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> localVarResponse = CreateSpaceWithHttpInfo(teamId, createSpaceRequest);
             return localVarResponse.Data;
@@ -508,8 +508,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
         /// <returns>ApiResponse of CreateSpaceResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> CreateSpaceWithHttpInfo(Guid teamId, CreateSpaceRequest createSpaceRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> CreateSpaceWithHttpInfo(string teamId, CreateSpaceRequest createSpaceRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->CreateSpace");
+
             // verify the required parameter 'createSpaceRequest' is set
             if (createSpaceRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createSpaceRequest' when calling SpacesApi->CreateSpace");
@@ -561,7 +565,7 @@ namespace Qualithm.Platform.Api
         /// <param name="createSpaceRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSpaceResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSpaceResponse> CreateSpaceAsync(Guid teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateSpaceResponse> CreateSpaceAsync(string teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> localVarResponse = await CreateSpaceWithHttpInfoAsync(teamId, createSpaceRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -575,8 +579,12 @@ namespace Qualithm.Platform.Api
         /// <param name="createSpaceRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSpaceResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse>> CreateSpaceWithHttpInfoAsync(Guid teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse>> CreateSpaceWithHttpInfoAsync(string teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->CreateSpace");
+
             // verify the required parameter 'createSpaceRequest' is set
             if (createSpaceRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createSpaceRequest' when calling SpacesApi->CreateSpace");
@@ -628,12 +636,11 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
-        /// <returns>DeleteSpaceResponse</returns>
-        public DeleteSpaceResponse DeleteSpace(Guid teamId, Guid spaceId)
+        /// <param name="spaceId">A space ID</param>
+        /// <returns></returns>
+        public void DeleteSpace(string teamId, string spaceId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteSpaceResponse> localVarResponse = DeleteSpaceWithHttpInfo(teamId, spaceId);
-            return localVarResponse.Data;
+            DeleteSpaceWithHttpInfo(teamId, spaceId);
         }
 
         /// <summary>
@@ -641,10 +648,18 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
-        /// <returns>ApiResponse of DeleteSpaceResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteSpaceResponse> DeleteSpaceWithHttpInfo(Guid teamId, Guid spaceId)
+        /// <param name="spaceId">A space ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteSpaceWithHttpInfo(string teamId, string spaceId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->DeleteSpace");
+
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'spaceId' when calling SpacesApi->DeleteSpace");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -672,7 +687,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteSpaceResponse>("/v1/teams/{teamId}/spaces/{spaceId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Object>("/v1/teams/{teamId}/spaces/{spaceId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -688,13 +703,12 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteSpaceResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteSpaceResponse> DeleteSpaceAsync(Guid teamId, Guid spaceId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteSpaceAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteSpaceResponse> localVarResponse = await DeleteSpaceWithHttpInfoAsync(teamId, spaceId, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await DeleteSpaceWithHttpInfoAsync(teamId, spaceId, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -702,11 +716,19 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteSpaceResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteSpaceResponse>> DeleteSpaceWithHttpInfoAsync(Guid teamId, Guid spaceId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteSpaceWithHttpInfoAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->DeleteSpace");
+
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'spaceId' when calling SpacesApi->DeleteSpace");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -737,7 +759,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteSpaceResponse>("/v1/teams/{teamId}/spaces/{spaceId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/v1/teams/{teamId}/spaces/{spaceId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -753,9 +775,9 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <returns>GetSpaceResponse</returns>
-        public GetSpaceResponse GetSpace(Guid teamId, Guid spaceId)
+        public GetSpaceResponse GetSpace(string teamId, string spaceId)
         {
             Qualithm.Platform.Client.ApiResponse<GetSpaceResponse> localVarResponse = GetSpaceWithHttpInfo(teamId, spaceId);
             return localVarResponse.Data;
@@ -766,10 +788,18 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <returns>ApiResponse of GetSpaceResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<GetSpaceResponse> GetSpaceWithHttpInfo(Guid teamId, Guid spaceId)
+        public Qualithm.Platform.Client.ApiResponse<GetSpaceResponse> GetSpaceWithHttpInfo(string teamId, string spaceId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->GetSpace");
+
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'spaceId' when calling SpacesApi->GetSpace");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -813,10 +843,10 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetSpaceResponse</returns>
-        public async System.Threading.Tasks.Task<GetSpaceResponse> GetSpaceAsync(Guid teamId, Guid spaceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetSpaceResponse> GetSpaceAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<GetSpaceResponse> localVarResponse = await GetSpaceWithHttpInfoAsync(teamId, spaceId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -827,11 +857,19 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetSpaceResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetSpaceResponse>> GetSpaceWithHttpInfoAsync(Guid teamId, Guid spaceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetSpaceResponse>> GetSpaceWithHttpInfoAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->GetSpace");
+
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'spaceId' when calling SpacesApi->GetSpace");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -882,7 +920,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListSpacesResponse</returns>
-        public ListSpacesResponse ListSpaces(Guid teamId, string? zone = default, long? page = default, int? limit = default)
+        public ListSpacesResponse ListSpaces(string teamId, string? zone = default, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> localVarResponse = ListSpacesWithHttpInfo(teamId, zone, page, limit);
             return localVarResponse.Data;
@@ -897,8 +935,12 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListSpacesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> ListSpacesWithHttpInfo(Guid teamId, string? zone = default, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> ListSpacesWithHttpInfo(string teamId, string? zone = default, long? page = default, int? limit = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->ListSpaces");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -958,7 +1000,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSpacesResponse</returns>
-        public async System.Threading.Tasks.Task<ListSpacesResponse> ListSpacesAsync(Guid teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListSpacesResponse> ListSpacesAsync(string teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> localVarResponse = await ListSpacesWithHttpInfoAsync(teamId, zone, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -974,8 +1016,12 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSpacesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListSpacesResponse>> ListSpacesWithHttpInfoAsync(Guid teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListSpacesResponse>> ListSpacesWithHttpInfoAsync(string teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->ListSpaces");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1033,13 +1079,12 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
-        /// <returns>UpdateSpaceResponse</returns>
-        public UpdateSpaceResponse UpdateSpace(Guid teamId, Guid spaceId, UpdateSpaceRequest updateSpaceRequest)
+        /// <returns></returns>
+        public void UpdateSpace(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateSpaceResponse> localVarResponse = UpdateSpaceWithHttpInfo(teamId, spaceId, updateSpaceRequest);
-            return localVarResponse.Data;
+            UpdateSpaceWithHttpInfo(teamId, spaceId, updateSpaceRequest);
         }
 
         /// <summary>
@@ -1047,11 +1092,19 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
-        /// <returns>ApiResponse of UpdateSpaceResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<UpdateSpaceResponse> UpdateSpaceWithHttpInfo(Guid teamId, Guid spaceId, UpdateSpaceRequest updateSpaceRequest)
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Qualithm.Platform.Client.ApiResponse<Object> UpdateSpaceWithHttpInfo(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->UpdateSpace");
+
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'spaceId' when calling SpacesApi->UpdateSpace");
+
             // verify the required parameter 'updateSpaceRequest' is set
             if (updateSpaceRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'updateSpaceRequest' when calling SpacesApi->UpdateSpace");
@@ -1085,7 +1138,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<UpdateSpaceResponse>("/v1/teams/{teamId}/spaces/{spaceId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<Object>("/v1/teams/{teamId}/spaces/{spaceId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1101,14 +1154,13 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UpdateSpaceResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateSpaceResponse> UpdateSpaceAsync(Guid teamId, Guid spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdateSpaceAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateSpaceResponse> localVarResponse = await UpdateSpaceWithHttpInfoAsync(teamId, spaceId, updateSpaceRequest, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await UpdateSpaceWithHttpInfoAsync(teamId, spaceId, updateSpaceRequest, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -1116,12 +1168,20 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId"></param>
+        /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UpdateSpaceResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateSpaceResponse>> UpdateSpaceWithHttpInfoAsync(Guid teamId, Guid spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UpdateSpaceWithHttpInfoAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling SpacesApi->UpdateSpace");
+
+            // verify the required parameter 'spaceId' is set
+            if (spaceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'spaceId' when calling SpacesApi->UpdateSpace");
+
             // verify the required parameter 'updateSpaceRequest' is set
             if (updateSpaceRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'updateSpaceRequest' when calling SpacesApi->UpdateSpace");
@@ -1158,7 +1218,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateSpaceResponse>("/v1/teams/{teamId}/spaces/{spaceId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/v1/teams/{teamId}/spaces/{spaceId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

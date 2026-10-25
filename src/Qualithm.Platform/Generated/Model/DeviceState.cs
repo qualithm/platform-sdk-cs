@@ -42,14 +42,24 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="DeviceState" /> class.
         /// </summary>
-        /// <param name="deviceId">deviceId (required).</param>
-        /// <param name="spaceId">spaceId (required).</param>
+        /// <param name="deviceId">A device ID (required).</param>
+        /// <param name="spaceId">A space ID (required).</param>
         /// <param name="online">Whether the device was seen within the offline window (required).</param>
         /// <param name="lastSeenAt">Last sighting, epoch milliseconds (required).</param>
         /// <param name="metrics">The device&#39;s current metrics (required).</param>
-        public DeviceState(Guid deviceId = default, Guid spaceId = default, bool online = default, decimal lastSeenAt = default, Dictionary<string, decimal> metrics = default)
+        public DeviceState(string deviceId = default, string spaceId = default, bool online = default, decimal lastSeenAt = default, Dictionary<string, decimal> metrics = default)
         {
+            // to ensure "deviceId" is required (not null)
+            if (deviceId == null)
+            {
+                throw new ArgumentNullException("deviceId is a required property for DeviceState and cannot be null");
+            }
             this.DeviceId = deviceId;
+            // to ensure "spaceId" is required (not null)
+            if (spaceId == null)
+            {
+                throw new ArgumentNullException("spaceId is a required property for DeviceState and cannot be null");
+            }
             this.SpaceId = spaceId;
             this.Online = online;
             this.LastSeenAt = lastSeenAt;
@@ -62,16 +72,24 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// Gets or Sets DeviceId
+        /// A device ID
         /// </summary>
+        /// <value>A device ID</value>
+        /*
+        <example>dev_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "deviceId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid DeviceId { get; set; }
+        public string DeviceId { get; set; }
 
         /// <summary>
-        /// Gets or Sets SpaceId
+        /// A space ID
         /// </summary>
+        /// <value>A space ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "spaceId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid SpaceId { get; set; }
+        public string SpaceId { get; set; }
 
         /// <summary>
         /// Whether the device was seen within the offline window
@@ -128,18 +146,18 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.DeviceId != null) {
-                // DeviceId (Guid) pattern
-                Regex regexDeviceId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexDeviceId.Match(this.DeviceId.ToString()).Success)
+                // DeviceId (string) pattern
+                Regex regexDeviceId = new Regex(@"^dev_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexDeviceId.Match(this.DeviceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DeviceId, must match a pattern of " + regexDeviceId, new [] { "DeviceId" });
                 }
             }
 
             if (this.SpaceId != null) {
-                // SpaceId (Guid) pattern
-                Regex regexSpaceId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId.ToString()).Success)
+                // SpaceId (string) pattern
+                Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexSpaceId.Match(this.SpaceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }

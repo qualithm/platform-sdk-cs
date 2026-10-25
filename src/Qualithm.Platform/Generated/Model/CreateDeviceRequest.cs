@@ -42,17 +42,26 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateDeviceRequest" /> class.
         /// </summary>
-        /// <param name="spaceId">spaceId (required).</param>
-        public CreateDeviceRequest(Guid spaceId = default)
+        /// <param name="spaceId">A space ID (required).</param>
+        public CreateDeviceRequest(string spaceId = default)
         {
+            // to ensure "spaceId" is required (not null)
+            if (spaceId == null)
+            {
+                throw new ArgumentNullException("spaceId is a required property for CreateDeviceRequest and cannot be null");
+            }
             this.SpaceId = spaceId;
         }
 
         /// <summary>
-        /// Gets or Sets SpaceId
+        /// A space ID
         /// </summary>
+        /// <value>A space ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "spaceId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid SpaceId { get; set; }
+        public string SpaceId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -84,9 +93,9 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.SpaceId != null) {
-                // SpaceId (Guid) pattern
-                Regex regexSpaceId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId.ToString()).Success)
+                // SpaceId (string) pattern
+                Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexSpaceId.Match(this.SpaceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }
