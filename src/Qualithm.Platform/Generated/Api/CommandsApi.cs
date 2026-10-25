@@ -34,10 +34,10 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
         /// <returns>CreateDeviceCommandResponse</returns>
-        CreateDeviceCommandResponse CreateDeviceCommand(Guid teamId, Guid deviceId, CreateDeviceCommandRequest createDeviceCommandRequest);
+        CreateDeviceCommandResponse CreateDeviceCommand(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest);
 
         /// <summary>
         /// Send a command to a device
@@ -47,20 +47,20 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
         /// <returns>ApiResponse of CreateDeviceCommandResponse</returns>
-        ApiResponse<CreateDeviceCommandResponse> CreateDeviceCommandWithHttpInfo(Guid teamId, Guid deviceId, CreateDeviceCommandRequest createDeviceCommandRequest);
+        ApiResponse<CreateDeviceCommandResponse> CreateDeviceCommandWithHttpInfo(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest);
         /// <summary>
         /// List a device&#39;s recent command deliveries
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListDeviceCommandsResponse</returns>
-        ListDeviceCommandsResponse ListDeviceCommands(Guid teamId, Guid deviceId, long? page = default, int? limit = default);
+        ListDeviceCommandsResponse ListDeviceCommands(string teamId, string deviceId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List a device&#39;s recent command deliveries
@@ -70,11 +70,11 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListDeviceCommandsResponse</returns>
-        ApiResponse<ListDeviceCommandsResponse> ListDeviceCommandsWithHttpInfo(Guid teamId, Guid deviceId, long? page = default, int? limit = default);
+        ApiResponse<ListDeviceCommandsResponse> ListDeviceCommandsWithHttpInfo(string teamId, string deviceId, long? page = default, int? limit = default);
         #endregion Synchronous Operations
     }
 
@@ -92,11 +92,11 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCommandResponse</returns>
-        System.Threading.Tasks.Task<CreateDeviceCommandResponse> CreateDeviceCommandAsync(Guid teamId, Guid deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDeviceCommandResponse> CreateDeviceCommandAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Send a command to a device
@@ -106,11 +106,11 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCommandResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCommandResponse>> CreateDeviceCommandWithHttpInfoAsync(Guid teamId, Guid deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCommandResponse>> CreateDeviceCommandWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List a device&#39;s recent command deliveries
         /// </summary>
@@ -119,12 +119,12 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceCommandsResponse</returns>
-        System.Threading.Tasks.Task<ListDeviceCommandsResponse> ListDeviceCommandsAsync(Guid teamId, Guid deviceId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListDeviceCommandsResponse> ListDeviceCommandsAsync(string teamId, string deviceId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List a device&#39;s recent command deliveries
@@ -134,12 +134,12 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceCommandsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDeviceCommandsResponse>> ListDeviceCommandsWithHttpInfoAsync(Guid teamId, Guid deviceId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListDeviceCommandsResponse>> ListDeviceCommandsWithHttpInfoAsync(string teamId, string deviceId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -358,10 +358,10 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
         /// <returns>CreateDeviceCommandResponse</returns>
-        public CreateDeviceCommandResponse CreateDeviceCommand(Guid teamId, Guid deviceId, CreateDeviceCommandRequest createDeviceCommandRequest)
+        public CreateDeviceCommandResponse CreateDeviceCommand(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest)
         {
             Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> localVarResponse = CreateDeviceCommandWithHttpInfo(teamId, deviceId, createDeviceCommandRequest);
             return localVarResponse.Data;
@@ -372,11 +372,19 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
         /// <returns>ApiResponse of CreateDeviceCommandResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> CreateDeviceCommandWithHttpInfo(Guid teamId, Guid deviceId, CreateDeviceCommandRequest createDeviceCommandRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> CreateDeviceCommandWithHttpInfo(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CommandsApi->CreateDeviceCommand");
+
+            // verify the required parameter 'deviceId' is set
+            if (deviceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling CommandsApi->CreateDeviceCommand");
+
             // verify the required parameter 'createDeviceCommandRequest' is set
             if (createDeviceCommandRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createDeviceCommandRequest' when calling CommandsApi->CreateDeviceCommand");
@@ -426,11 +434,11 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCommandResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDeviceCommandResponse> CreateDeviceCommandAsync(Guid teamId, Guid deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDeviceCommandResponse> CreateDeviceCommandAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> localVarResponse = await CreateDeviceCommandWithHttpInfoAsync(teamId, deviceId, createDeviceCommandRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -441,12 +449,20 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCommandResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse>> CreateDeviceCommandWithHttpInfoAsync(Guid teamId, Guid deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse>> CreateDeviceCommandWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CommandsApi->CreateDeviceCommand");
+
+            // verify the required parameter 'deviceId' is set
+            if (deviceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling CommandsApi->CreateDeviceCommand");
+
             // verify the required parameter 'createDeviceCommandRequest' is set
             if (createDeviceCommandRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createDeviceCommandRequest' when calling CommandsApi->CreateDeviceCommand");
@@ -499,11 +515,11 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListDeviceCommandsResponse</returns>
-        public ListDeviceCommandsResponse ListDeviceCommands(Guid teamId, Guid deviceId, long? page = default, int? limit = default)
+        public ListDeviceCommandsResponse ListDeviceCommands(string teamId, string deviceId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListDeviceCommandsResponse> localVarResponse = ListDeviceCommandsWithHttpInfo(teamId, deviceId, page, limit);
             return localVarResponse.Data;
@@ -514,12 +530,20 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListDeviceCommandsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListDeviceCommandsResponse> ListDeviceCommandsWithHttpInfo(Guid teamId, Guid deviceId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListDeviceCommandsResponse> ListDeviceCommandsWithHttpInfo(string teamId, string deviceId, long? page = default, int? limit = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CommandsApi->ListDeviceCommands");
+
+            // verify the required parameter 'deviceId' is set
+            if (deviceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling CommandsApi->ListDeviceCommands");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -571,12 +595,12 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceCommandsResponse</returns>
-        public async System.Threading.Tasks.Task<ListDeviceCommandsResponse> ListDeviceCommandsAsync(Guid teamId, Guid deviceId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListDeviceCommandsResponse> ListDeviceCommandsAsync(string teamId, string deviceId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListDeviceCommandsResponse> localVarResponse = await ListDeviceCommandsWithHttpInfoAsync(teamId, deviceId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -587,13 +611,21 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceCommandsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceCommandsResponse>> ListDeviceCommandsWithHttpInfoAsync(Guid teamId, Guid deviceId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceCommandsResponse>> ListDeviceCommandsWithHttpInfoAsync(string teamId, string deviceId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CommandsApi->ListDeviceCommands");
+
+            // verify the required parameter 'deviceId' is set
+            if (deviceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling CommandsApi->ListDeviceCommands");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 

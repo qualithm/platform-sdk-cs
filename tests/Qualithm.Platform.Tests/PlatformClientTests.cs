@@ -6,8 +6,8 @@ namespace Qualithm.Platform.Tests;
 
 public class PlatformClientTests
 {
-    private static readonly Guid _teamId = Guid.Parse("1c2d3e4f-5a6b-4c7d-8e9f-0a1b2c3d4e5f");
-    private static readonly Guid _deviceId = Guid.Parse("0b9f8a1e-8c1d-4b6f-9a51-2f6c1e3d4a5b");
+    private const string _teamId = "tm_01JAYQ4T7Z9K3M5N8P2R6S0V1W";
+    private const string _deviceId = "dev_01JAYQ4T7Z9K3M5N8P2R6S0V1W";
 
     private static Func<string, string?> Env(params (string Name, string Value)[] values)
     {

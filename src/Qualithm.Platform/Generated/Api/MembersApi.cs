@@ -33,10 +33,10 @@ namespace Qualithm.Platform.Api
         /// Accept the caller&#39;s invite to the team
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamMemberRequest"></param>
         /// <returns>CreateTeamMemberResponse</returns>
-        CreateTeamMemberResponse CreateTeamMember(Guid teamId, CreateTeamMemberRequest createTeamMemberRequest);
+        CreateTeamMemberResponse CreateTeamMember(string teamId, CreateTeamMemberRequest createTeamMemberRequest);
 
         /// <summary>
         /// Accept the caller&#39;s invite to the team
@@ -45,10 +45,10 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamMemberRequest"></param>
         /// <returns>ApiResponse of CreateTeamMemberResponse</returns>
-        ApiResponse<CreateTeamMemberResponse> CreateTeamMemberWithHttpInfo(Guid teamId, CreateTeamMemberRequest createTeamMemberRequest);
+        ApiResponse<CreateTeamMemberResponse> CreateTeamMemberWithHttpInfo(string teamId, CreateTeamMemberRequest createTeamMemberRequest);
         /// <summary>
         /// Remove a member from the team
         /// </summary>
@@ -56,10 +56,10 @@ namespace Qualithm.Platform.Api
         /// A viewer can remove only themselves; a manager only viewers and themselves.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
-        /// <returns>DeleteTeamMemberResponse</returns>
-        DeleteTeamMemberResponse DeleteTeamMember(Guid teamId, Guid memberId);
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
+        /// <returns></returns>
+        void DeleteTeamMember(string teamId, string memberId);
 
         /// <summary>
         /// Remove a member from the team
@@ -68,18 +68,18 @@ namespace Qualithm.Platform.Api
         /// A viewer can remove only themselves; a manager only viewers and themselves.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
-        /// <returns>ApiResponse of DeleteTeamMemberResponse</returns>
-        ApiResponse<DeleteTeamMemberResponse> DeleteTeamMemberWithHttpInfo(Guid teamId, Guid memberId);
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteTeamMemberWithHttpInfo(string teamId, string memberId);
         /// <summary>
         /// Get a member of the team
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <returns>GetTeamMemberResponse</returns>
-        GetTeamMemberResponse GetTeamMember(Guid teamId, Guid memberId);
+        GetTeamMemberResponse GetTeamMember(string teamId, string memberId);
 
         /// <summary>
         /// Get a member of the team
@@ -88,19 +88,19 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <returns>ApiResponse of GetTeamMemberResponse</returns>
-        ApiResponse<GetTeamMemberResponse> GetTeamMemberWithHttpInfo(Guid teamId, Guid memberId);
+        ApiResponse<GetTeamMemberResponse> GetTeamMemberWithHttpInfo(string teamId, string memberId);
         /// <summary>
         /// List the team&#39;s active members
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListTeamMembersResponse</returns>
-        ListTeamMembersResponse ListTeamMembers(Guid teamId, long? page = default, int? limit = default);
+        ListTeamMembersResponse ListTeamMembers(string teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the team&#39;s active members
@@ -109,20 +109,20 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListTeamMembersResponse</returns>
-        ApiResponse<ListTeamMembersResponse> ListTeamMembersWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
+        ApiResponse<ListTeamMembersResponse> ListTeamMembersWithHttpInfo(string teamId, long? page = default, int? limit = default);
         /// <summary>
         /// Change a member&#39;s role
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="updateTeamMemberRequest"></param>
-        /// <returns>UpdateTeamMemberResponse</returns>
-        UpdateTeamMemberResponse UpdateTeamMember(Guid teamId, Guid memberId, UpdateTeamMemberRequest updateTeamMemberRequest);
+        /// <returns></returns>
+        void UpdateTeamMember(string teamId, string memberId, UpdateTeamMemberRequest updateTeamMemberRequest);
 
         /// <summary>
         /// Change a member&#39;s role
@@ -131,11 +131,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="updateTeamMemberRequest"></param>
-        /// <returns>ApiResponse of UpdateTeamMemberResponse</returns>
-        ApiResponse<UpdateTeamMemberResponse> UpdateTeamMemberWithHttpInfo(Guid teamId, Guid memberId, UpdateTeamMemberRequest updateTeamMemberRequest);
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> UpdateTeamMemberWithHttpInfo(string teamId, string memberId, UpdateTeamMemberRequest updateTeamMemberRequest);
         #endregion Synchronous Operations
     }
 
@@ -152,11 +152,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamMemberResponse</returns>
-        System.Threading.Tasks.Task<CreateTeamMemberResponse> CreateTeamMemberAsync(Guid teamId, CreateTeamMemberRequest createTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateTeamMemberResponse> CreateTeamMemberAsync(string teamId, CreateTeamMemberRequest createTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Accept the caller&#39;s invite to the team
@@ -165,11 +165,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamMemberResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTeamMemberResponse>> CreateTeamMemberWithHttpInfoAsync(Guid teamId, CreateTeamMemberRequest createTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateTeamMemberResponse>> CreateTeamMemberWithHttpInfoAsync(string teamId, CreateTeamMemberRequest createTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Remove a member from the team
         /// </summary>
@@ -177,11 +177,11 @@ namespace Qualithm.Platform.Api
         /// A viewer can remove only themselves; a manager only viewers and themselves.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteTeamMemberResponse</returns>
-        System.Threading.Tasks.Task<DeleteTeamMemberResponse> DeleteTeamMemberAsync(Guid teamId, Guid memberId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteTeamMemberAsync(string teamId, string memberId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Remove a member from the team
@@ -190,11 +190,11 @@ namespace Qualithm.Platform.Api
         /// A viewer can remove only themselves; a manager only viewers and themselves.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteTeamMemberResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteTeamMemberResponse>> DeleteTeamMemberWithHttpInfoAsync(Guid teamId, Guid memberId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTeamMemberWithHttpInfoAsync(string teamId, string memberId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get a member of the team
         /// </summary>
@@ -202,11 +202,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTeamMemberResponse</returns>
-        System.Threading.Tasks.Task<GetTeamMemberResponse> GetTeamMemberAsync(Guid teamId, Guid memberId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<GetTeamMemberResponse> GetTeamMemberAsync(string teamId, string memberId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Get a member of the team
@@ -215,11 +215,11 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTeamMemberResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetTeamMemberResponse>> GetTeamMemberWithHttpInfoAsync(Guid teamId, Guid memberId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<GetTeamMemberResponse>> GetTeamMemberWithHttpInfoAsync(string teamId, string memberId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the team&#39;s active members
         /// </summary>
@@ -227,12 +227,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTeamMembersResponse</returns>
-        System.Threading.Tasks.Task<ListTeamMembersResponse> ListTeamMembersAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListTeamMembersResponse> ListTeamMembersAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the team&#39;s active members
@@ -241,12 +241,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTeamMembersResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListTeamMembersResponse>> ListTeamMembersWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListTeamMembersResponse>> ListTeamMembersWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Change a member&#39;s role
         /// </summary>
@@ -254,12 +254,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="updateTeamMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UpdateTeamMemberResponse</returns>
-        System.Threading.Tasks.Task<UpdateTeamMemberResponse> UpdateTeamMemberAsync(Guid teamId, Guid memberId, UpdateTeamMemberRequest updateTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task UpdateTeamMemberAsync(string teamId, string memberId, UpdateTeamMemberRequest updateTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Change a member&#39;s role
@@ -268,12 +268,12 @@ namespace Qualithm.Platform.Api
         /// 
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="updateTeamMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UpdateTeamMemberResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateTeamMemberResponse>> UpdateTeamMemberWithHttpInfoAsync(Guid teamId, Guid memberId, UpdateTeamMemberRequest updateTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTeamMemberWithHttpInfoAsync(string teamId, string memberId, UpdateTeamMemberRequest updateTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -491,10 +491,10 @@ namespace Qualithm.Platform.Api
         /// Accept the caller&#39;s invite to the team 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamMemberRequest"></param>
         /// <returns>CreateTeamMemberResponse</returns>
-        public CreateTeamMemberResponse CreateTeamMember(Guid teamId, CreateTeamMemberRequest createTeamMemberRequest)
+        public CreateTeamMemberResponse CreateTeamMember(string teamId, CreateTeamMemberRequest createTeamMemberRequest)
         {
             Qualithm.Platform.Client.ApiResponse<CreateTeamMemberResponse> localVarResponse = CreateTeamMemberWithHttpInfo(teamId, createTeamMemberRequest);
             return localVarResponse.Data;
@@ -504,11 +504,15 @@ namespace Qualithm.Platform.Api
         /// Accept the caller&#39;s invite to the team 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamMemberRequest"></param>
         /// <returns>ApiResponse of CreateTeamMemberResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateTeamMemberResponse> CreateTeamMemberWithHttpInfo(Guid teamId, CreateTeamMemberRequest createTeamMemberRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateTeamMemberResponse> CreateTeamMemberWithHttpInfo(string teamId, CreateTeamMemberRequest createTeamMemberRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->CreateTeamMember");
+
             // verify the required parameter 'createTeamMemberRequest' is set
             if (createTeamMemberRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createTeamMemberRequest' when calling MembersApi->CreateTeamMember");
@@ -556,11 +560,11 @@ namespace Qualithm.Platform.Api
         /// Accept the caller&#39;s invite to the team 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamMemberResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTeamMemberResponse> CreateTeamMemberAsync(Guid teamId, CreateTeamMemberRequest createTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateTeamMemberResponse> CreateTeamMemberAsync(string teamId, CreateTeamMemberRequest createTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<CreateTeamMemberResponse> localVarResponse = await CreateTeamMemberWithHttpInfoAsync(teamId, createTeamMemberRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -570,12 +574,16 @@ namespace Qualithm.Platform.Api
         /// Accept the caller&#39;s invite to the team 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="createTeamMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamMemberResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateTeamMemberResponse>> CreateTeamMemberWithHttpInfoAsync(Guid teamId, CreateTeamMemberRequest createTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateTeamMemberResponse>> CreateTeamMemberWithHttpInfoAsync(string teamId, CreateTeamMemberRequest createTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->CreateTeamMember");
+
             // verify the required parameter 'createTeamMemberRequest' is set
             if (createTeamMemberRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'createTeamMemberRequest' when calling MembersApi->CreateTeamMember");
@@ -626,24 +634,31 @@ namespace Qualithm.Platform.Api
         /// Remove a member from the team A viewer can remove only themselves; a manager only viewers and themselves.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
-        /// <returns>DeleteTeamMemberResponse</returns>
-        public DeleteTeamMemberResponse DeleteTeamMember(Guid teamId, Guid memberId)
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
+        /// <returns></returns>
+        public void DeleteTeamMember(string teamId, string memberId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteTeamMemberResponse> localVarResponse = DeleteTeamMemberWithHttpInfo(teamId, memberId);
-            return localVarResponse.Data;
+            DeleteTeamMemberWithHttpInfo(teamId, memberId);
         }
 
         /// <summary>
         /// Remove a member from the team A viewer can remove only themselves; a manager only viewers and themselves.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
-        /// <returns>ApiResponse of DeleteTeamMemberResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteTeamMemberResponse> DeleteTeamMemberWithHttpInfo(Guid teamId, Guid memberId)
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteTeamMemberWithHttpInfo(string teamId, string memberId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->DeleteTeamMember");
+
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'memberId' when calling MembersApi->DeleteTeamMember");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -671,7 +686,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Object>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -686,26 +701,33 @@ namespace Qualithm.Platform.Api
         /// Remove a member from the team A viewer can remove only themselves; a manager only viewers and themselves.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteTeamMemberResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteTeamMemberResponse> DeleteTeamMemberAsync(Guid teamId, Guid memberId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteTeamMemberAsync(string teamId, string memberId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteTeamMemberResponse> localVarResponse = await DeleteTeamMemberWithHttpInfoAsync(teamId, memberId, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await DeleteTeamMemberWithHttpInfoAsync(teamId, memberId, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Remove a member from the team A viewer can remove only themselves; a manager only viewers and themselves.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteTeamMemberResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteTeamMemberResponse>> DeleteTeamMemberWithHttpInfoAsync(Guid teamId, Guid memberId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteTeamMemberWithHttpInfoAsync(string teamId, string memberId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->DeleteTeamMember");
+
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'memberId' when calling MembersApi->DeleteTeamMember");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -736,7 +758,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -751,10 +773,10 @@ namespace Qualithm.Platform.Api
         /// Get a member of the team 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <returns>GetTeamMemberResponse</returns>
-        public GetTeamMemberResponse GetTeamMember(Guid teamId, Guid memberId)
+        public GetTeamMemberResponse GetTeamMember(string teamId, string memberId)
         {
             Qualithm.Platform.Client.ApiResponse<GetTeamMemberResponse> localVarResponse = GetTeamMemberWithHttpInfo(teamId, memberId);
             return localVarResponse.Data;
@@ -764,11 +786,19 @@ namespace Qualithm.Platform.Api
         /// Get a member of the team 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <returns>ApiResponse of GetTeamMemberResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<GetTeamMemberResponse> GetTeamMemberWithHttpInfo(Guid teamId, Guid memberId)
+        public Qualithm.Platform.Client.ApiResponse<GetTeamMemberResponse> GetTeamMemberWithHttpInfo(string teamId, string memberId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->GetTeamMember");
+
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'memberId' when calling MembersApi->GetTeamMember");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -811,11 +841,11 @@ namespace Qualithm.Platform.Api
         /// Get a member of the team 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of GetTeamMemberResponse</returns>
-        public async System.Threading.Tasks.Task<GetTeamMemberResponse> GetTeamMemberAsync(Guid teamId, Guid memberId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<GetTeamMemberResponse> GetTeamMemberAsync(string teamId, string memberId, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<GetTeamMemberResponse> localVarResponse = await GetTeamMemberWithHttpInfoAsync(teamId, memberId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -825,12 +855,20 @@ namespace Qualithm.Platform.Api
         /// Get a member of the team 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetTeamMemberResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetTeamMemberResponse>> GetTeamMemberWithHttpInfoAsync(Guid teamId, Guid memberId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<GetTeamMemberResponse>> GetTeamMemberWithHttpInfoAsync(string teamId, string memberId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->GetTeamMember");
+
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'memberId' when calling MembersApi->GetTeamMember");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -876,11 +914,11 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s active members 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListTeamMembersResponse</returns>
-        public ListTeamMembersResponse ListTeamMembers(Guid teamId, long? page = default, int? limit = default)
+        public ListTeamMembersResponse ListTeamMembers(string teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListTeamMembersResponse> localVarResponse = ListTeamMembersWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
@@ -890,12 +928,16 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s active members 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListTeamMembersResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListTeamMembersResponse> ListTeamMembersWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListTeamMembersResponse> ListTeamMembersWithHttpInfo(string teamId, long? page = default, int? limit = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->ListTeamMembers");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -945,12 +987,12 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s active members 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTeamMembersResponse</returns>
-        public async System.Threading.Tasks.Task<ListTeamMembersResponse> ListTeamMembersAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListTeamMembersResponse> ListTeamMembersAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListTeamMembersResponse> localVarResponse = await ListTeamMembersWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -960,13 +1002,17 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s active members 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
+        /// <param name="teamId">A team ID</param>
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTeamMembersResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTeamMembersResponse>> ListTeamMembersWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTeamMembersResponse>> ListTeamMembersWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->ListTeamMembers");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -1019,26 +1065,33 @@ namespace Qualithm.Platform.Api
         /// Change a member&#39;s role 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="updateTeamMemberRequest"></param>
-        /// <returns>UpdateTeamMemberResponse</returns>
-        public UpdateTeamMemberResponse UpdateTeamMember(Guid teamId, Guid memberId, UpdateTeamMemberRequest updateTeamMemberRequest)
+        /// <returns></returns>
+        public void UpdateTeamMember(string teamId, string memberId, UpdateTeamMemberRequest updateTeamMemberRequest)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateTeamMemberResponse> localVarResponse = UpdateTeamMemberWithHttpInfo(teamId, memberId, updateTeamMemberRequest);
-            return localVarResponse.Data;
+            UpdateTeamMemberWithHttpInfo(teamId, memberId, updateTeamMemberRequest);
         }
 
         /// <summary>
         /// Change a member&#39;s role 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="updateTeamMemberRequest"></param>
-        /// <returns>ApiResponse of UpdateTeamMemberResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<UpdateTeamMemberResponse> UpdateTeamMemberWithHttpInfo(Guid teamId, Guid memberId, UpdateTeamMemberRequest updateTeamMemberRequest)
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Qualithm.Platform.Client.ApiResponse<Object> UpdateTeamMemberWithHttpInfo(string teamId, string memberId, UpdateTeamMemberRequest updateTeamMemberRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->UpdateTeamMember");
+
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'memberId' when calling MembersApi->UpdateTeamMember");
+
             // verify the required parameter 'updateTeamMemberRequest' is set
             if (updateTeamMemberRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'updateTeamMemberRequest' when calling MembersApi->UpdateTeamMember");
@@ -1072,7 +1125,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Patch<UpdateTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Patch<Object>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -1087,28 +1140,35 @@ namespace Qualithm.Platform.Api
         /// Change a member&#39;s role 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="updateTeamMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of UpdateTeamMemberResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateTeamMemberResponse> UpdateTeamMemberAsync(Guid teamId, Guid memberId, UpdateTeamMemberRequest updateTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task UpdateTeamMemberAsync(string teamId, string memberId, UpdateTeamMemberRequest updateTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateTeamMemberResponse> localVarResponse = await UpdateTeamMemberWithHttpInfoAsync(teamId, memberId, updateTeamMemberRequest, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await UpdateTeamMemberWithHttpInfoAsync(teamId, memberId, updateTeamMemberRequest, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
         /// Change a member&#39;s role 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId"></param>
-        /// <param name="memberId"></param>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="memberId">A member ID</param>
         /// <param name="updateTeamMemberRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (UpdateTeamMemberResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateTeamMemberResponse>> UpdateTeamMemberWithHttpInfoAsync(Guid teamId, Guid memberId, UpdateTeamMemberRequest updateTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UpdateTeamMemberWithHttpInfoAsync(string teamId, string memberId, UpdateTeamMemberRequest updateTeamMemberRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling MembersApi->UpdateTeamMember");
+
+            // verify the required parameter 'memberId' is set
+            if (memberId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'memberId' when calling MembersApi->UpdateTeamMember");
+
             // verify the required parameter 'updateTeamMemberRequest' is set
             if (updateTeamMemberRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'updateTeamMemberRequest' when calling MembersApi->UpdateTeamMember");
@@ -1145,7 +1205,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.PatchAsync<UpdateTeamMemberResponse>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PatchAsync<Object>("/v1/teams/{teamId}/members/{memberId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

@@ -43,8 +43,13 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="TriggerAutomationResponseData" /> class.
         /// </summary>
         /// <param name="runId">The queued run&#39;s id (required).</param>
-        public TriggerAutomationResponseData(Guid runId = default)
+        public TriggerAutomationResponseData(string runId = default)
         {
+            // to ensure "runId" is required (not null)
+            if (runId == null)
+            {
+                throw new ArgumentNullException("runId is a required property for TriggerAutomationResponseData and cannot be null");
+            }
             this.RunId = runId;
         }
 
@@ -52,8 +57,11 @@ namespace Qualithm.Platform.Model
         /// The queued run&#39;s id
         /// </summary>
         /// <value>The queued run&#39;s id</value>
+        /*
+        <example>run_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
         [DataMember(Name = "runId", IsRequired = true, EmitDefaultValue = true)]
-        public Guid RunId { get; set; }
+        public string RunId { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -85,9 +93,9 @@ namespace Qualithm.Platform.Model
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
             if (this.RunId != null) {
-                // RunId (Guid) pattern
-                Regex regexRunId = new Regex(@"^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12})$", RegexOptions.CultureInvariant);
-                if (!regexRunId.Match(this.RunId.ToString()).Success)
+                // RunId (string) pattern
+                Regex regexRunId = new Regex(@"^run_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexRunId.Match(this.RunId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RunId, must match a pattern of " + regexRunId, new [] { "RunId" });
                 }

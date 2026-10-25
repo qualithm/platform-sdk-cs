@@ -34,9 +34,9 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="tokenId"></param>
-        /// <returns>DeleteApiTokenResponse</returns>
-        DeleteApiTokenResponse DeleteApiToken(Guid teamId, Guid tokenId);
+        /// <param name="tokenId">An API token ID</param>
+        /// <returns></returns>
+        void DeleteApiToken(string teamId, string tokenId);
 
         /// <summary>
         /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own
@@ -46,9 +46,9 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="tokenId"></param>
-        /// <returns>ApiResponse of DeleteApiTokenResponse</returns>
-        ApiResponse<DeleteApiTokenResponse> DeleteApiTokenWithHttpInfo(Guid teamId, Guid tokenId);
+        /// <param name="tokenId">An API token ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        ApiResponse<Object> DeleteApiTokenWithHttpInfo(string teamId, string tokenId);
         /// <summary>
         /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own
         /// </summary>
@@ -57,7 +57,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListApiTokensResponse</returns>
-        ListApiTokensResponse ListApiTokens(Guid teamId, long? page = default, int? limit = default);
+        ListApiTokensResponse ListApiTokens(string teamId, long? page = default, int? limit = default);
 
         /// <summary>
         /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own
@@ -70,7 +70,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListApiTokensResponse</returns>
-        ApiResponse<ListApiTokensResponse> ListApiTokensWithHttpInfo(Guid teamId, long? page = default, int? limit = default);
+        ApiResponse<ListApiTokensResponse> ListApiTokensWithHttpInfo(string teamId, long? page = default, int? limit = default);
         #endregion Synchronous Operations
     }
 
@@ -88,10 +88,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="tokenId"></param>
+        /// <param name="tokenId">An API token ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteApiTokenResponse</returns>
-        System.Threading.Tasks.Task<DeleteApiTokenResponse> DeleteApiTokenAsync(Guid teamId, Guid tokenId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of void</returns>
+        System.Threading.Tasks.Task DeleteApiTokenAsync(string teamId, string tokenId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Revoke an API token: any in the team for an owner, otherwise the caller&#39;s own
@@ -101,10 +101,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="tokenId"></param>
+        /// <param name="tokenId">An API token ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteApiTokenResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<DeleteApiTokenResponse>> DeleteApiTokenWithHttpInfoAsync(Guid teamId, Guid tokenId, System.Threading.CancellationToken cancellationToken = default);
+        /// <returns>Task of ApiResponse</returns>
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteApiTokenWithHttpInfoAsync(string teamId, string tokenId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own
         /// </summary>
@@ -117,7 +117,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListApiTokensResponse</returns>
-        System.Threading.Tasks.Task<ListApiTokensResponse> ListApiTokensAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListApiTokensResponse> ListApiTokensAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List API tokens in this team: everyone&#39;s for an owner, otherwise the caller&#39;s own
@@ -131,7 +131,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListApiTokensResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListApiTokensResponse>> ListApiTokensWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListApiTokensResponse>> ListApiTokensWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -350,12 +350,11 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="tokenId"></param>
-        /// <returns>DeleteApiTokenResponse</returns>
-        public DeleteApiTokenResponse DeleteApiToken(Guid teamId, Guid tokenId)
+        /// <param name="tokenId">An API token ID</param>
+        /// <returns></returns>
+        public void DeleteApiToken(string teamId, string tokenId)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteApiTokenResponse> localVarResponse = DeleteApiTokenWithHttpInfo(teamId, tokenId);
-            return localVarResponse.Data;
+            DeleteApiTokenWithHttpInfo(teamId, tokenId);
         }
 
         /// <summary>
@@ -363,10 +362,18 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="tokenId"></param>
-        /// <returns>ApiResponse of DeleteApiTokenResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<DeleteApiTokenResponse> DeleteApiTokenWithHttpInfo(Guid teamId, Guid tokenId)
+        /// <param name="tokenId">An API token ID</param>
+        /// <returns>ApiResponse of Object(void)</returns>
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteApiTokenWithHttpInfo(string teamId, string tokenId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling ApiTokensApi->DeleteApiToken");
+
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'tokenId' when calling ApiTokensApi->DeleteApiToken");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -394,7 +401,7 @@ namespace Qualithm.Platform.Api
             }
 
             // make the HTTP request
-            var localVarResponse = this.Client.Delete<DeleteApiTokenResponse>("/v1/teams/{teamId}/api-tokens/{tokenId}", localVarRequestOptions, this.Configuration);
+            var localVarResponse = this.Client.Delete<Object>("/v1/teams/{teamId}/api-tokens/{tokenId}", localVarRequestOptions, this.Configuration);
 
             if (this.ExceptionFactory != null)
             {
@@ -410,13 +417,12 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="tokenId"></param>
+        /// <param name="tokenId">An API token ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of DeleteApiTokenResponse</returns>
-        public async System.Threading.Tasks.Task<DeleteApiTokenResponse> DeleteApiTokenAsync(Guid teamId, Guid tokenId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of void</returns>
+        public async System.Threading.Tasks.Task DeleteApiTokenAsync(string teamId, string tokenId, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<DeleteApiTokenResponse> localVarResponse = await DeleteApiTokenWithHttpInfoAsync(teamId, tokenId, cancellationToken).ConfigureAwait(false);
-            return localVarResponse.Data;
+            await DeleteApiTokenWithHttpInfoAsync(teamId, tokenId, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -424,11 +430,19 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="tokenId"></param>
+        /// <param name="tokenId">An API token ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (DeleteApiTokenResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<DeleteApiTokenResponse>> DeleteApiTokenWithHttpInfoAsync(Guid teamId, Guid tokenId, System.Threading.CancellationToken cancellationToken = default)
+        /// <returns>Task of ApiResponse</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteApiTokenWithHttpInfoAsync(string teamId, string tokenId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling ApiTokensApi->DeleteApiToken");
+
+            // verify the required parameter 'tokenId' is set
+            if (tokenId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'tokenId' when calling ApiTokensApi->DeleteApiToken");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -459,7 +473,7 @@ namespace Qualithm.Platform.Api
 
             // make the HTTP request
 
-            var localVarResponse = await this.AsynchronousClient.DeleteAsync<DeleteApiTokenResponse>("/v1/teams/{teamId}/api-tokens/{tokenId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.DeleteAsync<Object>("/v1/teams/{teamId}/api-tokens/{tokenId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -478,7 +492,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListApiTokensResponse</returns>
-        public ListApiTokensResponse ListApiTokens(Guid teamId, long? page = default, int? limit = default)
+        public ListApiTokensResponse ListApiTokens(string teamId, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListApiTokensResponse> localVarResponse = ListApiTokensWithHttpInfo(teamId, page, limit);
             return localVarResponse.Data;
@@ -492,8 +506,12 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListApiTokensResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListApiTokensResponse> ListApiTokensWithHttpInfo(Guid teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListApiTokensResponse> ListApiTokensWithHttpInfo(string teamId, long? page = default, int? limit = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling ApiTokensApi->ListApiTokens");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -548,7 +566,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListApiTokensResponse</returns>
-        public async System.Threading.Tasks.Task<ListApiTokensResponse> ListApiTokensAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListApiTokensResponse> ListApiTokensAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListApiTokensResponse> localVarResponse = await ListApiTokensWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -563,8 +581,12 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListApiTokensResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListApiTokensResponse>> ListApiTokensWithHttpInfoAsync(Guid teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListApiTokensResponse>> ListApiTokensWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling ApiTokensApi->ListApiTokens");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 

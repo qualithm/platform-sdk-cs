@@ -50,7 +50,9 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="message">message (required).</param>
         /// <param name="code">code (required).</param>
-        public ApiError(string message = default, ApiErrorCode code = default)
+        /// <param name="requestId">The &#x60;Request-Id&#x60; this response carried; quote it (required).</param>
+        /// <param name="details">Each field that failed validation. Validation errors only..</param>
+        public ApiError(string message = default, ApiErrorCode code = default, string requestId = default, List<ApiErrorDetailsInner> details = default)
         {
             // to ensure "message" is required (not null)
             if (message == null)
@@ -59,6 +61,13 @@ namespace Qualithm.Platform.Model
             }
             this.Message = message;
             this.Code = code;
+            // to ensure "requestId" is required (not null)
+            if (requestId == null)
+            {
+                throw new ArgumentNullException("requestId is a required property for ApiError and cannot be null");
+            }
+            this.RequestId = requestId;
+            this.Details = details;
         }
 
         /// <summary>
@@ -66,6 +75,20 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = true)]
         public string Message { get; set; }
+
+        /// <summary>
+        /// The &#x60;Request-Id&#x60; this response carried; quote it
+        /// </summary>
+        /// <value>The &#x60;Request-Id&#x60; this response carried; quote it</value>
+        [DataMember(Name = "requestId", IsRequired = true, EmitDefaultValue = true)]
+        public string RequestId { get; set; }
+
+        /// <summary>
+        /// Each field that failed validation. Validation errors only.
+        /// </summary>
+        /// <value>Each field that failed validation. Validation errors only.</value>
+        [DataMember(Name = "details", EmitDefaultValue = false)]
+        public List<ApiErrorDetailsInner> Details { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -77,6 +100,8 @@ namespace Qualithm.Platform.Model
             sb.Append("class ApiError {\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("  Code: ").Append(Code).Append("\n");
+            sb.Append("  RequestId: ").Append(RequestId).Append("\n");
+            sb.Append("  Details: ").Append(Details).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

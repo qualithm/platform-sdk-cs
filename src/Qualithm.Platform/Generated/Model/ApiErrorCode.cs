@@ -65,46 +65,52 @@ namespace Qualithm.Platform.Model
         Conflict = 5,
 
         /// <summary>
+        /// Enum PreconditionFailed for value: precondition_failed
+        /// </summary>
+        [EnumMember(Value = "precondition_failed")]
+        PreconditionFailed = 6,
+
+        /// <summary>
         /// Enum UnsupportedMediaType for value: unsupported_media_type
         /// </summary>
         [EnumMember(Value = "unsupported_media_type")]
-        UnsupportedMediaType = 6,
+        UnsupportedMediaType = 7,
 
         /// <summary>
         /// Enum UnprocessableEntity for value: unprocessable_entity
         /// </summary>
         [EnumMember(Value = "unprocessable_entity")]
-        UnprocessableEntity = 7,
+        UnprocessableEntity = 8,
 
         /// <summary>
         /// Enum FailedDependency for value: failed_dependency
         /// </summary>
         [EnumMember(Value = "failed_dependency")]
-        FailedDependency = 8,
+        FailedDependency = 9,
 
         /// <summary>
         /// Enum RateLimited for value: rate_limited
         /// </summary>
         [EnumMember(Value = "rate_limited")]
-        RateLimited = 9,
+        RateLimited = 10,
 
         /// <summary>
         /// Enum InternalError for value: internal_error
         /// </summary>
         [EnumMember(Value = "internal_error")]
-        InternalError = 10,
+        InternalError = 11,
 
         /// <summary>
         /// Enum BackendUnavailable for value: backend_unavailable
         /// </summary>
         [EnumMember(Value = "backend_unavailable")]
-        BackendUnavailable = 11,
+        BackendUnavailable = 12,
 
         /// <summary>
         /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
         /// </summary>
         [EnumMember(Value = "unknown_default_open_api")]
-        UnknownDefaultOpenApi = 12
+        UnknownDefaultOpenApi = 13
     }
 
 }

@@ -40,7 +40,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListCapabilitiesResponse</returns>
-        ListCapabilitiesResponse ListCapabilities(Guid teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default);
+        ListCapabilitiesResponse ListCapabilities(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default);
 
         /// <summary>
         /// List the capabilities of the workspace&#39;s devices
@@ -56,15 +56,15 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListCapabilitiesResponse</returns>
-        ApiResponse<ListCapabilitiesResponse> ListCapabilitiesWithHttpInfo(Guid teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default);
+        ApiResponse<ListCapabilitiesResponse> ListCapabilitiesWithHttpInfo(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default);
         /// <summary>
         /// List the capabilities a device declares
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <returns>ListDeviceCapabilitiesResponse</returns>
-        ListDeviceCapabilitiesResponse ListDeviceCapabilities(Guid teamId, Guid deviceId);
+        ListDeviceCapabilitiesResponse ListDeviceCapabilities(string teamId, string deviceId);
 
         /// <summary>
         /// List the capabilities a device declares
@@ -74,18 +74,18 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <returns>ApiResponse of ListDeviceCapabilitiesResponse</returns>
-        ApiResponse<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesWithHttpInfo(Guid teamId, Guid deviceId);
+        ApiResponse<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesWithHttpInfo(string teamId, string deviceId);
         /// <summary>
         /// Rename or retag a capability
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="capabilityId"></param>
+        /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
         /// <returns>UpdateCapabilityResponse</returns>
-        UpdateCapabilityResponse UpdateCapability(Guid teamId, Guid capabilityId, UpdateCapabilityRequest updateCapabilityRequest);
+        UpdateCapabilityResponse UpdateCapability(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest);
 
         /// <summary>
         /// Rename or retag a capability
@@ -95,10 +95,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="capabilityId"></param>
+        /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
         /// <returns>ApiResponse of UpdateCapabilityResponse</returns>
-        ApiResponse<UpdateCapabilityResponse> UpdateCapabilityWithHttpInfo(Guid teamId, Guid capabilityId, UpdateCapabilityRequest updateCapabilityRequest);
+        ApiResponse<UpdateCapabilityResponse> UpdateCapabilityWithHttpInfo(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest);
         #endregion Synchronous Operations
     }
 
@@ -123,7 +123,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCapabilitiesResponse</returns>
-        System.Threading.Tasks.Task<ListCapabilitiesResponse> ListCapabilitiesAsync(Guid teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListCapabilitiesResponse> ListCapabilitiesAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the capabilities of the workspace&#39;s devices
@@ -140,7 +140,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCapabilitiesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCapabilitiesResponse>> ListCapabilitiesWithHttpInfoAsync(Guid teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListCapabilitiesResponse>> ListCapabilitiesWithHttpInfoAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the capabilities a device declares
         /// </summary>
@@ -149,10 +149,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceCapabilitiesResponse</returns>
-        System.Threading.Tasks.Task<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the capabilities a device declares
@@ -162,10 +162,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceCapabilitiesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDeviceCapabilitiesResponse>> ListDeviceCapabilitiesWithHttpInfoAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListDeviceCapabilitiesResponse>> ListDeviceCapabilitiesWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rename or retag a capability
         /// </summary>
@@ -174,11 +174,11 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="capabilityId"></param>
+        /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateCapabilityResponse</returns>
-        System.Threading.Tasks.Task<UpdateCapabilityResponse> UpdateCapabilityAsync(Guid teamId, Guid capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateCapabilityResponse> UpdateCapabilityAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Rename or retag a capability
@@ -188,11 +188,11 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="capabilityId"></param>
+        /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateCapabilityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateCapabilityResponse>> UpdateCapabilityWithHttpInfoAsync(Guid teamId, Guid capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateCapabilityResponse>> UpdateCapabilityWithHttpInfoAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -417,7 +417,7 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ListCapabilitiesResponse</returns>
-        public ListCapabilitiesResponse ListCapabilities(Guid teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default)
+        public ListCapabilitiesResponse ListCapabilities(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> localVarResponse = ListCapabilitiesWithHttpInfo(teamId, type, tag, key, page, limit);
             return localVarResponse.Data;
@@ -434,8 +434,12 @@ namespace Qualithm.Platform.Api
         /// <param name="page">Page number, from 1. Default 1. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <returns>ApiResponse of ListCapabilitiesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> ListCapabilitiesWithHttpInfo(Guid teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> ListCapabilitiesWithHttpInfo(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CapabilitiesApi->ListCapabilities");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -505,7 +509,7 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCapabilitiesResponse</returns>
-        public async System.Threading.Tasks.Task<ListCapabilitiesResponse> ListCapabilitiesAsync(Guid teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListCapabilitiesResponse> ListCapabilitiesAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> localVarResponse = await ListCapabilitiesWithHttpInfoAsync(teamId, type, tag, key, page, limit, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -523,8 +527,12 @@ namespace Qualithm.Platform.Api
         /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCapabilitiesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse>> ListCapabilitiesWithHttpInfoAsync(Guid teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse>> ListCapabilitiesWithHttpInfoAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CapabilitiesApi->ListCapabilities");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -590,9 +598,9 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <returns>ListDeviceCapabilitiesResponse</returns>
-        public ListDeviceCapabilitiesResponse ListDeviceCapabilities(Guid teamId, Guid deviceId)
+        public ListDeviceCapabilitiesResponse ListDeviceCapabilities(string teamId, string deviceId)
         {
             Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> localVarResponse = ListDeviceCapabilitiesWithHttpInfo(teamId, deviceId);
             return localVarResponse.Data;
@@ -603,10 +611,18 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <returns>ApiResponse of ListDeviceCapabilitiesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesWithHttpInfo(Guid teamId, Guid deviceId)
+        public Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesWithHttpInfo(string teamId, string deviceId)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CapabilitiesApi->ListDeviceCapabilities");
+
+            // verify the required parameter 'deviceId' is set
+            if (deviceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling CapabilitiesApi->ListDeviceCapabilities");
+
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
             string[] _contentTypes = new string[] {
@@ -650,10 +666,10 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceCapabilitiesResponse</returns>
-        public async System.Threading.Tasks.Task<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> localVarResponse = await ListDeviceCapabilitiesWithHttpInfoAsync(teamId, deviceId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -664,11 +680,19 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId"></param>
+        /// <param name="deviceId">A device ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceCapabilitiesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse>> ListDeviceCapabilitiesWithHttpInfoAsync(Guid teamId, Guid deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse>> ListDeviceCapabilitiesWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CapabilitiesApi->ListDeviceCapabilities");
+
+            // verify the required parameter 'deviceId' is set
+            if (deviceId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling CapabilitiesApi->ListDeviceCapabilities");
+
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -715,10 +739,10 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="capabilityId"></param>
+        /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
         /// <returns>UpdateCapabilityResponse</returns>
-        public UpdateCapabilityResponse UpdateCapability(Guid teamId, Guid capabilityId, UpdateCapabilityRequest updateCapabilityRequest)
+        public UpdateCapabilityResponse UpdateCapability(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest)
         {
             Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> localVarResponse = UpdateCapabilityWithHttpInfo(teamId, capabilityId, updateCapabilityRequest);
             return localVarResponse.Data;
@@ -729,11 +753,19 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="capabilityId"></param>
+        /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
         /// <returns>ApiResponse of UpdateCapabilityResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> UpdateCapabilityWithHttpInfo(Guid teamId, Guid capabilityId, UpdateCapabilityRequest updateCapabilityRequest)
+        public Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> UpdateCapabilityWithHttpInfo(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CapabilitiesApi->UpdateCapability");
+
+            // verify the required parameter 'capabilityId' is set
+            if (capabilityId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'capabilityId' when calling CapabilitiesApi->UpdateCapability");
+
             // verify the required parameter 'updateCapabilityRequest' is set
             if (updateCapabilityRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'updateCapabilityRequest' when calling CapabilitiesApi->UpdateCapability");
@@ -783,11 +815,11 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="capabilityId"></param>
+        /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateCapabilityResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateCapabilityResponse> UpdateCapabilityAsync(Guid teamId, Guid capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateCapabilityResponse> UpdateCapabilityAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> localVarResponse = await UpdateCapabilityWithHttpInfoAsync(teamId, capabilityId, updateCapabilityRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -798,12 +830,20 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="capabilityId"></param>
+        /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateCapabilityResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse>> UpdateCapabilityWithHttpInfoAsync(Guid teamId, Guid capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse>> UpdateCapabilityWithHttpInfoAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default)
         {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling CapabilitiesApi->UpdateCapability");
+
+            // verify the required parameter 'capabilityId' is set
+            if (capabilityId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'capabilityId' when calling CapabilitiesApi->UpdateCapability");
+
             // verify the required parameter 'updateCapabilityRequest' is set
             if (updateCapabilityRequest == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'updateCapabilityRequest' when calling CapabilitiesApi->UpdateCapability");

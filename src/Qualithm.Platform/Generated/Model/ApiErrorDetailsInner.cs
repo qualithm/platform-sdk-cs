@@ -29,24 +29,48 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// DeleteSpaceResponse
+    /// ApiErrorDetailsInner
     /// </summary>
-    [DataContract(Name = "DeleteSpaceResponse")]
-    public partial class DeleteSpaceResponse : IValidatableObject
+    [DataContract(Name = "ApiError_details_inner")]
+    public partial class ApiErrorDetailsInner : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DeleteSpaceResponse" /> class.
+        /// Initializes a new instance of the <see cref="ApiErrorDetailsInner" /> class.
         /// </summary>
-        /// <param name="message">message.</param>
-        public DeleteSpaceResponse(string message = default)
+        [JsonConstructorAttribute]
+        protected ApiErrorDetailsInner() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ApiErrorDetailsInner" /> class.
+        /// </summary>
+        /// <param name="field">A JSON pointer into the request (required).</param>
+        /// <param name="message">message (required).</param>
+        public ApiErrorDetailsInner(string field = default, string message = default)
         {
+            // to ensure "field" is required (not null)
+            if (field == null)
+            {
+                throw new ArgumentNullException("field is a required property for ApiErrorDetailsInner and cannot be null");
+            }
+            this.Field = field;
+            // to ensure "message" is required (not null)
+            if (message == null)
+            {
+                throw new ArgumentNullException("message is a required property for ApiErrorDetailsInner and cannot be null");
+            }
             this.Message = message;
         }
 
         /// <summary>
+        /// A JSON pointer into the request
+        /// </summary>
+        /// <value>A JSON pointer into the request</value>
+        [DataMember(Name = "field", IsRequired = true, EmitDefaultValue = true)]
+        public string Field { get; set; }
+
+        /// <summary>
         /// Gets or Sets Message
         /// </summary>
-        [DataMember(Name = "message", EmitDefaultValue = false)]
+        [DataMember(Name = "message", IsRequired = true, EmitDefaultValue = true)]
         public string Message { get; set; }
 
         /// <summary>
@@ -56,7 +80,8 @@ namespace Qualithm.Platform.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DeleteSpaceResponse {\n");
+            sb.Append("class ApiErrorDetailsInner {\n");
+            sb.Append("  Field: ").Append(Field).Append("\n");
             sb.Append("  Message: ").Append(Message).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
