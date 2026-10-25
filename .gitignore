@@ -1,7 +1,9 @@
+# Base block, the same in every repo
 .DS_Store
 .env*
 .idea/
 .vscode/
+coverage/
 
 # Build outputs
 bin/
@@ -13,7 +15,6 @@ docs/api/
 docs/_site/
 
 # Coverage
-coverage/
 lcov.info
 
 # Editors
