@@ -45,9 +45,9 @@ namespace Qualithm.Platform.Model
         /// <param name="deviceId">A device ID (required).</param>
         /// <param name="spaceId">A space ID (required).</param>
         /// <param name="online">Whether the device was seen within the offline window (required).</param>
-        /// <param name="lastSeenAt">Last sighting, epoch milliseconds (required).</param>
+        /// <param name="lastSeenAt">When the device was last seen (required).</param>
         /// <param name="metrics">The device&#39;s current metrics (required).</param>
-        public DeviceState(string deviceId = default, string spaceId = default, bool online = default, decimal lastSeenAt = default, Dictionary<string, decimal> metrics = default)
+        public DeviceState(string deviceId = default, string spaceId = default, bool online = default, DateTime lastSeenAt = default, Dictionary<string, decimal> metrics = default)
         {
             // to ensure "deviceId" is required (not null)
             if (deviceId == null)
@@ -99,11 +99,14 @@ namespace Qualithm.Platform.Model
         public bool Online { get; set; }
 
         /// <summary>
-        /// Last sighting, epoch milliseconds
+        /// When the device was last seen
         /// </summary>
-        /// <value>Last sighting, epoch milliseconds</value>
+        /// <value>When the device was last seen</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "lastSeenAt", IsRequired = true, EmitDefaultValue = true)]
-        public decimal LastSeenAt { get; set; }
+        public DateTime LastSeenAt { get; set; }
 
         /// <summary>
         /// The device&#39;s current metrics

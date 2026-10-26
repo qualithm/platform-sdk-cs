@@ -84,8 +84,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>UpdateCapabilityResponse</returns>
-        UpdateCapabilityResponse UpdateCapability(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest);
+        UpdateCapabilityResponse UpdateCapability(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, string? ifMatch = default);
 
         /// <summary>
         /// Rename or retag a capability
@@ -97,8 +98,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of UpdateCapabilityResponse</returns>
-        ApiResponse<UpdateCapabilityResponse> UpdateCapabilityWithHttpInfo(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest);
+        ApiResponse<UpdateCapabilityResponse> UpdateCapabilityWithHttpInfo(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, string? ifMatch = default);
         #endregion Synchronous Operations
     }
 
@@ -176,9 +178,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateCapabilityResponse</returns>
-        System.Threading.Tasks.Task<UpdateCapabilityResponse> UpdateCapabilityAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateCapabilityResponse> UpdateCapabilityAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Rename or retag a capability
@@ -190,9 +193,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateCapabilityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateCapabilityResponse>> UpdateCapabilityWithHttpInfoAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateCapabilityResponse>> UpdateCapabilityWithHttpInfoAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -741,10 +745,11 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>UpdateCapabilityResponse</returns>
-        public UpdateCapabilityResponse UpdateCapability(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest)
+        public UpdateCapabilityResponse UpdateCapability(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, string? ifMatch = default)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> localVarResponse = UpdateCapabilityWithHttpInfo(teamId, capabilityId, updateCapabilityRequest);
+            Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> localVarResponse = UpdateCapabilityWithHttpInfo(teamId, capabilityId, updateCapabilityRequest, ifMatch);
             return localVarResponse.Data;
         }
 
@@ -755,8 +760,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of UpdateCapabilityResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> UpdateCapabilityWithHttpInfo(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest)
+        public Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> UpdateCapabilityWithHttpInfo(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -789,6 +795,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("capabilityId", Qualithm.Platform.Client.ClientUtils.ParameterToString(capabilityId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateCapabilityRequest;
 
             // authentication (apiToken) required
@@ -817,11 +827,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateCapabilityResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateCapabilityResponse> UpdateCapabilityAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateCapabilityResponse> UpdateCapabilityAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> localVarResponse = await UpdateCapabilityWithHttpInfoAsync(teamId, capabilityId, updateCapabilityRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse> localVarResponse = await UpdateCapabilityWithHttpInfoAsync(teamId, capabilityId, updateCapabilityRequest, ifMatch, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -832,9 +843,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="capabilityId">A capability ID</param>
         /// <param name="updateCapabilityRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateCapabilityResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse>> UpdateCapabilityWithHttpInfoAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateCapabilityResponse>> UpdateCapabilityWithHttpInfoAsync(string teamId, string capabilityId, UpdateCapabilityRequest updateCapabilityRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -869,6 +881,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("capabilityId", Qualithm.Platform.Client.ClientUtils.ParameterToString(capabilityId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateCapabilityRequest;
 
             // authentication (apiToken) required

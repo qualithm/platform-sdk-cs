@@ -35,8 +35,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateSpaceResponse</returns>
-        CreateSpaceResponse CreateSpace(string teamId, CreateSpaceRequest createSpaceRequest);
+        CreateSpaceResponse CreateSpace(string teamId, CreateSpaceRequest createSpaceRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Create a space in a zone
@@ -47,16 +48,18 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateSpaceResponse</returns>
-        ApiResponse<CreateSpaceResponse> CreateSpaceWithHttpInfo(string teamId, CreateSpaceRequest createSpaceRequest);
+        ApiResponse<CreateSpaceResponse> CreateSpaceWithHttpInfo(string teamId, CreateSpaceRequest createSpaceRequest, string? idempotencyKey = default);
         /// <summary>
         /// Delete a space and its devices
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        void DeleteSpace(string teamId, string spaceId);
+        void DeleteSpace(string teamId, string spaceId, string? ifMatch = default);
 
         /// <summary>
         /// Delete a space and its devices
@@ -67,8 +70,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteSpaceWithHttpInfo(string teamId, string spaceId);
+        ApiResponse<Object> DeleteSpaceWithHttpInfo(string teamId, string spaceId, string? ifMatch = default);
         /// <summary>
         /// Get a space
         /// </summary>
@@ -120,8 +124,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        void UpdateSpace(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest);
+        void UpdateSpace(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, string? ifMatch = default);
 
         /// <summary>
         /// Rename a space
@@ -133,8 +138,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateSpaceWithHttpInfo(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest);
+        ApiResponse<Object> UpdateSpaceWithHttpInfo(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, string? ifMatch = default);
         #endregion Synchronous Operations
     }
 
@@ -153,9 +159,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSpaceResponse</returns>
-        System.Threading.Tasks.Task<CreateSpaceResponse> CreateSpaceAsync(string teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateSpaceResponse> CreateSpaceAsync(string teamId, CreateSpaceRequest createSpaceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a space in a zone
@@ -166,9 +173,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSpaceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateSpaceResponse>> CreateSpaceWithHttpInfoAsync(string teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateSpaceResponse>> CreateSpaceWithHttpInfoAsync(string teamId, CreateSpaceRequest createSpaceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete a space and its devices
         /// </summary>
@@ -178,9 +186,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteSpaceAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteSpaceAsync(string teamId, string spaceId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete a space and its devices
@@ -191,9 +200,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSpaceWithHttpInfoAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteSpaceWithHttpInfoAsync(string teamId, string spaceId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get a space
         /// </summary>
@@ -258,9 +268,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateSpaceAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task UpdateSpaceAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Rename a space
@@ -272,9 +283,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateSpaceWithHttpInfoAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateSpaceWithHttpInfoAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -494,10 +506,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateSpaceResponse</returns>
-        public CreateSpaceResponse CreateSpace(string teamId, CreateSpaceRequest createSpaceRequest)
+        public CreateSpaceResponse CreateSpace(string teamId, CreateSpaceRequest createSpaceRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> localVarResponse = CreateSpaceWithHttpInfo(teamId, createSpaceRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> localVarResponse = CreateSpaceWithHttpInfo(teamId, createSpaceRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -507,8 +520,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateSpaceResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> CreateSpaceWithHttpInfo(string teamId, CreateSpaceRequest createSpaceRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> CreateSpaceWithHttpInfo(string teamId, CreateSpaceRequest createSpaceRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -536,6 +550,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createSpaceRequest;
 
             // authentication (apiToken) required
@@ -563,11 +581,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateSpaceResponse</returns>
-        public async System.Threading.Tasks.Task<CreateSpaceResponse> CreateSpaceAsync(string teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateSpaceResponse> CreateSpaceAsync(string teamId, CreateSpaceRequest createSpaceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> localVarResponse = await CreateSpaceWithHttpInfoAsync(teamId, createSpaceRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse> localVarResponse = await CreateSpaceWithHttpInfoAsync(teamId, createSpaceRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -577,9 +596,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createSpaceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateSpaceResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse>> CreateSpaceWithHttpInfoAsync(string teamId, CreateSpaceRequest createSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateSpaceResponse>> CreateSpaceWithHttpInfoAsync(string teamId, CreateSpaceRequest createSpaceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -609,6 +629,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createSpaceRequest;
 
             // authentication (apiToken) required
@@ -637,10 +661,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        public void DeleteSpace(string teamId, string spaceId)
+        public void DeleteSpace(string teamId, string spaceId, string? ifMatch = default)
         {
-            DeleteSpaceWithHttpInfo(teamId, spaceId);
+            DeleteSpaceWithHttpInfo(teamId, spaceId, ifMatch);
         }
 
         /// <summary>
@@ -649,8 +674,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> DeleteSpaceWithHttpInfo(string teamId, string spaceId)
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteSpaceWithHttpInfo(string teamId, string spaceId, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -678,6 +704,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("spaceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(spaceId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -704,11 +734,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteSpaceAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task DeleteSpaceAsync(string teamId, string spaceId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await DeleteSpaceWithHttpInfoAsync(teamId, spaceId, cancellationToken).ConfigureAwait(false);
+            await DeleteSpaceWithHttpInfoAsync(teamId, spaceId, ifMatch, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -717,9 +748,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteSpaceWithHttpInfoAsync(string teamId, string spaceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteSpaceWithHttpInfoAsync(string teamId, string spaceId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -749,6 +781,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("spaceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(spaceId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -1081,10 +1117,11 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        public void UpdateSpace(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest)
+        public void UpdateSpace(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, string? ifMatch = default)
         {
-            UpdateSpaceWithHttpInfo(teamId, spaceId, updateSpaceRequest);
+            UpdateSpaceWithHttpInfo(teamId, spaceId, updateSpaceRequest, ifMatch);
         }
 
         /// <summary>
@@ -1094,8 +1131,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> UpdateSpaceWithHttpInfo(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest)
+        public Qualithm.Platform.Client.ApiResponse<Object> UpdateSpaceWithHttpInfo(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1128,6 +1166,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("spaceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(spaceId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateSpaceRequest;
 
             // authentication (apiToken) required
@@ -1156,11 +1198,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateSpaceAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task UpdateSpaceAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await UpdateSpaceWithHttpInfoAsync(teamId, spaceId, updateSpaceRequest, cancellationToken).ConfigureAwait(false);
+            await UpdateSpaceWithHttpInfoAsync(teamId, spaceId, updateSpaceRequest, ifMatch, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -1170,9 +1213,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
         /// <param name="updateSpaceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UpdateSpaceWithHttpInfoAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UpdateSpaceWithHttpInfoAsync(string teamId, string spaceId, UpdateSpaceRequest updateSpaceRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1207,6 +1251,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("spaceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(spaceId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateSpaceRequest;
 
             // authentication (apiToken) required

@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// At least one of name, spaceId, payload or template
+    /// At least one of name, enabled, spaceId, payload or template
     /// </summary>
     [DataContract(Name = "UpdateAutomationRequest")]
     public partial class UpdateAutomationRequest : IValidatableObject
@@ -38,13 +38,15 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="UpdateAutomationRequest" /> class.
         /// </summary>
         /// <param name="name">name.</param>
+        /// <param name="enabled">Whether its trigger fires.</param>
         /// <param name="spaceId">A space ID.</param>
         /// <param name="payload">payload.</param>
         /// <param name="template">A template id to re-expand the chain from; exclusive with &#x60;payload&#x60;.</param>
         /// <param name="varParams">The template&#39;s slot values, keyed by slot name; used with &#x60;template&#x60;.</param>
-        public UpdateAutomationRequest(string name = default, string spaceId = default, UpdateAutomationRequestPayload payload = default, string template = default, Object varParams = default)
+        public UpdateAutomationRequest(string name = default, bool enabled = default, string spaceId = default, UpdateAutomationRequestPayload payload = default, string template = default, Object varParams = default)
         {
             this.Name = name;
+            this.Enabled = enabled;
             this.SpaceId = spaceId;
             this.Payload = payload;
             this.Template = template;
@@ -56,6 +58,13 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "name", EmitDefaultValue = false)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// Whether its trigger fires
+        /// </summary>
+        /// <value>Whether its trigger fires</value>
+        [DataMember(Name = "enabled", EmitDefaultValue = true)]
+        public bool Enabled { get; set; }
 
         /// <summary>
         /// A space ID
@@ -96,6 +105,7 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateAutomationRequest {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  Template: ").Append(Template).Append("\n");

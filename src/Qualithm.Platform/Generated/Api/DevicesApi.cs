@@ -35,8 +35,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDeviceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateDeviceResponse</returns>
-        CreateDeviceResponse CreateDevice(string teamId, CreateDeviceRequest createDeviceRequest);
+        CreateDeviceResponse CreateDevice(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Create a device in a space
@@ -47,16 +48,18 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDeviceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateDeviceResponse</returns>
-        ApiResponse<CreateDeviceResponse> CreateDeviceWithHttpInfo(string teamId, CreateDeviceRequest createDeviceRequest);
+        ApiResponse<CreateDeviceResponse> CreateDeviceWithHttpInfo(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default);
         /// <summary>
         /// Delete a device and revoke its credentials
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        void DeleteDevice(string teamId, string deviceId);
+        void DeleteDevice(string teamId, string deviceId, string? ifMatch = default);
 
         /// <summary>
         /// Delete a device and revoke its credentials
@@ -67,8 +70,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteDeviceWithHttpInfo(string teamId, string deviceId);
+        ApiResponse<Object> DeleteDeviceWithHttpInfo(string teamId, string deviceId, string? ifMatch = default);
         /// <summary>
         /// Get a device
         /// </summary>
@@ -132,57 +136,18 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of ListTeamDeviceStatesResponse</returns>
         ApiResponse<ListTeamDeviceStatesResponse> ListTeamDeviceStatesWithHttpInfo(string teamId);
         /// <summary>
-        /// Park a device so it stops connecting and counting against the plan
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <returns></returns>
-        void ParkDevice(string teamId, string deviceId);
-
-        /// <summary>
-        /// Park a device so it stops connecting and counting against the plan
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> ParkDeviceWithHttpInfo(string teamId, string deviceId);
-        /// <summary>
-        /// Return a parked device to live
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <returns></returns>
-        void UnparkDevice(string teamId, string deviceId);
-
-        /// <summary>
-        /// Return a parked device to live
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UnparkDeviceWithHttpInfo(string teamId, string deviceId);
-        /// <summary>
-        /// Rename a device or move it to another space in the same zone
+        /// Rename, move or park a device
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="updateDeviceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        void UpdateDevice(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest);
+        void UpdateDevice(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, string? ifMatch = default);
 
         /// <summary>
-        /// Rename a device or move it to another space in the same zone
+        /// Rename, move or park a device
         /// </summary>
         /// <remarks>
         /// 
@@ -191,8 +156,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="updateDeviceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateDeviceWithHttpInfo(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest);
+        ApiResponse<Object> UpdateDeviceWithHttpInfo(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, string? ifMatch = default);
         #endregion Synchronous Operations
     }
 
@@ -211,9 +177,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDeviceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceResponse</returns>
-        System.Threading.Tasks.Task<CreateDeviceResponse> CreateDeviceAsync(string teamId, CreateDeviceRequest createDeviceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDeviceResponse> CreateDeviceAsync(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a device in a space
@@ -224,9 +191,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDeviceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDeviceResponse>> CreateDeviceWithHttpInfoAsync(string teamId, CreateDeviceRequest createDeviceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDeviceResponse>> CreateDeviceWithHttpInfoAsync(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete a device and revoke its credentials
         /// </summary>
@@ -236,9 +204,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteDeviceAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteDeviceAsync(string teamId, string deviceId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete a device and revoke its credentials
@@ -249,9 +218,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteDeviceWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteDeviceWithHttpInfoAsync(string teamId, string deviceId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get a device
         /// </summary>
@@ -330,57 +300,7 @@ namespace Qualithm.Platform.Api
         /// <returns>Task of ApiResponse (ListTeamDeviceStatesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListTeamDeviceStatesResponse>> ListTeamDeviceStatesWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Park a device so it stops connecting and counting against the plan
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task ParkDeviceAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Park a device so it stops connecting and counting against the plan
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> ParkDeviceWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Return a parked device to live
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UnparkDeviceAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
-
-        /// <summary>
-        /// Return a parked device to live
-        /// </summary>
-        /// <remarks>
-        /// 
-        /// </remarks>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UnparkDeviceWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
-        /// <summary>
-        /// Rename a device or move it to another space in the same zone
+        /// Rename, move or park a device
         /// </summary>
         /// <remarks>
         /// 
@@ -389,12 +309,13 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="updateDeviceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateDeviceAsync(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task UpdateDeviceAsync(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Rename a device or move it to another space in the same zone
+        /// Rename, move or park a device
         /// </summary>
         /// <remarks>
         /// 
@@ -403,9 +324,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="updateDeviceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateDeviceWithHttpInfoAsync(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateDeviceWithHttpInfoAsync(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -625,10 +547,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDeviceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateDeviceResponse</returns>
-        public CreateDeviceResponse CreateDevice(string teamId, CreateDeviceRequest createDeviceRequest)
+        public CreateDeviceResponse CreateDevice(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceResponse> localVarResponse = CreateDeviceWithHttpInfo(teamId, createDeviceRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceResponse> localVarResponse = CreateDeviceWithHttpInfo(teamId, createDeviceRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -638,8 +561,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDeviceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateDeviceResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDeviceResponse> CreateDeviceWithHttpInfo(string teamId, CreateDeviceRequest createDeviceRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateDeviceResponse> CreateDeviceWithHttpInfo(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -667,6 +591,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDeviceRequest;
 
             // authentication (apiToken) required
@@ -694,11 +622,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDeviceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDeviceResponse> CreateDeviceAsync(string teamId, CreateDeviceRequest createDeviceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDeviceResponse> CreateDeviceAsync(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceResponse> localVarResponse = await CreateDeviceWithHttpInfoAsync(teamId, createDeviceRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceResponse> localVarResponse = await CreateDeviceWithHttpInfoAsync(teamId, createDeviceRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -708,9 +637,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDeviceRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceResponse>> CreateDeviceWithHttpInfoAsync(string teamId, CreateDeviceRequest createDeviceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceResponse>> CreateDeviceWithHttpInfoAsync(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -740,6 +670,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDeviceRequest;
 
             // authentication (apiToken) required
@@ -768,10 +702,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        public void DeleteDevice(string teamId, string deviceId)
+        public void DeleteDevice(string teamId, string deviceId, string? ifMatch = default)
         {
-            DeleteDeviceWithHttpInfo(teamId, deviceId);
+            DeleteDeviceWithHttpInfo(teamId, deviceId, ifMatch);
         }
 
         /// <summary>
@@ -780,8 +715,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> DeleteDeviceWithHttpInfo(string teamId, string deviceId)
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteDeviceWithHttpInfo(string teamId, string deviceId, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -809,6 +745,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -835,11 +775,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteDeviceAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task DeleteDeviceAsync(string teamId, string deviceId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await DeleteDeviceWithHttpInfoAsync(teamId, deviceId, cancellationToken).ConfigureAwait(false);
+            await DeleteDeviceWithHttpInfoAsync(teamId, deviceId, ifMatch, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -848,9 +789,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteDeviceWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteDeviceWithHttpInfoAsync(string teamId, string deviceId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -880,6 +822,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -1333,305 +1279,29 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Park a device so it stops connecting and counting against the plan 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <returns></returns>
-        public void ParkDevice(string teamId, string deviceId)
-        {
-            ParkDeviceWithHttpInfo(teamId, deviceId);
-        }
-
-        /// <summary>
-        /// Park a device so it stops connecting and counting against the plan 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> ParkDeviceWithHttpInfo(string teamId, string deviceId)
-        {
-            // verify the required parameter 'teamId' is set
-            if (teamId == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling DevicesApi->ParkDevice");
-
-            // verify the required parameter 'deviceId' is set
-            if (deviceId == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling DevicesApi->ParkDevice");
-
-            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
-
-            // authentication (apiToken) required
-            // bearer authentication required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/v1/teams/{teamId}/devices/{deviceId}/park", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ParkDevice", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Park a device so it stops connecting and counting against the plan 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task ParkDeviceAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
-        {
-            await ParkDeviceWithHttpInfoAsync(teamId, deviceId, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Park a device so it stops connecting and counting against the plan 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> ParkDeviceWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
-        {
-            // verify the required parameter 'teamId' is set
-            if (teamId == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling DevicesApi->ParkDevice");
-
-            // verify the required parameter 'deviceId' is set
-            if (deviceId == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling DevicesApi->ParkDevice");
-
-
-            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
-
-            // authentication (apiToken) required
-            // bearer authentication required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/v1/teams/{teamId}/devices/{deviceId}/park", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("ParkDevice", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Return a parked device to live 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <returns></returns>
-        public void UnparkDevice(string teamId, string deviceId)
-        {
-            UnparkDeviceWithHttpInfo(teamId, deviceId);
-        }
-
-        /// <summary>
-        /// Return a parked device to live 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> UnparkDeviceWithHttpInfo(string teamId, string deviceId)
-        {
-            // verify the required parameter 'teamId' is set
-            if (teamId == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling DevicesApi->UnparkDevice");
-
-            // verify the required parameter 'deviceId' is set
-            if (deviceId == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling DevicesApi->UnparkDevice");
-
-            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
-
-            // authentication (apiToken) required
-            // bearer authentication required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-            var localVarResponse = this.Client.Post<Object>("/v1/teams/{teamId}/devices/{deviceId}/unpark", localVarRequestOptions, this.Configuration);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("UnparkDevice", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Return a parked device to live 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UnparkDeviceAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
-        {
-            await UnparkDeviceWithHttpInfoAsync(teamId, deviceId, cancellationToken).ConfigureAwait(false);
-        }
-
-        /// <summary>
-        /// Return a parked device to live 
-        /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">The team the request acts on</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UnparkDeviceWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
-        {
-            // verify the required parameter 'teamId' is set
-            if (teamId == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling DevicesApi->UnparkDevice");
-
-            // verify the required parameter 'deviceId' is set
-            if (deviceId == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'deviceId' when calling DevicesApi->UnparkDevice");
-
-
-            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-
-            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-
-            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-
-            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
-            localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
-
-            // authentication (apiToken) required
-            // bearer authentication required
-            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-
-            // make the HTTP request
-
-            var localVarResponse = await this.AsynchronousClient.PostAsync<Object>("/v1/teams/{teamId}/devices/{deviceId}/unpark", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
-
-            if (this.ExceptionFactory != null)
-            {
-                Exception _exception = this.ExceptionFactory("UnparkDevice", localVarResponse);
-                if (_exception != null) throw _exception;
-            }
-
-            return localVarResponse;
-        }
-
-        /// <summary>
-        /// Rename a device or move it to another space in the same zone 
+        /// Rename, move or park a device 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="updateDeviceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        public void UpdateDevice(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest)
+        public void UpdateDevice(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, string? ifMatch = default)
         {
-            UpdateDeviceWithHttpInfo(teamId, deviceId, updateDeviceRequest);
+            UpdateDeviceWithHttpInfo(teamId, deviceId, updateDeviceRequest, ifMatch);
         }
 
         /// <summary>
-        /// Rename a device or move it to another space in the same zone 
+        /// Rename, move or park a device 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="updateDeviceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> UpdateDeviceWithHttpInfo(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest)
+        public Qualithm.Platform.Client.ApiResponse<Object> UpdateDeviceWithHttpInfo(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1664,6 +1334,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateDeviceRequest;
 
             // authentication (apiToken) required
@@ -1686,29 +1360,31 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Rename a device or move it to another space in the same zone 
+        /// Rename, move or park a device 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="updateDeviceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateDeviceAsync(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task UpdateDeviceAsync(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await UpdateDeviceWithHttpInfoAsync(teamId, deviceId, updateDeviceRequest, cancellationToken).ConfigureAwait(false);
+            await UpdateDeviceWithHttpInfoAsync(teamId, deviceId, updateDeviceRequest, ifMatch, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
-        /// Rename a device or move it to another space in the same zone 
+        /// Rename, move or park a device 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="updateDeviceRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UpdateDeviceWithHttpInfoAsync(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UpdateDeviceWithHttpInfoAsync(string teamId, string deviceId, UpdateDeviceRequest updateDeviceRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1743,6 +1419,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateDeviceRequest;
 
             // authentication (apiToken) required
