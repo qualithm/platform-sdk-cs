@@ -35,8 +35,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateDashboardResponse</returns>
-        CreateDashboardResponse CreateDashboard(string teamId, CreateDashboardRequest createDashboardRequest);
+        CreateDashboardResponse CreateDashboard(string teamId, CreateDashboardRequest createDashboardRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Create a dashboard
@@ -47,16 +48,18 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateDashboardResponse</returns>
-        ApiResponse<CreateDashboardResponse> CreateDashboardWithHttpInfo(string teamId, CreateDashboardRequest createDashboardRequest);
+        ApiResponse<CreateDashboardResponse> CreateDashboardWithHttpInfo(string teamId, CreateDashboardRequest createDashboardRequest, string? idempotencyKey = default);
         /// <summary>
         /// Delete a dashboard
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        void DeleteDashboard(string teamId, string dashboardId);
+        void DeleteDashboard(string teamId, string dashboardId, string? ifMatch = default);
 
         /// <summary>
         /// Delete a dashboard
@@ -67,8 +70,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteDashboardWithHttpInfo(string teamId, string dashboardId);
+        ApiResponse<Object> DeleteDashboardWithHttpInfo(string teamId, string dashboardId, string? ifMatch = default);
         /// <summary>
         /// Get a dashboard
         /// </summary>
@@ -118,8 +122,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
         /// <param name="updateDashboardRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>UpdateDashboardResponse</returns>
-        UpdateDashboardResponse UpdateDashboard(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest);
+        UpdateDashboardResponse UpdateDashboard(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, string? ifMatch = default);
 
         /// <summary>
         /// Update a dashboard
@@ -131,8 +136,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
         /// <param name="updateDashboardRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of UpdateDashboardResponse</returns>
-        ApiResponse<UpdateDashboardResponse> UpdateDashboardWithHttpInfo(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest);
+        ApiResponse<UpdateDashboardResponse> UpdateDashboardWithHttpInfo(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, string? ifMatch = default);
         #endregion Synchronous Operations
     }
 
@@ -151,9 +157,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDashboardResponse</returns>
-        System.Threading.Tasks.Task<CreateDashboardResponse> CreateDashboardAsync(string teamId, CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDashboardResponse> CreateDashboardAsync(string teamId, CreateDashboardRequest createDashboardRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a dashboard
@@ -164,9 +171,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDashboardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDashboardResponse>> CreateDashboardWithHttpInfoAsync(string teamId, CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDashboardResponse>> CreateDashboardWithHttpInfoAsync(string teamId, CreateDashboardRequest createDashboardRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete a dashboard
         /// </summary>
@@ -176,9 +184,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteDashboardAsync(string teamId, string dashboardId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteDashboardAsync(string teamId, string dashboardId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete a dashboard
@@ -189,9 +198,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteDashboardWithHttpInfoAsync(string teamId, string dashboardId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteDashboardWithHttpInfoAsync(string teamId, string dashboardId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get a dashboard
         /// </summary>
@@ -254,9 +264,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
         /// <param name="updateDashboardRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateDashboardResponse</returns>
-        System.Threading.Tasks.Task<UpdateDashboardResponse> UpdateDashboardAsync(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<UpdateDashboardResponse> UpdateDashboardAsync(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Update a dashboard
@@ -268,9 +279,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
         /// <param name="updateDashboardRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateDashboardResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UpdateDashboardResponse>> UpdateDashboardWithHttpInfoAsync(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<UpdateDashboardResponse>> UpdateDashboardWithHttpInfoAsync(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -490,10 +502,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateDashboardResponse</returns>
-        public CreateDashboardResponse CreateDashboard(string teamId, CreateDashboardRequest createDashboardRequest)
+        public CreateDashboardResponse CreateDashboard(string teamId, CreateDashboardRequest createDashboardRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> localVarResponse = CreateDashboardWithHttpInfo(teamId, createDashboardRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> localVarResponse = CreateDashboardWithHttpInfo(teamId, createDashboardRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -503,8 +516,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateDashboardResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> CreateDashboardWithHttpInfo(string teamId, CreateDashboardRequest createDashboardRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> CreateDashboardWithHttpInfo(string teamId, CreateDashboardRequest createDashboardRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -532,6 +546,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDashboardRequest;
 
             // authentication (apiToken) required
@@ -559,11 +577,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDashboardResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDashboardResponse> CreateDashboardAsync(string teamId, CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDashboardResponse> CreateDashboardAsync(string teamId, CreateDashboardRequest createDashboardRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> localVarResponse = await CreateDashboardWithHttpInfoAsync(teamId, createDashboardRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse> localVarResponse = await CreateDashboardWithHttpInfoAsync(teamId, createDashboardRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -573,9 +592,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createDashboardRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDashboardResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse>> CreateDashboardWithHttpInfoAsync(string teamId, CreateDashboardRequest createDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDashboardResponse>> CreateDashboardWithHttpInfoAsync(string teamId, CreateDashboardRequest createDashboardRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -605,6 +625,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDashboardRequest;
 
             // authentication (apiToken) required
@@ -633,10 +657,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        public void DeleteDashboard(string teamId, string dashboardId)
+        public void DeleteDashboard(string teamId, string dashboardId, string? ifMatch = default)
         {
-            DeleteDashboardWithHttpInfo(teamId, dashboardId);
+            DeleteDashboardWithHttpInfo(teamId, dashboardId, ifMatch);
         }
 
         /// <summary>
@@ -645,8 +670,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> DeleteDashboardWithHttpInfo(string teamId, string dashboardId)
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteDashboardWithHttpInfo(string teamId, string dashboardId, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -674,6 +700,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -700,11 +730,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteDashboardAsync(string teamId, string dashboardId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task DeleteDashboardAsync(string teamId, string dashboardId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await DeleteDashboardWithHttpInfoAsync(teamId, dashboardId, cancellationToken).ConfigureAwait(false);
+            await DeleteDashboardWithHttpInfoAsync(teamId, dashboardId, ifMatch, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -713,9 +744,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteDashboardWithHttpInfoAsync(string teamId, string dashboardId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteDashboardWithHttpInfoAsync(string teamId, string dashboardId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -745,6 +777,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -1065,10 +1101,11 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
         /// <param name="updateDashboardRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>UpdateDashboardResponse</returns>
-        public UpdateDashboardResponse UpdateDashboard(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest)
+        public UpdateDashboardResponse UpdateDashboard(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, string? ifMatch = default)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> localVarResponse = UpdateDashboardWithHttpInfo(teamId, dashboardId, updateDashboardRequest);
+            Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> localVarResponse = UpdateDashboardWithHttpInfo(teamId, dashboardId, updateDashboardRequest, ifMatch);
             return localVarResponse.Data;
         }
 
@@ -1079,8 +1116,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
         /// <param name="updateDashboardRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of UpdateDashboardResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> UpdateDashboardWithHttpInfo(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest)
+        public Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> UpdateDashboardWithHttpInfo(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1113,6 +1151,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateDashboardRequest;
 
             // authentication (apiToken) required
@@ -1141,11 +1183,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
         /// <param name="updateDashboardRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of UpdateDashboardResponse</returns>
-        public async System.Threading.Tasks.Task<UpdateDashboardResponse> UpdateDashboardAsync(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<UpdateDashboardResponse> UpdateDashboardAsync(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> localVarResponse = await UpdateDashboardWithHttpInfoAsync(teamId, dashboardId, updateDashboardRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse> localVarResponse = await UpdateDashboardWithHttpInfoAsync(teamId, dashboardId, updateDashboardRequest, ifMatch, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1156,9 +1199,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="dashboardId">A dashboard ID</param>
         /// <param name="updateDashboardRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UpdateDashboardResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse>> UpdateDashboardWithHttpInfoAsync(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<UpdateDashboardResponse>> UpdateDashboardWithHttpInfoAsync(string teamId, string dashboardId, UpdateDashboardRequest updateDashboardRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1193,6 +1237,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("dashboardId", Qualithm.Platform.Client.ClientUtils.ParameterToString(dashboardId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateDashboardRequest;
 
             // authentication (apiToken) required

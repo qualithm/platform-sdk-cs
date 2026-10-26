@@ -36,8 +36,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCertificateRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateDeviceCertificateResponse</returns>
-        CreateDeviceCertificateResponse CreateDeviceCertificate(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest);
+        CreateDeviceCertificateResponse CreateDeviceCertificate(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Issue a client certificate for a device from its CSR
@@ -49,17 +50,19 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCertificateRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateDeviceCertificateResponse</returns>
-        ApiResponse<CreateDeviceCertificateResponse> CreateDeviceCertificateWithHttpInfo(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest);
+        ApiResponse<CreateDeviceCertificateResponse> CreateDeviceCertificateWithHttpInfo(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, string? idempotencyKey = default);
         /// <summary>
         /// Mint a token credential for a device
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <returns>CreateDeviceCredentialResponse</returns>
-        CreateDeviceCredentialResponse CreateDeviceCredential(string teamId, string deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default);
+        CreateDeviceCredentialResponse CreateDeviceCredential(string teamId, string deviceId, string? idempotencyKey = default, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default);
 
         /// <summary>
         /// Mint a token credential for a device
@@ -70,9 +73,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateDeviceCredentialResponse</returns>
-        ApiResponse<CreateDeviceCredentialResponse> CreateDeviceCredentialWithHttpInfo(string teamId, string deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default);
+        ApiResponse<CreateDeviceCredentialResponse> CreateDeviceCredentialWithHttpInfo(string teamId, string deviceId, string? idempotencyKey = default, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default);
         /// <summary>
         /// Revoke a device&#39;s credential
         /// </summary>
@@ -123,9 +127,10 @@ namespace Qualithm.Platform.Api
         /// <param name="deviceId">A device ID</param>
         /// <param name="credentialId">A credential ID</param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <returns>RotateDeviceCredentialResponse</returns>
-        RotateDeviceCredentialResponse RotateDeviceCredential(string teamId, string deviceId, string credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default);
+        RotateDeviceCredentialResponse RotateDeviceCredential(string teamId, string deviceId, string credentialId, string? revoke = default, string? idempotencyKey = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default);
 
         /// <summary>
         /// Rotate a device&#39;s token credential
@@ -138,9 +143,10 @@ namespace Qualithm.Platform.Api
         /// <param name="deviceId">A device ID</param>
         /// <param name="credentialId">A credential ID</param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <returns>ApiResponse of RotateDeviceCredentialResponse</returns>
-        ApiResponse<RotateDeviceCredentialResponse> RotateDeviceCredentialWithHttpInfo(string teamId, string deviceId, string credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default);
+        ApiResponse<RotateDeviceCredentialResponse> RotateDeviceCredentialWithHttpInfo(string teamId, string deviceId, string credentialId, string? revoke = default, string? idempotencyKey = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default);
         #endregion Synchronous Operations
     }
 
@@ -160,9 +166,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCertificateRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCertificateResponse</returns>
-        System.Threading.Tasks.Task<CreateDeviceCertificateResponse> CreateDeviceCertificateAsync(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDeviceCertificateResponse> CreateDeviceCertificateAsync(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Issue a client certificate for a device from its CSR
@@ -174,9 +181,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCertificateRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCertificateResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCertificateResponse>> CreateDeviceCertificateWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCertificateResponse>> CreateDeviceCertificateWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Mint a token credential for a device
         /// </summary>
@@ -186,10 +194,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCredentialResponse</returns>
-        System.Threading.Tasks.Task<CreateDeviceCredentialResponse> CreateDeviceCredentialAsync(string teamId, string deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDeviceCredentialResponse> CreateDeviceCredentialAsync(string teamId, string deviceId, string? idempotencyKey = default, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Mint a token credential for a device
@@ -200,10 +209,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCredentialResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCredentialResponse>> CreateDeviceCredentialWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCredentialResponse>> CreateDeviceCredentialWithHttpInfoAsync(string teamId, string deviceId, string? idempotencyKey = default, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Revoke a device&#39;s credential
         /// </summary>
@@ -267,10 +277,11 @@ namespace Qualithm.Platform.Api
         /// <param name="deviceId">A device ID</param>
         /// <param name="credentialId">A credential ID</param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RotateDeviceCredentialResponse</returns>
-        System.Threading.Tasks.Task<RotateDeviceCredentialResponse> RotateDeviceCredentialAsync(string teamId, string deviceId, string credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<RotateDeviceCredentialResponse> RotateDeviceCredentialAsync(string teamId, string deviceId, string credentialId, string? revoke = default, string? idempotencyKey = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Rotate a device&#39;s token credential
@@ -283,10 +294,11 @@ namespace Qualithm.Platform.Api
         /// <param name="deviceId">A device ID</param>
         /// <param name="credentialId">A credential ID</param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotateDeviceCredentialResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<RotateDeviceCredentialResponse>> RotateDeviceCredentialWithHttpInfoAsync(string teamId, string deviceId, string credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<RotateDeviceCredentialResponse>> RotateDeviceCredentialWithHttpInfoAsync(string teamId, string deviceId, string credentialId, string? revoke = default, string? idempotencyKey = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -507,10 +519,11 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCertificateRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateDeviceCertificateResponse</returns>
-        public CreateDeviceCertificateResponse CreateDeviceCertificate(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest)
+        public CreateDeviceCertificateResponse CreateDeviceCertificate(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> localVarResponse = CreateDeviceCertificateWithHttpInfo(teamId, deviceId, createDeviceCertificateRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> localVarResponse = CreateDeviceCertificateWithHttpInfo(teamId, deviceId, createDeviceCertificateRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -521,8 +534,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCertificateRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateDeviceCertificateResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> CreateDeviceCertificateWithHttpInfo(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> CreateDeviceCertificateWithHttpInfo(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -555,6 +569,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDeviceCertificateRequest;
 
             // authentication (apiToken) required
@@ -583,11 +601,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCertificateRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCertificateResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDeviceCertificateResponse> CreateDeviceCertificateAsync(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDeviceCertificateResponse> CreateDeviceCertificateAsync(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> localVarResponse = await CreateDeviceCertificateWithHttpInfoAsync(teamId, deviceId, createDeviceCertificateRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse> localVarResponse = await CreateDeviceCertificateWithHttpInfoAsync(teamId, deviceId, createDeviceCertificateRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -598,9 +617,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCertificateRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCertificateResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse>> CreateDeviceCertificateWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCertificateResponse>> CreateDeviceCertificateWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCertificateRequest createDeviceCertificateRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -635,6 +655,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDeviceCertificateRequest;
 
             // authentication (apiToken) required
@@ -663,11 +687,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <returns>CreateDeviceCredentialResponse</returns>
-        public CreateDeviceCredentialResponse CreateDeviceCredential(string teamId, string deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default)
+        public CreateDeviceCredentialResponse CreateDeviceCredential(string teamId, string deviceId, string? idempotencyKey = default, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> localVarResponse = CreateDeviceCredentialWithHttpInfo(teamId, deviceId, createDeviceCredentialRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> localVarResponse = CreateDeviceCredentialWithHttpInfo(teamId, deviceId, idempotencyKey, createDeviceCredentialRequest);
             return localVarResponse.Data;
         }
 
@@ -677,9 +702,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <returns>ApiResponse of CreateDeviceCredentialResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> CreateDeviceCredentialWithHttpInfo(string teamId, string deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default)
+        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> CreateDeviceCredentialWithHttpInfo(string teamId, string deviceId, string? idempotencyKey = default, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -708,6 +734,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDeviceCredentialRequest;
 
             // authentication (apiToken) required
@@ -735,12 +765,13 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCredentialResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDeviceCredentialResponse> CreateDeviceCredentialAsync(string teamId, string deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDeviceCredentialResponse> CreateDeviceCredentialAsync(string teamId, string deviceId, string? idempotencyKey = default, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> localVarResponse = await CreateDeviceCredentialWithHttpInfoAsync(teamId, deviceId, createDeviceCredentialRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse> localVarResponse = await CreateDeviceCredentialWithHttpInfoAsync(teamId, deviceId, idempotencyKey, createDeviceCredentialRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -750,10 +781,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="createDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCredentialResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse>> CreateDeviceCredentialWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCredentialResponse>> CreateDeviceCredentialWithHttpInfoAsync(string teamId, string deviceId, string? idempotencyKey = default, CreateDeviceCredentialRequest? createDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -784,6 +816,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDeviceCredentialRequest;
 
             // authentication (apiToken) required
@@ -1108,11 +1144,12 @@ namespace Qualithm.Platform.Api
         /// <param name="deviceId">A device ID</param>
         /// <param name="credentialId">A credential ID</param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <returns>RotateDeviceCredentialResponse</returns>
-        public RotateDeviceCredentialResponse RotateDeviceCredential(string teamId, string deviceId, string credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default)
+        public RotateDeviceCredentialResponse RotateDeviceCredential(string teamId, string deviceId, string credentialId, string? revoke = default, string? idempotencyKey = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default)
         {
-            Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> localVarResponse = RotateDeviceCredentialWithHttpInfo(teamId, deviceId, credentialId, revoke, rotateDeviceCredentialRequest);
+            Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> localVarResponse = RotateDeviceCredentialWithHttpInfo(teamId, deviceId, credentialId, revoke, idempotencyKey, rotateDeviceCredentialRequest);
             return localVarResponse.Data;
         }
 
@@ -1124,9 +1161,10 @@ namespace Qualithm.Platform.Api
         /// <param name="deviceId">A device ID</param>
         /// <param name="credentialId">A credential ID</param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <returns>ApiResponse of RotateDeviceCredentialResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> RotateDeviceCredentialWithHttpInfo(string teamId, string deviceId, string credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default)
+        public Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> RotateDeviceCredentialWithHttpInfo(string teamId, string deviceId, string credentialId, string? revoke = default, string? idempotencyKey = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1163,6 +1201,10 @@ namespace Qualithm.Platform.Api
             if (revoke != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "revoke", revoke));
+            }
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
             }
             localVarRequestOptions.Data = rotateDeviceCredentialRequest;
 
@@ -1193,12 +1235,13 @@ namespace Qualithm.Platform.Api
         /// <param name="deviceId">A device ID</param>
         /// <param name="credentialId">A credential ID</param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of RotateDeviceCredentialResponse</returns>
-        public async System.Threading.Tasks.Task<RotateDeviceCredentialResponse> RotateDeviceCredentialAsync(string teamId, string deviceId, string credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<RotateDeviceCredentialResponse> RotateDeviceCredentialAsync(string teamId, string deviceId, string credentialId, string? revoke = default, string? idempotencyKey = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> localVarResponse = await RotateDeviceCredentialWithHttpInfoAsync(teamId, deviceId, credentialId, revoke, rotateDeviceCredentialRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse> localVarResponse = await RotateDeviceCredentialWithHttpInfoAsync(teamId, deviceId, credentialId, revoke, idempotencyKey, rotateDeviceCredentialRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -1210,10 +1253,11 @@ namespace Qualithm.Platform.Api
         /// <param name="deviceId">A device ID</param>
         /// <param name="credentialId">A credential ID</param>
         /// <param name="revoke">&#x60;true&#x60; revokes the old credential now; otherwise it stays active until it expires (optional)</param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="rotateDeviceCredentialRequest"> (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (RotateDeviceCredentialResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse>> RotateDeviceCredentialWithHttpInfoAsync(string teamId, string deviceId, string credentialId, string? revoke = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<RotateDeviceCredentialResponse>> RotateDeviceCredentialWithHttpInfoAsync(string teamId, string deviceId, string credentialId, string? revoke = default, string? idempotencyKey = default, RotateDeviceCredentialRequest? rotateDeviceCredentialRequest = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1252,6 +1296,10 @@ namespace Qualithm.Platform.Api
             if (revoke != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "revoke", revoke));
+            }
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
             }
             localVarRequestOptions.Data = rotateDeviceCredentialRequest;
 

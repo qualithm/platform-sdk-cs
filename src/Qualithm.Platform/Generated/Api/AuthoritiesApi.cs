@@ -35,8 +35,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateAuthorityResponse</returns>
-        CreateAuthorityResponse CreateAuthority(string teamId, CreateAuthorityRequest createAuthorityRequest);
+        CreateAuthorityResponse CreateAuthority(string teamId, CreateAuthorityRequest createAuthorityRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Register a certificate authority
@@ -47,8 +48,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateAuthorityResponse</returns>
-        ApiResponse<CreateAuthorityResponse> CreateAuthorityWithHttpInfo(string teamId, CreateAuthorityRequest createAuthorityRequest);
+        ApiResponse<CreateAuthorityResponse> CreateAuthorityWithHttpInfo(string teamId, CreateAuthorityRequest createAuthorityRequest, string? idempotencyKey = default);
         /// <summary>
         /// Revoke a certificate authority and every credential it issued
         /// </summary>
@@ -109,9 +111,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAuthorityResponse</returns>
-        System.Threading.Tasks.Task<CreateAuthorityResponse> CreateAuthorityAsync(string teamId, CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateAuthorityResponse> CreateAuthorityAsync(string teamId, CreateAuthorityRequest createAuthorityRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Register a certificate authority
@@ -122,9 +125,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAuthorityResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateAuthorityResponse>> CreateAuthorityWithHttpInfoAsync(string teamId, CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateAuthorityResponse>> CreateAuthorityWithHttpInfoAsync(string teamId, CreateAuthorityRequest createAuthorityRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Revoke a certificate authority and every credential it issued
         /// </summary>
@@ -396,10 +400,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateAuthorityResponse</returns>
-        public CreateAuthorityResponse CreateAuthority(string teamId, CreateAuthorityRequest createAuthorityRequest)
+        public CreateAuthorityResponse CreateAuthority(string teamId, CreateAuthorityRequest createAuthorityRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> localVarResponse = CreateAuthorityWithHttpInfo(teamId, createAuthorityRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> localVarResponse = CreateAuthorityWithHttpInfo(teamId, createAuthorityRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -409,8 +414,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateAuthorityResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> CreateAuthorityWithHttpInfo(string teamId, CreateAuthorityRequest createAuthorityRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> CreateAuthorityWithHttpInfo(string teamId, CreateAuthorityRequest createAuthorityRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -438,6 +444,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createAuthorityRequest;
 
             // authentication (apiToken) required
@@ -465,11 +475,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateAuthorityResponse</returns>
-        public async System.Threading.Tasks.Task<CreateAuthorityResponse> CreateAuthorityAsync(string teamId, CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateAuthorityResponse> CreateAuthorityAsync(string teamId, CreateAuthorityRequest createAuthorityRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> localVarResponse = await CreateAuthorityWithHttpInfoAsync(teamId, createAuthorityRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse> localVarResponse = await CreateAuthorityWithHttpInfoAsync(teamId, createAuthorityRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -479,9 +490,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createAuthorityRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateAuthorityResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse>> CreateAuthorityWithHttpInfoAsync(string teamId, CreateAuthorityRequest createAuthorityRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateAuthorityResponse>> CreateAuthorityWithHttpInfoAsync(string teamId, CreateAuthorityRequest createAuthorityRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -511,6 +523,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createAuthorityRequest;
 
             // authentication (apiToken) required

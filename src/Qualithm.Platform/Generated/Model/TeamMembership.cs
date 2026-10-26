@@ -96,9 +96,9 @@ namespace Qualithm.Platform.Model
         /// <param name="teamId">A team ID (required).</param>
         /// <param name="role">role (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public TeamMembership(string id = default, string accountId = default, string teamId = default, MemberRole role = default, StatusEnum status = default, string createdAt = default, string updatedAt = default)
+        /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
+        public TeamMembership(string id = default, string accountId = default, string teamId = default, MemberRole role = default, StatusEnum status = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -120,17 +120,7 @@ namespace Qualithm.Platform.Model
             this.TeamId = teamId;
             this.Role = role;
             this.Status = status;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null)
-            {
-                throw new ArgumentNullException("createdAt is a required property for TeamMembership and cannot be null");
-            }
             this.CreatedAt = createdAt;
-            // to ensure "updatedAt" is required (not null)
-            if (updatedAt == null)
-            {
-                throw new ArgumentNullException("updatedAt is a required property for TeamMembership and cannot be null");
-            }
             this.UpdatedAt = updatedAt;
         }
 
@@ -165,18 +155,24 @@ namespace Qualithm.Platform.Model
         public string TeamId { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

@@ -38,8 +38,8 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="CreateDeviceCredentialRequest" /> class.
         /// </summary>
         /// <param name="label">Up to 64 characters.</param>
-        /// <param name="expiresAt">ISO 8601 time in the future.</param>
-        public CreateDeviceCredentialRequest(string label = default, string expiresAt = default)
+        /// <param name="expiresAt">A time in the future.</param>
+        public CreateDeviceCredentialRequest(string label = default, DateTime expiresAt = default)
         {
             this.Label = label;
             this.ExpiresAt = expiresAt;
@@ -53,11 +53,14 @@ namespace Qualithm.Platform.Model
         public string Label { get; set; }
 
         /// <summary>
-        /// ISO 8601 time in the future
+        /// A time in the future
         /// </summary>
-        /// <value>ISO 8601 time in the future</value>
+        /// <value>A time in the future</value>
+        /*
+        <example>2026-10-26T09:30:00Z</example>
+        */
         [DataMember(Name = "expiresAt", EmitDefaultValue = false)]
-        public string ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

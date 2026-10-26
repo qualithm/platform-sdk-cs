@@ -29,39 +29,48 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// RunAutomationResponseData
+    /// Money
     /// </summary>
-    [DataContract(Name = "RunAutomationResponse_data")]
-    public partial class RunAutomationResponseData : IValidatableObject
+    [DataContract(Name = "Money")]
+    public partial class Money : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="RunAutomationResponseData" /> class.
+        /// Initializes a new instance of the <see cref="Money" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected RunAutomationResponseData() { }
+        protected Money() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="RunAutomationResponseData" /> class.
+        /// Initializes a new instance of the <see cref="Money" /> class.
         /// </summary>
-        /// <param name="id">The queued run&#39;s id (required).</param>
-        public RunAutomationResponseData(string id = default)
+        /// <param name="amount">The amount in minor units, e.g. cents (required).</param>
+        /// <param name="currency">An ISO 4217 currency code (required).</param>
+        public Money(long amount = default, string currency = default)
         {
-            // to ensure "id" is required (not null)
-            if (id == null)
+            this.Amount = amount;
+            // to ensure "currency" is required (not null)
+            if (currency == null)
             {
-                throw new ArgumentNullException("id is a required property for RunAutomationResponseData and cannot be null");
+                throw new ArgumentNullException("currency is a required property for Money and cannot be null");
             }
-            this.Id = id;
+            this.Currency = currency;
         }
 
         /// <summary>
-        /// The queued run&#39;s id
+        /// The amount in minor units, e.g. cents
         /// </summary>
-        /// <value>The queued run&#39;s id</value>
+        /// <value>The amount in minor units, e.g. cents</value>
+        [DataMember(Name = "amount", IsRequired = true, EmitDefaultValue = true)]
+        public long Amount { get; set; }
+
+        /// <summary>
+        /// An ISO 4217 currency code
+        /// </summary>
+        /// <value>An ISO 4217 currency code</value>
         /*
-        <example>run_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        <example>USD</example>
         */
-        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
-        public string Id { get; set; }
+        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
+        public string Currency { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -70,8 +79,9 @@ namespace Qualithm.Platform.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class RunAutomationResponseData {\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("class Money {\n");
+            sb.Append("  Amount: ").Append(Amount).Append("\n");
+            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -92,12 +102,12 @@ namespace Qualithm.Platform.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
-            if (this.Id != null) {
-                // Id (string) pattern
-                Regex regexId = new Regex(@"^run_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
-                if (!regexId.Match(this.Id).Success)
+            if (this.Currency != null) {
+                // Currency (string) pattern
+                Regex regexCurrency = new Regex(@"^[A-Z]{3}$", RegexOptions.CultureInvariant);
+                if (!regexCurrency.Match(this.Currency).Success)
                 {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Currency, must match a pattern of " + regexCurrency, new [] { "Currency" });
                 }
             }
 

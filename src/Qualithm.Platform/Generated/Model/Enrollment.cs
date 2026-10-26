@@ -85,12 +85,12 @@ namespace Qualithm.Platform.Model
         /// <param name="label">label (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="claimedDeviceId">A device ID (required).</param>
-        /// <param name="claimedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="expiresAt">ISO 8601 time (required).</param>
+        /// <param name="claimedAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="expiresAt">UTC time, RFC 3339 (required).</param>
         /// <param name="payload">JSON text (required).</param>
-        /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public Enrollment(string id = default, string teamId = default, string spaceId = default, string label = default, StatusEnum status = default, string claimedDeviceId = default, string claimedAt = default, string expiresAt = default, string payload = default, string createdAt = default, string updatedAt = default)
+        /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
+        public Enrollment(string id = default, string teamId = default, string spaceId = default, string label = default, StatusEnum status = default, string claimedDeviceId = default, DateTime? claimedAt = default, DateTime expiresAt = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -129,11 +129,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("claimedAt is a required property for Enrollment and cannot be null");
             }
             this.ClaimedAt = claimedAt;
-            // to ensure "expiresAt" is required (not null)
-            if (expiresAt == null)
-            {
-                throw new ArgumentNullException("expiresAt is a required property for Enrollment and cannot be null");
-            }
             this.ExpiresAt = expiresAt;
             // to ensure "payload" is required (not null)
             if (payload == null)
@@ -141,17 +136,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("payload is a required property for Enrollment and cannot be null");
             }
             this.Payload = payload;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null)
-            {
-                throw new ArgumentNullException("createdAt is a required property for Enrollment and cannot be null");
-            }
             this.CreatedAt = createdAt;
-            // to ensure "updatedAt" is required (not null)
-            if (updatedAt == null)
-            {
-                throw new ArgumentNullException("updatedAt is a required property for Enrollment and cannot be null");
-            }
             this.UpdatedAt = updatedAt;
         }
 
@@ -202,18 +187,24 @@ namespace Qualithm.Platform.Model
         public string ClaimedDeviceId { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "claimedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string ClaimedAt { get; set; }
+        public DateTime? ClaimedAt { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = true)]
-        public string ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; }
 
         /// <summary>
         /// JSON text
@@ -223,18 +214,24 @@ namespace Qualithm.Platform.Model
         public string Payload { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

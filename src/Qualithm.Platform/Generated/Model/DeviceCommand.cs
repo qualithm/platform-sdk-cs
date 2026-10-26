@@ -122,9 +122,9 @@ namespace Qualithm.Platform.Model
         /// <param name="topic">topic (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="lastError">lastError (required).</param>
-        /// <param name="enqueuedAt">ISO 8601 time (required).</param>
-        /// <param name="settledAt">ISO 8601 time (required).</param>
-        public DeviceCommand(string id = default, string deviceId = default, SourceEnum source = default, string topic = default, StatusEnum status = default, string lastError = default, string enqueuedAt = default, string settledAt = default)
+        /// <param name="enqueuedAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="settledAt">UTC time, RFC 3339 (required).</param>
+        public DeviceCommand(string id = default, string deviceId = default, SourceEnum source = default, string topic = default, StatusEnum status = default, string lastError = default, DateTime enqueuedAt = default, DateTime? settledAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -152,11 +152,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("lastError is a required property for DeviceCommand and cannot be null");
             }
             this.LastError = lastError;
-            // to ensure "enqueuedAt" is required (not null)
-            if (enqueuedAt == null)
-            {
-                throw new ArgumentNullException("enqueuedAt is a required property for DeviceCommand and cannot be null");
-            }
             this.EnqueuedAt = enqueuedAt;
             // to ensure "settledAt" is required (not null)
             if (settledAt == null)
@@ -199,18 +194,24 @@ namespace Qualithm.Platform.Model
         public string LastError { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "enqueuedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string EnqueuedAt { get; set; }
+        public DateTime EnqueuedAt { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "settledAt", IsRequired = true, EmitDefaultValue = true)]
-        public string SettledAt { get; set; }
+        public DateTime? SettledAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

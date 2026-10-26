@@ -37,18 +37,21 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotateDeviceCredentialRequest" /> class.
         /// </summary>
-        /// <param name="expiresAt">ISO 8601 time in the future.</param>
-        public RotateDeviceCredentialRequest(string expiresAt = default)
+        /// <param name="expiresAt">A time in the future.</param>
+        public RotateDeviceCredentialRequest(DateTime expiresAt = default)
         {
             this.ExpiresAt = expiresAt;
         }
 
         /// <summary>
-        /// ISO 8601 time in the future
+        /// A time in the future
         /// </summary>
-        /// <value>ISO 8601 time in the future</value>
+        /// <value>A time in the future</value>
+        /*
+        <example>2026-10-26T09:30:00Z</example>
+        */
         [DataMember(Name = "expiresAt", EmitDefaultValue = false)]
-        public string ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

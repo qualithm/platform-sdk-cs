@@ -35,8 +35,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateEnrollmentResponse</returns>
-        CreateEnrollmentResponse CreateEnrollment(string teamId, CreateEnrollmentRequest createEnrollmentRequest);
+        CreateEnrollmentResponse CreateEnrollment(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Create a claim code for a device to enroll into a space
@@ -47,8 +48,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateEnrollmentResponse</returns>
-        ApiResponse<CreateEnrollmentResponse> CreateEnrollmentWithHttpInfo(string teamId, CreateEnrollmentRequest createEnrollmentRequest);
+        ApiResponse<CreateEnrollmentResponse> CreateEnrollmentWithHttpInfo(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default);
         /// <summary>
         /// Revoke a pending enrollment
         /// </summary>
@@ -109,9 +111,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateEnrollmentResponse</returns>
-        System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a claim code for a device to enroll into a space
@@ -122,9 +125,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateEnrollmentResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateEnrollmentResponse>> CreateEnrollmentWithHttpInfoAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateEnrollmentResponse>> CreateEnrollmentWithHttpInfoAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Revoke a pending enrollment
         /// </summary>
@@ -396,10 +400,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateEnrollmentResponse</returns>
-        public CreateEnrollmentResponse CreateEnrollment(string teamId, CreateEnrollmentRequest createEnrollmentRequest)
+        public CreateEnrollmentResponse CreateEnrollment(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> localVarResponse = CreateEnrollmentWithHttpInfo(teamId, createEnrollmentRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> localVarResponse = CreateEnrollmentWithHttpInfo(teamId, createEnrollmentRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -409,8 +414,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateEnrollmentResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> CreateEnrollmentWithHttpInfo(string teamId, CreateEnrollmentRequest createEnrollmentRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> CreateEnrollmentWithHttpInfo(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -438,6 +444,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createEnrollmentRequest;
 
             // authentication (apiToken) required
@@ -465,11 +475,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateEnrollmentResponse</returns>
-        public async System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> localVarResponse = await CreateEnrollmentWithHttpInfoAsync(teamId, createEnrollmentRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse> localVarResponse = await CreateEnrollmentWithHttpInfoAsync(teamId, createEnrollmentRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -479,9 +490,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="createEnrollmentRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateEnrollmentResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse>> CreateEnrollmentWithHttpInfoAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateEnrollmentResponse>> CreateEnrollmentWithHttpInfoAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -511,6 +523,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createEnrollmentRequest;
 
             // authentication (apiToken) required

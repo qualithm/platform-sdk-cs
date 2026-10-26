@@ -36,8 +36,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateDeviceCommandResponse</returns>
-        CreateDeviceCommandResponse CreateDeviceCommand(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest);
+        CreateDeviceCommandResponse CreateDeviceCommand(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Send a command to a device
@@ -49,8 +50,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateDeviceCommandResponse</returns>
-        ApiResponse<CreateDeviceCommandResponse> CreateDeviceCommandWithHttpInfo(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest);
+        ApiResponse<CreateDeviceCommandResponse> CreateDeviceCommandWithHttpInfo(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, string? idempotencyKey = default);
         /// <summary>
         /// List a device&#39;s recent command deliveries
         /// </summary>
@@ -94,9 +96,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCommandResponse</returns>
-        System.Threading.Tasks.Task<CreateDeviceCommandResponse> CreateDeviceCommandAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateDeviceCommandResponse> CreateDeviceCommandAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Send a command to a device
@@ -108,9 +111,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCommandResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCommandResponse>> CreateDeviceCommandWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateDeviceCommandResponse>> CreateDeviceCommandWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List a device&#39;s recent command deliveries
         /// </summary>
@@ -360,10 +364,11 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateDeviceCommandResponse</returns>
-        public CreateDeviceCommandResponse CreateDeviceCommand(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest)
+        public CreateDeviceCommandResponse CreateDeviceCommand(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> localVarResponse = CreateDeviceCommandWithHttpInfo(teamId, deviceId, createDeviceCommandRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> localVarResponse = CreateDeviceCommandWithHttpInfo(teamId, deviceId, createDeviceCommandRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -374,8 +379,9 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateDeviceCommandResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> CreateDeviceCommandWithHttpInfo(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> CreateDeviceCommandWithHttpInfo(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -408,6 +414,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDeviceCommandRequest;
 
             // authentication (apiToken) required
@@ -436,11 +446,12 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateDeviceCommandResponse</returns>
-        public async System.Threading.Tasks.Task<CreateDeviceCommandResponse> CreateDeviceCommandAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateDeviceCommandResponse> CreateDeviceCommandAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> localVarResponse = await CreateDeviceCommandWithHttpInfoAsync(teamId, deviceId, createDeviceCommandRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse> localVarResponse = await CreateDeviceCommandWithHttpInfoAsync(teamId, deviceId, createDeviceCommandRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -451,9 +462,10 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="createDeviceCommandRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateDeviceCommandResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse>> CreateDeviceCommandWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateDeviceCommandResponse>> CreateDeviceCommandWithHttpInfoAsync(string teamId, string deviceId, CreateDeviceCommandRequest createDeviceCommandRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -488,6 +500,10 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createDeviceCommandRequest;
 
             // authentication (apiToken) required

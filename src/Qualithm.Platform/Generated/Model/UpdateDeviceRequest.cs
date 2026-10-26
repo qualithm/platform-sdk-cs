@@ -39,10 +39,12 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="name">name.</param>
         /// <param name="spaceId">A space in the device&#39;s zone.</param>
-        public UpdateDeviceRequest(string name = default, string spaceId = default)
+        /// <param name="parked">A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay.</param>
+        public UpdateDeviceRequest(string name = default, string spaceId = default, bool parked = default)
         {
             this.Name = name;
             this.SpaceId = spaceId;
+            this.Parked = parked;
         }
 
         /// <summary>
@@ -62,6 +64,13 @@ namespace Qualithm.Platform.Model
         public string SpaceId { get; set; }
 
         /// <summary>
+        /// A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay
+        /// </summary>
+        /// <value>A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay</value>
+        [DataMember(Name = "parked", EmitDefaultValue = true)]
+        public bool Parked { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -71,6 +80,7 @@ namespace Qualithm.Platform.Model
             sb.Append("class UpdateDeviceRequest {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
+            sb.Append("  Parked: ").Append(Parked).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

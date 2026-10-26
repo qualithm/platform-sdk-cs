@@ -146,9 +146,9 @@ namespace Qualithm.Platform.Model
         /// <param name="status">status (required).</param>
         /// <param name="steps">steps (required).</param>
         /// <param name="lastError">lastError (required).</param>
-        /// <param name="triggeredAt">ISO 8601 time (required).</param>
-        /// <param name="executedAt">ISO 8601 time (required).</param>
-        public AutomationRun(string id = default, string automationId = default, TriggerTypeEnum triggerType = default, StatusEnum status = default, List<AutomationRunStep> steps = default, string lastError = default, string triggeredAt = default, string executedAt = default)
+        /// <param name="triggeredAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="executedAt">UTC time, RFC 3339 (required).</param>
+        public AutomationRun(string id = default, string automationId = default, TriggerTypeEnum triggerType = default, StatusEnum status = default, List<AutomationRunStep> steps = default, string lastError = default, DateTime triggeredAt = default, DateTime? executedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -176,11 +176,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("lastError is a required property for AutomationRun and cannot be null");
             }
             this.LastError = lastError;
-            // to ensure "triggeredAt" is required (not null)
-            if (triggeredAt == null)
-            {
-                throw new ArgumentNullException("triggeredAt is a required property for AutomationRun and cannot be null");
-            }
             this.TriggeredAt = triggeredAt;
             // to ensure "executedAt" is required (not null)
             if (executedAt == null)
@@ -223,18 +218,24 @@ namespace Qualithm.Platform.Model
         public string LastError { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "triggeredAt", IsRequired = true, EmitDefaultValue = true)]
-        public string TriggeredAt { get; set; }
+        public DateTime TriggeredAt { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "executedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string ExecutedAt { get; set; }
+        public DateTime? ExecutedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
