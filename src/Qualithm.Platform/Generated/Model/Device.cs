@@ -82,9 +82,10 @@ namespace Qualithm.Platform.Model
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="parkedAt">UTC time, RFC 3339.</param>
+        /// <param name="capabilitiesDeclared">Whether the device&#39;s latest session declared its capabilities before sending data; null until a session has done either.</param>
         /// <param name="level">level.</param>
         /// <param name="checks">checks.</param>
-        public Device(string id = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
+        public Device(string id = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -125,6 +126,7 @@ namespace Qualithm.Platform.Model
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.ParkedAt = parkedAt;
+            this.CapabilitiesDeclared = capabilitiesDeclared;
             this.Level = level;
             this.Checks = checks;
         }
@@ -209,6 +211,13 @@ namespace Qualithm.Platform.Model
         public DateTime? ParkedAt { get; set; }
 
         /// <summary>
+        /// Whether the device&#39;s latest session declared its capabilities before sending data; null until a session has done either
+        /// </summary>
+        /// <value>Whether the device&#39;s latest session declared its capabilities before sending data; null until a session has done either</value>
+        [DataMember(Name = "capabilitiesDeclared", EmitDefaultValue = true)]
+        public bool? CapabilitiesDeclared { get; set; }
+
+        /// <summary>
         /// Gets or Sets Checks
         /// </summary>
         [DataMember(Name = "checks", EmitDefaultValue = false)]
@@ -231,6 +240,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  ParkedAt: ").Append(ParkedAt).Append("\n");
+            sb.Append("  CapabilitiesDeclared: ").Append(CapabilitiesDeclared).Append("\n");
             sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  Checks: ").Append(Checks).Append("\n");
             sb.Append("}\n");
