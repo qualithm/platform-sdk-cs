@@ -53,10 +53,10 @@ namespace Qualithm.Platform.Model
         /// <param name="name">name (required).</param>
         /// <param name="payload">JSON text (required).</param>
         /// <param name="zone">zone (required).</param>
-        /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
+        /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="deviceTotal">The space&#39;s live devices. Absent when listing a zone&#39;s spaces..</param>
-        public Space(string id = default, string teamId = default, string name = default, string payload = default, ZoneId zone = default, string createdAt = default, string updatedAt = default, long deviceTotal = default)
+        public Space(string id = default, string teamId = default, string name = default, string payload = default, ZoneId zone = default, DateTime createdAt = default, DateTime updatedAt = default, long deviceTotal = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -83,17 +83,7 @@ namespace Qualithm.Platform.Model
             }
             this.Payload = payload;
             this.Zone = zone;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null)
-            {
-                throw new ArgumentNullException("createdAt is a required property for Space and cannot be null");
-            }
             this.CreatedAt = createdAt;
-            // to ensure "updatedAt" is required (not null)
-            if (updatedAt == null)
-            {
-                throw new ArgumentNullException("updatedAt is a required property for Space and cannot be null");
-            }
             this.UpdatedAt = updatedAt;
             this.DeviceTotal = deviceTotal;
         }
@@ -132,18 +122,24 @@ namespace Qualithm.Platform.Model
         public string Payload { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// The space&#39;s live devices. Absent when listing a zone&#39;s spaces.

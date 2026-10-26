@@ -75,8 +75,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>PreviewTierChangeResponse</returns>
-        PreviewTierChangeResponse PreviewTierChange(string teamId, PreviewTierChangeRequest previewTierChangeRequest);
+        PreviewTierChangeResponse PreviewTierChange(string teamId, PreviewTierChangeRequest previewTierChangeRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Preview what moving to another paid tier would cost
@@ -87,8 +88,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of PreviewTierChangeResponse</returns>
-        ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(string teamId, PreviewTierChangeRequest previewTierChangeRequest);
+        ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(string teamId, PreviewTierChangeRequest previewTierChangeRequest, string? idempotencyKey = default);
         #endregion Synchronous Operations
     }
 
@@ -157,9 +159,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PreviewTierChangeResponse</returns>
-        System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Preview what moving to another paid tier would cost
@@ -170,9 +173,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PreviewTierChangeResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -670,10 +674,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>PreviewTierChangeResponse</returns>
-        public PreviewTierChangeResponse PreviewTierChange(string teamId, PreviewTierChangeRequest previewTierChangeRequest)
+        public PreviewTierChangeResponse PreviewTierChange(string teamId, PreviewTierChangeRequest previewTierChangeRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = PreviewTierChangeWithHttpInfo(teamId, previewTierChangeRequest);
+            Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = PreviewTierChangeWithHttpInfo(teamId, previewTierChangeRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -683,8 +688,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of PreviewTierChangeResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(string teamId, PreviewTierChangeRequest previewTierChangeRequest)
+        public Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> PreviewTierChangeWithHttpInfo(string teamId, PreviewTierChangeRequest previewTierChangeRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -712,6 +718,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = previewTierChangeRequest;
 
             // authentication (apiToken) required
@@ -739,11 +749,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of PreviewTierChangeResponse</returns>
-        public async System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<PreviewTierChangeResponse> PreviewTierChangeAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = await PreviewTierChangeWithHttpInfoAsync(teamId, previewTierChangeRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse> localVarResponse = await PreviewTierChangeWithHttpInfoAsync(teamId, previewTierChangeRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -753,9 +764,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="previewTierChangeRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (PreviewTierChangeResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<PreviewTierChangeResponse>> PreviewTierChangeWithHttpInfoAsync(string teamId, PreviewTierChangeRequest previewTierChangeRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -785,6 +797,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = previewTierChangeRequest;
 
             // authentication (apiToken) required

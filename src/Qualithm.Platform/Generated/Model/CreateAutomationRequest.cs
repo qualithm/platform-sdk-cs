@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// CreateAutomationRequest
+    /// A name, and either a payload or a template
     /// </summary>
     [DataContract(Name = "CreateAutomationRequest")]
     public partial class CreateAutomationRequest : IValidatableObject
@@ -44,8 +44,10 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="name">name (required).</param>
         /// <param name="spaceId">A space ID.</param>
-        /// <param name="payload">payload (required).</param>
-        public CreateAutomationRequest(string name = default, string spaceId = default, CreateAutomationRequestPayload payload = default)
+        /// <param name="payload">payload.</param>
+        /// <param name="template">A template id to expand the chain from; exclusive with &#x60;payload&#x60;.</param>
+        /// <param name="varParams">The template&#39;s slot values, keyed by slot name; used with &#x60;template&#x60;.</param>
+        public CreateAutomationRequest(string name = default, string spaceId = default, CreateAutomationRequestPayload payload = default, string template = default, Object varParams = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -53,13 +55,10 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("name is a required property for CreateAutomationRequest and cannot be null");
             }
             this.Name = name;
-            // to ensure "payload" is required (not null)
-            if (payload == null)
-            {
-                throw new ArgumentNullException("payload is a required property for CreateAutomationRequest and cannot be null");
-            }
-            this.Payload = payload;
             this.SpaceId = spaceId;
+            this.Payload = payload;
+            this.Template = template;
+            this.Params = varParams;
         }
 
         /// <summary>
@@ -81,8 +80,22 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Gets or Sets Payload
         /// </summary>
-        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "payload", EmitDefaultValue = false)]
         public CreateAutomationRequestPayload Payload { get; set; }
+
+        /// <summary>
+        /// A template id to expand the chain from; exclusive with &#x60;payload&#x60;
+        /// </summary>
+        /// <value>A template id to expand the chain from; exclusive with &#x60;payload&#x60;</value>
+        [DataMember(Name = "template", EmitDefaultValue = false)]
+        public string Template { get; set; }
+
+        /// <summary>
+        /// The template&#39;s slot values, keyed by slot name; used with &#x60;template&#x60;
+        /// </summary>
+        /// <value>The template&#39;s slot values, keyed by slot name; used with &#x60;template&#x60;</value>
+        [DataMember(Name = "params", EmitDefaultValue = true)]
+        public Object Params { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -95,6 +108,8 @@ namespace Qualithm.Platform.Model
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
+            sb.Append("  Template: ").Append(Template).Append("\n");
+            sb.Append("  Params: ").Append(Params).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

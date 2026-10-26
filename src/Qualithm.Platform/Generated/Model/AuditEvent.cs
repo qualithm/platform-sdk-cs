@@ -87,8 +87,8 @@ namespace Qualithm.Platform.Model
         /// <param name="targetKind">What the action acted on, e.g. &#x60;device&#x60; (required).</param>
         /// <param name="targetId">An ID of any type (required).</param>
         /// <param name="metadata">Non-sensitive context for the action (required).</param>
-        /// <param name="occurredAt">ISO 8601 time (required).</param>
-        public AuditEvent(string id = default, string teamId = default, ActorKindEnum actorKind = default, string actorId = default, string action = default, string targetKind = default, string targetId = default, Object metadata = default, string occurredAt = default)
+        /// <param name="occurredAt">UTC time, RFC 3339 (required).</param>
+        public AuditEvent(string id = default, string teamId = default, ActorKindEnum actorKind = default, string actorId = default, string action = default, string targetKind = default, string targetId = default, Object metadata = default, DateTime occurredAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -133,11 +133,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("metadata is a required property for AuditEvent and cannot be null");
             }
             this.Metadata = metadata;
-            // to ensure "occurredAt" is required (not null)
-            if (occurredAt == null)
-            {
-                throw new ArgumentNullException("occurredAt is a required property for AuditEvent and cannot be null");
-            }
             this.OccurredAt = occurredAt;
         }
 
@@ -203,11 +198,14 @@ namespace Qualithm.Platform.Model
         public Object Metadata { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "occurredAt", IsRequired = true, EmitDefaultValue = true)]
-        public string OccurredAt { get; set; }
+        public DateTime OccurredAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

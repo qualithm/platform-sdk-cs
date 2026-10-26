@@ -29,35 +29,39 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// DisableAutomationResponse
+    /// CreateAutomationRunResponseData
     /// </summary>
-    [DataContract(Name = "DisableAutomationResponse")]
-    public partial class DisableAutomationResponse : IValidatableObject
+    [DataContract(Name = "CreateAutomationRunResponse_data")]
+    public partial class CreateAutomationRunResponseData : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="DisableAutomationResponse" /> class.
+        /// Initializes a new instance of the <see cref="CreateAutomationRunResponseData" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected DisableAutomationResponse() { }
+        protected CreateAutomationRunResponseData() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="DisableAutomationResponse" /> class.
+        /// Initializes a new instance of the <see cref="CreateAutomationRunResponseData" /> class.
         /// </summary>
-        /// <param name="data">data (required).</param>
-        public DisableAutomationResponse(Automation data = default)
+        /// <param name="id">The queued run&#39;s id (required).</param>
+        public CreateAutomationRunResponseData(string id = default)
         {
-            // to ensure "data" is required (not null)
-            if (data == null)
+            // to ensure "id" is required (not null)
+            if (id == null)
             {
-                throw new ArgumentNullException("data is a required property for DisableAutomationResponse and cannot be null");
+                throw new ArgumentNullException("id is a required property for CreateAutomationRunResponseData and cannot be null");
             }
-            this.Data = data;
+            this.Id = id;
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// The queued run&#39;s id
         /// </summary>
-        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public Automation Data { get; set; }
+        /// <value>The queued run&#39;s id</value>
+        /*
+        <example>run_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
+        [DataMember(Name = "id", IsRequired = true, EmitDefaultValue = true)]
+        public string Id { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +70,8 @@ namespace Qualithm.Platform.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class DisableAutomationResponse {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class CreateAutomationRunResponseData {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -88,6 +92,15 @@ namespace Qualithm.Platform.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            if (this.Id != null) {
+                // Id (string) pattern
+                Regex regexId = new Regex(@"^run_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexId.Match(this.Id).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                }
+            }
+
             yield break;
         }
     }

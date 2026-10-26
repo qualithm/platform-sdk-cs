@@ -49,10 +49,10 @@ namespace Qualithm.Platform.Model
         /// <param name="name">name (required).</param>
         /// <param name="enabled">enabled (required).</param>
         /// <param name="payload">payload (required).</param>
-        /// <param name="createdAt">ISO 8601 time (required).</param>
-        /// <param name="updatedAt">ISO 8601 time (required).</param>
+        /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="templateDrift">On a single read of a template-built automation: true when its chain no longer matches its template.</param>
-        public Automation(string id = default, string teamId = default, string spaceId = default, string spaceName = default, string name = default, bool enabled = default, AutomationPayload payload = default, string createdAt = default, string updatedAt = default, bool templateDrift = default)
+        public Automation(string id = default, string teamId = default, string spaceId = default, string spaceName = default, string name = default, bool enabled = default, AutomationPayload payload = default, DateTime createdAt = default, DateTime updatedAt = default, bool templateDrift = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -91,17 +91,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("payload is a required property for Automation and cannot be null");
             }
             this.Payload = payload;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null)
-            {
-                throw new ArgumentNullException("createdAt is a required property for Automation and cannot be null");
-            }
             this.CreatedAt = createdAt;
-            // to ensure "updatedAt" is required (not null)
-            if (updatedAt == null)
-            {
-                throw new ArgumentNullException("updatedAt is a required property for Automation and cannot be null");
-            }
             this.UpdatedAt = updatedAt;
             this.TemplateDrift = templateDrift;
         }
@@ -161,18 +151,24 @@ namespace Qualithm.Platform.Model
         public AutomationPayload Payload { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// On a single read of a template-built automation: true when its chain no longer matches its template

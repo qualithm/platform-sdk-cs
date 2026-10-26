@@ -45,12 +45,11 @@ namespace Qualithm.Platform.Model
         /// <param name="id">An invoice ID (required).</param>
         /// <param name="teamId">A team ID (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="totalC">The invoice total in minor units (required).</param>
-        /// <param name="currency">currency (required).</param>
+        /// <param name="total">The invoice total; null until Stripe sets it (required).</param>
         /// <param name="payload">The invoice detail: a JSON object, encoded as a string (required).</param>
-        /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public Invoice(string id = default, string teamId = default, string status = default, long? totalC = default, string currency = default, string payload = default, string createdAt = default, string updatedAt = default)
+        /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
+        public Invoice(string id = default, string teamId = default, string status = default, Money total = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -70,35 +69,19 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("status is a required property for Invoice and cannot be null");
             }
             this.Status = status;
-            // to ensure "totalC" is required (not null)
-            if (totalC == null)
+            // to ensure "total" is required (not null)
+            if (total == null)
             {
-                throw new ArgumentNullException("totalC is a required property for Invoice and cannot be null");
+                throw new ArgumentNullException("total is a required property for Invoice and cannot be null");
             }
-            this.TotalC = totalC;
-            // to ensure "currency" is required (not null)
-            if (currency == null)
-            {
-                throw new ArgumentNullException("currency is a required property for Invoice and cannot be null");
-            }
-            this.Currency = currency;
+            this.Total = total;
             // to ensure "payload" is required (not null)
             if (payload == null)
             {
                 throw new ArgumentNullException("payload is a required property for Invoice and cannot be null");
             }
             this.Payload = payload;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null)
-            {
-                throw new ArgumentNullException("createdAt is a required property for Invoice and cannot be null");
-            }
             this.CreatedAt = createdAt;
-            // to ensure "updatedAt" is required (not null)
-            if (updatedAt == null)
-            {
-                throw new ArgumentNullException("updatedAt is a required property for Invoice and cannot be null");
-            }
             this.UpdatedAt = updatedAt;
         }
 
@@ -129,17 +112,11 @@ namespace Qualithm.Platform.Model
         public string Status { get; set; }
 
         /// <summary>
-        /// The invoice total in minor units
+        /// The invoice total; null until Stripe sets it
         /// </summary>
-        /// <value>The invoice total in minor units</value>
-        [DataMember(Name = "totalC", IsRequired = true, EmitDefaultValue = true)]
-        public long? TotalC { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Currency
-        /// </summary>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
-        public string Currency { get; set; }
+        /// <value>The invoice total; null until Stripe sets it</value>
+        [DataMember(Name = "total", IsRequired = true, EmitDefaultValue = true)]
+        public Money Total { get; set; }
 
         /// <summary>
         /// The invoice detail: a JSON object, encoded as a string
@@ -149,18 +126,24 @@ namespace Qualithm.Platform.Model
         public string Payload { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -173,8 +156,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  TotalC: ").Append(TotalC).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
+            sb.Append("  Total: ").Append(Total).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");

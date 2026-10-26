@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// CreateAutomationRequestPayload
+    /// The chain; exclusive with &#x60;template&#x60;
     /// </summary>
     [DataContract(Name = "CreateAutomationRequest_payload")]
     public partial class CreateAutomationRequestPayload : IValidatableObject
