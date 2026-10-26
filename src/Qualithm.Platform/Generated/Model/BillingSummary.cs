@@ -90,9 +90,9 @@ namespace Qualithm.Platform.Model
         /// <param name="limitGrace">limitGrace (required).</param>
         /// <param name="limits">limits (required).</param>
         /// <param name="usage">usage (required).</param>
-        /// <param name="monthlyTotal">The plan&#39;s monthly price with add-ons, in USD (required).</param>
+        /// <param name="monthlyTotal">The plan&#39;s monthly price with add-ons (required).</param>
         /// <param name="addons">addons (required).</param>
-        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, decimal monthlyTotal = default, BillingSummaryAddons addons = default)
+        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, Money monthlyTotal = default, BillingSummaryAddons addons = default)
         {
             this.Tier = tier;
             // to ensure "month" is required (not null)
@@ -119,6 +119,11 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("usage is a required property for BillingSummary and cannot be null");
             }
             this.Usage = usage;
+            // to ensure "monthlyTotal" is required (not null)
+            if (monthlyTotal == null)
+            {
+                throw new ArgumentNullException("monthlyTotal is a required property for BillingSummary and cannot be null");
+            }
             this.MonthlyTotal = monthlyTotal;
             // to ensure "addons" is required (not null)
             if (addons == null)
@@ -154,11 +159,11 @@ namespace Qualithm.Platform.Model
         public BillingSummaryUsage Usage { get; set; }
 
         /// <summary>
-        /// The plan&#39;s monthly price with add-ons, in USD
+        /// The plan&#39;s monthly price with add-ons
         /// </summary>
-        /// <value>The plan&#39;s monthly price with add-ons, in USD</value>
+        /// <value>The plan&#39;s monthly price with add-ons</value>
         [DataMember(Name = "monthlyTotal", IsRequired = true, EmitDefaultValue = true)]
-        public decimal MonthlyTotal { get; set; }
+        public Money MonthlyTotal { get; set; }
 
         /// <summary>
         /// Gets or Sets Addons

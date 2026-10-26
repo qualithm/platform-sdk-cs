@@ -298,11 +298,11 @@ namespace Qualithm.Platform.Model
         /// <param name="status">status (required).</param>
         /// <param name="role">The token&#39;s role ceiling; null means the creator&#39;s current role (required).</param>
         /// <param name="permissions">What the token can do now: its creator&#39;s current role lowered to its ceiling. Listed tokens only..</param>
-        /// <param name="expiresAt">ISO 8601 time (required).</param>
-        /// <param name="lastUsedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="updatedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public ApiToken(string id = default, string accountId = default, string teamId = default, string name = default, StatusEnum status = default, MemberRole role = default, List<PermissionsEnum> permissions = default, string expiresAt = default, string lastUsedAt = default, string createdAt = default, string updatedAt = default)
+        /// <param name="expiresAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="lastUsedAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
+        public ApiToken(string id = default, string accountId = default, string teamId = default, string name = default, StatusEnum status = default, MemberRole role = default, List<PermissionsEnum> permissions = default, DateTime? expiresAt = default, DateTime? lastUsedAt = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -342,17 +342,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("lastUsedAt is a required property for ApiToken and cannot be null");
             }
             this.LastUsedAt = lastUsedAt;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null)
-            {
-                throw new ArgumentNullException("createdAt is a required property for ApiToken and cannot be null");
-            }
             this.CreatedAt = createdAt;
-            // to ensure "updatedAt" is required (not null)
-            if (updatedAt == null)
-            {
-                throw new ArgumentNullException("updatedAt is a required property for ApiToken and cannot be null");
-            }
             this.UpdatedAt = updatedAt;
             this.Permissions = permissions;
         }
@@ -401,32 +391,44 @@ namespace Qualithm.Platform.Model
         public List<ApiToken.PermissionsEnum> Permissions { get; set; }
 
         /// <summary>
-        /// ISO 8601 time
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>ISO 8601 time</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = true)]
-        public string ExpiresAt { get; set; }
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "lastUsedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string LastUsedAt { get; set; }
+        public DateTime? LastUsedAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "updatedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string UpdatedAt { get; set; }
+        public DateTime UpdatedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

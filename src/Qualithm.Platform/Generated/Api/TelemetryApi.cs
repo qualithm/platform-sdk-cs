@@ -36,13 +36,13 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">A team ID</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, epoch milliseconds, inclusive</param>
-        /// <param name="to">Range end, epoch milliseconds, exclusive</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
         /// <returns>ListTelemetryResponse</returns>
-        ListTelemetryResponse ListTelemetry(string teamId, string deviceId, string metric, string from, string to, string? bucket = default, string? agg = default, string? fill = default);
+        ListTelemetryResponse ListTelemetry(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default);
 
         /// <summary>
         /// Read a device metric as bucketed points
@@ -54,13 +54,13 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">A team ID</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, epoch milliseconds, inclusive</param>
-        /// <param name="to">Range end, epoch milliseconds, exclusive</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
         /// <returns>ApiResponse of ListTelemetryResponse</returns>
-        ApiResponse<ListTelemetryResponse> ListTelemetryWithHttpInfo(string teamId, string deviceId, string metric, string from, string to, string? bucket = default, string? agg = default, string? fill = default);
+        ApiResponse<ListTelemetryResponse> ListTelemetryWithHttpInfo(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default);
         #endregion Synchronous Operations
     }
 
@@ -80,14 +80,14 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">A team ID</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, epoch milliseconds, inclusive</param>
-        /// <param name="to">Range end, epoch milliseconds, exclusive</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTelemetryResponse</returns>
-        System.Threading.Tasks.Task<ListTelemetryResponse> ListTelemetryAsync(string teamId, string deviceId, string metric, string from, string to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListTelemetryResponse> ListTelemetryAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Read a device metric as bucketed points
@@ -99,14 +99,14 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">A team ID</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, epoch milliseconds, inclusive</param>
-        /// <param name="to">Range end, epoch milliseconds, exclusive</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTelemetryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListTelemetryResponse>> ListTelemetryWithHttpInfoAsync(string teamId, string deviceId, string metric, string from, string to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListTelemetryResponse>> ListTelemetryWithHttpInfoAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -327,13 +327,13 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">A team ID</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, epoch milliseconds, inclusive</param>
-        /// <param name="to">Range end, epoch milliseconds, exclusive</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
         /// <returns>ListTelemetryResponse</returns>
-        public ListTelemetryResponse ListTelemetry(string teamId, string deviceId, string metric, string from, string to, string? bucket = default, string? agg = default, string? fill = default)
+        public ListTelemetryResponse ListTelemetry(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> localVarResponse = ListTelemetryWithHttpInfo(teamId, deviceId, metric, from, to, bucket, agg, fill);
             return localVarResponse.Data;
@@ -346,13 +346,13 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">A team ID</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, epoch milliseconds, inclusive</param>
-        /// <param name="to">Range end, epoch milliseconds, exclusive</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
         /// <returns>ApiResponse of ListTelemetryResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> ListTelemetryWithHttpInfo(string teamId, string deviceId, string metric, string from, string to, string? bucket = default, string? agg = default, string? fill = default)
+        public Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> ListTelemetryWithHttpInfo(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -365,14 +365,6 @@ namespace Qualithm.Platform.Api
             // verify the required parameter 'metric' is set
             if (metric == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'metric' when calling TelemetryApi->ListTelemetry");
-
-            // verify the required parameter 'from' is set
-            if (from == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'from' when calling TelemetryApi->ListTelemetry");
-
-            // verify the required parameter 'to' is set
-            if (to == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'to' when calling TelemetryApi->ListTelemetry");
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -434,14 +426,14 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">A team ID</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, epoch milliseconds, inclusive</param>
-        /// <param name="to">Range end, epoch milliseconds, exclusive</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTelemetryResponse</returns>
-        public async System.Threading.Tasks.Task<ListTelemetryResponse> ListTelemetryAsync(string teamId, string deviceId, string metric, string from, string to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListTelemetryResponse> ListTelemetryAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default)
         {
             Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> localVarResponse = await ListTelemetryWithHttpInfoAsync(teamId, deviceId, metric, from, to, bucket, agg, fill, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
@@ -454,14 +446,14 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">A team ID</param>
         /// <param name="deviceId">A device ID</param>
         /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, epoch milliseconds, inclusive</param>
-        /// <param name="to">Range end, epoch milliseconds, exclusive</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTelemetryResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse>> ListTelemetryWithHttpInfoAsync(string teamId, string deviceId, string metric, string from, string to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse>> ListTelemetryWithHttpInfoAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -474,14 +466,6 @@ namespace Qualithm.Platform.Api
             // verify the required parameter 'metric' is set
             if (metric == null)
                 throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'metric' when calling TelemetryApi->ListTelemetry");
-
-            // verify the required parameter 'from' is set
-            if (from == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'from' when calling TelemetryApi->ListTelemetry");
-
-            // verify the required parameter 'to' is set
-            if (to == null)
-                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'to' when calling TelemetryApi->ListTelemetry");
 
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();

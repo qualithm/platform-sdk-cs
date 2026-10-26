@@ -29,26 +29,26 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// CreateAutomationFromTemplateResponse
+    /// CreateAutomationRunResponse
     /// </summary>
-    [DataContract(Name = "CreateAutomationFromTemplateResponse")]
-    public partial class CreateAutomationFromTemplateResponse : IValidatableObject
+    [DataContract(Name = "CreateAutomationRunResponse")]
+    public partial class CreateAutomationRunResponse : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateAutomationFromTemplateResponse" /> class.
+        /// Initializes a new instance of the <see cref="CreateAutomationRunResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected CreateAutomationFromTemplateResponse() { }
+        protected CreateAutomationRunResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="CreateAutomationFromTemplateResponse" /> class.
+        /// Initializes a new instance of the <see cref="CreateAutomationRunResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public CreateAutomationFromTemplateResponse(Automation data = default)
+        public CreateAutomationRunResponse(CreateAutomationRunResponseData data = default)
         {
             // to ensure "data" is required (not null)
             if (data == null)
             {
-                throw new ArgumentNullException("data is a required property for CreateAutomationFromTemplateResponse and cannot be null");
+                throw new ArgumentNullException("data is a required property for CreateAutomationRunResponse and cannot be null");
             }
             this.Data = data;
         }
@@ -57,7 +57,7 @@ namespace Qualithm.Platform.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public Automation Data { get; set; }
+        public CreateAutomationRunResponseData Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,7 +66,7 @@ namespace Qualithm.Platform.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class CreateAutomationFromTemplateResponse {\n");
+            sb.Append("class CreateAutomationRunResponse {\n");
             sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

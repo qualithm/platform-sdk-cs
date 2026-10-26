@@ -35,8 +35,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateTeamInviteResponse</returns>
-        CreateTeamInviteResponse CreateTeamInvite(string teamId, CreateTeamInviteRequest createTeamInviteRequest);
+        CreateTeamInviteResponse CreateTeamInvite(string teamId, CreateTeamInviteRequest createTeamInviteRequest, string? idempotencyKey = default);
 
         /// <summary>
         /// Invite an account to the team by email
@@ -47,8 +48,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateTeamInviteResponse</returns>
-        ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(string teamId, CreateTeamInviteRequest createTeamInviteRequest);
+        ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(string teamId, CreateTeamInviteRequest createTeamInviteRequest, string? idempotencyKey = default);
         /// <summary>
         /// Revoke a pending invite
         /// </summary>
@@ -109,9 +111,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamInviteResponse</returns>
-        System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Invite an account to the team by email
@@ -122,9 +125,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamInviteResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Revoke a pending invite
         /// </summary>
@@ -396,10 +400,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateTeamInviteResponse</returns>
-        public CreateTeamInviteResponse CreateTeamInvite(string teamId, CreateTeamInviteRequest createTeamInviteRequest)
+        public CreateTeamInviteResponse CreateTeamInvite(string teamId, CreateTeamInviteRequest createTeamInviteRequest, string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = CreateTeamInviteWithHttpInfo(teamId, createTeamInviteRequest);
+            Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = CreateTeamInviteWithHttpInfo(teamId, createTeamInviteRequest, idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -409,8 +414,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateTeamInviteResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(string teamId, CreateTeamInviteRequest createTeamInviteRequest)
+        public Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> CreateTeamInviteWithHttpInfo(string teamId, CreateTeamInviteRequest createTeamInviteRequest, string? idempotencyKey = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -438,6 +444,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createTeamInviteRequest;
 
             // authentication (apiToken) required
@@ -465,11 +475,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamInviteResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateTeamInviteResponse> CreateTeamInviteAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = await CreateTeamInviteWithHttpInfoAsync(teamId, createTeamInviteRequest, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse> localVarResponse = await CreateTeamInviteWithHttpInfoAsync(teamId, createTeamInviteRequest, idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -479,9 +490,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="createTeamInviteRequest"></param>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamInviteResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateTeamInviteResponse>> CreateTeamInviteWithHttpInfoAsync(string teamId, CreateTeamInviteRequest createTeamInviteRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -511,6 +523,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
             localVarRequestOptions.Data = createTeamInviteRequest;
 
             // authentication (apiToken) required

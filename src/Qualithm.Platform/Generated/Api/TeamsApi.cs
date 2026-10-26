@@ -36,8 +36,9 @@ namespace Qualithm.Platform.Api
         /// The platform names the team; rename it with &#x60;updateTeam&#x60;. The caller&#39;s workspace switches to the new team.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateTeamResponse</returns>
-        CreateTeamResponse CreateTeam();
+        CreateTeamResponse CreateTeam(string? idempotencyKey = default);
 
         /// <summary>
         /// Create a team with the caller as owner
@@ -46,15 +47,17 @@ namespace Qualithm.Platform.Api
         /// The platform names the team; rename it with &#x60;updateTeam&#x60;. The caller&#39;s workspace switches to the new team.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateTeamResponse</returns>
-        ApiResponse<CreateTeamResponse> CreateTeamWithHttpInfo();
+        ApiResponse<CreateTeamResponse> CreateTeamWithHttpInfo(string? idempotencyKey = default);
         /// <summary>
         /// Delete the team with its spaces, devices and memberships
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        void DeleteTeam(string teamId);
+        void DeleteTeam(string teamId, string? ifMatch = default);
 
         /// <summary>
         /// Delete the team with its spaces, devices and memberships
@@ -64,8 +67,9 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteTeamWithHttpInfo(string teamId);
+        ApiResponse<Object> DeleteTeamWithHttpInfo(string teamId, string? ifMatch = default);
         /// <summary>
         /// Get one of the caller&#39;s teams, with their role and permissions in it
         /// </summary>
@@ -110,8 +114,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="updateTeamRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        void UpdateTeam(string teamId, UpdateTeamRequest updateTeamRequest);
+        void UpdateTeam(string teamId, UpdateTeamRequest updateTeamRequest, string? ifMatch = default);
 
         /// <summary>
         /// Rename the team
@@ -122,8 +127,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="updateTeamRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> UpdateTeamWithHttpInfo(string teamId, UpdateTeamRequest updateTeamRequest);
+        ApiResponse<Object> UpdateTeamWithHttpInfo(string teamId, UpdateTeamRequest updateTeamRequest, string? ifMatch = default);
         #endregion Synchronous Operations
     }
 
@@ -140,9 +146,10 @@ namespace Qualithm.Platform.Api
         /// The platform names the team; rename it with &#x60;updateTeam&#x60;. The caller&#39;s workspace switches to the new team.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamResponse</returns>
-        System.Threading.Tasks.Task<CreateTeamResponse> CreateTeamAsync(System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<CreateTeamResponse> CreateTeamAsync(string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Create a team with the caller as owner
@@ -151,9 +158,10 @@ namespace Qualithm.Platform.Api
         /// The platform names the team; rename it with &#x60;updateTeam&#x60;. The caller&#39;s workspace switches to the new team.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CreateTeamResponse>> CreateTeamWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<CreateTeamResponse>> CreateTeamWithHttpInfoAsync(string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Delete the team with its spaces, devices and memberships
         /// </summary>
@@ -162,9 +170,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteTeamAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task DeleteTeamAsync(string teamId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Delete the team with its spaces, devices and memberships
@@ -174,9 +183,10 @@ namespace Qualithm.Platform.Api
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTeamWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteTeamWithHttpInfoAsync(string teamId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Get one of the caller&#39;s teams, with their role and permissions in it
         /// </summary>
@@ -234,9 +244,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="updateTeamRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task UpdateTeamAsync(string teamId, UpdateTeamRequest updateTeamRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task UpdateTeamAsync(string teamId, UpdateTeamRequest updateTeamRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Rename the team
@@ -247,9 +258,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="updateTeamRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTeamWithHttpInfoAsync(string teamId, UpdateTeamRequest updateTeamRequest, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<Object>> UpdateTeamWithHttpInfoAsync(string teamId, UpdateTeamRequest updateTeamRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -467,10 +479,11 @@ namespace Qualithm.Platform.Api
         /// Create a team with the caller as owner The platform names the team; rename it with &#x60;updateTeam&#x60;. The caller&#39;s workspace switches to the new team.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>CreateTeamResponse</returns>
-        public CreateTeamResponse CreateTeam()
+        public CreateTeamResponse CreateTeam(string? idempotencyKey = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateTeamResponse> localVarResponse = CreateTeamWithHttpInfo();
+            Qualithm.Platform.Client.ApiResponse<CreateTeamResponse> localVarResponse = CreateTeamWithHttpInfo(idempotencyKey);
             return localVarResponse.Data;
         }
 
@@ -478,8 +491,9 @@ namespace Qualithm.Platform.Api
         /// Create a team with the caller as owner The platform names the team; rename it with &#x60;updateTeam&#x60;. The caller&#39;s workspace switches to the new team.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <returns>ApiResponse of CreateTeamResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<CreateTeamResponse> CreateTeamWithHttpInfo()
+        public Qualithm.Platform.Client.ApiResponse<CreateTeamResponse> CreateTeamWithHttpInfo(string? idempotencyKey = default)
         {
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
 
@@ -497,6 +511,10 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -521,11 +539,12 @@ namespace Qualithm.Platform.Api
         /// Create a team with the caller as owner The platform names the team; rename it with &#x60;updateTeam&#x60;. The caller&#39;s workspace switches to the new team.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of CreateTeamResponse</returns>
-        public async System.Threading.Tasks.Task<CreateTeamResponse> CreateTeamAsync(System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<CreateTeamResponse> CreateTeamAsync(string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<CreateTeamResponse> localVarResponse = await CreateTeamWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<CreateTeamResponse> localVarResponse = await CreateTeamWithHttpInfoAsync(idempotencyKey, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
@@ -533,9 +552,10 @@ namespace Qualithm.Platform.Api
         /// Create a team with the caller as owner The platform names the team; rename it with &#x60;updateTeam&#x60;. The caller&#39;s workspace switches to the new team.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="idempotencyKey">A unique key for this request. A retry with the same key and body returns the first response instead of acting again; keys last 24 hours. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (CreateTeamResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateTeamResponse>> CreateTeamWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<CreateTeamResponse>> CreateTeamWithHttpInfoAsync(string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default)
         {
 
             Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
@@ -555,6 +575,10 @@ namespace Qualithm.Platform.Api
             var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
+            if (idempotencyKey != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("Idempotency-Key", Qualithm.Platform.Client.ClientUtils.ParameterToString(idempotencyKey)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -581,10 +605,11 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        public void DeleteTeam(string teamId)
+        public void DeleteTeam(string teamId, string? ifMatch = default)
         {
-            DeleteTeamWithHttpInfo(teamId);
+            DeleteTeamWithHttpInfo(teamId, ifMatch);
         }
 
         /// <summary>
@@ -592,8 +617,9 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> DeleteTeamWithHttpInfo(string teamId)
+        public Qualithm.Platform.Client.ApiResponse<Object> DeleteTeamWithHttpInfo(string teamId, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -616,6 +642,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -641,11 +671,12 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteTeamAsync(string teamId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task DeleteTeamAsync(string teamId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await DeleteTeamWithHttpInfoAsync(teamId, cancellationToken).ConfigureAwait(false);
+            await DeleteTeamWithHttpInfoAsync(teamId, ifMatch, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -653,9 +684,10 @@ namespace Qualithm.Platform.Api
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteTeamWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> DeleteTeamWithHttpInfoAsync(string teamId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -680,6 +712,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -971,10 +1007,11 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="updateTeamRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns></returns>
-        public void UpdateTeam(string teamId, UpdateTeamRequest updateTeamRequest)
+        public void UpdateTeam(string teamId, UpdateTeamRequest updateTeamRequest, string? ifMatch = default)
         {
-            UpdateTeamWithHttpInfo(teamId, updateTeamRequest);
+            UpdateTeamWithHttpInfo(teamId, updateTeamRequest, ifMatch);
         }
 
         /// <summary>
@@ -983,8 +1020,9 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="updateTeamRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <returns>ApiResponse of Object(void)</returns>
-        public Qualithm.Platform.Client.ApiResponse<Object> UpdateTeamWithHttpInfo(string teamId, UpdateTeamRequest updateTeamRequest)
+        public Qualithm.Platform.Client.ApiResponse<Object> UpdateTeamWithHttpInfo(string teamId, UpdateTeamRequest updateTeamRequest, string? ifMatch = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1012,6 +1050,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateTeamRequest;
 
             // authentication (apiToken) required
@@ -1039,11 +1081,12 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="updateTeamRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task UpdateTeamAsync(string teamId, UpdateTeamRequest updateTeamRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task UpdateTeamAsync(string teamId, UpdateTeamRequest updateTeamRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            await UpdateTeamWithHttpInfoAsync(teamId, updateTeamRequest, cancellationToken).ConfigureAwait(false);
+            await UpdateTeamWithHttpInfoAsync(teamId, updateTeamRequest, ifMatch, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>
@@ -1052,9 +1095,10 @@ namespace Qualithm.Platform.Api
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
         /// <param name="updateTeamRequest"></param>
+        /// <param name="ifMatch">The ETag you last read. The request is refused with 412 when the resource has changed since; omit it to apply the change regardless. (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UpdateTeamWithHttpInfoAsync(string teamId, UpdateTeamRequest updateTeamRequest, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<Object>> UpdateTeamWithHttpInfoAsync(string teamId, UpdateTeamRequest updateTeamRequest, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1084,6 +1128,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (ifMatch != null)
+            {
+                localVarRequestOptions.HeaderParameters.Add("If-Match", Qualithm.Platform.Client.ClientUtils.ParameterToString(ifMatch)); // header parameter
+            }
             localVarRequestOptions.Data = updateTeamRequest;
 
             // authentication (apiToken) required

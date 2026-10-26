@@ -48,11 +48,11 @@ namespace Qualithm.Platform.Model
         /// <param name="ipAddress">ipAddress (required).</param>
         /// <param name="mfaVerified">Whether the session passed MFA (required).</param>
         /// <param name="thisDevice">Whether this is the session making the request (required).</param>
-        /// <param name="createdAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="lastUsedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="expiresAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        /// <param name="revokedAt">UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60; (required).</param>
-        public Session(string id = default, string accountId = default, string userAgent = default, string ipAddress = default, bool mfaVerified = default, bool thisDevice = default, string createdAt = default, string lastUsedAt = default, string expiresAt = default, string revokedAt = default)
+        /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="lastUsedAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="expiresAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="revokedAt">UTC time, RFC 3339 (required).</param>
+        public Session(string id = default, string accountId = default, string userAgent = default, string ipAddress = default, bool mfaVerified = default, bool thisDevice = default, DateTime createdAt = default, DateTime lastUsedAt = default, DateTime expiresAt = default, DateTime? revokedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -80,23 +80,8 @@ namespace Qualithm.Platform.Model
             this.IpAddress = ipAddress;
             this.MfaVerified = mfaVerified;
             this.ThisDevice = thisDevice;
-            // to ensure "createdAt" is required (not null)
-            if (createdAt == null)
-            {
-                throw new ArgumentNullException("createdAt is a required property for Session and cannot be null");
-            }
             this.CreatedAt = createdAt;
-            // to ensure "lastUsedAt" is required (not null)
-            if (lastUsedAt == null)
-            {
-                throw new ArgumentNullException("lastUsedAt is a required property for Session and cannot be null");
-            }
             this.LastUsedAt = lastUsedAt;
-            // to ensure "expiresAt" is required (not null)
-            if (expiresAt == null)
-            {
-                throw new ArgumentNullException("expiresAt is a required property for Session and cannot be null");
-            }
             this.ExpiresAt = expiresAt;
             // to ensure "revokedAt" is required (not null)
             if (revokedAt == null)
@@ -153,32 +138,44 @@ namespace Qualithm.Platform.Model
         public bool ThisDevice { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
-        public string CreatedAt { get; set; }
+        public DateTime CreatedAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "lastUsedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string LastUsedAt { get; set; }
+        public DateTime LastUsedAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "expiresAt", IsRequired = true, EmitDefaultValue = true)]
-        public string ExpiresAt { get; set; }
+        public DateTime ExpiresAt { get; set; }
 
         /// <summary>
-        /// UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;
+        /// UTC time, RFC 3339
         /// </summary>
-        /// <value>UTC time, &#x60;YYYY-MM-DD HH:MM:SS&#x60;</value>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
         [DataMember(Name = "revokedAt", IsRequired = true, EmitDefaultValue = true)]
-        public string RevokedAt { get; set; }
+        public DateTime? RevokedAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

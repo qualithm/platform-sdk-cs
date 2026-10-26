@@ -118,20 +118,18 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="from">from (required).</param>
         /// <param name="to">to (required).</param>
-        /// <param name="amountDue">What the change bills now, in minor units; negative for a credit (required).</param>
-        /// <param name="currency">currency (required).</param>
+        /// <param name="amountDue">What the change bills now; a negative amount is a credit (required).</param>
         /// <param name="nextPaymentAttempt">When the change is billed, in Unix seconds (required).</param>
-        public TierChangePreview(FromEnum from = default, ToEnum to = default, long amountDue = default, string currency = default, long? nextPaymentAttempt = default)
+        public TierChangePreview(FromEnum from = default, ToEnum to = default, Money amountDue = default, long? nextPaymentAttempt = default)
         {
             this.From = from;
             this.To = to;
-            this.AmountDue = amountDue;
-            // to ensure "currency" is required (not null)
-            if (currency == null)
+            // to ensure "amountDue" is required (not null)
+            if (amountDue == null)
             {
-                throw new ArgumentNullException("currency is a required property for TierChangePreview and cannot be null");
+                throw new ArgumentNullException("amountDue is a required property for TierChangePreview and cannot be null");
             }
-            this.Currency = currency;
+            this.AmountDue = amountDue;
             // to ensure "nextPaymentAttempt" is required (not null)
             if (nextPaymentAttempt == null)
             {
@@ -141,17 +139,11 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// What the change bills now, in minor units; negative for a credit
+        /// What the change bills now; a negative amount is a credit
         /// </summary>
-        /// <value>What the change bills now, in minor units; negative for a credit</value>
+        /// <value>What the change bills now; a negative amount is a credit</value>
         [DataMember(Name = "amountDue", IsRequired = true, EmitDefaultValue = true)]
-        public long AmountDue { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Currency
-        /// </summary>
-        [DataMember(Name = "currency", IsRequired = true, EmitDefaultValue = true)]
-        public string Currency { get; set; }
+        public Money AmountDue { get; set; }
 
         /// <summary>
         /// When the change is billed, in Unix seconds
@@ -171,7 +163,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  From: ").Append(From).Append("\n");
             sb.Append("  To: ").Append(To).Append("\n");
             sb.Append("  AmountDue: ").Append(AmountDue).Append("\n");
-            sb.Append("  Currency: ").Append(Currency).Append("\n");
             sb.Append("  NextPaymentAttempt: ").Append(NextPaymentAttempt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
