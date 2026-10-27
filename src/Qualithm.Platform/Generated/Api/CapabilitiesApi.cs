@@ -32,51 +32,65 @@ namespace Qualithm.Platform.Api
         /// <summary>
         /// List the capabilities of the workspace&#39;s devices
         /// </summary>
+        /// <remarks>
+        /// By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
         /// <param name="tag">Only capabilities carrying this tag (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListCapabilitiesResponse</returns>
-        ListCapabilitiesResponse ListCapabilities(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default);
+        ListCapabilitiesResponse ListCapabilities(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List the capabilities of the workspace&#39;s devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
         /// <param name="tag">Only capabilities carrying this tag (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListCapabilitiesResponse</returns>
-        ApiResponse<ListCapabilitiesResponse> ListCapabilitiesWithHttpInfo(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default);
+        ApiResponse<ListCapabilitiesResponse> ListCapabilitiesWithHttpInfo(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
         /// List the capabilities a device declares
         /// </summary>
+        /// <remarks>
+        /// By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListDeviceCapabilitiesResponse</returns>
-        ListDeviceCapabilitiesResponse ListDeviceCapabilities(string teamId, string deviceId);
+        ListDeviceCapabilitiesResponse ListDeviceCapabilities(string teamId, string deviceId, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List the capabilities a device declares
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListDeviceCapabilitiesResponse</returns>
-        ApiResponse<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesWithHttpInfo(string teamId, string deviceId);
+        ApiResponse<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesWithHttpInfo(string teamId, string deviceId, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
         /// Rename or retag a capability
         /// </summary>
@@ -114,60 +128,68 @@ namespace Qualithm.Platform.Api
         /// List the capabilities of the workspace&#39;s devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
         /// <param name="tag">Only capabilities carrying this tag (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCapabilitiesResponse</returns>
-        System.Threading.Tasks.Task<ListCapabilitiesResponse> ListCapabilitiesAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListCapabilitiesResponse> ListCapabilitiesAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the capabilities of the workspace&#39;s devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
         /// <param name="tag">Only capabilities carrying this tag (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCapabilitiesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListCapabilitiesResponse>> ListCapabilitiesWithHttpInfoAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListCapabilitiesResponse>> ListCapabilitiesWithHttpInfoAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the capabilities a device declares
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceCapabilitiesResponse</returns>
-        System.Threading.Tasks.Task<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesAsync(string teamId, string deviceId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the capabilities a device declares
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceCapabilitiesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDeviceCapabilitiesResponse>> ListDeviceCapabilitiesWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListDeviceCapabilitiesResponse>> ListDeviceCapabilitiesWithHttpInfoAsync(string teamId, string deviceId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rename or retag a capability
         /// </summary>
@@ -411,34 +433,36 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the capabilities of the workspace&#39;s devices 
+        /// List the capabilities of the workspace&#39;s devices By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
         /// <param name="tag">Only capabilities carrying this tag (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListCapabilitiesResponse</returns>
-        public ListCapabilitiesResponse ListCapabilities(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default)
+        public ListCapabilitiesResponse ListCapabilities(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> localVarResponse = ListCapabilitiesWithHttpInfo(teamId, type, tag, key, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> localVarResponse = ListCapabilitiesWithHttpInfo(teamId, type, tag, key, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the capabilities of the workspace&#39;s devices 
+        /// List the capabilities of the workspace&#39;s devices By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
         /// <param name="tag">Only capabilities carrying this tag (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListCapabilitiesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> ListCapabilitiesWithHttpInfo(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> ListCapabilitiesWithHttpInfo(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -480,6 +504,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -502,36 +530,38 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the capabilities of the workspace&#39;s devices 
+        /// List the capabilities of the workspace&#39;s devices By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
         /// <param name="tag">Only capabilities carrying this tag (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListCapabilitiesResponse</returns>
-        public async System.Threading.Tasks.Task<ListCapabilitiesResponse> ListCapabilitiesAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListCapabilitiesResponse> ListCapabilitiesAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> localVarResponse = await ListCapabilitiesWithHttpInfoAsync(teamId, type, tag, key, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse> localVarResponse = await ListCapabilitiesWithHttpInfoAsync(teamId, type, tag, key, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the capabilities of the workspace&#39;s devices 
+        /// List the capabilities of the workspace&#39;s devices By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
         /// <param name="tag">Only capabilities carrying this tag (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListCapabilitiesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse>> ListCapabilitiesWithHttpInfoAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListCapabilitiesResponse>> ListCapabilitiesWithHttpInfoAsync(string teamId, string? type = default, string? tag = default, string? key = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -575,6 +605,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -598,26 +632,32 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the capabilities a device declares 
+        /// List the capabilities a device declares By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListDeviceCapabilitiesResponse</returns>
-        public ListDeviceCapabilitiesResponse ListDeviceCapabilities(string teamId, string deviceId)
+        public ListDeviceCapabilitiesResponse ListDeviceCapabilities(string teamId, string deviceId, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> localVarResponse = ListDeviceCapabilitiesWithHttpInfo(teamId, deviceId);
+            Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> localVarResponse = ListDeviceCapabilitiesWithHttpInfo(teamId, deviceId, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the capabilities a device declares 
+        /// List the capabilities a device declares By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListDeviceCapabilitiesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesWithHttpInfo(string teamId, string deviceId)
+        public Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesWithHttpInfo(string teamId, string deviceId, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -645,6 +685,18 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -666,28 +718,34 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the capabilities a device declares 
+        /// List the capabilities a device declares By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDeviceCapabilitiesResponse</returns>
-        public async System.Threading.Tasks.Task<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListDeviceCapabilitiesResponse> ListDeviceCapabilitiesAsync(string teamId, string deviceId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> localVarResponse = await ListDeviceCapabilitiesWithHttpInfoAsync(teamId, deviceId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse> localVarResponse = await ListDeviceCapabilitiesWithHttpInfoAsync(teamId, deviceId, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the capabilities a device declares 
+        /// List the capabilities a device declares By &#x60;key&#x60;, then &#x60;id&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="deviceId">A device ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceCapabilitiesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse>> ListDeviceCapabilitiesWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDeviceCapabilitiesResponse>> ListDeviceCapabilitiesWithHttpInfoAsync(string teamId, string deviceId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -717,6 +775,18 @@ namespace Qualithm.Platform.Api
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
             localVarRequestOptions.PathParameters.Add("deviceId", Qualithm.Platform.Client.ClientUtils.ParameterToString(deviceId)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
 
             // authentication (apiToken) required
             // bearer authentication required

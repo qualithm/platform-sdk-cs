@@ -30,7 +30,7 @@ namespace Qualithm.Platform.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a device in a space
+        /// Create a device in a scope
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -40,7 +40,7 @@ namespace Qualithm.Platform.Api
         CreateDeviceResponse CreateDevice(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default);
 
         /// <summary>
-        /// Create a device in a space
+        /// Create a device in a scope
         /// </summary>
         /// <remarks>
         /// 
@@ -94,47 +94,63 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of GetDeviceResponse</returns>
         ApiResponse<GetDeviceResponse> GetDeviceWithHttpInfo(string teamId, string deviceId);
         /// <summary>
-        /// List the team&#39;s devices, optionally in one space
+        /// List the team&#39;s devices, optionally in one scope
         /// </summary>
+        /// <remarks>
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId">Only the devices in this space (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="scopeId">Only the devices directly in this scope, not the scopes under it (optional)</param>
+        /// <param name="spaceId">Deprecated: use scopeId (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListDevicesResponse</returns>
-        ListDevicesResponse ListDevices(string teamId, string? spaceId = default, long? page = default, int? limit = default);
+        ListDevicesResponse ListDevices(string teamId, string? scopeId = default, string? spaceId = default, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
-        /// List the team&#39;s devices, optionally in one space
+        /// List the team&#39;s devices, optionally in one scope
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId">Only the devices in this space (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="scopeId">Only the devices directly in this scope, not the scopes under it (optional)</param>
+        /// <param name="spaceId">Deprecated: use scopeId (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListDevicesResponse</returns>
-        ApiResponse<ListDevicesResponse> ListDevicesWithHttpInfo(string teamId, string? spaceId = default, long? page = default, int? limit = default);
+        ApiResponse<ListDevicesResponse> ListDevicesWithHttpInfo(string teamId, string? scopeId = default, string? spaceId = default, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
         /// List the live state of a team&#39;s devices
         /// </summary>
+        /// <remarks>
+        /// By &#x60;deviceId&#x60;, ascending.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListTeamDeviceStatesResponse</returns>
-        ListTeamDeviceStatesResponse ListTeamDeviceStates(string teamId);
+        ListTeamDeviceStatesResponse ListTeamDeviceStates(string teamId, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List the live state of a team&#39;s devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;deviceId&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListTeamDeviceStatesResponse</returns>
-        ApiResponse<ListTeamDeviceStatesResponse> ListTeamDeviceStatesWithHttpInfo(string teamId);
+        ApiResponse<ListTeamDeviceStatesResponse> ListTeamDeviceStatesWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
         /// Rename, move or park a device
         /// </summary>
@@ -169,7 +185,7 @@ namespace Qualithm.Platform.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Create a device in a space
+        /// Create a device in a scope
         /// </summary>
         /// <remarks>
         /// 
@@ -183,7 +199,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<CreateDeviceResponse> CreateDeviceAsync(string teamId, CreateDeviceRequest createDeviceRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Create a device in a space
+        /// Create a device in a scope
         /// </summary>
         /// <remarks>
         /// 
@@ -248,57 +264,67 @@ namespace Qualithm.Platform.Api
         /// <returns>Task of ApiResponse (GetDeviceResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetDeviceResponse>> GetDeviceWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// List the team&#39;s devices, optionally in one space
+        /// List the team&#39;s devices, optionally in one scope
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId">Only the devices in this space (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="scopeId">Only the devices directly in this scope, not the scopes under it (optional)</param>
+        /// <param name="spaceId">Deprecated: use scopeId (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDevicesResponse</returns>
-        System.Threading.Tasks.Task<ListDevicesResponse> ListDevicesAsync(string teamId, string? spaceId = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListDevicesResponse> ListDevicesAsync(string teamId, string? scopeId = default, string? spaceId = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// List the team&#39;s devices, optionally in one space
+        /// List the team&#39;s devices, optionally in one scope
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId">Only the devices in this space (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="scopeId">Only the devices directly in this scope, not the scopes under it (optional)</param>
+        /// <param name="spaceId">Deprecated: use scopeId (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDevicesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListDevicesResponse>> ListDevicesWithHttpInfoAsync(string teamId, string? spaceId = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListDevicesResponse>> ListDevicesWithHttpInfoAsync(string teamId, string? scopeId = default, string? spaceId = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the live state of a team&#39;s devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;deviceId&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTeamDeviceStatesResponse</returns>
-        System.Threading.Tasks.Task<ListTeamDeviceStatesResponse> ListTeamDeviceStatesAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListTeamDeviceStatesResponse> ListTeamDeviceStatesAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the live state of a team&#39;s devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// By &#x60;deviceId&#x60;, ascending.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTeamDeviceStatesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListTeamDeviceStatesResponse>> ListTeamDeviceStatesWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListTeamDeviceStatesResponse>> ListTeamDeviceStatesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rename, move or park a device
         /// </summary>
@@ -542,7 +568,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Create a device in a space 
+        /// Create a device in a scope 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -556,7 +582,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Create a device in a space 
+        /// Create a device in a scope 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -617,7 +643,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Create a device in a space 
+        /// Create a device in a scope 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -632,7 +658,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Create a device in a space 
+        /// Create a device in a scope 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -989,30 +1015,34 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the team&#39;s devices, optionally in one space 
+        /// List the team&#39;s devices, optionally in one scope Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId">Only the devices in this space (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="scopeId">Only the devices directly in this scope, not the scopes under it (optional)</param>
+        /// <param name="spaceId">Deprecated: use scopeId (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListDevicesResponse</returns>
-        public ListDevicesResponse ListDevices(string teamId, string? spaceId = default, long? page = default, int? limit = default)
+        public ListDevicesResponse ListDevices(string teamId, string? scopeId = default, string? spaceId = default, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDevicesResponse> localVarResponse = ListDevicesWithHttpInfo(teamId, spaceId, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListDevicesResponse> localVarResponse = ListDevicesWithHttpInfo(teamId, scopeId, spaceId, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the team&#39;s devices, optionally in one space 
+        /// List the team&#39;s devices, optionally in one scope Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId">Only the devices in this space (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="scopeId">Only the devices directly in this scope, not the scopes under it (optional)</param>
+        /// <param name="spaceId">Deprecated: use scopeId (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListDevicesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListDevicesResponse> ListDevicesWithHttpInfo(string teamId, string? spaceId = default, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListDevicesResponse> ListDevicesWithHttpInfo(string teamId, string? scopeId = default, string? spaceId = default, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1035,6 +1065,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (scopeId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "scopeId", scopeId));
+            }
             if (spaceId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "spaceId", spaceId));
@@ -1046,6 +1080,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -1068,32 +1106,36 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the team&#39;s devices, optionally in one space 
+        /// List the team&#39;s devices, optionally in one scope Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId">Only the devices in this space (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="scopeId">Only the devices directly in this scope, not the scopes under it (optional)</param>
+        /// <param name="spaceId">Deprecated: use scopeId (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListDevicesResponse</returns>
-        public async System.Threading.Tasks.Task<ListDevicesResponse> ListDevicesAsync(string teamId, string? spaceId = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListDevicesResponse> ListDevicesAsync(string teamId, string? scopeId = default, string? spaceId = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListDevicesResponse> localVarResponse = await ListDevicesWithHttpInfoAsync(teamId, spaceId, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListDevicesResponse> localVarResponse = await ListDevicesWithHttpInfoAsync(teamId, scopeId, spaceId, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the team&#39;s devices, optionally in one space 
+        /// List the team&#39;s devices, optionally in one scope Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="spaceId">Only the devices in this space (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="scopeId">Only the devices directly in this scope, not the scopes under it (optional)</param>
+        /// <param name="spaceId">Deprecated: use scopeId (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDevicesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDevicesResponse>> ListDevicesWithHttpInfoAsync(string teamId, string? spaceId = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListDevicesResponse>> ListDevicesWithHttpInfoAsync(string teamId, string? scopeId = default, string? spaceId = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1118,6 +1160,10 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (scopeId != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "scopeId", scopeId));
+            }
             if (spaceId != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "spaceId", spaceId));
@@ -1129,6 +1175,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -1152,24 +1202,30 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the live state of a team&#39;s devices 
+        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListTeamDeviceStatesResponse</returns>
-        public ListTeamDeviceStatesResponse ListTeamDeviceStates(string teamId)
+        public ListTeamDeviceStatesResponse ListTeamDeviceStates(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListTeamDeviceStatesResponse> localVarResponse = ListTeamDeviceStatesWithHttpInfo(teamId);
+            Qualithm.Platform.Client.ApiResponse<ListTeamDeviceStatesResponse> localVarResponse = ListTeamDeviceStatesWithHttpInfo(teamId, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the live state of a team&#39;s devices 
+        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListTeamDeviceStatesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListTeamDeviceStatesResponse> ListTeamDeviceStatesWithHttpInfo(string teamId)
+        public Qualithm.Platform.Client.ApiResponse<ListTeamDeviceStatesResponse> ListTeamDeviceStatesWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1192,6 +1248,18 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
 
             // authentication (apiToken) required
             // bearer authentication required
@@ -1213,26 +1281,32 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the live state of a team&#39;s devices 
+        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTeamDeviceStatesResponse</returns>
-        public async System.Threading.Tasks.Task<ListTeamDeviceStatesResponse> ListTeamDeviceStatesAsync(string teamId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListTeamDeviceStatesResponse> ListTeamDeviceStatesAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListTeamDeviceStatesResponse> localVarResponse = await ListTeamDeviceStatesWithHttpInfoAsync(teamId, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListTeamDeviceStatesResponse> localVarResponse = await ListTeamDeviceStatesWithHttpInfoAsync(teamId, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the live state of a team&#39;s devices 
+        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTeamDeviceStatesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTeamDeviceStatesResponse>> ListTeamDeviceStatesWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTeamDeviceStatesResponse>> ListTeamDeviceStatesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1257,6 +1331,18 @@ namespace Qualithm.Platform.Api
             if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
 
             localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
+            }
 
             // authentication (apiToken) required
             // bearer authentication required

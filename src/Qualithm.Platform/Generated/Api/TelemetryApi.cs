@@ -32,23 +32,8 @@ namespace Qualithm.Platform.Api
         /// <summary>
         /// Read a device metric as bucketed points
         /// </summary>
-        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
-        /// <param name="teamId">A team ID</param>
-        /// <param name="deviceId">A device ID</param>
-        /// <param name="metric">The metric to read</param>
-        /// <param name="from">Range start, RFC 3339, inclusive</param>
-        /// <param name="to">Range end, RFC 3339, exclusive</param>
-        /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
-        /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
-        /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
-        /// <returns>ListTelemetryResponse</returns>
-        ListTelemetryResponse ListTelemetry(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default);
-
-        /// <summary>
-        /// Read a device metric as bucketed points
-        /// </summary>
         /// <remarks>
-        /// 
+        /// By bucket start &#x60;ts&#x60;, ascending, within &#x60;from&#x60; and &#x60;to&#x60;. Every page reads the same range, so pass the same query with each cursor.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
@@ -59,8 +44,32 @@ namespace Qualithm.Platform.Api
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
+        /// <returns>ListTelemetryResponse</returns>
+        ListTelemetryResponse ListTelemetry(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, long? page = default, int? limit = default, string? cursor = default);
+
+        /// <summary>
+        /// Read a device metric as bucketed points
+        /// </summary>
+        /// <remarks>
+        /// By bucket start &#x60;ts&#x60;, ascending, within &#x60;from&#x60; and &#x60;to&#x60;. Every page reads the same range, so pass the same query with each cursor.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">A team ID</param>
+        /// <param name="deviceId">A device ID</param>
+        /// <param name="metric">The metric to read</param>
+        /// <param name="from">Range start, RFC 3339, inclusive</param>
+        /// <param name="to">Range end, RFC 3339, exclusive</param>
+        /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
+        /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
+        /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListTelemetryResponse</returns>
-        ApiResponse<ListTelemetryResponse> ListTelemetryWithHttpInfo(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default);
+        ApiResponse<ListTelemetryResponse> ListTelemetryWithHttpInfo(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, long? page = default, int? limit = default, string? cursor = default);
         #endregion Synchronous Operations
     }
 
@@ -74,7 +83,7 @@ namespace Qualithm.Platform.Api
         /// Read a device metric as bucketed points
         /// </summary>
         /// <remarks>
-        /// 
+        /// By bucket start &#x60;ts&#x60;, ascending, within &#x60;from&#x60; and &#x60;to&#x60;. Every page reads the same range, so pass the same query with each cursor.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
@@ -85,15 +94,18 @@ namespace Qualithm.Platform.Api
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTelemetryResponse</returns>
-        System.Threading.Tasks.Task<ListTelemetryResponse> ListTelemetryAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListTelemetryResponse> ListTelemetryAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// Read a device metric as bucketed points
         /// </summary>
         /// <remarks>
-        /// 
+        /// By bucket start &#x60;ts&#x60;, ascending, within &#x60;from&#x60; and &#x60;to&#x60;. Every page reads the same range, so pass the same query with each cursor.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
@@ -104,9 +116,12 @@ namespace Qualithm.Platform.Api
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTelemetryResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListTelemetryResponse>> ListTelemetryWithHttpInfoAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListTelemetryResponse>> ListTelemetryWithHttpInfoAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -321,7 +336,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Read a device metric as bucketed points 
+        /// Read a device metric as bucketed points By bucket start &#x60;ts&#x60;, ascending, within &#x60;from&#x60; and &#x60;to&#x60;. Every page reads the same range, so pass the same query with each cursor.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
@@ -332,15 +347,18 @@ namespace Qualithm.Platform.Api
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListTelemetryResponse</returns>
-        public ListTelemetryResponse ListTelemetry(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default)
+        public ListTelemetryResponse ListTelemetry(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> localVarResponse = ListTelemetryWithHttpInfo(teamId, deviceId, metric, from, to, bucket, agg, fill);
+            Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> localVarResponse = ListTelemetryWithHttpInfo(teamId, deviceId, metric, from, to, bucket, agg, fill, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Read a device metric as bucketed points 
+        /// Read a device metric as bucketed points By bucket start &#x60;ts&#x60;, ascending, within &#x60;from&#x60; and &#x60;to&#x60;. Every page reads the same range, so pass the same query with each cursor.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
@@ -351,8 +369,11 @@ namespace Qualithm.Platform.Api
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListTelemetryResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> ListTelemetryWithHttpInfo(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default)
+        public Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> ListTelemetryWithHttpInfo(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -398,6 +419,18 @@ namespace Qualithm.Platform.Api
             if (fill != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "fill", fill));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -420,7 +453,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Read a device metric as bucketed points 
+        /// Read a device metric as bucketed points By bucket start &#x60;ts&#x60;, ascending, within &#x60;from&#x60; and &#x60;to&#x60;. Every page reads the same range, so pass the same query with each cursor.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
@@ -431,16 +464,19 @@ namespace Qualithm.Platform.Api
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTelemetryResponse</returns>
-        public async System.Threading.Tasks.Task<ListTelemetryResponse> ListTelemetryAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListTelemetryResponse> ListTelemetryAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> localVarResponse = await ListTelemetryWithHttpInfoAsync(teamId, deviceId, metric, from, to, bucket, agg, fill, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse> localVarResponse = await ListTelemetryWithHttpInfoAsync(teamId, deviceId, metric, from, to, bucket, agg, fill, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// Read a device metric as bucketed points 
+        /// Read a device metric as bucketed points By bucket start &#x60;ts&#x60;, ascending, within &#x60;from&#x60; and &#x60;to&#x60;. Every page reads the same range, so pass the same query with each cursor.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
@@ -451,9 +487,12 @@ namespace Qualithm.Platform.Api
         /// <param name="bucket">Bucket width in seconds. Default 60. (optional)</param>
         /// <param name="agg">Bucket aggregate: avg, min, max, sum, count, last, delta or rate. Default avg. (optional)</param>
         /// <param name="fill">&#x60;locf&#x60; carries the last observation forward across empty buckets (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTelemetryResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse>> ListTelemetryWithHttpInfoAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTelemetryResponse>> ListTelemetryWithHttpInfoAsync(string teamId, string deviceId, string metric, DateTime from, DateTime to, string? bucket = default, string? agg = default, string? fill = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -501,6 +540,18 @@ namespace Qualithm.Platform.Api
             if (fill != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "fill", fill));
+            }
+            if (page != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "page", page));
+            }
+            if (limit != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required

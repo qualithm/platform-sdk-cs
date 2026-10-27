@@ -45,7 +45,8 @@ namespace Qualithm.Platform.Model
         /// <param name="current">This page&#39;s number, from 1 (required).</param>
         /// <param name="items">items (required).</param>
         /// <param name="last">The last page&#39;s number (required).</param>
-        public DeviceCommandPage(long current = default, List<DeviceCommand> items = default, long last = default)
+        /// <param name="nextCursor">Pass as &#x60;cursor&#x60; to read the next page; &#x60;null&#x60; on the last page (required).</param>
+        public DeviceCommandPage(long current = default, List<DeviceCommand> items = default, long last = default, string nextCursor = default)
         {
             this.Current = current;
             // to ensure "items" is required (not null)
@@ -55,6 +56,12 @@ namespace Qualithm.Platform.Model
             }
             this.Items = items;
             this.Last = last;
+            // to ensure "nextCursor" is required (not null)
+            if (nextCursor == null)
+            {
+                throw new ArgumentNullException("nextCursor is a required property for DeviceCommandPage and cannot be null");
+            }
+            this.NextCursor = nextCursor;
         }
 
         /// <summary>
@@ -78,6 +85,13 @@ namespace Qualithm.Platform.Model
         public long Last { get; set; }
 
         /// <summary>
+        /// Pass as &#x60;cursor&#x60; to read the next page; &#x60;null&#x60; on the last page
+        /// </summary>
+        /// <value>Pass as &#x60;cursor&#x60; to read the next page; &#x60;null&#x60; on the last page</value>
+        [DataMember(Name = "nextCursor", IsRequired = true, EmitDefaultValue = true)]
+        public string NextCursor { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -88,6 +102,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Current: ").Append(Current).Append("\n");
             sb.Append("  Items: ").Append(Items).Append("\n");
             sb.Append("  Last: ").Append(Last).Append("\n");
+            sb.Append("  NextCursor: ").Append(NextCursor).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

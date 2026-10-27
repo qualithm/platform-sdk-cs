@@ -37,34 +37,37 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateEnrollmentRequest" /> class.
         /// </summary>
-        [JsonConstructorAttribute]
-        protected CreateEnrollmentRequest() { }
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CreateEnrollmentRequest" /> class.
-        /// </summary>
-        /// <param name="spaceId">A space ID (required).</param>
+        /// <param name="scopeId">The scope the device joins.</param>
+        /// <param name="spaceId">Deprecated: use scopeId.</param>
         /// <param name="label">Up to 64 characters.</param>
         /// <param name="expiresInMinutes">How long the code can be claimed. Default 1440 (24 hours)..</param>
-        public CreateEnrollmentRequest(string spaceId = default, string label = default, int expiresInMinutes = default)
+        public CreateEnrollmentRequest(string scopeId = default, string spaceId = default, string label = default, int expiresInMinutes = default)
         {
-            // to ensure "spaceId" is required (not null)
-            if (spaceId == null)
-            {
-                throw new ArgumentNullException("spaceId is a required property for CreateEnrollmentRequest and cannot be null");
-            }
+            this.ScopeId = scopeId;
             this.SpaceId = spaceId;
             this.Label = label;
             this.ExpiresInMinutes = expiresInMinutes;
         }
 
         /// <summary>
-        /// A space ID
+        /// The scope the device joins
         /// </summary>
-        /// <value>A space ID</value>
+        /// <value>The scope the device joins</value>
         /*
         <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
         */
-        [DataMember(Name = "spaceId", IsRequired = true, EmitDefaultValue = true)]
+        [DataMember(Name = "scopeId", EmitDefaultValue = false)]
+        public string ScopeId { get; set; }
+
+        /// <summary>
+        /// Deprecated: use scopeId
+        /// </summary>
+        /// <value>Deprecated: use scopeId</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
+        [DataMember(Name = "spaceId", EmitDefaultValue = false)]
+        [Obsolete]
         public string SpaceId { get; set; }
 
         /// <summary>
@@ -89,6 +92,7 @@ namespace Qualithm.Platform.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateEnrollmentRequest {\n");
+            sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  ExpiresInMinutes: ").Append(ExpiresInMinutes).Append("\n");
@@ -112,6 +116,15 @@ namespace Qualithm.Platform.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            if (this.ScopeId != null) {
+                // ScopeId (string) pattern
+                Regex regexScopeId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexScopeId.Match(this.ScopeId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
+                }
+            }
+
             if (this.SpaceId != null) {
                 // SpaceId (string) pattern
                 Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);

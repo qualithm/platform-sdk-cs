@@ -38,11 +38,13 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="UpdateDeviceRequest" /> class.
         /// </summary>
         /// <param name="name">name.</param>
-        /// <param name="spaceId">A space in the device&#39;s zone.</param>
+        /// <param name="scopeId">A scope in the device&#39;s zone; a device stays in the zone it was claimed in.</param>
+        /// <param name="spaceId">Deprecated: use scopeId.</param>
         /// <param name="parked">A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay.</param>
-        public UpdateDeviceRequest(string name = default, string spaceId = default, bool parked = default)
+        public UpdateDeviceRequest(string name = default, string scopeId = default, string spaceId = default, bool parked = default)
         {
             this.Name = name;
+            this.ScopeId = scopeId;
             this.SpaceId = spaceId;
             this.Parked = parked;
         }
@@ -54,13 +56,24 @@ namespace Qualithm.Platform.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// A space in the device&#39;s zone
+        /// A scope in the device&#39;s zone; a device stays in the zone it was claimed in
         /// </summary>
-        /// <value>A space in the device&#39;s zone</value>
+        /// <value>A scope in the device&#39;s zone; a device stays in the zone it was claimed in</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
+        [DataMember(Name = "scopeId", EmitDefaultValue = false)]
+        public string ScopeId { get; set; }
+
+        /// <summary>
+        /// Deprecated: use scopeId
+        /// </summary>
+        /// <value>Deprecated: use scopeId</value>
         /*
         <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
         */
         [DataMember(Name = "spaceId", EmitDefaultValue = false)]
+        [Obsolete]
         public string SpaceId { get; set; }
 
         /// <summary>
@@ -79,6 +92,7 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class UpdateDeviceRequest {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Parked: ").Append(Parked).Append("\n");
             sb.Append("}\n");
@@ -101,6 +115,15 @@ namespace Qualithm.Platform.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            if (this.ScopeId != null) {
+                // ScopeId (string) pattern
+                Regex regexScopeId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexScopeId.Match(this.ScopeId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
+                }
+            }
+
             if (this.SpaceId != null) {
                 // SpaceId (string) pattern
                 Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
