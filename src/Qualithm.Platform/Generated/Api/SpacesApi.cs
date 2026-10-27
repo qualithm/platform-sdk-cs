@@ -54,6 +54,9 @@ namespace Qualithm.Platform.Api
         /// <summary>
         /// Delete a space and its devices
         /// </summary>
+        /// <remarks>
+        /// Refused while scopes sit under it.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="spaceId">A space ID</param>
@@ -65,7 +68,7 @@ namespace Qualithm.Platform.Api
         /// Delete a space and its devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// Refused while scopes sit under it.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -96,27 +99,32 @@ namespace Qualithm.Platform.Api
         /// <summary>
         /// List the workspace&#39;s spaces
         /// </summary>
+        /// <remarks>
+        /// Top-level scopes only, newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;. Use listScopes to see nested ones.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="zone">Only the spaces in this zone (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListSpacesResponse</returns>
-        ListSpacesResponse ListSpaces(string teamId, string? zone = default, long? page = default, int? limit = default);
+        ListSpacesResponse ListSpaces(string teamId, string? zone = default, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List the workspace&#39;s spaces
         /// </summary>
         /// <remarks>
-        /// 
+        /// Top-level scopes only, newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;. Use listScopes to see nested ones.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="zone">Only the spaces in this zone (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListSpacesResponse</returns>
-        ApiResponse<ListSpacesResponse> ListSpacesWithHttpInfo(string teamId, string? zone = default, long? page = default, int? limit = default);
+        ApiResponse<ListSpacesResponse> ListSpacesWithHttpInfo(string teamId, string? zone = default, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
         /// Rename a space
         /// </summary>
@@ -181,7 +189,7 @@ namespace Qualithm.Platform.Api
         /// Delete a space and its devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// Refused while scopes sit under it.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -195,7 +203,7 @@ namespace Qualithm.Platform.Api
         /// Delete a space and its devices
         /// </summary>
         /// <remarks>
-        /// 
+        /// Refused while scopes sit under it.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -233,31 +241,33 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s spaces
         /// </summary>
         /// <remarks>
-        /// 
+        /// Top-level scopes only, newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;. Use listScopes to see nested ones.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="zone">Only the spaces in this zone (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSpacesResponse</returns>
-        System.Threading.Tasks.Task<ListSpacesResponse> ListSpacesAsync(string teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListSpacesResponse> ListSpacesAsync(string teamId, string? zone = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s spaces
         /// </summary>
         /// <remarks>
-        /// 
+        /// Top-level scopes only, newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;. Use listScopes to see nested ones.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="zone">Only the spaces in this zone (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSpacesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListSpacesResponse>> ListSpacesWithHttpInfoAsync(string teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListSpacesResponse>> ListSpacesWithHttpInfoAsync(string teamId, string? zone = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Rename a space
         /// </summary>
@@ -656,7 +666,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Delete a space and its devices 
+        /// Delete a space and its devices Refused while scopes sit under it.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -669,7 +679,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Delete a space and its devices 
+        /// Delete a space and its devices Refused while scopes sit under it.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -729,7 +739,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Delete a space and its devices 
+        /// Delete a space and its devices Refused while scopes sit under it.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -743,7 +753,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Delete a space and its devices 
+        /// Delete a space and its devices Refused while scopes sit under it.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -948,30 +958,32 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s spaces 
+        /// List the workspace&#39;s spaces Top-level scopes only, newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;. Use listScopes to see nested ones.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="zone">Only the spaces in this zone (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListSpacesResponse</returns>
-        public ListSpacesResponse ListSpaces(string teamId, string? zone = default, long? page = default, int? limit = default)
+        public ListSpacesResponse ListSpaces(string teamId, string? zone = default, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> localVarResponse = ListSpacesWithHttpInfo(teamId, zone, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> localVarResponse = ListSpacesWithHttpInfo(teamId, zone, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the workspace&#39;s spaces 
+        /// List the workspace&#39;s spaces Top-level scopes only, newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;. Use listScopes to see nested ones.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="zone">Only the spaces in this zone (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListSpacesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> ListSpacesWithHttpInfo(string teamId, string? zone = default, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> ListSpacesWithHttpInfo(string teamId, string? zone = default, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1005,6 +1017,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -1027,32 +1043,34 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s spaces 
+        /// List the workspace&#39;s spaces Top-level scopes only, newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;. Use listScopes to see nested ones.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="zone">Only the spaces in this zone (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListSpacesResponse</returns>
-        public async System.Threading.Tasks.Task<ListSpacesResponse> ListSpacesAsync(string teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListSpacesResponse> ListSpacesAsync(string teamId, string? zone = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> localVarResponse = await ListSpacesWithHttpInfoAsync(teamId, zone, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListSpacesResponse> localVarResponse = await ListSpacesWithHttpInfoAsync(teamId, zone, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the workspace&#39;s spaces 
+        /// List the workspace&#39;s spaces Top-level scopes only, newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;. Use listScopes to see nested ones.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="zone">Only the spaces in this zone (optional)</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListSpacesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListSpacesResponse>> ListSpacesWithHttpInfoAsync(string teamId, string? zone = default, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListSpacesResponse>> ListSpacesWithHttpInfoAsync(string teamId, string? zone = default, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1088,6 +1106,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required

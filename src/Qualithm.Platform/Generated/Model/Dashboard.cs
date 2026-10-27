@@ -44,13 +44,14 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="id">A dashboard ID (required).</param>
         /// <param name="teamId">A team ID (required).</param>
+        /// <param name="scopeId">A scope ID (required).</param>
         /// <param name="spaceId">A space ID (required).</param>
         /// <param name="spaceName">spaceName (required).</param>
         /// <param name="name">name (required).</param>
         /// <param name="payload">payload (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Dashboard(string id = default, string teamId = default, string spaceId = default, string spaceName = default, string name = default, List<DashboardWidget> payload = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Dashboard(string id = default, string teamId = default, string scopeId = default, string spaceId = default, string spaceName = default, string name = default, List<DashboardWidget> payload = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -64,6 +65,12 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("teamId is a required property for Dashboard and cannot be null");
             }
             this.TeamId = teamId;
+            // to ensure "scopeId" is required (not null)
+            if (scopeId == null)
+            {
+                throw new ArgumentNullException("scopeId is a required property for Dashboard and cannot be null");
+            }
+            this.ScopeId = scopeId;
             // to ensure "spaceId" is required (not null)
             if (spaceId == null)
             {
@@ -111,6 +118,16 @@ namespace Qualithm.Platform.Model
         */
         [DataMember(Name = "teamId", IsRequired = true, EmitDefaultValue = true)]
         public string TeamId { get; set; }
+
+        /// <summary>
+        /// A scope ID
+        /// </summary>
+        /// <value>A scope ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
+        [DataMember(Name = "scopeId", IsRequired = true, EmitDefaultValue = true)]
+        public string ScopeId { get; set; }
 
         /// <summary>
         /// A space ID
@@ -170,6 +187,7 @@ namespace Qualithm.Platform.Model
             sb.Append("class Dashboard {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
+            sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  SpaceName: ").Append(SpaceName).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
@@ -211,6 +229,15 @@ namespace Qualithm.Platform.Model
                 if (!regexTeamId.Match(this.TeamId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TeamId, must match a pattern of " + regexTeamId, new [] { "TeamId" });
+                }
+            }
+
+            if (this.ScopeId != null) {
+                // ScopeId (string) pattern
+                Regex regexScopeId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexScopeId.Match(this.ScopeId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
                 }
             }
 

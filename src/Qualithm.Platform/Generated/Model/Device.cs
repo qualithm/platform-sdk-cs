@@ -74,7 +74,8 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="Device" /> class.
         /// </summary>
         /// <param name="id">A device ID (required).</param>
-        /// <param name="spaceId">A space ID (required).</param>
+        /// <param name="scopeId">A scope ID (required).</param>
+        /// <param name="spaceId">Deprecated: use scopeId (required).</param>
         /// <param name="spaceName">spaceName (required).</param>
         /// <param name="teamId">A team ID (required).</param>
         /// <param name="name">name (required).</param>
@@ -84,7 +85,7 @@ namespace Qualithm.Platform.Model
         /// <param name="capabilitiesDeclared">Whether the device&#39;s latest session declared its capabilities before sending data; null until a session has done either.</param>
         /// <param name="level">level.</param>
         /// <param name="checks">checks.</param>
-        public Device(string id = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
+        public Device(string id = default, string scopeId = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -92,6 +93,12 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("id is a required property for Device and cannot be null");
             }
             this.Id = id;
+            // to ensure "scopeId" is required (not null)
+            if (scopeId == null)
+            {
+                throw new ArgumentNullException("scopeId is a required property for Device and cannot be null");
+            }
+            this.ScopeId = scopeId;
             // to ensure "spaceId" is required (not null)
             if (spaceId == null)
             {
@@ -135,13 +142,24 @@ namespace Qualithm.Platform.Model
         public string Id { get; set; }
 
         /// <summary>
-        /// A space ID
+        /// A scope ID
         /// </summary>
-        /// <value>A space ID</value>
+        /// <value>A scope ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
+        [DataMember(Name = "scopeId", IsRequired = true, EmitDefaultValue = true)]
+        public string ScopeId { get; set; }
+
+        /// <summary>
+        /// Deprecated: use scopeId
+        /// </summary>
+        /// <value>Deprecated: use scopeId</value>
         /*
         <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
         */
         [DataMember(Name = "spaceId", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public string SpaceId { get; set; }
 
         /// <summary>
@@ -218,6 +236,7 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Device {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
+            sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  SpaceName: ").Append(SpaceName).Append("\n");
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
@@ -254,6 +273,15 @@ namespace Qualithm.Platform.Model
                 if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
+                }
+            }
+
+            if (this.ScopeId != null) {
+                // ScopeId (string) pattern
+                Regex regexScopeId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexScopeId.Match(this.ScopeId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
                 }
             }
 

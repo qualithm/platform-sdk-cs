@@ -140,49 +140,59 @@ namespace Qualithm.Platform.Api
         /// <summary>
         /// List an automation&#39;s runs
         /// </summary>
+        /// <remarks>
+        /// Newest first, by &#x60;triggeredAt&#x60; then &#x60;id&#x60;.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId">An automation ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListAutomationRunsResponse</returns>
-        ListAutomationRunsResponse ListAutomationRuns(string teamId, string automationId, long? page = default, int? limit = default);
+        ListAutomationRunsResponse ListAutomationRuns(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List an automation&#39;s runs
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;triggeredAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId">An automation ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListAutomationRunsResponse</returns>
-        ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(string teamId, string automationId, long? page = default, int? limit = default);
+        ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
         /// List the workspace&#39;s automations
         /// </summary>
+        /// <remarks>
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListAutomationsResponse</returns>
-        ListAutomationsResponse ListAutomations(string teamId, long? page = default, int? limit = default);
+        ListAutomationsResponse ListAutomations(string teamId, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List the workspace&#39;s automations
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListAutomationsResponse</returns>
-        ApiResponse<ListAutomationsResponse> ListAutomationsWithHttpInfo(string teamId, long? page = default, int? limit = default);
+        ApiResponse<ListAutomationsResponse> ListAutomationsWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
         /// List the automation templates a device supports
         /// </summary>
@@ -393,58 +403,62 @@ namespace Qualithm.Platform.Api
         /// List an automation&#39;s runs
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;triggeredAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId">An automation ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRunsResponse</returns>
-        System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(string teamId, string automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List an automation&#39;s runs
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;triggeredAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId">An automation ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRunsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(string teamId, string automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s automations
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationsResponse</returns>
-        System.Threading.Tasks.Task<ListAutomationsResponse> ListAutomationsAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListAutomationsResponse> ListAutomationsAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s automations
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListAutomationsResponse>> ListAutomationsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListAutomationsResponse>> ListAutomationsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the automation templates a device supports
         /// </summary>
@@ -1491,30 +1505,32 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List an automation&#39;s runs 
+        /// List an automation&#39;s runs Newest first, by &#x60;triggeredAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId">An automation ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListAutomationRunsResponse</returns>
-        public ListAutomationRunsResponse ListAutomationRuns(string teamId, string automationId, long? page = default, int? limit = default)
+        public ListAutomationRunsResponse ListAutomationRuns(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = ListAutomationRunsWithHttpInfo(teamId, automationId, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = ListAutomationRunsWithHttpInfo(teamId, automationId, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List an automation&#39;s runs 
+        /// List an automation&#39;s runs Newest first, by &#x60;triggeredAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId">An automation ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListAutomationRunsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(string teamId, string automationId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1549,6 +1565,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -1571,32 +1591,34 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List an automation&#39;s runs 
+        /// List an automation&#39;s runs Newest first, by &#x60;triggeredAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId">An automation ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationRunsResponse</returns>
-        public async System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(string teamId, string automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListAutomationRunsResponse> ListAutomationRunsAsync(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = await ListAutomationRunsWithHttpInfoAsync(teamId, automationId, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse> localVarResponse = await ListAutomationRunsWithHttpInfoAsync(teamId, automationId, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List an automation&#39;s runs 
+        /// List an automation&#39;s runs Newest first, by &#x60;triggeredAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="automationId">An automation ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRunsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(string teamId, string automationId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1633,6 +1655,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -1656,28 +1682,30 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s automations 
+        /// List the workspace&#39;s automations Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListAutomationsResponse</returns>
-        public ListAutomationsResponse ListAutomations(string teamId, long? page = default, int? limit = default)
+        public ListAutomationsResponse ListAutomations(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> localVarResponse = ListAutomationsWithHttpInfo(teamId, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> localVarResponse = ListAutomationsWithHttpInfo(teamId, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the workspace&#39;s automations 
+        /// List the workspace&#39;s automations Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListAutomationsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> ListAutomationsWithHttpInfo(string teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> ListAutomationsWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1707,6 +1735,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -1729,30 +1761,32 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s automations 
+        /// List the workspace&#39;s automations Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListAutomationsResponse</returns>
-        public async System.Threading.Tasks.Task<ListAutomationsResponse> ListAutomationsAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListAutomationsResponse> ListAutomationsAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> localVarResponse = await ListAutomationsWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse> localVarResponse = await ListAutomationsWithHttpInfoAsync(teamId, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the workspace&#39;s automations 
+        /// List the workspace&#39;s automations Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse>> ListAutomationsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationsResponse>> ListAutomationsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -1784,6 +1818,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required

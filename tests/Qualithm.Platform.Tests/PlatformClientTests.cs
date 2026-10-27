@@ -18,7 +18,7 @@ public class PlatformClientTests
     [Fact]
     public async Task SendsTheTokenToTheProductionApiByDefault()
     {
-        var stub = new StubHandler(body: """{"data":{"current":1,"items":[],"last":1}}""");
+        var stub = new StubHandler(body: """{"data":{"current":1,"items":[],"last":1,"nextCursor":null}}""");
         using var platform = new PlatformClient(token: "qmt_test", environment: Env(), handler: stub);
 
         var page = await platform.Api<DevicesApi>().ListDevicesAsync(_teamId, page: 2, limit: 10, cancellationToken: TestContext.Current.CancellationToken);

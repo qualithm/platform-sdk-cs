@@ -43,11 +43,12 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="DeviceState" /> class.
         /// </summary>
         /// <param name="deviceId">A device ID (required).</param>
-        /// <param name="spaceId">A space ID (required).</param>
+        /// <param name="scopeId">A scope ID (required).</param>
+        /// <param name="spaceId">Deprecated: use scopeId (required).</param>
         /// <param name="online">Whether the device was seen within the offline window (required).</param>
         /// <param name="lastSeenAt">When the device was last seen (required).</param>
         /// <param name="metrics">The device&#39;s current metrics (required).</param>
-        public DeviceState(string deviceId = default, string spaceId = default, bool online = default, DateTime lastSeenAt = default, Dictionary<string, decimal> metrics = default)
+        public DeviceState(string deviceId = default, string scopeId = default, string spaceId = default, bool online = default, DateTime lastSeenAt = default, Dictionary<string, decimal> metrics = default)
         {
             // to ensure "deviceId" is required (not null)
             if (deviceId == null)
@@ -55,6 +56,12 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("deviceId is a required property for DeviceState and cannot be null");
             }
             this.DeviceId = deviceId;
+            // to ensure "scopeId" is required (not null)
+            if (scopeId == null)
+            {
+                throw new ArgumentNullException("scopeId is a required property for DeviceState and cannot be null");
+            }
+            this.ScopeId = scopeId;
             // to ensure "spaceId" is required (not null)
             if (spaceId == null)
             {
@@ -82,13 +89,24 @@ namespace Qualithm.Platform.Model
         public string DeviceId { get; set; }
 
         /// <summary>
-        /// A space ID
+        /// A scope ID
         /// </summary>
-        /// <value>A space ID</value>
+        /// <value>A scope ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
+        [DataMember(Name = "scopeId", IsRequired = true, EmitDefaultValue = true)]
+        public string ScopeId { get; set; }
+
+        /// <summary>
+        /// Deprecated: use scopeId
+        /// </summary>
+        /// <value>Deprecated: use scopeId</value>
         /*
         <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
         */
         [DataMember(Name = "spaceId", IsRequired = true, EmitDefaultValue = true)]
+        [Obsolete]
         public string SpaceId { get; set; }
 
         /// <summary>
@@ -124,6 +142,7 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class DeviceState {\n");
             sb.Append("  DeviceId: ").Append(DeviceId).Append("\n");
+            sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Online: ").Append(Online).Append("\n");
             sb.Append("  LastSeenAt: ").Append(LastSeenAt).Append("\n");
@@ -154,6 +173,15 @@ namespace Qualithm.Platform.Model
                 if (!regexDeviceId.Match(this.DeviceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DeviceId, must match a pattern of " + regexDeviceId, new [] { "DeviceId" });
+                }
+            }
+
+            if (this.ScopeId != null) {
+                // ScopeId (string) pattern
+                Regex regexScopeId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexScopeId.Match(this.ScopeId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
                 }
             }
 

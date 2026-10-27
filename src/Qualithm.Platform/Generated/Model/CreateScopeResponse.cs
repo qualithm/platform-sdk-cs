@@ -29,35 +29,35 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// ListTeamDeviceStatesResponseData
+    /// CreateScopeResponse
     /// </summary>
-    [DataContract(Name = "ListTeamDeviceStatesResponse_data")]
-    public partial class ListTeamDeviceStatesResponseData : IValidatableObject
+    [DataContract(Name = "CreateScopeResponse")]
+    public partial class CreateScopeResponse : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListTeamDeviceStatesResponseData" /> class.
+        /// Initializes a new instance of the <see cref="CreateScopeResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ListTeamDeviceStatesResponseData() { }
+        protected CreateScopeResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListTeamDeviceStatesResponseData" /> class.
+        /// Initializes a new instance of the <see cref="CreateScopeResponse" /> class.
         /// </summary>
-        /// <param name="items">items (required).</param>
-        public ListTeamDeviceStatesResponseData(List<DeviceState> items = default)
+        /// <param name="data">data (required).</param>
+        public CreateScopeResponse(Scope data = default)
         {
-            // to ensure "items" is required (not null)
-            if (items == null)
+            // to ensure "data" is required (not null)
+            if (data == null)
             {
-                throw new ArgumentNullException("items is a required property for ListTeamDeviceStatesResponseData and cannot be null");
+                throw new ArgumentNullException("data is a required property for CreateScopeResponse and cannot be null");
             }
-            this.Items = items;
+            this.Data = data;
         }
 
         /// <summary>
-        /// Gets or Sets Items
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = true)]
-        public List<DeviceState> Items { get; set; }
+        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
+        public Scope Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +66,8 @@ namespace Qualithm.Platform.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListTeamDeviceStatesResponseData {\n");
-            sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("class CreateScopeResponse {\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

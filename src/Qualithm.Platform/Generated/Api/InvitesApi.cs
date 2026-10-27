@@ -74,25 +74,30 @@ namespace Qualithm.Platform.Api
         /// <summary>
         /// List the team&#39;s pending invites
         /// </summary>
+        /// <remarks>
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListTeamInvitesResponse</returns>
-        ListTeamInvitesResponse ListTeamInvites(string teamId, long? page = default, int? limit = default);
+        ListTeamInvitesResponse ListTeamInvites(string teamId, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List the team&#39;s pending invites
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListTeamInvitesResponse</returns>
-        ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(string teamId, long? page = default, int? limit = default);
+        ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default);
         #endregion Synchronous Operations
     }
 
@@ -158,29 +163,31 @@ namespace Qualithm.Platform.Api
         /// List the team&#39;s pending invites
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTeamInvitesResponse</returns>
-        System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the team&#39;s pending invites
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTeamInvitesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -689,28 +696,30 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the team&#39;s pending invites 
+        /// List the team&#39;s pending invites Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListTeamInvitesResponse</returns>
-        public ListTeamInvitesResponse ListTeamInvites(string teamId, long? page = default, int? limit = default)
+        public ListTeamInvitesResponse ListTeamInvites(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> localVarResponse = ListTeamInvitesWithHttpInfo(teamId, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> localVarResponse = ListTeamInvitesWithHttpInfo(teamId, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the team&#39;s pending invites 
+        /// List the team&#39;s pending invites Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListTeamInvitesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(string teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> ListTeamInvitesWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -740,6 +749,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -762,30 +775,32 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the team&#39;s pending invites 
+        /// List the team&#39;s pending invites Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListTeamInvitesResponse</returns>
-        public async System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListTeamInvitesResponse> ListTeamInvitesAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> localVarResponse = await ListTeamInvitesWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse> localVarResponse = await ListTeamInvitesWithHttpInfoAsync(teamId, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the team&#39;s pending invites 
+        /// List the team&#39;s pending invites Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListTeamInvitesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListTeamInvitesResponse>> ListTeamInvitesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -817,6 +832,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
