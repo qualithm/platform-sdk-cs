@@ -78,14 +78,13 @@ namespace Qualithm.Platform.Model
         /// <param name="spaceName">spaceName (required).</param>
         /// <param name="teamId">A team ID (required).</param>
         /// <param name="name">name (required).</param>
-        /// <param name="payload">JSON text (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="parkedAt">UTC time, RFC 3339.</param>
         /// <param name="capabilitiesDeclared">Whether the device&#39;s latest session declared its capabilities before sending data; null until a session has done either.</param>
         /// <param name="level">level.</param>
         /// <param name="checks">checks.</param>
-        public Device(string id = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
+        public Device(string id = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -117,12 +116,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("name is a required property for Device and cannot be null");
             }
             this.Name = name;
-            // to ensure "payload" is required (not null)
-            if (payload == null)
-            {
-                throw new ArgumentNullException("payload is a required property for Device and cannot be null");
-            }
-            this.Payload = payload;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.ParkedAt = parkedAt;
@@ -172,13 +165,6 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// JSON text
-        /// </summary>
-        /// <value>JSON text</value>
-        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
-        public string Payload { get; set; }
 
         /// <summary>
         /// UTC time, RFC 3339
@@ -236,7 +222,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  SpaceName: ").Append(SpaceName).Append("\n");
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  ParkedAt: ").Append(ParkedAt).Append("\n");
