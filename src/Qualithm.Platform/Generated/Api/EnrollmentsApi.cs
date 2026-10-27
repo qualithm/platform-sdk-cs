@@ -30,7 +30,7 @@ namespace Qualithm.Platform.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Create a claim code for a device to enroll into a space
+        /// Create a claim code for a device to enroll into a scope
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -40,7 +40,7 @@ namespace Qualithm.Platform.Api
         CreateEnrollmentResponse CreateEnrollment(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default);
 
         /// <summary>
-        /// Create a claim code for a device to enroll into a space
+        /// Create a claim code for a device to enroll into a scope
         /// </summary>
         /// <remarks>
         /// 
@@ -74,25 +74,30 @@ namespace Qualithm.Platform.Api
         /// <summary>
         /// List the workspace&#39;s enrollments
         /// </summary>
+        /// <remarks>
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListEnrollmentsResponse</returns>
-        ListEnrollmentsResponse ListEnrollments(string teamId, long? page = default, int? limit = default);
+        ListEnrollmentsResponse ListEnrollments(string teamId, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List the workspace&#39;s enrollments
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListEnrollmentsResponse</returns>
-        ApiResponse<ListEnrollmentsResponse> ListEnrollmentsWithHttpInfo(string teamId, long? page = default, int? limit = default);
+        ApiResponse<ListEnrollmentsResponse> ListEnrollmentsWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default);
         #endregion Synchronous Operations
     }
 
@@ -103,7 +108,7 @@ namespace Qualithm.Platform.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Create a claim code for a device to enroll into a space
+        /// Create a claim code for a device to enroll into a scope
         /// </summary>
         /// <remarks>
         /// 
@@ -117,7 +122,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<CreateEnrollmentResponse> CreateEnrollmentAsync(string teamId, CreateEnrollmentRequest createEnrollmentRequest, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Create a claim code for a device to enroll into a space
+        /// Create a claim code for a device to enroll into a scope
         /// </summary>
         /// <remarks>
         /// 
@@ -158,29 +163,31 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s enrollments
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListEnrollmentsResponse</returns>
-        System.Threading.Tasks.Task<ListEnrollmentsResponse> ListEnrollmentsAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListEnrollmentsResponse> ListEnrollmentsAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s enrollments
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListEnrollmentsResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListEnrollmentsResponse>> ListEnrollmentsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListEnrollmentsResponse>> ListEnrollmentsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         #endregion Asynchronous Operations
     }
 
@@ -395,7 +402,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Create a claim code for a device to enroll into a space 
+        /// Create a claim code for a device to enroll into a scope 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -409,7 +416,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Create a claim code for a device to enroll into a space 
+        /// Create a claim code for a device to enroll into a scope 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -470,7 +477,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Create a claim code for a device to enroll into a space 
+        /// Create a claim code for a device to enroll into a scope 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -485,7 +492,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Create a claim code for a device to enroll into a space 
+        /// Create a claim code for a device to enroll into a scope 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -689,28 +696,30 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s enrollments 
+        /// List the workspace&#39;s enrollments Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListEnrollmentsResponse</returns>
-        public ListEnrollmentsResponse ListEnrollments(string teamId, long? page = default, int? limit = default)
+        public ListEnrollmentsResponse ListEnrollments(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> localVarResponse = ListEnrollmentsWithHttpInfo(teamId, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> localVarResponse = ListEnrollmentsWithHttpInfo(teamId, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the workspace&#39;s enrollments 
+        /// List the workspace&#39;s enrollments Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListEnrollmentsResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> ListEnrollmentsWithHttpInfo(string teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> ListEnrollmentsWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -740,6 +749,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -762,30 +775,32 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s enrollments 
+        /// List the workspace&#39;s enrollments Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListEnrollmentsResponse</returns>
-        public async System.Threading.Tasks.Task<ListEnrollmentsResponse> ListEnrollmentsAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListEnrollmentsResponse> ListEnrollmentsAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> localVarResponse = await ListEnrollmentsWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse> localVarResponse = await ListEnrollmentsWithHttpInfoAsync(teamId, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the workspace&#39;s enrollments 
+        /// List the workspace&#39;s enrollments Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListEnrollmentsResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse>> ListEnrollmentsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListEnrollmentsResponse>> ListEnrollmentsWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -817,6 +832,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required

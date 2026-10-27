@@ -43,7 +43,7 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="ListDeviceCapabilitiesResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public ListDeviceCapabilitiesResponse(List<Capability> data = default)
+        public ListDeviceCapabilitiesResponse(CapabilityPage data = default)
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -57,7 +57,7 @@ namespace Qualithm.Platform.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public List<Capability> Data { get; set; }
+        public CapabilityPage Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

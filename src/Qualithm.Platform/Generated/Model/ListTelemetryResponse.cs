@@ -43,7 +43,7 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="ListTelemetryResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public ListTelemetryResponse(ListTelemetryResponseData data = default)
+        public ListTelemetryResponse(TelemetryPointPage data = default)
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -57,7 +57,7 @@ namespace Qualithm.Platform.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public ListTelemetryResponseData Data { get; set; }
+        public TelemetryPointPage Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
