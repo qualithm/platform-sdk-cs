@@ -29,35 +29,35 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// ListTelemetryResponseData
+    /// ListScopesResponse
     /// </summary>
-    [DataContract(Name = "ListTelemetryResponse_data")]
-    public partial class ListTelemetryResponseData : IValidatableObject
+    [DataContract(Name = "ListScopesResponse")]
+    public partial class ListScopesResponse : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListTelemetryResponseData" /> class.
+        /// Initializes a new instance of the <see cref="ListScopesResponse" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected ListTelemetryResponseData() { }
+        protected ListScopesResponse() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="ListTelemetryResponseData" /> class.
+        /// Initializes a new instance of the <see cref="ListScopesResponse" /> class.
         /// </summary>
-        /// <param name="items">items (required).</param>
-        public ListTelemetryResponseData(List<TelemetryPoint> items = default)
+        /// <param name="data">data (required).</param>
+        public ListScopesResponse(ScopePage data = default)
         {
-            // to ensure "items" is required (not null)
-            if (items == null)
+            // to ensure "data" is required (not null)
+            if (data == null)
             {
-                throw new ArgumentNullException("items is a required property for ListTelemetryResponseData and cannot be null");
+                throw new ArgumentNullException("data is a required property for ListScopesResponse and cannot be null");
             }
-            this.Items = items;
+            this.Data = data;
         }
 
         /// <summary>
-        /// Gets or Sets Items
+        /// Gets or Sets Data
         /// </summary>
-        [DataMember(Name = "items", IsRequired = true, EmitDefaultValue = true)]
-        public List<TelemetryPoint> Items { get; set; }
+        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
+        public ScopePage Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +66,8 @@ namespace Qualithm.Platform.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class ListTelemetryResponseData {\n");
-            sb.Append("  Items: ").Append(Items).Append("\n");
+            sb.Append("class ListScopesResponse {\n");
+            sb.Append("  Data: ").Append(Data).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

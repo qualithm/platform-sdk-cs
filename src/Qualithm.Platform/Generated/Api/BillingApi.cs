@@ -50,25 +50,30 @@ namespace Qualithm.Platform.Api
         /// <summary>
         /// List the workspace&#39;s invoices
         /// </summary>
+        /// <remarks>
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
+        /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListInvoicesResponse</returns>
-        ListInvoicesResponse ListInvoices(string teamId, long? page = default, int? limit = default);
+        ListInvoicesResponse ListInvoices(string teamId, long? page = default, int? limit = default, string? cursor = default);
 
         /// <summary>
         /// List the workspace&#39;s invoices
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListInvoicesResponse</returns>
-        ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(string teamId, long? page = default, int? limit = default);
+        ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
         /// Preview what moving to another paid tier would cost
         /// </summary>
@@ -127,29 +132,31 @@ namespace Qualithm.Platform.Api
         /// List the workspace&#39;s invoices
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInvoicesResponse</returns>
-        System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
         /// List the workspace&#39;s invoices
         /// </summary>
         /// <remarks>
-        /// 
+        /// Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInvoicesResponse)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default);
+        System.Threading.Tasks.Task<ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Preview what moving to another paid tier would cost
         /// </summary>
@@ -518,28 +525,30 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s invoices 
+        /// List the workspace&#39;s invoices Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ListInvoicesResponse</returns>
-        public ListInvoicesResponse ListInvoices(string teamId, long? page = default, int? limit = default)
+        public ListInvoicesResponse ListInvoices(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = ListInvoicesWithHttpInfo(teamId, page, limit);
+            Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = ListInvoicesWithHttpInfo(teamId, page, limit, cursor);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the workspace&#39;s invoices 
+        /// List the workspace&#39;s invoices Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <returns>ApiResponse of ListInvoicesResponse</returns>
-        public Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(string teamId, long? page = default, int? limit = default)
+        public Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> ListInvoicesWithHttpInfo(string teamId, long? page = default, int? limit = default, string? cursor = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -569,6 +578,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required
@@ -591,30 +604,32 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the workspace&#39;s invoices 
+        /// List the workspace&#39;s invoices Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ListInvoicesResponse</returns>
-        public async System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<ListInvoicesResponse> ListInvoicesAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
-            Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = await ListInvoicesWithHttpInfoAsync(teamId, page, limit, cancellationToken).ConfigureAwait(false);
+            Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse> localVarResponse = await ListInvoicesWithHttpInfoAsync(teamId, page, limit, cursor, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
 
         /// <summary>
-        /// List the workspace&#39;s invoices 
+        /// List the workspace&#39;s invoices Newest first, by &#x60;createdAt&#x60; then &#x60;id&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
-        /// <param name="page">Page number, from 1. Default 1. (optional)</param>
-        /// <param name="limit">Items per page, 1 to 100. Default 20. (optional)</param>
+        /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
+        /// <param name="cursor">A previous page&#39;s &#x60;nextCursor&#x60;, to read the page after it (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListInvoicesResponse)</returns>
-        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, System.Threading.CancellationToken cancellationToken = default)
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListInvoicesResponse>> ListInvoicesWithHttpInfoAsync(string teamId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default)
         {
             // verify the required parameter 'teamId' is set
             if (teamId == null)
@@ -646,6 +661,10 @@ namespace Qualithm.Platform.Api
             if (limit != null)
             {
                 localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "limit", limit));
+            }
+            if (cursor != null)
+            {
+                localVarRequestOptions.QueryParameters.Add(Qualithm.Platform.Client.ClientUtils.ParameterToMultiMap("", "cursor", cursor));
             }
 
             // authentication (apiToken) required

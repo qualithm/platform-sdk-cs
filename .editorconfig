@@ -38,4 +38,8 @@ dotnet_naming_style.underscore_camel.capitalization = camel_case
 [src/Qualithm.Platform/Generated/**.cs]
 generated_code = true
 dotnet_diagnostic.CS8073.severity = none
+# The generator marks deprecated spec fields [Obsolete] and then reads them in its own constructors
+# and equality members; callers outside Generated/ still get the warning.
+dotnet_diagnostic.CS0612.severity = none
+dotnet_diagnostic.CS0618.severity = none
 # dx:repo-end

@@ -43,7 +43,7 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="ListDeviceCredentialsResponse" /> class.
         /// </summary>
         /// <param name="data">data (required).</param>
-        public ListDeviceCredentialsResponse(List<Credential> data = default)
+        public ListDeviceCredentialsResponse(CredentialPage data = default)
         {
             // to ensure "data" is required (not null)
             if (data == null)
@@ -57,7 +57,7 @@ namespace Qualithm.Platform.Model
         /// Gets or Sets Data
         /// </summary>
         [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public List<Credential> Data { get; set; }
+        public CredentialPage Data { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

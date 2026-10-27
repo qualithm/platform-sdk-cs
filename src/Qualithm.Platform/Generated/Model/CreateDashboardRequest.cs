@@ -43,9 +43,10 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="CreateDashboardRequest" /> class.
         /// </summary>
         /// <param name="name">name (required).</param>
+        /// <param name="scopeId">A scope ID.</param>
         /// <param name="spaceId">A space ID.</param>
         /// <param name="payload">The widgets; null or absent for none.</param>
-        public CreateDashboardRequest(string name = default, string spaceId = default, List<DashboardWidget> payload = default)
+        public CreateDashboardRequest(string name = default, string scopeId = default, string spaceId = default, List<DashboardWidget> payload = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -53,6 +54,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("name is a required property for CreateDashboardRequest and cannot be null");
             }
             this.Name = name;
+            this.ScopeId = scopeId;
             this.SpaceId = spaceId;
             this.Payload = payload;
         }
@@ -62,6 +64,16 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// A scope ID
+        /// </summary>
+        /// <value>A scope ID</value>
+        /*
+        <example>spc_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
+        */
+        [DataMember(Name = "scopeId", EmitDefaultValue = true)]
+        public string ScopeId { get; set; }
 
         /// <summary>
         /// A space ID
@@ -89,6 +101,7 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateDashboardRequest {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("}\n");
@@ -111,6 +124,15 @@ namespace Qualithm.Platform.Model
         /// <returns>Validation Result</returns>
         IEnumerable<ValidationResult> IValidatableObject.Validate(ValidationContext validationContext)
         {
+            if (this.ScopeId != null) {
+                // ScopeId (string) pattern
+                Regex regexScopeId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                if (!regexScopeId.Match(this.ScopeId).Success)
+                {
+                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
+                }
+            }
+
             if (this.SpaceId != null) {
                 // SpaceId (string) pattern
                 Regex regexSpaceId = new Regex(@"^spc_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
