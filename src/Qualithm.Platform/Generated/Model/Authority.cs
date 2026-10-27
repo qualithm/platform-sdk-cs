@@ -111,10 +111,9 @@ namespace Qualithm.Platform.Model
         /// <param name="certificatePem">certificatePem (required).</param>
         /// <param name="fingerprint">SHA-256 of the CA certificate (required).</param>
         /// <param name="status">status (required).</param>
-        /// <param name="payload">JSON text (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Authority(string id = default, string teamId = default, string name = default, KindEnum kind = default, string certificatePem = default, string fingerprint = default, StatusEnum status = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Authority(string id = default, string teamId = default, string name = default, KindEnum kind = default, string certificatePem = default, string fingerprint = default, StatusEnum status = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -148,12 +147,6 @@ namespace Qualithm.Platform.Model
             }
             this.Fingerprint = fingerprint;
             this.Status = status;
-            // to ensure "payload" is required (not null)
-            if (payload == null)
-            {
-                throw new ArgumentNullException("payload is a required property for Authority and cannot be null");
-            }
-            this.Payload = payload;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -198,13 +191,6 @@ namespace Qualithm.Platform.Model
         public string Fingerprint { get; set; }
 
         /// <summary>
-        /// JSON text
-        /// </summary>
-        /// <value>JSON text</value>
-        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
-        public string Payload { get; set; }
-
-        /// <summary>
         /// UTC time, RFC 3339
         /// </summary>
         /// <value>UTC time, RFC 3339</value>
@@ -239,7 +225,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
             sb.Append("  Fingerprint: ").Append(Fingerprint).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");

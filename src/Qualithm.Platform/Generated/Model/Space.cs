@@ -51,12 +51,11 @@ namespace Qualithm.Platform.Model
         /// <param name="id">A space ID (required).</param>
         /// <param name="teamId">A team ID (required).</param>
         /// <param name="name">name (required).</param>
-        /// <param name="payload">JSON text (required).</param>
         /// <param name="zone">zone (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="deviceTotal">The space&#39;s live devices. Absent when listing a zone&#39;s spaces..</param>
-        public Space(string id = default, string teamId = default, string name = default, string payload = default, ZoneId zone = default, DateTime createdAt = default, DateTime updatedAt = default, long deviceTotal = default)
+        public Space(string id = default, string teamId = default, string name = default, ZoneId zone = default, DateTime createdAt = default, DateTime updatedAt = default, long deviceTotal = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -76,12 +75,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("name is a required property for Space and cannot be null");
             }
             this.Name = name;
-            // to ensure "payload" is required (not null)
-            if (payload == null)
-            {
-                throw new ArgumentNullException("payload is a required property for Space and cannot be null");
-            }
-            this.Payload = payload;
             this.Zone = zone;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
@@ -113,13 +106,6 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// JSON text
-        /// </summary>
-        /// <value>JSON text</value>
-        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
-        public string Payload { get; set; }
 
         /// <summary>
         /// UTC time, RFC 3339
@@ -159,7 +145,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  Zone: ").Append(Zone).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");

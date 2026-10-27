@@ -87,10 +87,9 @@ namespace Qualithm.Platform.Model
         /// <param name="claimedDeviceId">A device ID (required).</param>
         /// <param name="claimedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="expiresAt">UTC time, RFC 3339 (required).</param>
-        /// <param name="payload">JSON text (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Enrollment(string id = default, string teamId = default, string spaceId = default, string label = default, StatusEnum status = default, string claimedDeviceId = default, DateTime? claimedAt = default, DateTime expiresAt = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Enrollment(string id = default, string teamId = default, string spaceId = default, string label = default, StatusEnum status = default, string claimedDeviceId = default, DateTime? claimedAt = default, DateTime expiresAt = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -130,12 +129,6 @@ namespace Qualithm.Platform.Model
             }
             this.ClaimedAt = claimedAt;
             this.ExpiresAt = expiresAt;
-            // to ensure "payload" is required (not null)
-            if (payload == null)
-            {
-                throw new ArgumentNullException("payload is a required property for Enrollment and cannot be null");
-            }
-            this.Payload = payload;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -207,13 +200,6 @@ namespace Qualithm.Platform.Model
         public DateTime ExpiresAt { get; set; }
 
         /// <summary>
-        /// JSON text
-        /// </summary>
-        /// <value>JSON text</value>
-        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
-        public string Payload { get; set; }
-
-        /// <summary>
         /// UTC time, RFC 3339
         /// </summary>
         /// <value>UTC time, RFC 3339</value>
@@ -249,7 +235,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  ClaimedDeviceId: ").Append(ClaimedDeviceId).Append("\n");
             sb.Append("  ClaimedAt: ").Append(ClaimedAt).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
-            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
