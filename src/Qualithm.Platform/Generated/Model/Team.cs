@@ -261,13 +261,12 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="id">A team ID (required).</param>
         /// <param name="name">name (required).</param>
-        /// <param name="payload">The team&#39;s settings: a JSON object, encoded as a string (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="memberId">The caller&#39;s membership in this team (required).</param>
         /// <param name="memberRole">memberRole (required).</param>
         /// <param name="permissions">What the caller can do in this team: their role, lowered to a token&#39;s ceiling (required).</param>
-        public Team(string id = default, string name = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default, string memberId = default, MemberRole memberRole = default, List<PermissionsEnum> permissions = default)
+        public Team(string id = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, string memberId = default, MemberRole memberRole = default, List<PermissionsEnum> permissions = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -281,12 +280,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("name is a required property for Team and cannot be null");
             }
             this.Name = name;
-            // to ensure "payload" is required (not null)
-            if (payload == null)
-            {
-                throw new ArgumentNullException("payload is a required property for Team and cannot be null");
-            }
-            this.Payload = payload;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             // to ensure "memberId" is required (not null)
@@ -319,13 +312,6 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
-
-        /// <summary>
-        /// The team&#39;s settings: a JSON object, encoded as a string
-        /// </summary>
-        /// <value>The team&#39;s settings: a JSON object, encoded as a string</value>
-        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
-        public string Payload { get; set; }
 
         /// <summary>
         /// UTC time, RFC 3339
@@ -374,7 +360,6 @@ namespace Qualithm.Platform.Model
             sb.Append("class Team {\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
-            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  MemberId: ").Append(MemberId).Append("\n");

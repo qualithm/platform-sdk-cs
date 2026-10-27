@@ -46,10 +46,10 @@ namespace Qualithm.Platform.Model
         /// <param name="teamId">A team ID (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="total">The invoice total; null until Stripe sets it (required).</param>
-        /// <param name="payload">The invoice detail: a JSON object, encoded as a string (required).</param>
+        /// <param name="stripeInvoiceId">The Stripe invoice this one mirrors; null when Stripe didn&#39;t send one (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Invoice(string id = default, string teamId = default, string status = default, Money total = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Invoice(string id = default, string teamId = default, string status = default, Money total = default, string stripeInvoiceId = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -75,12 +75,12 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("total is a required property for Invoice and cannot be null");
             }
             this.Total = total;
-            // to ensure "payload" is required (not null)
-            if (payload == null)
+            // to ensure "stripeInvoiceId" is required (not null)
+            if (stripeInvoiceId == null)
             {
-                throw new ArgumentNullException("payload is a required property for Invoice and cannot be null");
+                throw new ArgumentNullException("stripeInvoiceId is a required property for Invoice and cannot be null");
             }
-            this.Payload = payload;
+            this.StripeInvoiceId = stripeInvoiceId;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -119,11 +119,11 @@ namespace Qualithm.Platform.Model
         public Money Total { get; set; }
 
         /// <summary>
-        /// The invoice detail: a JSON object, encoded as a string
+        /// The Stripe invoice this one mirrors; null when Stripe didn&#39;t send one
         /// </summary>
-        /// <value>The invoice detail: a JSON object, encoded as a string</value>
-        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
-        public string Payload { get; set; }
+        /// <value>The Stripe invoice this one mirrors; null when Stripe didn&#39;t send one</value>
+        [DataMember(Name = "stripeInvoiceId", IsRequired = true, EmitDefaultValue = true)]
+        public string StripeInvoiceId { get; set; }
 
         /// <summary>
         /// UTC time, RFC 3339
@@ -157,7 +157,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
-            sb.Append("  Payload: ").Append(Payload).Append("\n");
+            sb.Append("  StripeInvoiceId: ").Append(StripeInvoiceId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");

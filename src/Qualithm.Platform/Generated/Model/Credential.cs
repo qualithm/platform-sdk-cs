@@ -115,10 +115,9 @@ namespace Qualithm.Platform.Model
         /// <param name="expiresAt">UTC time, RFC 3339 (required).</param>
         /// <param name="lastUsedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="rotatedFrom">A credential ID (required).</param>
-        /// <param name="payload">JSON text (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Credential(string id = default, string deviceId = default, string authorityId = default, KindEnum kind = default, string certFingerprint = default, string certSubject = default, string label = default, StatusEnum status = default, DateTime? expiresAt = default, DateTime? lastUsedAt = default, string rotatedFrom = default, string payload = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Credential(string id = default, string deviceId = default, string authorityId = default, KindEnum kind = default, string certFingerprint = default, string certSubject = default, string label = default, StatusEnum status = default, DateTime? expiresAt = default, DateTime? lastUsedAt = default, string rotatedFrom = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -176,12 +175,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("rotatedFrom is a required property for Credential and cannot be null");
             }
             this.RotatedFrom = rotatedFrom;
-            // to ensure "payload" is required (not null)
-            if (payload == null)
-            {
-                throw new ArgumentNullException("payload is a required property for Credential and cannot be null");
-            }
-            this.Payload = payload;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -266,13 +259,6 @@ namespace Qualithm.Platform.Model
         public string RotatedFrom { get; set; }
 
         /// <summary>
-        /// JSON text
-        /// </summary>
-        /// <value>JSON text</value>
-        [DataMember(Name = "payload", IsRequired = true, EmitDefaultValue = true)]
-        public string Payload { get; set; }
-
-        /// <summary>
         /// UTC time, RFC 3339
         /// </summary>
         /// <value>UTC time, RFC 3339</value>
@@ -311,7 +297,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
             sb.Append("  LastUsedAt: ").Append(LastUsedAt).Append("\n");
             sb.Append("  RotatedFrom: ").Append(RotatedFrom).Append("\n");
-            sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
