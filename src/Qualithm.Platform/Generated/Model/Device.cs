@@ -83,9 +83,10 @@ namespace Qualithm.Platform.Model
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="parkedAt">UTC time, RFC 3339.</param>
         /// <param name="capabilitiesDeclared">Whether the device&#39;s latest session declared its capabilities before sending data; null until a session has done either.</param>
+        /// <param name="varVirtual">Whether the device declared itself virtual at claim: it runs on a host rather than a board, and counts as a device all the same.</param>
         /// <param name="level">level.</param>
         /// <param name="checks">checks.</param>
-        public Device(string id = default, string scopeId = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
+        public Device(string id = default, string scopeId = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, bool varVirtual = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -127,6 +128,7 @@ namespace Qualithm.Platform.Model
             this.UpdatedAt = updatedAt;
             this.ParkedAt = parkedAt;
             this.CapabilitiesDeclared = capabilitiesDeclared;
+            this.Virtual = varVirtual;
             this.Level = level;
             this.Checks = checks;
         }
@@ -222,6 +224,13 @@ namespace Qualithm.Platform.Model
         public bool? CapabilitiesDeclared { get; set; }
 
         /// <summary>
+        /// Whether the device declared itself virtual at claim: it runs on a host rather than a board, and counts as a device all the same
+        /// </summary>
+        /// <value>Whether the device declared itself virtual at claim: it runs on a host rather than a board, and counts as a device all the same</value>
+        [DataMember(Name = "virtual", EmitDefaultValue = true)]
+        public bool Virtual { get; set; }
+
+        /// <summary>
         /// Gets or Sets Checks
         /// </summary>
         [DataMember(Name = "checks", EmitDefaultValue = false)]
@@ -245,6 +254,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  ParkedAt: ").Append(ParkedAt).Append("\n");
             sb.Append("  CapabilitiesDeclared: ").Append(CapabilitiesDeclared).Append("\n");
+            sb.Append("  Virtual: ").Append(Virtual).Append("\n");
             sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  Checks: ").Append(Checks).Append("\n");
             sb.Append("}\n");
