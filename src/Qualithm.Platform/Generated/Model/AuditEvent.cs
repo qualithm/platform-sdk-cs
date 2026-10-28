@@ -264,7 +264,7 @@ namespace Qualithm.Platform.Model
 
             if (this.ActorId != null) {
                 // ActorId (string) pattern
-                Regex regexActorId = new Regex(@"^(?:acc|tok|evt|auth|aut|cmpn|cap|cmd|cred|dash|dev|eml|enr|inv|doc|mem|otp|plan|psh|sub|run|spc|ses|dgst|sev|tm|tev|upt|use|wks)_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexActorId = new Regex(@"^(?:acc|tok|evt|auth|aut|cmpn|cap|cmd|cred|dash|dev|eml|enr|inv|doc|mem|oac|ogr|otk|otp|plan|psh|sub|run|spc|ses|dgst|sev|tm|tev|upt|use|wks)_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexActorId.Match(this.ActorId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ActorId, must match a pattern of " + regexActorId, new [] { "ActorId" });
@@ -273,7 +273,7 @@ namespace Qualithm.Platform.Model
 
             if (this.TargetId != null) {
                 // TargetId (string) pattern
-                Regex regexTargetId = new Regex(@"^(?:acc|tok|evt|auth|aut|cmpn|cap|cmd|cred|dash|dev|eml|enr|inv|doc|mem|otp|plan|psh|sub|run|spc|ses|dgst|sev|tm|tev|upt|use|wks)_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexTargetId = new Regex(@"^(?:acc|tok|evt|auth|aut|cmpn|cap|cmd|cred|dash|dev|eml|enr|inv|doc|mem|oac|ogr|otk|otp|plan|psh|sub|run|spc|ses|dgst|sev|tm|tev|upt|use|wks)_[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexTargetId.Match(this.TargetId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TargetId, must match a pattern of " + regexTargetId, new [] { "TargetId" });
