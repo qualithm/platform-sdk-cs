@@ -34,6 +34,7 @@ env:
 
 jobs:
   pack:
+    if: ${{ !endsWith(github.repository, '-example') }}
     name: Pack
     runs-on: ubuntu-24.04
     timeout-minutes: 15
@@ -67,7 +68,7 @@ jobs:
   publish:
     name: Publish to NuGet
     needs: pack
-    if: github.ref_type == 'tag'
+    if: ${{ !endsWith(github.repository, '-example') && (github.ref_type == 'tag') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     environment:
@@ -101,7 +102,7 @@ jobs:
   release:
     name: GitHub Release
     needs: publish
-    if: github.ref_type == 'tag'
+    if: ${{ !endsWith(github.repository, '-example') && (github.ref_type == 'tag') }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     permissions:
