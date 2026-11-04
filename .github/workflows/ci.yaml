@@ -81,8 +81,8 @@ jobs:
       # it runs in full so its jobs save the caches PRs restore. A reused push
       # still uploads coverage, from the report a passing run recorded for the
       # tree; with none, it runs in full. When a passing run tested this tree,
-      # the build, lint, format, typecheck and unit-test jobs skip
-      # (qualithm/pm#2856). Any failed lookup means no reuse.
+      # the build, lint, format, typecheck and unit-test jobs skip.
+      # Any failed lookup means no reuse.
       - id: reuse
         if:
           github.event_name == 'merge_group' || github.event_name == 'push' || (github.event_name ==
@@ -432,7 +432,7 @@ jobs:
     # generator on the committed spec must reproduce it exactly, so a hand edit
     # can't pass as a generator change.
     # Ungated by the code filter: the generator pin and config live outside it.
-    # Skips on a reused tree (qualithm/pm#2856). A repo without
+    # Skips on a reused tree. A repo without
     # openapi-generator.yaml generates nothing and skips.
     runs-on: ubuntu-24.04
     timeout-minutes: 10
