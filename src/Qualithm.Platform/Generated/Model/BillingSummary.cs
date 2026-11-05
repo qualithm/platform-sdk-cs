@@ -90,9 +90,11 @@ namespace Qualithm.Platform.Model
         /// <param name="limitGrace">limitGrace (required).</param>
         /// <param name="limits">limits (required).</param>
         /// <param name="usage">usage (required).</param>
-        /// <param name="monthlyTotal">The plan&#39;s monthly price with add-ons (required).</param>
+        /// <param name="monthlyTotal">What the next invoice will charge, after discounts and credit; the plan price with add-ons when &#x60;estimated&#x60; is true (required).</param>
+        /// <param name="upcomingInvoice">upcomingInvoice (required).</param>
+        /// <param name="estimated">True when Stripe couldn&#39;t be read, so &#x60;monthlyTotal&#x60; is the plan price (required).</param>
         /// <param name="addons">addons (required).</param>
-        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, Money monthlyTotal = default, BillingSummaryAddons addons = default)
+        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, Money monthlyTotal = default, BillingSummaryUpcomingInvoice upcomingInvoice = default, bool estimated = default, BillingSummaryAddons addons = default)
         {
             this.Tier = tier;
             // to ensure "month" is required (not null)
@@ -125,6 +127,13 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("monthlyTotal is a required property for BillingSummary and cannot be null");
             }
             this.MonthlyTotal = monthlyTotal;
+            // to ensure "upcomingInvoice" is required (not null)
+            if (upcomingInvoice == null)
+            {
+                throw new ArgumentNullException("upcomingInvoice is a required property for BillingSummary and cannot be null");
+            }
+            this.UpcomingInvoice = upcomingInvoice;
+            this.Estimated = estimated;
             // to ensure "addons" is required (not null)
             if (addons == null)
             {
@@ -159,11 +168,24 @@ namespace Qualithm.Platform.Model
         public BillingSummaryUsage Usage { get; set; }
 
         /// <summary>
-        /// The plan&#39;s monthly price with add-ons
+        /// What the next invoice will charge, after discounts and credit; the plan price with add-ons when &#x60;estimated&#x60; is true
         /// </summary>
-        /// <value>The plan&#39;s monthly price with add-ons</value>
+        /// <value>What the next invoice will charge, after discounts and credit; the plan price with add-ons when &#x60;estimated&#x60; is true</value>
         [DataMember(Name = "monthlyTotal", IsRequired = true, EmitDefaultValue = true)]
         public Money MonthlyTotal { get; set; }
+
+        /// <summary>
+        /// Gets or Sets UpcomingInvoice
+        /// </summary>
+        [DataMember(Name = "upcomingInvoice", IsRequired = true, EmitDefaultValue = true)]
+        public BillingSummaryUpcomingInvoice UpcomingInvoice { get; set; }
+
+        /// <summary>
+        /// True when Stripe couldn&#39;t be read, so &#x60;monthlyTotal&#x60; is the plan price
+        /// </summary>
+        /// <value>True when Stripe couldn&#39;t be read, so &#x60;monthlyTotal&#x60; is the plan price</value>
+        [DataMember(Name = "estimated", IsRequired = true, EmitDefaultValue = true)]
+        public bool Estimated { get; set; }
 
         /// <summary>
         /// Gets or Sets Addons
@@ -185,6 +207,8 @@ namespace Qualithm.Platform.Model
             sb.Append("  Limits: ").Append(Limits).Append("\n");
             sb.Append("  Usage: ").Append(Usage).Append("\n");
             sb.Append("  MonthlyTotal: ").Append(MonthlyTotal).Append("\n");
+            sb.Append("  UpcomingInvoice: ").Append(UpcomingInvoice).Append("\n");
+            sb.Append("  Estimated: ").Append(Estimated).Append("\n");
             sb.Append("  Addons: ").Append(Addons).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

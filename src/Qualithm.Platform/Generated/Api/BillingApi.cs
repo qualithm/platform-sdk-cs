@@ -30,7 +30,7 @@ namespace Qualithm.Platform.Api
     {
         #region Synchronous Operations
         /// <summary>
-        /// Get the workspace&#39;s plan, usage, price and add-ons
+        /// Get the workspace&#39;s plan, usage, next bill and add-ons
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -38,7 +38,7 @@ namespace Qualithm.Platform.Api
         GetBillingSummaryResponse GetBillingSummary(string teamId);
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage, price and add-ons
+        /// Get the workspace&#39;s plan, usage, next bill and add-ons
         /// </summary>
         /// <remarks>
         /// 
@@ -106,7 +106,7 @@ namespace Qualithm.Platform.Api
     {
         #region Asynchronous Operations
         /// <summary>
-        /// Get the workspace&#39;s plan, usage, price and add-ons
+        /// Get the workspace&#39;s plan, usage, next bill and add-ons
         /// </summary>
         /// <remarks>
         /// 
@@ -118,7 +118,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage, price and add-ons
+        /// Get the workspace&#39;s plan, usage, next bill and add-ons
         /// </summary>
         /// <remarks>
         /// 
@@ -398,7 +398,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage, price and add-ons 
+        /// Get the workspace&#39;s plan, usage, next bill and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -410,7 +410,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage, price and add-ons 
+        /// Get the workspace&#39;s plan, usage, next bill and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -459,7 +459,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage, price and add-ons 
+        /// Get the workspace&#39;s plan, usage, next bill and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -472,7 +472,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the workspace&#39;s plan, usage, price and add-ons 
+        /// Get the workspace&#39;s plan, usage, next bill and add-ons 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
