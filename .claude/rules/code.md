@@ -38,5 +38,9 @@ coverage step). A package change updates `Directory.Packages.props` and every af
 
 ## Generated files
 
+Where `scripts/generate` exists, `Generated/` is the client it writes from `openapi.json`: rerun the
+script after a spec change, never edit the output by hand, and leave it outside the lint, coverage
+and error rules here.
+
 `.github/workflows/ci.yaml` is generated from `dx/ci-templates/`; change the template and run
 `dx ci sync` from dx, never edit it here. `CI Required` and `PR Title` are required.
