@@ -86,7 +86,8 @@ namespace Qualithm.Platform.Model
         /// <param name="varVirtual">Whether the device declared itself virtual at claim: it runs on a host rather than a board, and counts as a device all the same.</param>
         /// <param name="level">level.</param>
         /// <param name="checks">checks.</param>
-        public Device(string id = default, string scopeId = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, bool varVirtual = default, LevelEnum? level = default, List<DeviceCheck> checks = default)
+        /// <param name="decisions">What Qualithm decided when the device was claimed: at most six, most consequential first. Returned by getDevice; empty for a device created without a claim..</param>
+        public Device(string id = default, string scopeId = default, string spaceId = default, string spaceName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, bool varVirtual = default, LevelEnum? level = default, List<DeviceCheck> checks = default, List<Decision> decisions = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -131,6 +132,7 @@ namespace Qualithm.Platform.Model
             this.Virtual = varVirtual;
             this.Level = level;
             this.Checks = checks;
+            this.Decisions = decisions;
         }
 
         /// <summary>
@@ -237,6 +239,13 @@ namespace Qualithm.Platform.Model
         public List<DeviceCheck> Checks { get; set; }
 
         /// <summary>
+        /// What Qualithm decided when the device was claimed: at most six, most consequential first. Returned by getDevice; empty for a device created without a claim.
+        /// </summary>
+        /// <value>What Qualithm decided when the device was claimed: at most six, most consequential first. Returned by getDevice; empty for a device created without a claim.</value>
+        [DataMember(Name = "decisions", EmitDefaultValue = false)]
+        public List<Decision> Decisions { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -257,6 +266,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Virtual: ").Append(Virtual).Append("\n");
             sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  Checks: ").Append(Checks).Append("\n");
+            sb.Append("  Decisions: ").Append(Decisions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
