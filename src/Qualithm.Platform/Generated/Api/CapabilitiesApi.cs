@@ -39,7 +39,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="scopeId">Only the devices in this scope and every scope under it (optional)</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
-        /// <param name="tag">Only capabilities carrying this tag (optional)</param>
+        /// <param name="tag">Only capabilities tagged this, or on a device tagged this (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
         /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
@@ -57,7 +57,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="scopeId">Only the devices in this scope and every scope under it (optional)</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
-        /// <param name="tag">Only capabilities carrying this tag (optional)</param>
+        /// <param name="tag">Only capabilities tagged this, or on a device tagged this (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
         /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
@@ -136,7 +136,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="scopeId">Only the devices in this scope and every scope under it (optional)</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
-        /// <param name="tag">Only capabilities carrying this tag (optional)</param>
+        /// <param name="tag">Only capabilities tagged this, or on a device tagged this (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
         /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
@@ -155,7 +155,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="scopeId">Only the devices in this scope and every scope under it (optional)</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
-        /// <param name="tag">Only capabilities carrying this tag (optional)</param>
+        /// <param name="tag">Only capabilities tagged this, or on a device tagged this (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
         /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
@@ -443,7 +443,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="scopeId">Only the devices in this scope and every scope under it (optional)</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
-        /// <param name="tag">Only capabilities carrying this tag (optional)</param>
+        /// <param name="tag">Only capabilities tagged this, or on a device tagged this (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
         /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
@@ -462,7 +462,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="scopeId">Only the devices in this scope and every scope under it (optional)</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
-        /// <param name="tag">Only capabilities carrying this tag (optional)</param>
+        /// <param name="tag">Only capabilities tagged this, or on a device tagged this (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
         /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
@@ -546,7 +546,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="scopeId">Only the devices in this scope and every scope under it (optional)</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
-        /// <param name="tag">Only capabilities carrying this tag (optional)</param>
+        /// <param name="tag">Only capabilities tagged this, or on a device tagged this (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
         /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
@@ -566,7 +566,7 @@ namespace Qualithm.Platform.Api
         /// <param name="teamId">The team the request acts on</param>
         /// <param name="scopeId">Only the devices in this scope and every scope under it (optional)</param>
         /// <param name="type">Only capabilities of this type (optional)</param>
-        /// <param name="tag">Only capabilities carrying this tag (optional)</param>
+        /// <param name="tag">Only capabilities tagged this, or on a device tagged this (optional)</param>
         /// <param name="key">Only capabilities with this key (optional)</param>
         /// <param name="page">Page number, from 1. Default 1. Ignored with &#x60;cursor&#x60;. (optional)</param>
         /// <param name="limit">Items per page, 1 to 100. Default 20, or 50 with &#x60;cursor&#x60;. (optional)</param>
