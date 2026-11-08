@@ -148,7 +148,8 @@ namespace Qualithm.Platform.Model
         /// <param name="lastError">lastError (required).</param>
         /// <param name="triggeredAt">UTC time, RFC 3339 (required).</param>
         /// <param name="executedAt">UTC time, RFC 3339 (required).</param>
-        public AutomationRun(string id = default, string automationId = default, TriggerTypeEnum triggerType = default, StatusEnum status = default, List<AutomationRunStep> steps = default, string lastError = default, DateTime triggeredAt = default, DateTime? executedAt = default)
+        /// <param name="decisions">What Qualithm decided when the run&#39;s alert fired: at most six, most consequential first. Absent when the run fired no alert..</param>
+        public AutomationRun(string id = default, string automationId = default, TriggerTypeEnum triggerType = default, StatusEnum status = default, List<AutomationRunStep> steps = default, string lastError = default, DateTime triggeredAt = default, DateTime? executedAt = default, List<Decision> decisions = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -183,6 +184,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("executedAt is a required property for AutomationRun and cannot be null");
             }
             this.ExecutedAt = executedAt;
+            this.Decisions = decisions;
         }
 
         /// <summary>
@@ -238,6 +240,13 @@ namespace Qualithm.Platform.Model
         public DateTime? ExecutedAt { get; set; }
 
         /// <summary>
+        /// What Qualithm decided when the run&#39;s alert fired: at most six, most consequential first. Absent when the run fired no alert.
+        /// </summary>
+        /// <value>What Qualithm decided when the run&#39;s alert fired: at most six, most consequential first. Absent when the run fired no alert.</value>
+        [DataMember(Name = "decisions", EmitDefaultValue = false)]
+        public List<Decision> Decisions { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -253,6 +262,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  LastError: ").Append(LastError).Append("\n");
             sb.Append("  TriggeredAt: ").Append(TriggeredAt).Append("\n");
             sb.Append("  ExecutedAt: ").Append(ExecutedAt).Append("\n");
+            sb.Append("  Decisions: ").Append(Decisions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
