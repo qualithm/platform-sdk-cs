@@ -41,12 +41,14 @@ namespace Qualithm.Platform.Model
         /// <param name="scopeId">A scope in the device&#39;s zone; a device stays in the zone it was claimed in.</param>
         /// <param name="spaceId">Deprecated: use scopeId.</param>
         /// <param name="parked">A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay.</param>
-        public UpdateDeviceRequest(string name = default, string scopeId = default, string spaceId = default, bool parked = default)
+        /// <param name="tags">Replaces the device&#39;s tags; &#x60;[]&#x60; clears them. Stored lowercased.</param>
+        public UpdateDeviceRequest(string name = default, string scopeId = default, string spaceId = default, bool parked = default, List<string> tags = default)
         {
             this.Name = name;
             this.ScopeId = scopeId;
             this.SpaceId = spaceId;
             this.Parked = parked;
+            this.Tags = tags;
         }
 
         /// <summary>
@@ -84,6 +86,13 @@ namespace Qualithm.Platform.Model
         public bool Parked { get; set; }
 
         /// <summary>
+        /// Replaces the device&#39;s tags; &#x60;[]&#x60; clears them. Stored lowercased
+        /// </summary>
+        /// <value>Replaces the device&#39;s tags; &#x60;[]&#x60; clears them. Stored lowercased</value>
+        [DataMember(Name = "tags", EmitDefaultValue = false)]
+        public List<string> Tags { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -95,6 +104,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
             sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Parked: ").Append(Parked).Append("\n");
+            sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
