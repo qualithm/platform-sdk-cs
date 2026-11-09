@@ -69,17 +69,15 @@ var automations = await platform.Api<AutomationsApi>().ListAutomationsAsync(team
 ### Error Handling
 
 Every error response and failed request throws `PlatformException`. Branch on `Code`, never on
-`Message`. A code this version doesn't know yet reads as `ApiErrorCode.UnknownDefaultOpenApi`. A
+`Message`. A code this version doesn't know yet reads as `PlatformErrorCode.Unknown`. A
 request that got no response has `Status` `0`:
 
 ```csharp
-using Qualithm.Platform.Model;
-
 try
 {
     await platform.Api<DevicesApi>().GetDeviceAsync(teamId, deviceId);
 }
-catch (PlatformException e) when (e.Code == ApiErrorCode.NotFound)
+catch (PlatformException e) when (e.Code == PlatformErrorCode.NotFound)
 {
     // the device doesn't exist, or isn't in this team
 }
