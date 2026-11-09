@@ -1,7 +1,4 @@
-using System.Reflection;
-using System.Runtime.Serialization;
 using System.Text.Json;
-using Qualithm.Platform.Model;
 
 namespace Qualithm.Platform;
 
@@ -11,25 +8,17 @@ namespace Qualithm.Platform;
 /// </summary>
 public sealed class PlatformException : Exception
 {
-    private static readonly Dictionary<string, ApiErrorCode> _codes = typeof(ApiErrorCode)
-        .GetFields(BindingFlags.Public | BindingFlags.Static)
-        .Where(field => field.GetCustomAttribute<EnumMemberAttribute>()?.Value is not null)
-        .ToDictionary(
-            field => field.GetCustomAttribute<EnumMemberAttribute>()!.Value!,
-            field => (ApiErrorCode)field.GetValue(null)!,
-            StringComparer.Ordinal);
-
     /// <summary>Creates an error.</summary>
     /// <param name="message">What failed, lowercase, as the API sent it.</param>
     /// <param name="code">
-    /// The envelope's stable code; <see cref="ApiErrorCode.UnknownDefaultOpenApi"/> for one this
-    /// version doesn't know.
+    /// The envelope's stable code; <see cref="PlatformErrorCode.Unknown"/> for one this version
+    /// doesn't know.
     /// </param>
     /// <param name="status">The HTTP status, or <c>0</c> when no response arrived.</param>
     /// <param name="innerException">The underlying error, when there is one.</param>
     public PlatformException(
         string message,
-        ApiErrorCode code,
+        PlatformErrorCode code,
         int status,
         Exception? innerException = null)
         : base(message, innerException)
@@ -40,10 +29,10 @@ public sealed class PlatformException : Exception
 
     /// <summary>
     /// The envelope's stable code. A code this version doesn't know yet, or a failure with no
-    /// response, reads as <see cref="ApiErrorCode.UnknownDefaultOpenApi"/>; a missing token reads
-    /// as <see cref="ApiErrorCode.Unauthorized"/>.
+    /// response, reads as <see cref="PlatformErrorCode.Unknown"/>; a missing token reads
+    /// as <see cref="PlatformErrorCode.Unauthorized"/>.
     /// </summary>
-    public ApiErrorCode Code { get; }
+    public PlatformErrorCode Code { get; }
 
     /// <summary>The HTTP status, or <c>0</c> when no response arrived.</summary>
     public int Status { get; }
@@ -55,7 +44,7 @@ public sealed class PlatformException : Exception
     internal static PlatformException FromResponse(int status, string body)
     {
         string? message = null;
-        var code = ApiErrorCode.UnknownDefaultOpenApi;
+        var code = PlatformErrorCode.Unknown;
         try
         {
             using var document = JsonDocument.Parse(body);
@@ -67,11 +56,9 @@ public sealed class PlatformException : Exception
                     message = m.GetString();
                 }
 
-                if (root.TryGetProperty("code", out var c)
-                    && c.ValueKind == JsonValueKind.String
-                    && _codes.TryGetValue(c.GetString()!, out var known))
+                if (root.TryGetProperty("code", out var c) && c.ValueKind == JsonValueKind.String)
                 {
-                    code = known;
+                    code = PlatformErrorCodes.Parse(c.GetString());
                 }
             }
         }
@@ -90,5 +77,5 @@ public sealed class PlatformException : Exception
     /// <param name="cause">Why the request failed.</param>
     /// <returns>The error to raise.</returns>
     internal static PlatformException FromTransport(Exception cause) =>
-        new($"request failed: {cause.Message.ToLowerInvariant()}", ApiErrorCode.UnknownDefaultOpenApi, 0, cause);
+        new($"request failed: {cause.Message.ToLowerInvariant()}", PlatformErrorCode.Unknown, 0, cause);
 }

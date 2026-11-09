@@ -32,7 +32,7 @@ public sealed class PlatformClient : IDisposable
     /// The transport. Defaults to <see cref="SocketsHttpHandler"/>. The client disposes it.
     /// </param>
     /// <exception cref="PlatformException">
-    /// With code <see cref="Model.ApiErrorCode.Unauthorized"/> when no token is given or set in
+    /// With code <see cref="PlatformErrorCode.Unauthorized"/> when no token is given or set in
     /// <c>QUALITHM_API_TOKEN</c>.
     /// </exception>
     public PlatformClient(
@@ -49,7 +49,7 @@ public sealed class PlatformClient : IDisposable
         {
             throw new PlatformException(
                 "api token missing: pass token or set QUALITHM_API_TOKEN",
-                Model.ApiErrorCode.Unauthorized,
+                PlatformErrorCode.Unauthorized,
                 0);
         }
 
