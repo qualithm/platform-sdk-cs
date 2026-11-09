@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text.RegularExpressions;
 using Qualithm.Platform.Api;
 using Qualithm.Platform.Model;
 
@@ -84,7 +85,7 @@ public class PlatformClientTests
         var error = Assert.Throws<PlatformException>(
             () => new PlatformClient(environment: Env(("QUALITHM_API_TOKEN", ""))));
 
-        Assert.Equal(ApiErrorCode.Unauthorized, error.Code);
+        Assert.Equal(PlatformErrorCode.Unauthorized, error.Code);
         Assert.Equal(0, error.Status);
         Assert.Equal("api token missing: pass token or set QUALITHM_API_TOKEN", error.Message);
     }
@@ -102,7 +103,7 @@ public class PlatformClientTests
         var error = await FailureAsync(
             new StubHandler(HttpStatusCode.NotFound, """{"message":"device not found","code":"not_found"}"""));
 
-        Assert.Equal(ApiErrorCode.NotFound, error.Code);
+        Assert.Equal(PlatformErrorCode.NotFound, error.Code);
         Assert.Equal(404, error.Status);
         Assert.Equal("device not found", error.Message);
     }
@@ -115,10 +116,37 @@ public class PlatformClientTests
                 HttpStatusCode.UnprocessableEntity,
                 """{"message":"device limit reached","code":"device_limit_reached"}"""));
 
-        Assert.Equal(ApiErrorCode.UnknownDefaultOpenApi, error.Code);
+        Assert.Equal(PlatformErrorCode.Unknown, error.Code);
         Assert.Equal(422, error.Status);
         Assert.Equal("device limit reached", error.Message);
     }
+
+    [Fact]
+    public async Task DecodesACodeAddedAfterTheFirstRelease()
+    {
+        var error = await FailureAsync(
+            new StubHandler(HttpStatusCode.Conflict, """{"message":"name taken","code":"name_taken"}"""));
+
+        Assert.Equal(PlatformErrorCode.NameTaken, error.Code);
+        Assert.Equal(409, error.Status);
+    }
+
+    public static TheoryData<PlatformErrorCode> KnownCodes() =>
+        new(Enum.GetValues<PlatformErrorCode>().Where(code => code != PlatformErrorCode.Unknown));
+
+    [Theory]
+    [MemberData(nameof(KnownCodes))]
+    public async Task DecodesEveryKnownCode(PlatformErrorCode code)
+    {
+        var wire = Regex.Replace(code.ToString(), "(?<!^)([A-Z])", "_$1").ToLowerInvariant();
+        var error = await FailureAsync(
+            new StubHandler(HttpStatusCode.BadRequest, $$"""{"message":"failed","code":"{{wire}}"}"""));
+
+        Assert.Equal(code, error.Code);
+    }
+
+    [Fact]
+    public void UnknownIsTheDefaultCode() => Assert.Equal(PlatformErrorCode.Unknown, default);
 
     [Theory]
     [InlineData("<html>bad gateway</html>")]
@@ -128,7 +156,7 @@ public class PlatformClientTests
     {
         var error = await FailureAsync(new StubHandler(HttpStatusCode.BadGateway, body));
 
-        Assert.Equal(ApiErrorCode.UnknownDefaultOpenApi, error.Code);
+        Assert.Equal(PlatformErrorCode.Unknown, error.Code);
         Assert.Equal(502, error.Status);
         Assert.Equal("request failed with status 502", error.Message);
     }
@@ -139,7 +167,7 @@ public class PlatformClientTests
         var cause = new HttpRequestException("Connection Refused");
         var error = await FailureAsync(new StubHandler(error: cause));
 
-        Assert.Equal(ApiErrorCode.UnknownDefaultOpenApi, error.Code);
+        Assert.Equal(PlatformErrorCode.Unknown, error.Code);
         Assert.Equal(0, error.Status);
         Assert.Equal("request failed: connection refused", error.Message);
         Assert.Same(cause, error.InnerException);
