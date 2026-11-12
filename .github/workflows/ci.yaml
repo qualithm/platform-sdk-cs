@@ -24,8 +24,9 @@ permissions:
 env:
   # The pinned toolchain. dx config check holds every template that names it
   # to the same version, and the Format & Build job fails when the repo's
-  # global.json disagrees. Bump it here, sync, and update the repo in the same
-  # PR.
+  # global.json disagrees. Bump it in every .NET template, then run the syncs
+  # (dx baseline sync writes global.json) and dx tool dotnet-lock, in one PR
+  # per repo.
   DOTNET_SDK_VERSION: "10.0.404"
   DOTNET_CLI_TELEMETRY_OPTOUT: "1"
   DOTNET_NOLOGO: "1"
@@ -191,11 +192,18 @@ jobs:
           global-json-file: global.json
           cache: true
           cache-dependency-path: "**/packages.lock.json"
+      # global.json pins the exact SDK with roll-forward off, so a new SDK
+      # patch release never changes what restores the lock files.
       - name: Check the .NET SDK pin
         run: |
           sdk=$(jq -r '.sdk.version' global.json)
           if [[ "$sdk" != "$DOTNET_SDK_VERSION" ]]; then
             echo "::error file=global.json::pins the .NET SDK $sdk; the dx template pins $DOTNET_SDK_VERSION"
+            exit 1
+          fi
+          roll=$(jq -r '.sdk.rollForward' global.json)
+          if [[ "$roll" != "disable" ]]; then
+            echo "::error file=global.json::rolls the .NET SDK forward ($roll); dx baseline sync writes rollForward: disable"
             exit 1
           fi
       # CI builds portable.slnf where the repo has one (every project except a
