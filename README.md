@@ -69,8 +69,8 @@ var automations = await platform.Api<AutomationsApi>().ListAutomationsAsync(team
 ### Error Handling
 
 Every error response and failed request throws `PlatformException`. Branch on `Code`, never on
-`Message`. A code this version doesn't know yet reads as `PlatformErrorCode.Unknown`. A
-request that got no response has `Status` `0`:
+`Message`. A code this version doesn't know yet reads as `PlatformErrorCode.Unknown`. A request that
+got no response has `Status` `0`:
 
 ```csharp
 try
