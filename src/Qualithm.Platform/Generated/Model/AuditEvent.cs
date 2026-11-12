@@ -264,7 +264,7 @@ namespace Qualithm.Platform.Model
 
             if (this.ActorId != null) {
                 // ActorId (string) pattern
-                Regex regexActorId = new Regex(@"^(?:acc_|tok_|aud_|evt_|dca_|auth_|aut_(?:defraa|sgsina)_|aut_|cmp_|cmpn_|cap_(?:defraa|sgsina)_|cap_|cmd_(?:defraa|sgsina)_|cmd_|crd_(?:defraa|sgsina)_|crd_|cred_|dsh_(?:defraa|sgsina)_|dsh_|dash_|dvc_(?:defraa|sgsina)_|dvc_|dev_|eml_|enr_(?:defraa|sgsina)_|enr_|inv_|lgl_|doc_|mbr_|mem_|oac_|ogr_|oat_|otk_|otc_|otp_|pln_|plan_|psh_|psb_|sub_|run_(?:defraa|sgsina)_|run_|scp_(?:defraa|sgsina)_|scp_|spc_|ses_|dig_|dgst_|pev_|sev_|tem_|tm_|tev_|upt_|usg_|use_|wks_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexActorId = new Regex(@"^(?:acc_|tok_|aud_|evt_|dca_|auth_|aut_(?:defraa|sgsina|usnyca)_|aut_|cmp_|cmpn_|cap_(?:defraa|sgsina|usnyca)_|cap_|cmd_(?:defraa|sgsina|usnyca)_|cmd_|crd_(?:defraa|sgsina|usnyca)_|crd_|cred_|dsh_(?:defraa|sgsina|usnyca)_|dsh_|dash_|dvc_(?:defraa|sgsina|usnyca)_|dvc_|dev_|eml_|enr_(?:defraa|sgsina|usnyca)_|enr_|inv_|lgl_|doc_|mbr_|mem_|oac_|ogr_|oat_|otk_|otc_|otp_|pln_|plan_|psh_|psb_|sub_|run_(?:defraa|sgsina|usnyca)_|run_|scp_(?:defraa|sgsina|usnyca)_|scp_|spc_|ses_|dig_|dgst_|pev_|sev_|tem_|tm_|tev_|upt_|usg_|use_|wks_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexActorId.Match(this.ActorId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ActorId, must match a pattern of " + regexActorId, new [] { "ActorId" });
@@ -273,7 +273,7 @@ namespace Qualithm.Platform.Model
 
             if (this.TargetId != null) {
                 // TargetId (string) pattern
-                Regex regexTargetId = new Regex(@"^(?:acc_|tok_|aud_|evt_|dca_|auth_|aut_(?:defraa|sgsina)_|aut_|cmp_|cmpn_|cap_(?:defraa|sgsina)_|cap_|cmd_(?:defraa|sgsina)_|cmd_|crd_(?:defraa|sgsina)_|crd_|cred_|dsh_(?:defraa|sgsina)_|dsh_|dash_|dvc_(?:defraa|sgsina)_|dvc_|dev_|eml_|enr_(?:defraa|sgsina)_|enr_|inv_|lgl_|doc_|mbr_|mem_|oac_|ogr_|oat_|otk_|otc_|otp_|pln_|plan_|psh_|psb_|sub_|run_(?:defraa|sgsina)_|run_|scp_(?:defraa|sgsina)_|scp_|spc_|ses_|dig_|dgst_|pev_|sev_|tem_|tm_|tev_|upt_|usg_|use_|wks_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexTargetId = new Regex(@"^(?:acc_|tok_|aud_|evt_|dca_|auth_|aut_(?:defraa|sgsina|usnyca)_|aut_|cmp_|cmpn_|cap_(?:defraa|sgsina|usnyca)_|cap_|cmd_(?:defraa|sgsina|usnyca)_|cmd_|crd_(?:defraa|sgsina|usnyca)_|crd_|cred_|dsh_(?:defraa|sgsina|usnyca)_|dsh_|dash_|dvc_(?:defraa|sgsina|usnyca)_|dvc_|dev_|eml_|enr_(?:defraa|sgsina|usnyca)_|enr_|inv_|lgl_|doc_|mbr_|mem_|oac_|ogr_|oat_|otk_|otc_|otp_|pln_|plan_|psh_|psb_|sub_|run_(?:defraa|sgsina|usnyca)_|run_|scp_(?:defraa|sgsina|usnyca)_|scp_|spc_|ses_|dig_|dgst_|pev_|sev_|tem_|tm_|tev_|upt_|usg_|use_|wks_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexTargetId.Match(this.TargetId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for TargetId, must match a pattern of " + regexTargetId, new [] { "TargetId" });

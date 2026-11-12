@@ -87,17 +87,17 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="deviceTotal">deviceTotal (required).</param>
         /// <param name="deviceMax">The tier&#39;s device limit (required).</param>
-        /// <param name="spaceTotal">spaceTotal (required).</param>
+        /// <param name="scopeTotal">scopeTotal (required).</param>
         /// <param name="tier">tier (required).</param>
         /// <param name="month">The month usage counts over: &#x60;YYYY-MM&#x60;, UTC (required).</param>
         /// <param name="limitGrace">limitGrace (required).</param>
         /// <param name="limits">limits (required).</param>
         /// <param name="varUsage">varUsage (required).</param>
-        public Usage(long deviceTotal = default, long deviceMax = default, long spaceTotal = default, TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage varUsage = default)
+        public Usage(long deviceTotal = default, long deviceMax = default, long scopeTotal = default, TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage varUsage = default)
         {
             this.DeviceTotal = deviceTotal;
             this.DeviceMax = deviceMax;
-            this.SpaceTotal = spaceTotal;
+            this.ScopeTotal = scopeTotal;
             this.Tier = tier;
             // to ensure "month" is required (not null)
             if (month == null)
@@ -139,10 +139,10 @@ namespace Qualithm.Platform.Model
         public long DeviceMax { get; set; }
 
         /// <summary>
-        /// Gets or Sets SpaceTotal
+        /// Gets or Sets ScopeTotal
         /// </summary>
-        [DataMember(Name = "spaceTotal", IsRequired = true, EmitDefaultValue = true)]
-        public long SpaceTotal { get; set; }
+        [DataMember(Name = "scopeTotal", IsRequired = true, EmitDefaultValue = true)]
+        public long ScopeTotal { get; set; }
 
         /// <summary>
         /// The month usage counts over: &#x60;YYYY-MM&#x60;, UTC
@@ -179,7 +179,7 @@ namespace Qualithm.Platform.Model
             sb.Append("class Usage {\n");
             sb.Append("  DeviceTotal: ").Append(DeviceTotal).Append("\n");
             sb.Append("  DeviceMax: ").Append(DeviceMax).Append("\n");
-            sb.Append("  SpaceTotal: ").Append(SpaceTotal).Append("\n");
+            sb.Append("  ScopeTotal: ").Append(ScopeTotal).Append("\n");
             sb.Append("  Tier: ").Append(Tier).Append("\n");
             sb.Append("  Month: ").Append(Month).Append("\n");
             sb.Append("  LimitGrace: ").Append(LimitGrace).Append("\n");

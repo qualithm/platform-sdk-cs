@@ -94,7 +94,7 @@ namespace Qualithm.Platform.Model
         {
             if (this.RunId != null) {
                 // RunId (string) pattern
-                Regex regexRunId = new Regex(@"^(?:run_(?:defraa|sgsina)_|run_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexRunId = new Regex(@"^(?:run_(?:defraa|sgsina|usnyca)_|run_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexRunId.Match(this.RunId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RunId, must match a pattern of " + regexRunId, new [] { "RunId" });

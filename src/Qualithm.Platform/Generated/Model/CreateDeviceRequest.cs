@@ -38,11 +38,9 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="CreateDeviceRequest" /> class.
         /// </summary>
         /// <param name="scopeId">A scope ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;.</param>
-        /// <param name="spaceId">Deprecated: use scopeId.</param>
-        public CreateDeviceRequest(string scopeId = default, string spaceId = default)
+        public CreateDeviceRequest(string scopeId = default)
         {
             this.ScopeId = scopeId;
-            this.SpaceId = spaceId;
         }
 
         /// <summary>
@@ -56,17 +54,6 @@ namespace Qualithm.Platform.Model
         public string ScopeId { get; set; }
 
         /// <summary>
-        /// Deprecated: use scopeId
-        /// </summary>
-        /// <value>Deprecated: use scopeId</value>
-        /*
-        <example>scp_defraa_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
-        */
-        [DataMember(Name = "spaceId", EmitDefaultValue = false)]
-        [Obsolete]
-        public string SpaceId { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -75,7 +62,6 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateDeviceRequest {\n");
             sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -98,19 +84,10 @@ namespace Qualithm.Platform.Model
         {
             if (this.ScopeId != null) {
                 // ScopeId (string) pattern
-                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina|usnyca)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexScopeId.Match(this.ScopeId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
-                }
-            }
-
-            if (this.SpaceId != null) {
-                // SpaceId (string) pattern
-                Regex regexSpaceId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }
             }
 

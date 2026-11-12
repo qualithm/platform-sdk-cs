@@ -19,7 +19,7 @@ try
     var page = await platform.Api<DevicesApi>().ListDevicesAsync(team.Id, limit: 20);
     foreach (var device in page.Data.Items)
     {
-        Console.WriteLine($"{device.Id}  {device.SpaceName}  {device.Name}");
+        Console.WriteLine($"{device.Id}  {device.ScopeName}  {device.Name}");
     }
 }
 catch (PlatformException e)

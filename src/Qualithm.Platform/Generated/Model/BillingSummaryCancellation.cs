@@ -29,35 +29,36 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// GetSpaceResponse
+    /// Set when the paid plan is cancelled at the end of its period
     /// </summary>
-    [DataContract(Name = "GetSpaceResponse")]
-    public partial class GetSpaceResponse : IValidatableObject
+    [DataContract(Name = "BillingSummary_cancellation")]
+    public partial class BillingSummaryCancellation : IValidatableObject
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetSpaceResponse" /> class.
+        /// Initializes a new instance of the <see cref="BillingSummaryCancellation" /> class.
         /// </summary>
         [JsonConstructorAttribute]
-        protected GetSpaceResponse() { }
+        protected BillingSummaryCancellation() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="GetSpaceResponse" /> class.
+        /// Initializes a new instance of the <see cref="BillingSummaryCancellation" /> class.
         /// </summary>
-        /// <param name="data">data (required).</param>
-        public GetSpaceResponse(Space data = default)
+        /// <param name="endsAt">ISO 8601 time the plan ends and the team moves to free (required).</param>
+        public BillingSummaryCancellation(string endsAt = default)
         {
-            // to ensure "data" is required (not null)
-            if (data == null)
+            // to ensure "endsAt" is required (not null)
+            if (endsAt == null)
             {
-                throw new ArgumentNullException("data is a required property for GetSpaceResponse and cannot be null");
+                throw new ArgumentNullException("endsAt is a required property for BillingSummaryCancellation and cannot be null");
             }
-            this.Data = data;
+            this.EndsAt = endsAt;
         }
 
         /// <summary>
-        /// Gets or Sets Data
+        /// ISO 8601 time the plan ends and the team moves to free
         /// </summary>
-        [DataMember(Name = "data", IsRequired = true, EmitDefaultValue = true)]
-        public Space Data { get; set; }
+        /// <value>ISO 8601 time the plan ends and the team moves to free</value>
+        [DataMember(Name = "endsAt", IsRequired = true, EmitDefaultValue = true)]
+        public string EndsAt { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -66,8 +67,8 @@ namespace Qualithm.Platform.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GetSpaceResponse {\n");
-            sb.Append("  Data: ").Append(Data).Append("\n");
+            sb.Append("class BillingSummaryCancellation {\n");
+            sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

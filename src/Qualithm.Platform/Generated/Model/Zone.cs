@@ -50,7 +50,7 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="id">id (required).</param>
         /// <param name="name">name (required).</param>
-        /// <param name="open">Whether the zone accepts new spaces in this environment (required).</param>
+        /// <param name="open">Whether the zone accepts new scopes in this environment (required).</param>
         /// <param name="api">The zone&#39;s regional API host (required).</param>
         /// <param name="gateway">gateway (required).</param>
         public Zone(ZoneId id = default, string name = default, bool open = default, string api = default, GatewayEndpoint gateway = default)
@@ -84,9 +84,9 @@ namespace Qualithm.Platform.Model
         public string Name { get; set; }
 
         /// <summary>
-        /// Whether the zone accepts new spaces in this environment
+        /// Whether the zone accepts new scopes in this environment
         /// </summary>
-        /// <value>Whether the zone accepts new spaces in this environment</value>
+        /// <value>Whether the zone accepts new scopes in this environment</value>
         [DataMember(Name = "open", IsRequired = true, EmitDefaultValue = true)]
         public bool Open { get; set; }
 

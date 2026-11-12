@@ -44,7 +44,7 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="csrPem">The device&#39;s PEM certificate signing request (required).</param>
         /// <param name="label">Up to 64 characters.</param>
-        /// <param name="expiresInDays">Certificate lifetime in days. Default 90..</param>
+        /// <param name="expiresInDays">Certificate lifetime in days, at most 30 for a development device. Default 30..</param>
         public CreateDeviceCertificateRequest(string csrPem = default, string label = default, int expiresInDays = default)
         {
             // to ensure "csrPem" is required (not null)
@@ -72,9 +72,9 @@ namespace Qualithm.Platform.Model
         public string Label { get; set; }
 
         /// <summary>
-        /// Certificate lifetime in days. Default 90.
+        /// Certificate lifetime in days, at most 30 for a development device. Default 30.
         /// </summary>
-        /// <value>Certificate lifetime in days. Default 90.</value>
+        /// <value>Certificate lifetime in days, at most 30 for a development device. Default 30.</value>
         [DataMember(Name = "expiresInDays", EmitDefaultValue = false)]
         public int ExpiresInDays { get; set; }
 
