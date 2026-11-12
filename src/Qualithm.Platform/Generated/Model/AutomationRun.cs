@@ -285,7 +285,7 @@ namespace Qualithm.Platform.Model
         {
             if (this.Id != null) {
                 // Id (string) pattern
-                Regex regexId = new Regex(@"^(?:run_(?:defraa|sgsina)_|run_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexId = new Regex(@"^(?:run_(?:defraa|sgsina|usnyca)_|run_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
@@ -294,7 +294,7 @@ namespace Qualithm.Platform.Model
 
             if (this.AutomationId != null) {
                 // AutomationId (string) pattern
-                Regex regexAutomationId = new Regex(@"^(?:aut_(?:defraa|sgsina)_|aut_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexAutomationId = new Regex(@"^(?:aut_(?:defraa|sgsina|usnyca)_|aut_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexAutomationId.Match(this.AutomationId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for AutomationId, must match a pattern of " + regexAutomationId, new [] { "AutomationId" });

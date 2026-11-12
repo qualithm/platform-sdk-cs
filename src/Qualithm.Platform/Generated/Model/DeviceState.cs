@@ -44,11 +44,10 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="deviceId">A device ID: &#x60;dvc_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;dev_…&#x60; (required).</param>
         /// <param name="scopeId">A scope ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60; (required).</param>
-        /// <param name="spaceId">Deprecated: use scopeId (required).</param>
         /// <param name="online">Whether the device was seen within the offline window (required).</param>
         /// <param name="lastSeenAt">When the device was last seen (required).</param>
         /// <param name="metrics">The device&#39;s current metrics (required).</param>
-        public DeviceState(string deviceId = default, string scopeId = default, string spaceId = default, bool online = default, DateTime lastSeenAt = default, Dictionary<string, decimal> metrics = default)
+        public DeviceState(string deviceId = default, string scopeId = default, bool online = default, DateTime lastSeenAt = default, Dictionary<string, decimal> metrics = default)
         {
             // to ensure "deviceId" is required (not null)
             if (deviceId == null)
@@ -62,12 +61,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("scopeId is a required property for DeviceState and cannot be null");
             }
             this.ScopeId = scopeId;
-            // to ensure "spaceId" is required (not null)
-            if (spaceId == null)
-            {
-                throw new ArgumentNullException("spaceId is a required property for DeviceState and cannot be null");
-            }
-            this.SpaceId = spaceId;
             this.Online = online;
             this.LastSeenAt = lastSeenAt;
             // to ensure "metrics" is required (not null)
@@ -97,17 +90,6 @@ namespace Qualithm.Platform.Model
         */
         [DataMember(Name = "scopeId", IsRequired = true, EmitDefaultValue = true)]
         public string ScopeId { get; set; }
-
-        /// <summary>
-        /// Deprecated: use scopeId
-        /// </summary>
-        /// <value>Deprecated: use scopeId</value>
-        /*
-        <example>scp_defraa_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
-        */
-        [DataMember(Name = "spaceId", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public string SpaceId { get; set; }
 
         /// <summary>
         /// Whether the device was seen within the offline window
@@ -143,7 +125,6 @@ namespace Qualithm.Platform.Model
             sb.Append("class DeviceState {\n");
             sb.Append("  DeviceId: ").Append(DeviceId).Append("\n");
             sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Online: ").Append(Online).Append("\n");
             sb.Append("  LastSeenAt: ").Append(LastSeenAt).Append("\n");
             sb.Append("  Metrics: ").Append(Metrics).Append("\n");
@@ -169,7 +150,7 @@ namespace Qualithm.Platform.Model
         {
             if (this.DeviceId != null) {
                 // DeviceId (string) pattern
-                Regex regexDeviceId = new Regex(@"^(?:dvc_(?:defraa|sgsina)_|dvc_|dev_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexDeviceId = new Regex(@"^(?:dvc_(?:defraa|sgsina|usnyca)_|dvc_|dev_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexDeviceId.Match(this.DeviceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DeviceId, must match a pattern of " + regexDeviceId, new [] { "DeviceId" });
@@ -178,19 +159,10 @@ namespace Qualithm.Platform.Model
 
             if (this.ScopeId != null) {
                 // ScopeId (string) pattern
-                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina|usnyca)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexScopeId.Match(this.ScopeId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
-                }
-            }
-
-            if (this.SpaceId != null) {
-                // SpaceId (string) pattern
-                Regex regexSpaceId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }
             }
 

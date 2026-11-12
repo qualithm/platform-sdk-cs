@@ -38,13 +38,11 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="CreateEnrollmentRequest" /> class.
         /// </summary>
         /// <param name="scopeId">The scope the device joins.</param>
-        /// <param name="spaceId">Deprecated: use scopeId.</param>
         /// <param name="label">Up to 64 characters.</param>
         /// <param name="expiresInMinutes">How long the code can be claimed. Default 1440 (24 hours)..</param>
-        public CreateEnrollmentRequest(string scopeId = default, string spaceId = default, string label = default, int expiresInMinutes = default)
+        public CreateEnrollmentRequest(string scopeId = default, string label = default, int expiresInMinutes = default)
         {
             this.ScopeId = scopeId;
-            this.SpaceId = spaceId;
             this.Label = label;
             this.ExpiresInMinutes = expiresInMinutes;
         }
@@ -58,17 +56,6 @@ namespace Qualithm.Platform.Model
         */
         [DataMember(Name = "scopeId", EmitDefaultValue = false)]
         public string ScopeId { get; set; }
-
-        /// <summary>
-        /// Deprecated: use scopeId
-        /// </summary>
-        /// <value>Deprecated: use scopeId</value>
-        /*
-        <example>scp_defraa_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
-        */
-        [DataMember(Name = "spaceId", EmitDefaultValue = false)]
-        [Obsolete]
-        public string SpaceId { get; set; }
 
         /// <summary>
         /// Up to 64 characters
@@ -93,7 +80,6 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class CreateEnrollmentRequest {\n");
             sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  ExpiresInMinutes: ").Append(ExpiresInMinutes).Append("\n");
             sb.Append("}\n");
@@ -118,19 +104,10 @@ namespace Qualithm.Platform.Model
         {
             if (this.ScopeId != null) {
                 // ScopeId (string) pattern
-                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina|usnyca)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexScopeId.Match(this.ScopeId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
-                }
-            }
-
-            if (this.SpaceId != null) {
-                // SpaceId (string) pattern
-                Regex regexSpaceId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }
             }
 

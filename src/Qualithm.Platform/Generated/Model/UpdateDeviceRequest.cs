@@ -39,14 +39,12 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="name">name.</param>
         /// <param name="scopeId">A scope in the device&#39;s zone; a device stays in the zone it was claimed in.</param>
-        /// <param name="spaceId">Deprecated: use scopeId.</param>
         /// <param name="parked">A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay.</param>
         /// <param name="tags">Replaces the device&#39;s tags; &#x60;[]&#x60; clears them. Stored lowercased.</param>
-        public UpdateDeviceRequest(string name = default, string scopeId = default, string spaceId = default, bool parked = default, List<string> tags = default)
+        public UpdateDeviceRequest(string name = default, string scopeId = default, bool parked = default, List<string> tags = default)
         {
             this.Name = name;
             this.ScopeId = scopeId;
-            this.SpaceId = spaceId;
             this.Parked = parked;
             this.Tags = tags;
         }
@@ -66,17 +64,6 @@ namespace Qualithm.Platform.Model
         */
         [DataMember(Name = "scopeId", EmitDefaultValue = false)]
         public string ScopeId { get; set; }
-
-        /// <summary>
-        /// Deprecated: use scopeId
-        /// </summary>
-        /// <value>Deprecated: use scopeId</value>
-        /*
-        <example>scp_defraa_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
-        */
-        [DataMember(Name = "spaceId", EmitDefaultValue = false)]
-        [Obsolete]
-        public string SpaceId { get; set; }
 
         /// <summary>
         /// A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay
@@ -102,7 +89,6 @@ namespace Qualithm.Platform.Model
             sb.Append("class UpdateDeviceRequest {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Parked: ").Append(Parked).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("}\n");
@@ -127,19 +113,10 @@ namespace Qualithm.Platform.Model
         {
             if (this.ScopeId != null) {
                 // ScopeId (string) pattern
-                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina|usnyca)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexScopeId.Match(this.ScopeId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
-                }
-            }
-
-            if (this.SpaceId != null) {
-                // SpaceId (string) pattern
-                Regex regexSpaceId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }
             }
 

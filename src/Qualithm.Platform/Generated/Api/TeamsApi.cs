@@ -51,7 +51,7 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of CreateTeamResponse</returns>
         ApiResponse<CreateTeamResponse> CreateTeamWithHttpInfo(string? idempotencyKey = default);
         /// <summary>
-        /// Delete the team with its spaces, devices and memberships
+        /// Delete the team with its scopes, devices and memberships
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -60,7 +60,7 @@ namespace Qualithm.Platform.Api
         void DeleteTeam(string teamId, string? ifMatch = default);
 
         /// <summary>
-        /// Delete the team with its spaces, devices and memberships
+        /// Delete the team with its scopes, devices and memberships
         /// </summary>
         /// <remarks>
         /// 
@@ -168,7 +168,7 @@ namespace Qualithm.Platform.Api
         /// <returns>Task of ApiResponse (CreateTeamResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateTeamResponse>> CreateTeamWithHttpInfoAsync(string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Delete the team with its spaces, devices and memberships
+        /// Delete the team with its scopes, devices and memberships
         /// </summary>
         /// <remarks>
         /// 
@@ -181,7 +181,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task DeleteTeamAsync(string teamId, string? ifMatch = default, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Delete the team with its spaces, devices and memberships
+        /// Delete the team with its scopes, devices and memberships
         /// </summary>
         /// <remarks>
         /// 
@@ -608,7 +608,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Delete the team with its spaces, devices and memberships 
+        /// Delete the team with its scopes, devices and memberships 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -620,7 +620,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Delete the team with its spaces, devices and memberships 
+        /// Delete the team with its scopes, devices and memberships 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -674,7 +674,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Delete the team with its spaces, devices and memberships 
+        /// Delete the team with its scopes, devices and memberships 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -687,7 +687,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Delete the team with its spaces, devices and memberships 
+        /// Delete the team with its scopes, devices and memberships 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>

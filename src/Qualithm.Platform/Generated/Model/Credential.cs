@@ -321,7 +321,7 @@ namespace Qualithm.Platform.Model
         {
             if (this.Id != null) {
                 // Id (string) pattern
-                Regex regexId = new Regex(@"^(?:crd_(?:defraa|sgsina)_|crd_|cred_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexId = new Regex(@"^(?:crd_(?:defraa|sgsina|usnyca)_|crd_|cred_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
@@ -330,7 +330,7 @@ namespace Qualithm.Platform.Model
 
             if (this.DeviceId != null) {
                 // DeviceId (string) pattern
-                Regex regexDeviceId = new Regex(@"^(?:dvc_(?:defraa|sgsina)_|dvc_|dev_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexDeviceId = new Regex(@"^(?:dvc_(?:defraa|sgsina|usnyca)_|dvc_|dev_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexDeviceId.Match(this.DeviceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for DeviceId, must match a pattern of " + regexDeviceId, new [] { "DeviceId" });
@@ -348,7 +348,7 @@ namespace Qualithm.Platform.Model
 
             if (this.RotatedFrom != null) {
                 // RotatedFrom (string) pattern
-                Regex regexRotatedFrom = new Regex(@"^(?:crd_(?:defraa|sgsina)_|crd_|cred_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexRotatedFrom = new Regex(@"^(?:crd_(?:defraa|sgsina|usnyca)_|crd_|cred_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexRotatedFrom.Match(this.RotatedFrom).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for RotatedFrom, must match a pattern of " + regexRotatedFrom, new [] { "RotatedFrom" });

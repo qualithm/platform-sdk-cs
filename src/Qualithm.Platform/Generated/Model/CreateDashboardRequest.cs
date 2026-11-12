@@ -44,9 +44,8 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="name">name (required).</param>
         /// <param name="scopeId">A scope ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;.</param>
-        /// <param name="spaceId">A space ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;.</param>
         /// <param name="payload">The widgets; null or absent for none.</param>
-        public CreateDashboardRequest(string name = default, string scopeId = default, string spaceId = default, List<DashboardWidget> payload = default)
+        public CreateDashboardRequest(string name = default, string scopeId = default, List<DashboardWidget> payload = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -55,7 +54,6 @@ namespace Qualithm.Platform.Model
             }
             this.Name = name;
             this.ScopeId = scopeId;
-            this.SpaceId = spaceId;
             this.Payload = payload;
         }
 
@@ -76,16 +74,6 @@ namespace Qualithm.Platform.Model
         public string ScopeId { get; set; }
 
         /// <summary>
-        /// A space ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;
-        /// </summary>
-        /// <value>A space ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;</value>
-        /*
-        <example>scp_defraa_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
-        */
-        [DataMember(Name = "spaceId", EmitDefaultValue = true)]
-        public string SpaceId { get; set; }
-
-        /// <summary>
         /// The widgets; null or absent for none
         /// </summary>
         /// <value>The widgets; null or absent for none</value>
@@ -102,7 +90,6 @@ namespace Qualithm.Platform.Model
             sb.Append("class CreateDashboardRequest {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -126,19 +113,10 @@ namespace Qualithm.Platform.Model
         {
             if (this.ScopeId != null) {
                 // ScopeId (string) pattern
-                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina|usnyca)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexScopeId.Match(this.ScopeId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
-                }
-            }
-
-            if (this.SpaceId != null) {
-                // SpaceId (string) pattern
-                Regex regexSpaceId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }
             }
 

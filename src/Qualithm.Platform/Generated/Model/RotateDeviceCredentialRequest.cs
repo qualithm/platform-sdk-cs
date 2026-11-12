@@ -37,16 +37,16 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="RotateDeviceCredentialRequest" /> class.
         /// </summary>
-        /// <param name="expiresAt">A time in the future.</param>
+        /// <param name="expiresAt">A time in the future, within 30 days. Default 30 days from now..</param>
         public RotateDeviceCredentialRequest(DateTime expiresAt = default)
         {
             this.ExpiresAt = expiresAt;
         }
 
         /// <summary>
-        /// A time in the future
+        /// A time in the future, within 30 days. Default 30 days from now.
         /// </summary>
-        /// <value>A time in the future</value>
+        /// <value>A time in the future, within 30 days. Default 30 days from now.</value>
         /*
         <example>2026-10-26T09:30:00Z</example>
         */
