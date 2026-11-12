@@ -118,8 +118,8 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="from">from (required).</param>
         /// <param name="to">to (required).</param>
-        /// <param name="amountDue">What the change bills now; a negative amount is a credit (required).</param>
-        /// <param name="nextPaymentAttempt">When the change is billed, in Unix seconds (required).</param>
+        /// <param name="amountDue">What the change adds to the next bill, before tax; a negative amount is a credit (required).</param>
+        /// <param name="nextPaymentAttempt">When the next bill is charged, in Unix seconds (required).</param>
         public TierChangePreview(FromEnum from = default, ToEnum to = default, Money amountDue = default, long? nextPaymentAttempt = default)
         {
             this.From = from;
@@ -139,16 +139,16 @@ namespace Qualithm.Platform.Model
         }
 
         /// <summary>
-        /// What the change bills now; a negative amount is a credit
+        /// What the change adds to the next bill, before tax; a negative amount is a credit
         /// </summary>
-        /// <value>What the change bills now; a negative amount is a credit</value>
+        /// <value>What the change adds to the next bill, before tax; a negative amount is a credit</value>
         [DataMember(Name = "amountDue", IsRequired = true, EmitDefaultValue = true)]
         public Money AmountDue { get; set; }
 
         /// <summary>
-        /// When the change is billed, in Unix seconds
+        /// When the next bill is charged, in Unix seconds
         /// </summary>
-        /// <value>When the change is billed, in Unix seconds</value>
+        /// <value>When the next bill is charged, in Unix seconds</value>
         [DataMember(Name = "nextPaymentAttempt", IsRequired = true, EmitDefaultValue = true)]
         public long? NextPaymentAttempt { get; set; }
 

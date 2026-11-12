@@ -44,7 +44,8 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="credential">credential (required).</param>
         /// <param name="secret">The bearer token (the MQTT password), shown only once (required).</param>
-        public CredentialSecret(Credential credential = default, string secret = default)
+        /// <param name="broker">The gateway the device connects to now; returned when a device renews.</param>
+        public CredentialSecret(Credential credential = default, string secret = default, GatewayEndpoint broker = default)
         {
             // to ensure "credential" is required (not null)
             if (credential == null)
@@ -58,6 +59,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("secret is a required property for CredentialSecret and cannot be null");
             }
             this.Secret = secret;
+            this.Broker = broker;
         }
 
         /// <summary>
@@ -74,6 +76,13 @@ namespace Qualithm.Platform.Model
         public string Secret { get; set; }
 
         /// <summary>
+        /// The gateway the device connects to now; returned when a device renews
+        /// </summary>
+        /// <value>The gateway the device connects to now; returned when a device renews</value>
+        [DataMember(Name = "broker", EmitDefaultValue = false)]
+        public GatewayEndpoint Broker { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -83,6 +92,7 @@ namespace Qualithm.Platform.Model
             sb.Append("class CredentialSecret {\n");
             sb.Append("  Credential: ").Append(Credential).Append("\n");
             sb.Append("  Secret: ").Append(Secret).Append("\n");
+            sb.Append("  Broker: ").Append(Broker).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

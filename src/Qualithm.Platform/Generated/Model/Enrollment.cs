@@ -82,7 +82,6 @@ namespace Qualithm.Platform.Model
         /// <param name="id">An enrollment ID: &#x60;enr_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;enr_…&#x60; (required).</param>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60; (required).</param>
         /// <param name="scopeId">A scope ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60; (required).</param>
-        /// <param name="spaceId">Deprecated: use scopeId (required).</param>
         /// <param name="label">label (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="claimedDeviceId">A device ID: &#x60;dvc_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;dev_…&#x60; (required).</param>
@@ -90,7 +89,7 @@ namespace Qualithm.Platform.Model
         /// <param name="expiresAt">UTC time, RFC 3339 (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Enrollment(string id = default, string teamId = default, string scopeId = default, string spaceId = default, string label = default, StatusEnum status = default, string claimedDeviceId = default, DateTime? claimedAt = default, DateTime expiresAt = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Enrollment(string id = default, string teamId = default, string scopeId = default, string label = default, StatusEnum status = default, string claimedDeviceId = default, DateTime? claimedAt = default, DateTime expiresAt = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -110,12 +109,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("scopeId is a required property for Enrollment and cannot be null");
             }
             this.ScopeId = scopeId;
-            // to ensure "spaceId" is required (not null)
-            if (spaceId == null)
-            {
-                throw new ArgumentNullException("spaceId is a required property for Enrollment and cannot be null");
-            }
-            this.SpaceId = spaceId;
             // to ensure "label" is required (not null)
             if (label == null)
             {
@@ -169,17 +162,6 @@ namespace Qualithm.Platform.Model
         */
         [DataMember(Name = "scopeId", IsRequired = true, EmitDefaultValue = true)]
         public string ScopeId { get; set; }
-
-        /// <summary>
-        /// Deprecated: use scopeId
-        /// </summary>
-        /// <value>Deprecated: use scopeId</value>
-        /*
-        <example>scp_defraa_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
-        */
-        [DataMember(Name = "spaceId", IsRequired = true, EmitDefaultValue = true)]
-        [Obsolete]
-        public string SpaceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Label
@@ -248,7 +230,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
             sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Label: ").Append(Label).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  ClaimedDeviceId: ").Append(ClaimedDeviceId).Append("\n");
@@ -278,7 +259,7 @@ namespace Qualithm.Platform.Model
         {
             if (this.Id != null) {
                 // Id (string) pattern
-                Regex regexId = new Regex(@"^(?:enr_(?:defraa|sgsina)_|enr_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexId = new Regex(@"^(?:enr_(?:defraa|sgsina|usnyca)_|enr_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexId.Match(this.Id).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for Id, must match a pattern of " + regexId, new [] { "Id" });
@@ -296,25 +277,16 @@ namespace Qualithm.Platform.Model
 
             if (this.ScopeId != null) {
                 // ScopeId (string) pattern
-                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina|usnyca)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexScopeId.Match(this.ScopeId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
                 }
             }
 
-            if (this.SpaceId != null) {
-                // SpaceId (string) pattern
-                Regex regexSpaceId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
-                }
-            }
-
             if (this.ClaimedDeviceId != null) {
                 // ClaimedDeviceId (string) pattern
-                Regex regexClaimedDeviceId = new Regex(@"^(?:dvc_(?:defraa|sgsina)_|dvc_|dev_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexClaimedDeviceId = new Regex(@"^(?:dvc_(?:defraa|sgsina|usnyca)_|dvc_|dev_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexClaimedDeviceId.Match(this.ClaimedDeviceId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ClaimedDeviceId, must match a pattern of " + regexClaimedDeviceId, new [] { "ClaimedDeviceId" });

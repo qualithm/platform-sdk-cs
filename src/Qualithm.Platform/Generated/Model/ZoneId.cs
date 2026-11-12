@@ -47,10 +47,16 @@ namespace Qualithm.Platform.Model
         SgSinA = 2,
 
         /// <summary>
+        /// Enum UsNycA for value: us-nyc-a
+        /// </summary>
+        [EnumMember(Value = "us-nyc-a")]
+        UsNycA = 3,
+
+        /// <summary>
         /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
         /// </summary>
         [EnumMember(Value = "unknown_default_open_api")]
-        UnknownDefaultOpenApi = 3
+        UnknownDefaultOpenApi = 4
     }
 
 }

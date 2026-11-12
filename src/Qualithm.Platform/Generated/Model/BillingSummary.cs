@@ -93,8 +93,9 @@ namespace Qualithm.Platform.Model
         /// <param name="monthlyTotal">What the next invoice will charge, after discounts and credit; the plan price with add-ons when &#x60;estimated&#x60; is true (required).</param>
         /// <param name="upcomingInvoice">upcomingInvoice (required).</param>
         /// <param name="estimated">True when Stripe couldn&#39;t be read, so &#x60;monthlyTotal&#x60; is the plan price (required).</param>
+        /// <param name="cancellation">cancellation (required).</param>
         /// <param name="addons">addons (required).</param>
-        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, Money monthlyTotal = default, BillingSummaryUpcomingInvoice upcomingInvoice = default, bool estimated = default, BillingSummaryAddons addons = default)
+        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, Money monthlyTotal = default, BillingSummaryUpcomingInvoice upcomingInvoice = default, bool estimated = default, BillingSummaryCancellation cancellation = default, BillingSummaryAddons addons = default)
         {
             this.Tier = tier;
             // to ensure "month" is required (not null)
@@ -134,6 +135,12 @@ namespace Qualithm.Platform.Model
             }
             this.UpcomingInvoice = upcomingInvoice;
             this.Estimated = estimated;
+            // to ensure "cancellation" is required (not null)
+            if (cancellation == null)
+            {
+                throw new ArgumentNullException("cancellation is a required property for BillingSummary and cannot be null");
+            }
+            this.Cancellation = cancellation;
             // to ensure "addons" is required (not null)
             if (addons == null)
             {
@@ -188,6 +195,12 @@ namespace Qualithm.Platform.Model
         public bool Estimated { get; set; }
 
         /// <summary>
+        /// Gets or Sets Cancellation
+        /// </summary>
+        [DataMember(Name = "cancellation", IsRequired = true, EmitDefaultValue = true)]
+        public BillingSummaryCancellation Cancellation { get; set; }
+
+        /// <summary>
         /// Gets or Sets Addons
         /// </summary>
         [DataMember(Name = "addons", IsRequired = true, EmitDefaultValue = true)]
@@ -209,6 +222,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  MonthlyTotal: ").Append(MonthlyTotal).Append("\n");
             sb.Append("  UpcomingInvoice: ").Append(UpcomingInvoice).Append("\n");
             sb.Append("  Estimated: ").Append(Estimated).Append("\n");
+            sb.Append("  Cancellation: ").Append(Cancellation).Append("\n");
             sb.Append("  Addons: ").Append(Addons).Append("\n");
             sb.Append("}\n");
             return sb.ToString();

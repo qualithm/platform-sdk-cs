@@ -38,7 +38,7 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="CreateDeviceCredentialRequest" /> class.
         /// </summary>
         /// <param name="label">Up to 64 characters.</param>
-        /// <param name="expiresAt">A time in the future.</param>
+        /// <param name="expiresAt">A time in the future, within 30 days. Default 30 days from now..</param>
         public CreateDeviceCredentialRequest(string label = default, DateTime expiresAt = default)
         {
             this.Label = label;
@@ -53,9 +53,9 @@ namespace Qualithm.Platform.Model
         public string Label { get; set; }
 
         /// <summary>
-        /// A time in the future
+        /// A time in the future, within 30 days. Default 30 days from now.
         /// </summary>
-        /// <value>A time in the future</value>
+        /// <value>A time in the future, within 30 days. Default 30 days from now.</value>
         /*
         <example>2026-10-26T09:30:00Z</example>
         */
