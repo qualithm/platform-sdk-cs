@@ -114,7 +114,7 @@ namespace Qualithm.Platform.Model
         {
             if (this.ParentId != null) {
                 // ParentId (string) pattern
-                Regex regexParentId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexParentId = new Regex(@"^(?:scp_(?:defraa|sgsina|usnyca)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexParentId.Match(this.ParentId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ParentId, must match a pattern of " + regexParentId, new [] { "ParentId" });

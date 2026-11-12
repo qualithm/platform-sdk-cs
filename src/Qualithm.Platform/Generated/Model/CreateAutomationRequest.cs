@@ -44,11 +44,10 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="name">name (required).</param>
         /// <param name="scopeId">A scope ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;.</param>
-        /// <param name="spaceId">A space ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;.</param>
         /// <param name="payload">payload.</param>
         /// <param name="template">A template id to expand the chain from; exclusive with &#x60;payload&#x60;.</param>
         /// <param name="varParams">The template&#39;s slot values, keyed by slot name; used with &#x60;template&#x60;.</param>
-        public CreateAutomationRequest(string name = default, string scopeId = default, string spaceId = default, CreateAutomationRequestPayload payload = default, string template = default, Object varParams = default)
+        public CreateAutomationRequest(string name = default, string scopeId = default, CreateAutomationRequestPayload payload = default, string template = default, Object varParams = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -57,7 +56,6 @@ namespace Qualithm.Platform.Model
             }
             this.Name = name;
             this.ScopeId = scopeId;
-            this.SpaceId = spaceId;
             this.Payload = payload;
             this.Template = template;
             this.Params = varParams;
@@ -78,16 +76,6 @@ namespace Qualithm.Platform.Model
         */
         [DataMember(Name = "scopeId", EmitDefaultValue = true)]
         public string ScopeId { get; set; }
-
-        /// <summary>
-        /// A space ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;
-        /// </summary>
-        /// <value>A space ID: &#x60;scp_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;spc_…&#x60;</value>
-        /*
-        <example>scp_defraa_01JAYQ4T7Z9K3M5N8P2R6S0V1W</example>
-        */
-        [DataMember(Name = "spaceId", EmitDefaultValue = true)]
-        public string SpaceId { get; set; }
 
         /// <summary>
         /// Gets or Sets Payload
@@ -119,7 +107,6 @@ namespace Qualithm.Platform.Model
             sb.Append("class CreateAutomationRequest {\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
             sb.Append("  ScopeId: ").Append(ScopeId).Append("\n");
-            sb.Append("  SpaceId: ").Append(SpaceId).Append("\n");
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  Template: ").Append(Template).Append("\n");
             sb.Append("  Params: ").Append(Params).Append("\n");
@@ -145,19 +132,10 @@ namespace Qualithm.Platform.Model
         {
             if (this.ScopeId != null) {
                 // ScopeId (string) pattern
-                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
+                Regex regexScopeId = new Regex(@"^(?:scp_(?:defraa|sgsina|usnyca)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
                 if (!regexScopeId.Match(this.ScopeId).Success)
                 {
                     yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for ScopeId, must match a pattern of " + regexScopeId, new [] { "ScopeId" });
-                }
-            }
-
-            if (this.SpaceId != null) {
-                // SpaceId (string) pattern
-                Regex regexSpaceId = new Regex(@"^(?:scp_(?:defraa|sgsina)_|scp_|spc_)[0-9A-HJKMNP-TV-Z]{26}$", RegexOptions.CultureInvariant);
-                if (!regexSpaceId.Match(this.SpaceId).Success)
-                {
-                    yield return new System.ComponentModel.DataAnnotations.ValidationResult("Invalid value for SpaceId, must match a pattern of " + regexSpaceId, new [] { "SpaceId" });
                 }
             }
 
