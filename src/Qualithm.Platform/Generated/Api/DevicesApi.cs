@@ -128,7 +128,7 @@ namespace Qualithm.Platform.Api
         /// List the live state of a team&#39;s devices
         /// </summary>
         /// <remarks>
-        /// By &#x60;deviceId&#x60;, ascending.
+        /// By &#x60;deviceId&#x60;, ascending. A deleted device has no row.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -142,7 +142,7 @@ namespace Qualithm.Platform.Api
         /// List the live state of a team&#39;s devices
         /// </summary>
         /// <remarks>
-        /// By &#x60;deviceId&#x60;, ascending.
+        /// By &#x60;deviceId&#x60;, ascending. A deleted device has no row.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -300,7 +300,7 @@ namespace Qualithm.Platform.Api
         /// List the live state of a team&#39;s devices
         /// </summary>
         /// <remarks>
-        /// By &#x60;deviceId&#x60;, ascending.
+        /// By &#x60;deviceId&#x60;, ascending. A deleted device has no row.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -315,7 +315,7 @@ namespace Qualithm.Platform.Api
         /// List the live state of a team&#39;s devices
         /// </summary>
         /// <remarks>
-        /// By &#x60;deviceId&#x60;, ascending.
+        /// By &#x60;deviceId&#x60;, ascending. A deleted device has no row.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -1202,7 +1202,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending.
+        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending. A deleted device has no row.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -1217,7 +1217,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending.
+        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending. A deleted device has no row.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -1281,7 +1281,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending.
+        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending. A deleted device has no row.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
@@ -1297,7 +1297,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending.
+        /// List the live state of a team&#39;s devices By &#x60;deviceId&#x60;, ascending. A deleted device has no row.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60;</param>
