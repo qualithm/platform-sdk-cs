@@ -167,6 +167,24 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of ListAutomationRunsResponse</returns>
         ApiResponse<ListAutomationRunsResponse> ListAutomationRunsWithHttpInfo(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default);
         /// <summary>
+        /// List every automation template and whether the team&#39;s devices can use it
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <returns>ListAutomationTemplatesResponse</returns>
+        ListAutomationTemplatesResponse ListAutomationTemplates(string teamId);
+
+        /// <summary>
+        /// List every automation template and whether the team&#39;s devices can use it
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <returns>ApiResponse of ListAutomationTemplatesResponse</returns>
+        ApiResponse<ListAutomationTemplatesResponse> ListAutomationTemplatesWithHttpInfo(string teamId);
+        /// <summary>
         /// List the workspace&#39;s automations
         /// </summary>
         /// <remarks>
@@ -478,6 +496,29 @@ namespace Qualithm.Platform.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListAutomationRunsResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListAutomationRunsResponse>> ListAutomationRunsWithHttpInfoAsync(string teamId, string automationId, long? page = default, int? limit = default, string? cursor = default, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List every automation template and whether the team&#39;s devices can use it
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListAutomationTemplatesResponse</returns>
+        System.Threading.Tasks.Task<ListAutomationTemplatesResponse> ListAutomationTemplatesAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List every automation template and whether the team&#39;s devices can use it
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListAutomationTemplatesResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListAutomationTemplatesResponse>> ListAutomationTemplatesWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List the workspace&#39;s automations
         /// </summary>
@@ -1775,6 +1816,133 @@ namespace Qualithm.Platform.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListAutomationRuns", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List every automation template and whether the team&#39;s devices can use it 
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <returns>ListAutomationTemplatesResponse</returns>
+        public ListAutomationTemplatesResponse ListAutomationTemplates(string teamId)
+        {
+            Qualithm.Platform.Client.ApiResponse<ListAutomationTemplatesResponse> localVarResponse = ListAutomationTemplatesWithHttpInfo(teamId);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List every automation template and whether the team&#39;s devices can use it 
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <returns>ApiResponse of ListAutomationTemplatesResponse</returns>
+        public Qualithm.Platform.Client.ApiResponse<ListAutomationTemplatesResponse> ListAutomationTemplatesWithHttpInfo(string teamId)
+        {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling AutomationsApi->ListAutomationTemplates");
+
+            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+
+            // authentication (apiToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListAutomationTemplatesResponse>("/v1/teams/{teamId}/automation-templates", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListAutomationTemplates", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List every automation template and whether the team&#39;s devices can use it 
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListAutomationTemplatesResponse</returns>
+        public async System.Threading.Tasks.Task<ListAutomationTemplatesResponse> ListAutomationTemplatesAsync(string teamId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Qualithm.Platform.Client.ApiResponse<ListAutomationTemplatesResponse> localVarResponse = await ListAutomationTemplatesWithHttpInfoAsync(teamId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List every automation template and whether the team&#39;s devices can use it 
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListAutomationTemplatesResponse)</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<ListAutomationTemplatesResponse>> ListAutomationTemplatesWithHttpInfoAsync(string teamId, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling AutomationsApi->ListAutomationTemplates");
+
+
+            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+
+            // authentication (apiToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListAutomationTemplatesResponse>("/v1/teams/{teamId}/automation-templates", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListAutomationTemplates", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
