@@ -214,6 +214,54 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of ListDeviceAutomationTemplatesResponse</returns>
         ApiResponse<ListDeviceAutomationTemplatesResponse> ListDeviceAutomationTemplatesWithHttpInfo(string teamId, string deviceId);
         /// <summary>
+        /// Test an automation against a reading without running it
+        /// </summary>
+        /// <remarks>
+        /// Evaluates the saved trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="automationId">An automation ID: &#x60;aut_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;aut_…&#x60;</param>
+        /// <param name="testAutomationRequest"></param>
+        /// <returns>TestAutomationResponse</returns>
+        TestAutomationResponse TestAutomation(string teamId, string automationId, TestAutomationRequest testAutomationRequest);
+
+        /// <summary>
+        /// Test an automation against a reading without running it
+        /// </summary>
+        /// <remarks>
+        /// Evaluates the saved trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="automationId">An automation ID: &#x60;aut_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;aut_…&#x60;</param>
+        /// <param name="testAutomationRequest"></param>
+        /// <returns>ApiResponse of TestAutomationResponse</returns>
+        ApiResponse<TestAutomationResponse> TestAutomationWithHttpInfo(string teamId, string automationId, TestAutomationRequest testAutomationRequest);
+        /// <summary>
+        /// Test an unsaved automation against a reading without running it
+        /// </summary>
+        /// <remarks>
+        /// Evaluates the trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="testDraftAutomationRequest"></param>
+        /// <returns>TestDraftAutomationResponse</returns>
+        TestDraftAutomationResponse TestDraftAutomation(string teamId, TestDraftAutomationRequest testDraftAutomationRequest);
+
+        /// <summary>
+        /// Test an unsaved automation against a reading without running it
+        /// </summary>
+        /// <remarks>
+        /// Evaluates the trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="testDraftAutomationRequest"></param>
+        /// <returns>ApiResponse of TestDraftAutomationResponse</returns>
+        ApiResponse<TestDraftAutomationResponse> TestDraftAutomationWithHttpInfo(string teamId, TestDraftAutomationRequest testDraftAutomationRequest);
+        /// <summary>
         /// Trigger a webhook automation
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
@@ -484,6 +532,58 @@ namespace Qualithm.Platform.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (ListDeviceAutomationTemplatesResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<ListDeviceAutomationTemplatesResponse>> ListDeviceAutomationTemplatesWithHttpInfoAsync(string teamId, string deviceId, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Test an automation against a reading without running it
+        /// </summary>
+        /// <remarks>
+        /// Evaluates the saved trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="automationId">An automation ID: &#x60;aut_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;aut_…&#x60;</param>
+        /// <param name="testAutomationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TestAutomationResponse</returns>
+        System.Threading.Tasks.Task<TestAutomationResponse> TestAutomationAsync(string teamId, string automationId, TestAutomationRequest testAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Test an automation against a reading without running it
+        /// </summary>
+        /// <remarks>
+        /// Evaluates the saved trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="automationId">An automation ID: &#x60;aut_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;aut_…&#x60;</param>
+        /// <param name="testAutomationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TestAutomationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TestAutomationResponse>> TestAutomationWithHttpInfoAsync(string teamId, string automationId, TestAutomationRequest testAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Test an unsaved automation against a reading without running it
+        /// </summary>
+        /// <remarks>
+        /// Evaluates the trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="testDraftAutomationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TestDraftAutomationResponse</returns>
+        System.Threading.Tasks.Task<TestDraftAutomationResponse> TestDraftAutomationAsync(string teamId, TestDraftAutomationRequest testDraftAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Test an unsaved automation against a reading without running it
+        /// </summary>
+        /// <remarks>
+        /// Evaluates the trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </remarks>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="testDraftAutomationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TestDraftAutomationResponse)</returns>
+        System.Threading.Tasks.Task<ApiResponse<TestDraftAutomationResponse>> TestDraftAutomationWithHttpInfoAsync(string teamId, TestDraftAutomationRequest testDraftAutomationRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Trigger a webhook automation
         /// </summary>
@@ -1979,6 +2079,306 @@ namespace Qualithm.Platform.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("ListDeviceAutomationTemplates", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Test an automation against a reading without running it Evaluates the saved trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="automationId">An automation ID: &#x60;aut_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;aut_…&#x60;</param>
+        /// <param name="testAutomationRequest"></param>
+        /// <returns>TestAutomationResponse</returns>
+        public TestAutomationResponse TestAutomation(string teamId, string automationId, TestAutomationRequest testAutomationRequest)
+        {
+            Qualithm.Platform.Client.ApiResponse<TestAutomationResponse> localVarResponse = TestAutomationWithHttpInfo(teamId, automationId, testAutomationRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Test an automation against a reading without running it Evaluates the saved trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="automationId">An automation ID: &#x60;aut_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;aut_…&#x60;</param>
+        /// <param name="testAutomationRequest"></param>
+        /// <returns>ApiResponse of TestAutomationResponse</returns>
+        public Qualithm.Platform.Client.ApiResponse<TestAutomationResponse> TestAutomationWithHttpInfo(string teamId, string automationId, TestAutomationRequest testAutomationRequest)
+        {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling AutomationsApi->TestAutomation");
+
+            // verify the required parameter 'automationId' is set
+            if (automationId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'automationId' when calling AutomationsApi->TestAutomation");
+
+            // verify the required parameter 'testAutomationRequest' is set
+            if (testAutomationRequest == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'testAutomationRequest' when calling AutomationsApi->TestAutomation");
+
+            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
+            localVarRequestOptions.Data = testAutomationRequest;
+
+            // authentication (apiToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TestAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}/test", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TestAutomation", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Test an automation against a reading without running it Evaluates the saved trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="automationId">An automation ID: &#x60;aut_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;aut_…&#x60;</param>
+        /// <param name="testAutomationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TestAutomationResponse</returns>
+        public async System.Threading.Tasks.Task<TestAutomationResponse> TestAutomationAsync(string teamId, string automationId, TestAutomationRequest testAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Qualithm.Platform.Client.ApiResponse<TestAutomationResponse> localVarResponse = await TestAutomationWithHttpInfoAsync(teamId, automationId, testAutomationRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Test an automation against a reading without running it Evaluates the saved trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="automationId">An automation ID: &#x60;aut_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;aut_…&#x60;</param>
+        /// <param name="testAutomationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TestAutomationResponse)</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<TestAutomationResponse>> TestAutomationWithHttpInfoAsync(string teamId, string automationId, TestAutomationRequest testAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling AutomationsApi->TestAutomation");
+
+            // verify the required parameter 'automationId' is set
+            if (automationId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'automationId' when calling AutomationsApi->TestAutomation");
+
+            // verify the required parameter 'testAutomationRequest' is set
+            if (testAutomationRequest == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'testAutomationRequest' when calling AutomationsApi->TestAutomation");
+
+
+            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("automationId", Qualithm.Platform.Client.ClientUtils.ParameterToString(automationId)); // path parameter
+            localVarRequestOptions.Data = testAutomationRequest;
+
+            // authentication (apiToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TestAutomationResponse>("/v1/teams/{teamId}/automations/{automationId}/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TestAutomation", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Test an unsaved automation against a reading without running it Evaluates the trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="testDraftAutomationRequest"></param>
+        /// <returns>TestDraftAutomationResponse</returns>
+        public TestDraftAutomationResponse TestDraftAutomation(string teamId, TestDraftAutomationRequest testDraftAutomationRequest)
+        {
+            Qualithm.Platform.Client.ApiResponse<TestDraftAutomationResponse> localVarResponse = TestDraftAutomationWithHttpInfo(teamId, testDraftAutomationRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Test an unsaved automation against a reading without running it Evaluates the trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="testDraftAutomationRequest"></param>
+        /// <returns>ApiResponse of TestDraftAutomationResponse</returns>
+        public Qualithm.Platform.Client.ApiResponse<TestDraftAutomationResponse> TestDraftAutomationWithHttpInfo(string teamId, TestDraftAutomationRequest testDraftAutomationRequest)
+        {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling AutomationsApi->TestDraftAutomation");
+
+            // verify the required parameter 'testDraftAutomationRequest' is set
+            if (testDraftAutomationRequest == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'testDraftAutomationRequest' when calling AutomationsApi->TestDraftAutomation");
+
+            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            localVarRequestOptions.Data = testDraftAutomationRequest;
+
+            // authentication (apiToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<TestDraftAutomationResponse>("/v1/teams/{teamId}/automations/test", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TestDraftAutomation", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Test an unsaved automation against a reading without running it Evaluates the trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="testDraftAutomationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of TestDraftAutomationResponse</returns>
+        public async System.Threading.Tasks.Task<TestDraftAutomationResponse> TestDraftAutomationAsync(string teamId, TestDraftAutomationRequest testDraftAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            Qualithm.Platform.Client.ApiResponse<TestDraftAutomationResponse> localVarResponse = await TestDraftAutomationWithHttpInfoAsync(teamId, testDraftAutomationRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Test an unsaved automation against a reading without running it Evaluates the trigger and chain against the device&#39;s latest reading, or a sample. Nothing is run, recorded or counted against quota.
+        /// </summary>
+        /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="teamId">The team the request acts on</param>
+        /// <param name="testDraftAutomationRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (TestDraftAutomationResponse)</returns>
+        public async System.Threading.Tasks.Task<Qualithm.Platform.Client.ApiResponse<TestDraftAutomationResponse>> TestDraftAutomationWithHttpInfoAsync(string teamId, TestDraftAutomationRequest testDraftAutomationRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'teamId' is set
+            if (teamId == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'teamId' when calling AutomationsApi->TestDraftAutomation");
+
+            // verify the required parameter 'testDraftAutomationRequest' is set
+            if (testDraftAutomationRequest == null)
+                throw new Qualithm.Platform.Client.ApiException(400, "Missing required parameter 'testDraftAutomationRequest' when calling AutomationsApi->TestDraftAutomation");
+
+
+            Qualithm.Platform.Client.RequestOptions localVarRequestOptions = new Qualithm.Platform.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = Qualithm.Platform.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = Qualithm.Platform.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("teamId", Qualithm.Platform.Client.ClientUtils.ParameterToString(teamId)); // path parameter
+            localVarRequestOptions.Data = testDraftAutomationRequest;
+
+            // authentication (apiToken) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<TestDraftAutomationResponse>("/v1/teams/{teamId}/automations/test", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("TestDraftAutomation", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
