@@ -47,7 +47,8 @@ namespace Qualithm.Platform.Model
         /// <param name="payload">payload.</param>
         /// <param name="template">A template id to expand the chain from; exclusive with &#x60;payload&#x60;.</param>
         /// <param name="varParams">The template&#39;s slot values, keyed by slot name; used with &#x60;template&#x60;.</param>
-        public CreateAutomationRequest(string name = default, string scopeId = default, CreateAutomationRequestPayload payload = default, string template = default, Object varParams = default)
+        /// <param name="enabled">Whether its trigger fires; absent creates it turned on.</param>
+        public CreateAutomationRequest(string name = default, string scopeId = default, CreateAutomationRequestPayload payload = default, string template = default, Object varParams = default, bool enabled = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -59,6 +60,7 @@ namespace Qualithm.Platform.Model
             this.Payload = payload;
             this.Template = template;
             this.Params = varParams;
+            this.Enabled = enabled;
         }
 
         /// <summary>
@@ -98,6 +100,13 @@ namespace Qualithm.Platform.Model
         public Object Params { get; set; }
 
         /// <summary>
+        /// Whether its trigger fires; absent creates it turned on
+        /// </summary>
+        /// <value>Whether its trigger fires; absent creates it turned on</value>
+        [DataMember(Name = "enabled", EmitDefaultValue = true)]
+        public bool Enabled { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -110,6 +119,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Payload: ").Append(Payload).Append("\n");
             sb.Append("  Template: ").Append(Template).Append("\n");
             sb.Append("  Params: ").Append(Params).Append("\n");
+            sb.Append("  Enabled: ").Append(Enabled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
