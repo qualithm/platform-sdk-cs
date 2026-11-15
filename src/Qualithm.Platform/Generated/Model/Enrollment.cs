@@ -72,6 +72,33 @@ namespace Qualithm.Platform.Model
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
         public StatusEnum Status { get; set; }
         /// <summary>
+        /// Why the latest rejected claim of this code failed, when the team can act on it: &#x60;device_already_claimed&#x60; means a device presented the code after it was claimed. The claim response stays the generic &#x60;401&#x60;.
+        /// </summary>
+        /// <value>Why the latest rejected claim of this code failed, when the team can act on it: &#x60;device_already_claimed&#x60; means a device presented the code after it was claimed. The claim response stays the generic &#x60;401&#x60;.</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum LastFailureEnum
+        {
+            /// <summary>
+            /// Enum DeviceAlreadyClaimed for value: device_already_claimed
+            /// </summary>
+            [EnumMember(Value = "device_already_claimed")]
+            DeviceAlreadyClaimed = 1,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 2
+        }
+
+
+        /// <summary>
+        /// Why the latest rejected claim of this code failed, when the team can act on it: &#x60;device_already_claimed&#x60; means a device presented the code after it was claimed. The claim response stays the generic &#x60;401&#x60;.
+        /// </summary>
+        /// <value>Why the latest rejected claim of this code failed, when the team can act on it: &#x60;device_already_claimed&#x60; means a device presented the code after it was claimed. The claim response stays the generic &#x60;401&#x60;.</value>
+        [DataMember(Name = "lastFailure", IsRequired = true, EmitDefaultValue = true)]
+        public LastFailureEnum LastFailure { get; set; }
+        /// <summary>
         /// Initializes a new instance of the <see cref="Enrollment" /> class.
         /// </summary>
         [JsonConstructorAttribute]
@@ -87,9 +114,12 @@ namespace Qualithm.Platform.Model
         /// <param name="claimedDeviceId">A device ID: &#x60;dvc_&lt;zone&gt;_…&#x60;; also accepts the legacy &#x60;dev_…&#x60; (required).</param>
         /// <param name="claimedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="expiresAt">UTC time, RFC 3339 (required).</param>
+        /// <param name="lastFailure">Why the latest rejected claim of this code failed, when the team can act on it: &#x60;device_already_claimed&#x60; means a device presented the code after it was claimed. The claim response stays the generic &#x60;401&#x60;. (required).</param>
+        /// <param name="lastFailureScope">lastFailureScope (required).</param>
+        /// <param name="lastFailureAt">UTC time, RFC 3339 (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Enrollment(string id = default, string teamId = default, string scopeId = default, string label = default, StatusEnum status = default, string claimedDeviceId = default, DateTime? claimedAt = default, DateTime expiresAt = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Enrollment(string id = default, string teamId = default, string scopeId = default, string label = default, StatusEnum status = default, string claimedDeviceId = default, DateTime? claimedAt = default, DateTime expiresAt = default, LastFailureEnum lastFailure = default, EnrollmentLastFailureScope lastFailureScope = default, DateTime? lastFailureAt = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -129,6 +159,19 @@ namespace Qualithm.Platform.Model
             }
             this.ClaimedAt = claimedAt;
             this.ExpiresAt = expiresAt;
+            this.LastFailure = lastFailure;
+            // to ensure "lastFailureScope" is required (not null)
+            if (lastFailureScope == null)
+            {
+                throw new ArgumentNullException("lastFailureScope is a required property for Enrollment and cannot be null");
+            }
+            this.LastFailureScope = lastFailureScope;
+            // to ensure "lastFailureAt" is required (not null)
+            if (lastFailureAt == null)
+            {
+                throw new ArgumentNullException("lastFailureAt is a required property for Enrollment and cannot be null");
+            }
+            this.LastFailureAt = lastFailureAt;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -200,6 +243,22 @@ namespace Qualithm.Platform.Model
         public DateTime ExpiresAt { get; set; }
 
         /// <summary>
+        /// Gets or Sets LastFailureScope
+        /// </summary>
+        [DataMember(Name = "lastFailureScope", IsRequired = true, EmitDefaultValue = true)]
+        public EnrollmentLastFailureScope LastFailureScope { get; set; }
+
+        /// <summary>
+        /// UTC time, RFC 3339
+        /// </summary>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
+        [DataMember(Name = "lastFailureAt", IsRequired = true, EmitDefaultValue = true)]
+        public DateTime? LastFailureAt { get; set; }
+
+        /// <summary>
         /// UTC time, RFC 3339
         /// </summary>
         /// <value>UTC time, RFC 3339</value>
@@ -235,6 +294,9 @@ namespace Qualithm.Platform.Model
             sb.Append("  ClaimedDeviceId: ").Append(ClaimedDeviceId).Append("\n");
             sb.Append("  ClaimedAt: ").Append(ClaimedAt).Append("\n");
             sb.Append("  ExpiresAt: ").Append(ExpiresAt).Append("\n");
+            sb.Append("  LastFailure: ").Append(LastFailure).Append("\n");
+            sb.Append("  LastFailureScope: ").Append(LastFailureScope).Append("\n");
+            sb.Append("  LastFailureAt: ").Append(LastFailureAt).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
