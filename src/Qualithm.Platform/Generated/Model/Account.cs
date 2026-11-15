@@ -45,9 +45,12 @@ namespace Qualithm.Platform.Model
         /// <param name="id">An account ID: &#x60;acc_…&#x60; (required).</param>
         /// <param name="email">email (required).</param>
         /// <param name="name">name (required).</param>
+        /// <param name="termsVersion">The current Terms of Service version. Ask the person to accept when it differs from &#x60;termsAcceptedVersion&#x60;. (required).</param>
+        /// <param name="termsAcceptedVersion">The terms version the person last accepted, or null (required).</param>
+        /// <param name="termsAcceptedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Account(string id = default, string email = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Account(string id = default, string email = default, string name = default, string termsVersion = default, string termsAcceptedVersion = default, DateTime? termsAcceptedAt = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -67,6 +70,24 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("name is a required property for Account and cannot be null");
             }
             this.Name = name;
+            // to ensure "termsVersion" is required (not null)
+            if (termsVersion == null)
+            {
+                throw new ArgumentNullException("termsVersion is a required property for Account and cannot be null");
+            }
+            this.TermsVersion = termsVersion;
+            // to ensure "termsAcceptedVersion" is required (not null)
+            if (termsAcceptedVersion == null)
+            {
+                throw new ArgumentNullException("termsAcceptedVersion is a required property for Account and cannot be null");
+            }
+            this.TermsAcceptedVersion = termsAcceptedVersion;
+            // to ensure "termsAcceptedAt" is required (not null)
+            if (termsAcceptedAt == null)
+            {
+                throw new ArgumentNullException("termsAcceptedAt is a required property for Account and cannot be null");
+            }
+            this.TermsAcceptedAt = termsAcceptedAt;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -92,6 +113,30 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "name", IsRequired = true, EmitDefaultValue = true)]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The current Terms of Service version. Ask the person to accept when it differs from &#x60;termsAcceptedVersion&#x60;.
+        /// </summary>
+        /// <value>The current Terms of Service version. Ask the person to accept when it differs from &#x60;termsAcceptedVersion&#x60;.</value>
+        [DataMember(Name = "termsVersion", IsRequired = true, EmitDefaultValue = true)]
+        public string TermsVersion { get; set; }
+
+        /// <summary>
+        /// The terms version the person last accepted, or null
+        /// </summary>
+        /// <value>The terms version the person last accepted, or null</value>
+        [DataMember(Name = "termsAcceptedVersion", IsRequired = true, EmitDefaultValue = true)]
+        public string TermsAcceptedVersion { get; set; }
+
+        /// <summary>
+        /// UTC time, RFC 3339
+        /// </summary>
+        /// <value>UTC time, RFC 3339</value>
+        /*
+        <example>2026-10-26T09:30:00.000Z</example>
+        */
+        [DataMember(Name = "termsAcceptedAt", IsRequired = true, EmitDefaultValue = true)]
+        public DateTime? TermsAcceptedAt { get; set; }
 
         /// <summary>
         /// UTC time, RFC 3339
@@ -124,6 +169,9 @@ namespace Qualithm.Platform.Model
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  Email: ").Append(Email).Append("\n");
             sb.Append("  Name: ").Append(Name).Append("\n");
+            sb.Append("  TermsVersion: ").Append(TermsVersion).Append("\n");
+            sb.Append("  TermsAcceptedVersion: ").Append(TermsAcceptedVersion).Append("\n");
+            sb.Append("  TermsAcceptedAt: ").Append(TermsAcceptedAt).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");
