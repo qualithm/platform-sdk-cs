@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// RoleAssignment
+    /// One team the caller is an active member of, and their role in it.
     /// </summary>
     [DataContract(Name = "RoleAssignment")]
     public partial class RoleAssignment : IValidatableObject

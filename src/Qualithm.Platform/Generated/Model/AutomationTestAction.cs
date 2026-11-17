@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// AutomationTestAction
+    /// An action the automation would take; the test takes none. A signing secret is never shown.
     /// </summary>
     [DataContract(Name = "AutomationTestAction")]
     public partial class AutomationTestAction : IValidatableObject

@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Usage
+    /// The team&#39;s device and scope counts, and its plan limits and usage this month.
     /// </summary>
     [DataContract(Name = "Usage")]
     public partial class Usage : IValidatableObject
@@ -86,7 +86,6 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="Usage" /> class.
         /// </summary>
         /// <param name="deviceTotal">deviceTotal (required).</param>
-        /// <param name="deviceMax">The tier&#39;s device limit (required).</param>
         /// <param name="scopeTotal">scopeTotal (required).</param>
         /// <param name="tier">tier (required).</param>
         /// <param name="month">The month usage counts over: &#x60;YYYY-MM&#x60;, UTC (required).</param>
@@ -94,10 +93,9 @@ namespace Qualithm.Platform.Model
         /// <param name="limits">limits (required).</param>
         /// <param name="varUsage">varUsage (required).</param>
         /// <param name="paymentFailed">paymentFailed (required).</param>
-        public Usage(long deviceTotal = default, long deviceMax = default, long scopeTotal = default, TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage varUsage = default, UsagePaymentFailed paymentFailed = default)
+        public Usage(long deviceTotal = default, long scopeTotal = default, TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage varUsage = default, UsagePaymentFailed paymentFailed = default)
         {
             this.DeviceTotal = deviceTotal;
-            this.DeviceMax = deviceMax;
             this.ScopeTotal = scopeTotal;
             this.Tier = tier;
             // to ensure "month" is required (not null)
@@ -137,13 +135,6 @@ namespace Qualithm.Platform.Model
         /// </summary>
         [DataMember(Name = "deviceTotal", IsRequired = true, EmitDefaultValue = true)]
         public long DeviceTotal { get; set; }
-
-        /// <summary>
-        /// The tier&#39;s device limit
-        /// </summary>
-        /// <value>The tier&#39;s device limit</value>
-        [DataMember(Name = "deviceMax", IsRequired = true, EmitDefaultValue = true)]
-        public long DeviceMax { get; set; }
 
         /// <summary>
         /// Gets or Sets ScopeTotal
@@ -191,7 +182,6 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class Usage {\n");
             sb.Append("  DeviceTotal: ").Append(DeviceTotal).Append("\n");
-            sb.Append("  DeviceMax: ").Append(DeviceMax).Append("\n");
             sb.Append("  ScopeTotal: ").Append(ScopeTotal).Append("\n");
             sb.Append("  Tier: ").Append(Tier).Append("\n");
             sb.Append("  Month: ").Append(Month).Append("\n");

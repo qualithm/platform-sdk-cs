@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Money
+    /// An amount of money in a currency&#39;s minor units.
     /// </summary>
     [DataContract(Name = "Money")]
     public partial class Money : IValidatableObject

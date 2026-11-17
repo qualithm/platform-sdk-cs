@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Scope
+    /// A group of devices in one zone. Scopes nest; each device belongs to exactly one.
     /// </summary>
     [DataContract(Name = "Scope")]
     public partial class Scope : IValidatableObject

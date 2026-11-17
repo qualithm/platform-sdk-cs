@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// AutomationTestComparison
+    /// One comparison the test made against the reading.
     /// </summary>
     [DataContract(Name = "AutomationTestComparison")]
     public partial class AutomationTestComparison : IValidatableObject

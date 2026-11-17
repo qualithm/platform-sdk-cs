@@ -39,7 +39,7 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="name">name.</param>
         /// <param name="scopeId">A scope in the device&#39;s zone; a device stays in the zone it was claimed in.</param>
-        /// <param name="parked">A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay.</param>
+        /// <param name="parked">A parked device can&#39;t connect or write; its credentials and history stay, so unparking it brings it back.</param>
         /// <param name="tags">Replaces the device&#39;s tags; &#x60;[]&#x60; clears them. Stored lowercased.</param>
         public UpdateDeviceRequest(string name = default, string scopeId = default, bool parked = default, List<string> tags = default)
         {
@@ -66,9 +66,9 @@ namespace Qualithm.Platform.Model
         public string ScopeId { get; set; }
 
         /// <summary>
-        /// A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay
+        /// A parked device can&#39;t connect or write; its credentials and history stay, so unparking it brings it back
         /// </summary>
-        /// <value>A parked device can&#39;t connect and doesn&#39;t count against the plan; its credentials and history stay</value>
+        /// <value>A parked device can&#39;t connect or write; its credentials and history stay, so unparking it brings it back</value>
         [DataMember(Name = "parked", EmitDefaultValue = true)]
         public bool Parked { get; set; }
 

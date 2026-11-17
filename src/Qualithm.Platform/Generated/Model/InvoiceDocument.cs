@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// InvoiceDocument
+    /// The link to an invoice&#39;s document.
     /// </summary>
     [DataContract(Name = "InvoiceDocument")]
     public partial class InvoiceDocument : IValidatableObject
