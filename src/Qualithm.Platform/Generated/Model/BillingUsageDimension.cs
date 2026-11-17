@@ -44,11 +44,13 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="used">used (required).</param>
         /// <param name="limit">limit (required).</param>
-        /// <param name="buffer">Headroom past &#x60;limit&#x60; before events are refused. Events only..</param>
-        public BillingUsageDimension(long used = default, long limit = default, long buffer = default)
+        /// <param name="buffer">Never set: usage past &#x60;limit&#x60; throttles with no buffer. Removed in the next major release.</param>
+        /// <param name="throttled">True while this dimension is throttled: devices&#39; new events are refused, or automation runs are recorded as &#x60;limited&#x60;, until the month resets. Read from the live count the platform enforces, so it can turn true before the hourly &#x60;used&#x60; reaches &#x60;limit&#x60;. Always false for devices (required).</param>
+        public BillingUsageDimension(long used = default, long limit = default, long buffer = default, bool throttled = default)
         {
             this.Used = used;
             this.Limit = limit;
+            this.Throttled = throttled;
             this.Buffer = buffer;
         }
 
@@ -65,11 +67,19 @@ namespace Qualithm.Platform.Model
         public long Limit { get; set; }
 
         /// <summary>
-        /// Headroom past &#x60;limit&#x60; before events are refused. Events only.
+        /// Never set: usage past &#x60;limit&#x60; throttles with no buffer. Removed in the next major release
         /// </summary>
-        /// <value>Headroom past &#x60;limit&#x60; before events are refused. Events only.</value>
+        /// <value>Never set: usage past &#x60;limit&#x60; throttles with no buffer. Removed in the next major release</value>
         [DataMember(Name = "buffer", EmitDefaultValue = false)]
+        [Obsolete]
         public long Buffer { get; set; }
+
+        /// <summary>
+        /// True while this dimension is throttled: devices&#39; new events are refused, or automation runs are recorded as &#x60;limited&#x60;, until the month resets. Read from the live count the platform enforces, so it can turn true before the hourly &#x60;used&#x60; reaches &#x60;limit&#x60;. Always false for devices
+        /// </summary>
+        /// <value>True while this dimension is throttled: devices&#39; new events are refused, or automation runs are recorded as &#x60;limited&#x60;, until the month resets. Read from the live count the platform enforces, so it can turn true before the hourly &#x60;used&#x60; reaches &#x60;limit&#x60;. Always false for devices</value>
+        [DataMember(Name = "throttled", IsRequired = true, EmitDefaultValue = true)]
+        public bool Throttled { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -82,6 +92,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Used: ").Append(Used).Append("\n");
             sb.Append("  Limit: ").Append(Limit).Append("\n");
             sb.Append("  Buffer: ").Append(Buffer).Append("\n");
+            sb.Append("  Throttled: ").Append(Throttled).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
