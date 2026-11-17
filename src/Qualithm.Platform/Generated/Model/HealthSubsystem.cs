@@ -29,8 +29,9 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Defines HealthSubsystem
+    /// A backend the platform needs to serve.
     /// </summary>
+    /// <value>A backend the platform needs to serve.</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum HealthSubsystem
     {

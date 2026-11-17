@@ -29,8 +29,9 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Defines ZoneId
+    /// A device zone: where a scope&#39;s devices connect and their data lives.
     /// </summary>
+    /// <value>A device zone: where a scope&#39;s devices connect and their data lives.</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum ZoneId
     {

@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// TeamMembership
+    /// A membership row, without the account and team context
     /// </summary>
     [DataContract(Name = "TeamMembership")]
     public partial class TeamMembership : IValidatableObject

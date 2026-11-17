@@ -52,7 +52,7 @@ namespace Qualithm.Platform.Api
         /// <returns>ApiResponse of CreateInvoiceDocumentResponse</returns>
         ApiResponse<CreateInvoiceDocumentResponse> CreateInvoiceDocumentWithHttpInfo(string teamId, string invoiceId, string? idempotencyKey = default);
         /// <summary>
-        /// Get the team&#39;s plan, usage, next bill and add-ons
+        /// Get the team&#39;s plan, usage and next bill
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -60,7 +60,7 @@ namespace Qualithm.Platform.Api
         GetBillingSummaryResponse GetBillingSummary(string teamId);
 
         /// <summary>
-        /// Get the team&#39;s plan, usage, next bill and add-ons
+        /// Get the team&#39;s plan, usage and next bill
         /// </summary>
         /// <remarks>
         /// 
@@ -155,7 +155,7 @@ namespace Qualithm.Platform.Api
         /// <returns>Task of ApiResponse (CreateInvoiceDocumentResponse)</returns>
         System.Threading.Tasks.Task<ApiResponse<CreateInvoiceDocumentResponse>> CreateInvoiceDocumentWithHttpInfoAsync(string teamId, string invoiceId, string? idempotencyKey = default, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
-        /// Get the team&#39;s plan, usage, next bill and add-ons
+        /// Get the team&#39;s plan, usage and next bill
         /// </summary>
         /// <remarks>
         /// 
@@ -167,7 +167,7 @@ namespace Qualithm.Platform.Api
         System.Threading.Tasks.Task<GetBillingSummaryResponse> GetBillingSummaryAsync(string teamId, System.Threading.CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Get the team&#39;s plan, usage, next bill and add-ons
+        /// Get the team&#39;s plan, usage and next bill
         /// </summary>
         /// <remarks>
         /// 
@@ -600,7 +600,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the team&#39;s plan, usage, next bill and add-ons 
+        /// Get the team&#39;s plan, usage and next bill 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -612,7 +612,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the team&#39;s plan, usage, next bill and add-ons 
+        /// Get the team&#39;s plan, usage and next bill 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -661,7 +661,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the team&#39;s plan, usage, next bill and add-ons 
+        /// Get the team&#39;s plan, usage and next bill 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>
@@ -674,7 +674,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Get the team&#39;s plan, usage, next bill and add-ons 
+        /// Get the team&#39;s plan, usage and next bill 
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="teamId">The team the request acts on</param>

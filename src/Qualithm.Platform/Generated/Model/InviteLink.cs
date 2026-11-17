@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// InviteLink
+    /// The invite a link names, and whether the caller may accept it
     /// </summary>
     [DataContract(Name = "InviteLink")]
     public partial class InviteLink : IValidatableObject

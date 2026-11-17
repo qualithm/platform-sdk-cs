@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// HealthStatus
+    /// The composite health verdict. Sent with 200 when &#x60;ok&#x60; and 503 when &#x60;down&#x60;.
     /// </summary>
     [DataContract(Name = "HealthStatus")]
     public partial class HealthStatus : IValidatableObject

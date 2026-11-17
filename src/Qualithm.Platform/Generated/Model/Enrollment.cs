@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Enrollment
+    /// A one-time claim code a device exchanges for its first credential.
     /// </summary>
     [DataContract(Name = "Enrollment")]
     public partial class Enrollment : IValidatableObject

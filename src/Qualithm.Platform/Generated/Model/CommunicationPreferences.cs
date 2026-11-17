@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// CommunicationPreferences
+    /// Which marketing emails the account receives. A preference never set reads as &#x60;true&#x60;.
     /// </summary>
     [DataContract(Name = "CommunicationPreferences")]
     public partial class CommunicationPreferences : IValidatableObject
