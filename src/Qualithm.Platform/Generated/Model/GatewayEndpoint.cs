@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// GatewayEndpoint
+    /// Where a device connects: a zone&#39;s MQTT gateway.
     /// </summary>
     [DataContract(Name = "GatewayEndpoint")]
     public partial class GatewayEndpoint : IValidatableObject

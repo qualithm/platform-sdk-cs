@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// BillingSummary
+    /// The team&#39;s plan, its usage this month and its price.
     /// </summary>
     [DataContract(Name = "BillingSummary")]
     public partial class BillingSummary : IValidatableObject
@@ -90,13 +90,12 @@ namespace Qualithm.Platform.Model
         /// <param name="limitGrace">limitGrace (required).</param>
         /// <param name="limits">limits (required).</param>
         /// <param name="usage">usage (required).</param>
-        /// <param name="monthlyTotal">What the next renewal will charge before tax, after the discount that still applies; zero for a plan set to end. A plan change mid-period adds its proration to that bill, which this leaves out. The plan price with add-ons when &#x60;estimated&#x60; is true (required).</param>
+        /// <param name="monthlyTotal">What the next renewal will charge before tax, after the discount that still applies; zero for a plan set to end. A plan change mid-period adds its proration to that bill, which this leaves out. The plan price when &#x60;estimated&#x60; is true (required).</param>
         /// <param name="upcomingInvoice">upcomingInvoice (required).</param>
         /// <param name="estimated">True when Polar couldn&#39;t be read, so &#x60;monthlyTotal&#x60; is the plan price (required).</param>
         /// <param name="cancellation">cancellation (required).</param>
         /// <param name="slaCredit">slaCredit (required).</param>
-        /// <param name="addons">addons (required).</param>
-        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, Money monthlyTotal = default, BillingSummaryUpcomingInvoice upcomingInvoice = default, bool estimated = default, BillingSummaryCancellation cancellation = default, BillingSummarySlaCredit slaCredit = default, BillingSummaryAddons addons = default)
+        public BillingSummary(TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage usage = default, Money monthlyTotal = default, BillingSummaryUpcomingInvoice upcomingInvoice = default, bool estimated = default, BillingSummaryCancellation cancellation = default, BillingSummarySlaCredit slaCredit = default)
         {
             this.Tier = tier;
             // to ensure "month" is required (not null)
@@ -148,12 +147,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("slaCredit is a required property for BillingSummary and cannot be null");
             }
             this.SlaCredit = slaCredit;
-            // to ensure "addons" is required (not null)
-            if (addons == null)
-            {
-                throw new ArgumentNullException("addons is a required property for BillingSummary and cannot be null");
-            }
-            this.Addons = addons;
         }
 
         /// <summary>
@@ -182,9 +175,9 @@ namespace Qualithm.Platform.Model
         public BillingSummaryUsage Usage { get; set; }
 
         /// <summary>
-        /// What the next renewal will charge before tax, after the discount that still applies; zero for a plan set to end. A plan change mid-period adds its proration to that bill, which this leaves out. The plan price with add-ons when &#x60;estimated&#x60; is true
+        /// What the next renewal will charge before tax, after the discount that still applies; zero for a plan set to end. A plan change mid-period adds its proration to that bill, which this leaves out. The plan price when &#x60;estimated&#x60; is true
         /// </summary>
-        /// <value>What the next renewal will charge before tax, after the discount that still applies; zero for a plan set to end. A plan change mid-period adds its proration to that bill, which this leaves out. The plan price with add-ons when &#x60;estimated&#x60; is true</value>
+        /// <value>What the next renewal will charge before tax, after the discount that still applies; zero for a plan set to end. A plan change mid-period adds its proration to that bill, which this leaves out. The plan price when &#x60;estimated&#x60; is true</value>
         [DataMember(Name = "monthlyTotal", IsRequired = true, EmitDefaultValue = true)]
         public Money MonthlyTotal { get; set; }
 
@@ -214,12 +207,6 @@ namespace Qualithm.Platform.Model
         public BillingSummarySlaCredit SlaCredit { get; set; }
 
         /// <summary>
-        /// Gets or Sets Addons
-        /// </summary>
-        [DataMember(Name = "addons", IsRequired = true, EmitDefaultValue = true)]
-        public BillingSummaryAddons Addons { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -237,7 +224,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  Estimated: ").Append(Estimated).Append("\n");
             sb.Append("  Cancellation: ").Append(Cancellation).Append("\n");
             sb.Append("  SlaCredit: ").Append(SlaCredit).Append("\n");
-            sb.Append("  Addons: ").Append(Addons).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

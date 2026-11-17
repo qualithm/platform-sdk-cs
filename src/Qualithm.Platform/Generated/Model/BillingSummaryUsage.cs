@@ -42,24 +42,10 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BillingSummaryUsage" /> class.
         /// </summary>
-        /// <param name="devices">devices (required).</param>
-        /// <param name="registered">registered (required).</param>
         /// <param name="events">events (required).</param>
         /// <param name="automations">automations (required).</param>
-        public BillingSummaryUsage(BillingUsageDimension devices = default, BillingUsageDimension registered = default, BillingUsageDimension events = default, BillingUsageDimension automations = default)
+        public BillingSummaryUsage(BillingUsageDimension events = default, BillingUsageDimension automations = default)
         {
-            // to ensure "devices" is required (not null)
-            if (devices == null)
-            {
-                throw new ArgumentNullException("devices is a required property for BillingSummaryUsage and cannot be null");
-            }
-            this.Devices = devices;
-            // to ensure "registered" is required (not null)
-            if (registered == null)
-            {
-                throw new ArgumentNullException("registered is a required property for BillingSummaryUsage and cannot be null");
-            }
-            this.Registered = registered;
             // to ensure "events" is required (not null)
             if (events == null)
             {
@@ -73,18 +59,6 @@ namespace Qualithm.Platform.Model
             }
             this.Automations = automations;
         }
-
-        /// <summary>
-        /// Gets or Sets Devices
-        /// </summary>
-        [DataMember(Name = "devices", IsRequired = true, EmitDefaultValue = true)]
-        public BillingUsageDimension Devices { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Registered
-        /// </summary>
-        [DataMember(Name = "registered", IsRequired = true, EmitDefaultValue = true)]
-        public BillingUsageDimension Registered { get; set; }
 
         /// <summary>
         /// Gets or Sets Events
@@ -106,8 +80,6 @@ namespace Qualithm.Platform.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BillingSummaryUsage {\n");
-            sb.Append("  Devices: ").Append(Devices).Append("\n");
-            sb.Append("  Registered: ").Append(Registered).Append("\n");
             sb.Append("  Events: ").Append(Events).Append("\n");
             sb.Append("  Automations: ").Append(Automations).Append("\n");
             sb.Append("}\n");

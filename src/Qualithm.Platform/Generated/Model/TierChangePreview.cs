@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// TierChangePreview
+    /// What a tier change would cost, before it is confirmed.
     /// </summary>
     [DataContract(Name = "TierChangePreview")]
     public partial class TierChangePreview : IValidatableObject

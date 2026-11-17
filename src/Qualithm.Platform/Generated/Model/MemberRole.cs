@@ -29,8 +29,9 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Defines MemberRole
+    /// A member&#39;s role in a team.
     /// </summary>
+    /// <value>A member&#39;s role in a team.</value>
     [JsonConverter(typeof(StringEnumConverter))]
     public enum MemberRole
     {

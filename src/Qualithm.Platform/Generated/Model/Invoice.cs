@@ -46,12 +46,9 @@ namespace Qualithm.Platform.Model
         /// <param name="teamId">A team ID: &#x60;tem_…&#x60;; also accepts the legacy &#x60;tm_…&#x60; (required).</param>
         /// <param name="status">status (required).</param>
         /// <param name="total">The invoice total; null until the billing provider sets it (required).</param>
-        /// <param name="stripeInvoiceId">Always null; removed in the next major release (required).</param>
-        /// <param name="hostedUrl">Always null; removed in the next major release. Open an invoice with &#x60;createInvoiceDocument&#x60; (required).</param>
-        /// <param name="pdfUrl">Always null; removed in the next major release. Open an invoice with &#x60;createInvoiceDocument&#x60; (required).</param>
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
-        public Invoice(string id = default, string teamId = default, string status = default, Money total = default, string stripeInvoiceId = default, string hostedUrl = default, string pdfUrl = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Invoice(string id = default, string teamId = default, string status = default, Money total = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -77,24 +74,6 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("total is a required property for Invoice and cannot be null");
             }
             this.Total = total;
-            // to ensure "stripeInvoiceId" is required (not null)
-            if (stripeInvoiceId == null)
-            {
-                throw new ArgumentNullException("stripeInvoiceId is a required property for Invoice and cannot be null");
-            }
-            this.StripeInvoiceId = stripeInvoiceId;
-            // to ensure "hostedUrl" is required (not null)
-            if (hostedUrl == null)
-            {
-                throw new ArgumentNullException("hostedUrl is a required property for Invoice and cannot be null");
-            }
-            this.HostedUrl = hostedUrl;
-            // to ensure "pdfUrl" is required (not null)
-            if (pdfUrl == null)
-            {
-                throw new ArgumentNullException("pdfUrl is a required property for Invoice and cannot be null");
-            }
-            this.PdfUrl = pdfUrl;
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
         }
@@ -133,27 +112,6 @@ namespace Qualithm.Platform.Model
         public Money Total { get; set; }
 
         /// <summary>
-        /// Always null; removed in the next major release
-        /// </summary>
-        /// <value>Always null; removed in the next major release</value>
-        [DataMember(Name = "stripeInvoiceId", IsRequired = true, EmitDefaultValue = true)]
-        public string StripeInvoiceId { get; set; }
-
-        /// <summary>
-        /// Always null; removed in the next major release. Open an invoice with &#x60;createInvoiceDocument&#x60;
-        /// </summary>
-        /// <value>Always null; removed in the next major release. Open an invoice with &#x60;createInvoiceDocument&#x60;</value>
-        [DataMember(Name = "hostedUrl", IsRequired = true, EmitDefaultValue = true)]
-        public string HostedUrl { get; set; }
-
-        /// <summary>
-        /// Always null; removed in the next major release. Open an invoice with &#x60;createInvoiceDocument&#x60;
-        /// </summary>
-        /// <value>Always null; removed in the next major release. Open an invoice with &#x60;createInvoiceDocument&#x60;</value>
-        [DataMember(Name = "pdfUrl", IsRequired = true, EmitDefaultValue = true)]
-        public string PdfUrl { get; set; }
-
-        /// <summary>
         /// UTC time, RFC 3339
         /// </summary>
         /// <value>UTC time, RFC 3339</value>
@@ -185,9 +143,6 @@ namespace Qualithm.Platform.Model
             sb.Append("  TeamId: ").Append(TeamId).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
             sb.Append("  Total: ").Append(Total).Append("\n");
-            sb.Append("  StripeInvoiceId: ").Append(StripeInvoiceId).Append("\n");
-            sb.Append("  HostedUrl: ").Append(HostedUrl).Append("\n");
-            sb.Append("  PdfUrl: ").Append(PdfUrl).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");

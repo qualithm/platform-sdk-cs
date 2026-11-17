@@ -42,40 +42,25 @@ namespace Qualithm.Platform.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="BillingSummaryLimits" /> class.
         /// </summary>
-        /// <param name="devices">devices (required).</param>
-        /// <param name="registeredDevices">The ceiling on active plus parked devices (required).</param>
-        /// <param name="events">events (required).</param>
-        /// <param name="automations">automations (required).</param>
-        public BillingSummaryLimits(long devices = default, long registeredDevices = default, long events = default, long automations = default)
+        /// <param name="events">Events a month before new events throttle (required).</param>
+        /// <param name="automations">Automation runs a month before runs are limited (required).</param>
+        public BillingSummaryLimits(long events = default, long automations = default)
         {
-            this.Devices = devices;
-            this.RegisteredDevices = registeredDevices;
             this.Events = events;
             this.Automations = automations;
         }
 
         /// <summary>
-        /// Gets or Sets Devices
+        /// Events a month before new events throttle
         /// </summary>
-        [DataMember(Name = "devices", IsRequired = true, EmitDefaultValue = true)]
-        public long Devices { get; set; }
-
-        /// <summary>
-        /// The ceiling on active plus parked devices
-        /// </summary>
-        /// <value>The ceiling on active plus parked devices</value>
-        [DataMember(Name = "registeredDevices", IsRequired = true, EmitDefaultValue = true)]
-        public long RegisteredDevices { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Events
-        /// </summary>
+        /// <value>Events a month before new events throttle</value>
         [DataMember(Name = "events", IsRequired = true, EmitDefaultValue = true)]
         public long Events { get; set; }
 
         /// <summary>
-        /// Gets or Sets Automations
+        /// Automation runs a month before runs are limited
         /// </summary>
+        /// <value>Automation runs a month before runs are limited</value>
         [DataMember(Name = "automations", IsRequired = true, EmitDefaultValue = true)]
         public long Automations { get; set; }
 
@@ -87,8 +72,6 @@ namespace Qualithm.Platform.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class BillingSummaryLimits {\n");
-            sb.Append("  Devices: ").Append(Devices).Append("\n");
-            sb.Append("  RegisteredDevices: ").Append(RegisteredDevices).Append("\n");
             sb.Append("  Events: ").Append(Events).Append("\n");
             sb.Append("  Automations: ").Append(Automations).Append("\n");
             sb.Append("}\n");
