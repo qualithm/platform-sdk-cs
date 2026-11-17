@@ -82,7 +82,7 @@ namespace Qualithm.Platform.Model
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="parkedAt">UTC time, RFC 3339.</param>
         /// <param name="capabilitiesDeclared">Whether the device&#39;s latest session declared its capabilities before sending data; null until a session has done either.</param>
-        /// <param name="varVirtual">Whether the device declared itself virtual at claim: it runs on a host rather than a board, and counts as a device all the same.</param>
+        /// <param name="varVirtual">Whether the device declared itself virtual at claim: it runs on a host rather than a board, and its readings count toward the team&#39;s monthly events like any device&#39;s.</param>
         /// <param name="tags">Operator-set tags, lowercased and sorted. A capability reference with this tag matches every capability on the device.</param>
         /// <param name="level">level.</param>
         /// <param name="checks">checks.</param>
@@ -210,9 +210,9 @@ namespace Qualithm.Platform.Model
         public bool? CapabilitiesDeclared { get; set; }
 
         /// <summary>
-        /// Whether the device declared itself virtual at claim: it runs on a host rather than a board, and counts as a device all the same
+        /// Whether the device declared itself virtual at claim: it runs on a host rather than a board, and its readings count toward the team&#39;s monthly events like any device&#39;s
         /// </summary>
-        /// <value>Whether the device declared itself virtual at claim: it runs on a host rather than a board, and counts as a device all the same</value>
+        /// <value>Whether the device declared itself virtual at claim: it runs on a host rather than a board, and its readings count toward the team&#39;s monthly events like any device&#39;s</value>
         [DataMember(Name = "virtual", EmitDefaultValue = true)]
         public bool Virtual { get; set; }
 

@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Set while a downgrade&#39;s grace period keeps the previous plan&#39;s longer retention window. After &#x60;endsAt&#x60;, data older than the current plan&#39;s window is deleted
+    /// Set while a downgrade&#39;s grace period keeps more history than the current plan does. After &#x60;endsAt&#x60;, history the current plan doesn&#39;t keep is deleted
     /// </summary>
     [DataContract(Name = "BillingSummary_limitGrace")]
     public partial class BillingSummaryLimitGrace : IValidatableObject
@@ -43,7 +43,8 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="BillingSummaryLimitGrace" /> class.
         /// </summary>
         /// <param name="endsAt">ISO 8601 time (required).</param>
-        public BillingSummaryLimitGrace(string endsAt = default)
+        /// <param name="retentionDays">The days of history the grace keeps until &#x60;endsAt&#x60; (required).</param>
+        public BillingSummaryLimitGrace(string endsAt = default, long retentionDays = default)
         {
             // to ensure "endsAt" is required (not null)
             if (endsAt == null)
@@ -51,6 +52,7 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("endsAt is a required property for BillingSummaryLimitGrace and cannot be null");
             }
             this.EndsAt = endsAt;
+            this.RetentionDays = retentionDays;
         }
 
         /// <summary>
@@ -61,6 +63,13 @@ namespace Qualithm.Platform.Model
         public string EndsAt { get; set; }
 
         /// <summary>
+        /// The days of history the grace keeps until &#x60;endsAt&#x60;
+        /// </summary>
+        /// <value>The days of history the grace keeps until &#x60;endsAt&#x60;</value>
+        [DataMember(Name = "retentionDays", IsRequired = true, EmitDefaultValue = true)]
+        public long RetentionDays { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -69,6 +78,7 @@ namespace Qualithm.Platform.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class BillingSummaryLimitGrace {\n");
             sb.Append("  EndsAt: ").Append(EndsAt).Append("\n");
+            sb.Append("  RetentionDays: ").Append(RetentionDays).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
