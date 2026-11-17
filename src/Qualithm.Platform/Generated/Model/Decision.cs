@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Decision
+    /// One choice Qualithm made on the builder&#39;s behalf.
     /// </summary>
     [DataContract(Name = "Decision")]
     public partial class Decision : IValidatableObject

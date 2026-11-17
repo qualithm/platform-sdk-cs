@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// ApiToken
+    /// An API token&#39;s metadata. The secret is never listed.
     /// </summary>
     [DataContract(Name = "ApiToken")]
     public partial class ApiToken : IValidatableObject

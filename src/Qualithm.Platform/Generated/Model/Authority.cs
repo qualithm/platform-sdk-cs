@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Authority
+    /// A certificate authority device certificates chain to: platform-managed or brought by the team.
     /// </summary>
     [DataContract(Name = "Authority")]
     public partial class Authority : IValidatableObject

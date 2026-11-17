@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// AuditEvent
+    /// One immutable audit-trail record.
     /// </summary>
     [DataContract(Name = "AuditEvent")]
     public partial class AuditEvent : IValidatableObject

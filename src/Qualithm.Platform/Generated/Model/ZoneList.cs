@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// ZoneList
+    /// The environment&#39;s public endpoints.
     /// </summary>
     [DataContract(Name = "ZoneList")]
     public partial class ZoneList : IValidatableObject

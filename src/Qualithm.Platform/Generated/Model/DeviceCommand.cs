@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// DeviceCommand
+    /// One command delivery to a device.
     /// </summary>
     [DataContract(Name = "DeviceCommand")]
     public partial class DeviceCommand : IValidatableObject

@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// TeamInvite
+    /// A pending invite to a team, addressed to an email
     /// </summary>
     [DataContract(Name = "TeamInvite")]
     public partial class TeamInvite : IValidatableObject

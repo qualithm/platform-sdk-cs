@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// Credential
+    /// A device&#39;s credential. The secret or key material is never returned after it is issued.
     /// </summary>
     [DataContract(Name = "Credential")]
     public partial class Credential : IValidatableObject

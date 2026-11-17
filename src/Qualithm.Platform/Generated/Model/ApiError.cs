@@ -29,7 +29,7 @@ using OpenAPIDateConverter = Qualithm.Platform.Client.OpenAPIDateConverter;
 namespace Qualithm.Platform.Model
 {
     /// <summary>
-    /// ApiError
+    /// The body of every error response.
     /// </summary>
     [DataContract(Name = "ApiError")]
     public partial class ApiError : IValidatableObject
@@ -43,7 +43,7 @@ namespace Qualithm.Platform.Model
         /// Initializes a new instance of the <see cref="ApiError" /> class.
         /// </summary>
         /// <param name="message">message (required).</param>
-        /// <param name="code">code (required).</param>
+        /// <param name="code">A stable machine code. Branch on it, never on &#x60;message&#x60;; decode an unknown value to a fallback. (required).</param>
         /// <param name="requestId">The &#x60;Request-Id&#x60; this response carried; quote it (required).</param>
         /// <param name="details">Each field that failed validation. Validation errors only..</param>
         public ApiError(string message = default, string code = default, string requestId = default, List<ApiErrorDetailsInner> details = default)
@@ -76,8 +76,9 @@ namespace Qualithm.Platform.Model
         public string Message { get; set; }
 
         /// <summary>
-        /// Gets or Sets Code
+        /// A stable machine code. Branch on it, never on &#x60;message&#x60;; decode an unknown value to a fallback.
         /// </summary>
+        /// <value>A stable machine code. Branch on it, never on &#x60;message&#x60;; decode an unknown value to a fallback.</value>
         [DataMember(Name = "code", IsRequired = true, EmitDefaultValue = true)]
         public string Code { get; set; }
 
