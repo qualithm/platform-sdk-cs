@@ -93,7 +93,8 @@ namespace Qualithm.Platform.Model
         /// <param name="limits">limits (required).</param>
         /// <param name="varUsage">varUsage (required).</param>
         /// <param name="paymentFailed">paymentFailed (required).</param>
-        public Usage(long deviceTotal = default, long scopeTotal = default, TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage varUsage = default, UsagePaymentFailed paymentFailed = default)
+        /// <param name="connectedDevices">connectedDevices (required).</param>
+        public Usage(long deviceTotal = default, long scopeTotal = default, TierEnum tier = default, string month = default, BillingSummaryLimitGrace limitGrace = default, BillingSummaryLimits limits = default, BillingSummaryUsage varUsage = default, UsagePaymentFailed paymentFailed = default, UsageConnectedDevices connectedDevices = default)
         {
             this.DeviceTotal = deviceTotal;
             this.ScopeTotal = scopeTotal;
@@ -128,6 +129,12 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("paymentFailed is a required property for Usage and cannot be null");
             }
             this.PaymentFailed = paymentFailed;
+            // to ensure "connectedDevices" is required (not null)
+            if (connectedDevices == null)
+            {
+                throw new ArgumentNullException("connectedDevices is a required property for Usage and cannot be null");
+            }
+            this.ConnectedDevices = connectedDevices;
         }
 
         /// <summary>
@@ -174,6 +181,12 @@ namespace Qualithm.Platform.Model
         public UsagePaymentFailed PaymentFailed { get; set; }
 
         /// <summary>
+        /// Gets or Sets ConnectedDevices
+        /// </summary>
+        [DataMember(Name = "connectedDevices", IsRequired = true, EmitDefaultValue = true)]
+        public UsageConnectedDevices ConnectedDevices { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -189,6 +202,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Limits: ").Append(Limits).Append("\n");
             sb.Append("  VarUsage: ").Append(VarUsage).Append("\n");
             sb.Append("  PaymentFailed: ").Append(PaymentFailed).Append("\n");
+            sb.Append("  ConnectedDevices: ").Append(ConnectedDevices).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

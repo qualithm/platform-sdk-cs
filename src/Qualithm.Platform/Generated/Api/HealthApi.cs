@@ -33,7 +33,7 @@ namespace Qualithm.Platform.Api
         /// Check that the platform can serve
         /// </summary>
         /// <remarks>
-        /// Probes the datastore, the readings store and the event bus. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
+        /// Probes the datastore, the readings store and the event bus. Requests share one probe pass, and its verdict answers for 3 seconds, so a change can take that long to show. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>HealthStatus</returns>
@@ -43,7 +43,7 @@ namespace Qualithm.Platform.Api
         /// Check that the platform can serve
         /// </summary>
         /// <remarks>
-        /// Probes the datastore, the readings store and the event bus. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
+        /// Probes the datastore, the readings store and the event bus. Requests share one probe pass, and its verdict answers for 3 seconds, so a change can take that long to show. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of HealthStatus</returns>
@@ -61,7 +61,7 @@ namespace Qualithm.Platform.Api
         /// Check that the platform can serve
         /// </summary>
         /// <remarks>
-        /// Probes the datastore, the readings store and the event bus. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
+        /// Probes the datastore, the readings store and the event bus. Requests share one probe pass, and its verdict answers for 3 seconds, so a change can take that long to show. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -72,7 +72,7 @@ namespace Qualithm.Platform.Api
         /// Check that the platform can serve
         /// </summary>
         /// <remarks>
-        /// Probes the datastore, the readings store and the event bus. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
+        /// Probes the datastore, the readings store and the event bus. Requests share one probe pass, and its verdict answers for 3 seconds, so a change can take that long to show. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
         /// </remarks>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -292,7 +292,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Check that the platform can serve Probes the datastore, the readings store and the event bus. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
+        /// Check that the platform can serve Probes the datastore, the readings store and the event bus. Requests share one probe pass, and its verdict answers for 3 seconds, so a change can take that long to show. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>HealthStatus</returns>
@@ -303,7 +303,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Check that the platform can serve Probes the datastore, the readings store and the event bus. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
+        /// Check that the platform can serve Probes the datastore, the readings store and the event bus. Requests share one probe pass, and its verdict answers for 3 seconds, so a change can take that long to show. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of HealthStatus</returns>
@@ -340,7 +340,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Check that the platform can serve Probes the datastore, the readings store and the event bus. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
+        /// Check that the platform can serve Probes the datastore, the readings store and the event bus. Requests share one probe pass, and its verdict answers for 3 seconds, so a change can take that long to show. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
@@ -352,7 +352,7 @@ namespace Qualithm.Platform.Api
         }
 
         /// <summary>
-        /// Check that the platform can serve Probes the datastore, the readings store and the event bus. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
+        /// Check that the platform can serve Probes the datastore, the readings store and the event bus. Requests share one probe pass, and its verdict answers for 3 seconds, so a change can take that long to show. Answers with a bare &#x60;HealthStatus&#x60;, not the envelope: 200 with &#x60;status: ok&#x60;, or 503 with &#x60;status: down&#x60; and the first failing &#x60;subsystem&#x60;.
         /// </summary>
         /// <exception cref="Qualithm.Platform.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
