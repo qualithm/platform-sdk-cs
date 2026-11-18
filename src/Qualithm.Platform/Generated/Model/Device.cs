@@ -35,6 +35,39 @@ namespace Qualithm.Platform.Model
     public partial class Device : IValidatableObject
     {
         /// <summary>
+        /// Why the device is parked: &#x60;member&#x60; for a park that holds until a member unparks the device, &#x60;idle&#x60; when it had no activity for 30 days. A development credential lives at most 30 days, so an idle-parked device usually needs a new credential before it can connect. Null while the device isn&#39;t parked
+        /// </summary>
+        /// <value>Why the device is parked: &#x60;member&#x60; for a park that holds until a member unparks the device, &#x60;idle&#x60; when it had no activity for 30 days. A development credential lives at most 30 days, so an idle-parked device usually needs a new credential before it can connect. Null while the device isn&#39;t parked</value>
+        [JsonConverter(typeof(StringEnumConverter))]
+        public enum ParkedReasonEnum
+        {
+            /// <summary>
+            /// Enum Member for value: member
+            /// </summary>
+            [EnumMember(Value = "member")]
+            Member = 1,
+
+            /// <summary>
+            /// Enum Idle for value: idle
+            /// </summary>
+            [EnumMember(Value = "idle")]
+            Idle = 2,
+
+            /// <summary>
+            /// Enum UnknownDefaultOpenApi for value: unknown_default_open_api
+            /// </summary>
+            [EnumMember(Value = "unknown_default_open_api")]
+            UnknownDefaultOpenApi = 3
+        }
+
+
+        /// <summary>
+        /// Why the device is parked: &#x60;member&#x60; for a park that holds until a member unparks the device, &#x60;idle&#x60; when it had no activity for 30 days. A development credential lives at most 30 days, so an idle-parked device usually needs a new credential before it can connect. Null while the device isn&#39;t parked
+        /// </summary>
+        /// <value>Why the device is parked: &#x60;member&#x60; for a park that holds until a member unparks the device, &#x60;idle&#x60; when it had no activity for 30 days. A development credential lives at most 30 days, so an idle-parked device usually needs a new credential before it can connect. Null while the device isn&#39;t parked</value>
+        [DataMember(Name = "parkedReason", EmitDefaultValue = true)]
+        public ParkedReasonEnum? ParkedReason { get; set; }
+        /// <summary>
         /// Defines Level
         /// </summary>
         [JsonConverter(typeof(StringEnumConverter))]
@@ -81,13 +114,14 @@ namespace Qualithm.Platform.Model
         /// <param name="createdAt">UTC time, RFC 3339 (required).</param>
         /// <param name="updatedAt">UTC time, RFC 3339 (required).</param>
         /// <param name="parkedAt">UTC time, RFC 3339.</param>
+        /// <param name="parkedReason">Why the device is parked: &#x60;member&#x60; for a park that holds until a member unparks the device, &#x60;idle&#x60; when it had no activity for 30 days. A development credential lives at most 30 days, so an idle-parked device usually needs a new credential before it can connect. Null while the device isn&#39;t parked.</param>
         /// <param name="capabilitiesDeclared">Whether the device&#39;s latest session declared its capabilities before sending data; null until a session has done either.</param>
         /// <param name="varVirtual">Whether the device declared itself virtual at claim: it runs on a host rather than a board, and its readings count toward the team&#39;s monthly events like any device&#39;s.</param>
         /// <param name="tags">Operator-set tags, lowercased and sorted. A capability reference with this tag matches every capability on the device.</param>
         /// <param name="level">level.</param>
         /// <param name="checks">checks.</param>
         /// <param name="decisions">What Qualithm decided when the device was claimed: at most six, most consequential first. Returned by getDevice; empty for a device created without a claim..</param>
-        public Device(string id = default, string scopeId = default, string scopeName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, bool? capabilitiesDeclared = default, bool varVirtual = default, List<string> tags = default, LevelEnum? level = default, List<DeviceCheck> checks = default, List<Decision> decisions = default)
+        public Device(string id = default, string scopeId = default, string scopeName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, ParkedReasonEnum? parkedReason = default, bool? capabilitiesDeclared = default, bool varVirtual = default, List<string> tags = default, LevelEnum? level = default, List<DeviceCheck> checks = default, List<Decision> decisions = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -122,6 +156,7 @@ namespace Qualithm.Platform.Model
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.ParkedAt = parkedAt;
+            this.ParkedReason = parkedReason;
             this.CapabilitiesDeclared = capabilitiesDeclared;
             this.Virtual = varVirtual;
             this.Tags = tags;
@@ -252,6 +287,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("  ParkedAt: ").Append(ParkedAt).Append("\n");
+            sb.Append("  ParkedReason: ").Append(ParkedReason).Append("\n");
             sb.Append("  CapabilitiesDeclared: ").Append(CapabilitiesDeclared).Append("\n");
             sb.Append("  Virtual: ").Append(Virtual).Append("\n");
             sb.Append("  Tags: ").Append(Tags).Append("\n");

@@ -45,7 +45,8 @@ namespace Qualithm.Platform.Model
         /// <param name="credential">credential (required).</param>
         /// <param name="secret">The bearer token (the MQTT password), shown only once (required).</param>
         /// <param name="broker">The gateway the device connects to now; returned when a device renews.</param>
-        public CredentialSecret(Credential credential = default, string secret = default, GatewayEndpoint broker = default)
+        /// <param name="apiUrl">The base URL of the device&#39;s zone API, where the device sends its renewals and certificate requests; returned when a device renews.</param>
+        public CredentialSecret(Credential credential = default, string secret = default, GatewayEndpoint broker = default, string apiUrl = default)
         {
             // to ensure "credential" is required (not null)
             if (credential == null)
@@ -60,6 +61,7 @@ namespace Qualithm.Platform.Model
             }
             this.Secret = secret;
             this.Broker = broker;
+            this.ApiUrl = apiUrl;
         }
 
         /// <summary>
@@ -83,6 +85,13 @@ namespace Qualithm.Platform.Model
         public GatewayEndpoint Broker { get; set; }
 
         /// <summary>
+        /// The base URL of the device&#39;s zone API, where the device sends its renewals and certificate requests; returned when a device renews
+        /// </summary>
+        /// <value>The base URL of the device&#39;s zone API, where the device sends its renewals and certificate requests; returned when a device renews</value>
+        [DataMember(Name = "apiUrl", EmitDefaultValue = false)]
+        public string ApiUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -93,6 +102,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Credential: ").Append(Credential).Append("\n");
             sb.Append("  Secret: ").Append(Secret).Append("\n");
             sb.Append("  Broker: ").Append(Broker).Append("\n");
+            sb.Append("  ApiUrl: ").Append(ApiUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

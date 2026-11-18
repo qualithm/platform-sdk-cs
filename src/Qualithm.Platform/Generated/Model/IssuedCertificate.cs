@@ -46,7 +46,8 @@ namespace Qualithm.Platform.Model
         /// <param name="certificatePem">The signed device certificate, shown only once (required).</param>
         /// <param name="caCertificatePem">The issuing CA&#39;s certificate (required).</param>
         /// <param name="broker">broker (required).</param>
-        public IssuedCertificate(Credential credential = default, string certificatePem = default, string caCertificatePem = default, GatewayEndpoint broker = default)
+        /// <param name="apiUrl">The base URL of the device&#39;s zone API, where the device sends its renewals and certificate requests (required).</param>
+        public IssuedCertificate(Credential credential = default, string certificatePem = default, string caCertificatePem = default, GatewayEndpoint broker = default, string apiUrl = default)
         {
             // to ensure "credential" is required (not null)
             if (credential == null)
@@ -72,6 +73,12 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("broker is a required property for IssuedCertificate and cannot be null");
             }
             this.Broker = broker;
+            // to ensure "apiUrl" is required (not null)
+            if (apiUrl == null)
+            {
+                throw new ArgumentNullException("apiUrl is a required property for IssuedCertificate and cannot be null");
+            }
+            this.ApiUrl = apiUrl;
         }
 
         /// <summary>
@@ -101,6 +108,13 @@ namespace Qualithm.Platform.Model
         public GatewayEndpoint Broker { get; set; }
 
         /// <summary>
+        /// The base URL of the device&#39;s zone API, where the device sends its renewals and certificate requests
+        /// </summary>
+        /// <value>The base URL of the device&#39;s zone API, where the device sends its renewals and certificate requests</value>
+        [DataMember(Name = "apiUrl", IsRequired = true, EmitDefaultValue = true)]
+        public string ApiUrl { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -112,6 +126,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  CertificatePem: ").Append(CertificatePem).Append("\n");
             sb.Append("  CaCertificatePem: ").Append(CaCertificatePem).Append("\n");
             sb.Append("  Broker: ").Append(Broker).Append("\n");
+            sb.Append("  ApiUrl: ").Append(ApiUrl).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
