@@ -22,11 +22,11 @@ public class PlatformClientTests
         var stub = new StubHandler(body: """{"data":{"current":1,"items":[],"last":1,"nextCursor":null}}""");
         using var platform = new PlatformClient(token: "qmt_test", environment: Env(), handler: stub);
 
-        var page = await platform.Api<DevicesApi>().ListDevicesAsync(_teamId, page: 2, limit: 10, cancellationToken: TestContext.Current.CancellationToken);
+        var page = await platform.Api<DevicesApi>().ListDevicesAsync(_teamId, limit: 10, cursor: "c1", cancellationToken: TestContext.Current.CancellationToken);
 
         Assert.Empty(page.Data.Items);
         var request = Assert.Single(stub.Requests);
-        Assert.Equal($"https://api.qualithm.com/v1/teams/{_teamId}/devices?page=2&limit=10", request.RequestUri?.ToString());
+        Assert.Equal($"https://api.qualithm.com/v1/teams/{_teamId}/devices?limit=10&cursor=c1", request.RequestUri?.ToString());
         Assert.Equal("Bearer qmt_test", request.Headers.Authorization?.ToString());
     }
 
