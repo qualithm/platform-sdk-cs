@@ -63,7 +63,23 @@ response is the API's envelope, so the result is in `Data`. Operations on a team
 its `teamId`:
 
 ```csharp
-var automations = await platform.Api<AutomationsApi>().ListAutomationsAsync(teamId, page: 1, limit: 50);
+var automations = await platform.Api<AutomationsApi>().ListAutomationsAsync(teamId, limit: 50);
+```
+
+### Page through a list
+
+A list returns `Items` and a `NextCursor`. Pass the cursor back to read the next page. A `null`
+cursor means you have every item:
+
+```csharp
+var automations = new List<Qualithm.Platform.Model.Automation>();
+string? cursor = null;
+do
+{
+    var page = await platform.Api<AutomationsApi>().ListAutomationsAsync(teamId, limit: 50, cursor: cursor);
+    automations.AddRange(page.Data.Items);
+    cursor = page.Data.NextCursor;
+} while (cursor is not null);
 ```
 
 ### Error Handling
