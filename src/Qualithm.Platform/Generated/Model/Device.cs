@@ -120,8 +120,9 @@ namespace Qualithm.Platform.Model
         /// <param name="tags">Operator-set tags, lowercased and sorted. A capability reference with this tag matches every capability on the device.</param>
         /// <param name="level">level.</param>
         /// <param name="checks">checks.</param>
+        /// <param name="attention">attention.</param>
         /// <param name="decisions">What Qualithm decided when the device was claimed: at most six, most consequential first. Returned by getDevice; empty for a device created without a claim..</param>
-        public Device(string id = default, string scopeId = default, string scopeName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, ParkedReasonEnum? parkedReason = default, bool? capabilitiesDeclared = default, bool varVirtual = default, List<string> tags = default, LevelEnum? level = default, List<DeviceCheck> checks = default, List<Decision> decisions = default)
+        public Device(string id = default, string scopeId = default, string scopeName = default, string teamId = default, string name = default, DateTime createdAt = default, DateTime updatedAt = default, DateTime? parkedAt = default, ParkedReasonEnum? parkedReason = default, bool? capabilitiesDeclared = default, bool varVirtual = default, List<string> tags = default, LevelEnum? level = default, List<DeviceCheck> checks = default, DeviceAttention attention = default, List<Decision> decisions = default)
         {
             // to ensure "id" is required (not null)
             if (id == null)
@@ -162,6 +163,7 @@ namespace Qualithm.Platform.Model
             this.Tags = tags;
             this.Level = level;
             this.Checks = checks;
+            this.Attention = attention;
             this.Decisions = decisions;
         }
 
@@ -265,6 +267,12 @@ namespace Qualithm.Platform.Model
         public List<DeviceCheck> Checks { get; set; }
 
         /// <summary>
+        /// Gets or Sets Attention
+        /// </summary>
+        [DataMember(Name = "attention", EmitDefaultValue = true)]
+        public DeviceAttention Attention { get; set; }
+
+        /// <summary>
         /// What Qualithm decided when the device was claimed: at most six, most consequential first. Returned by getDevice; empty for a device created without a claim.
         /// </summary>
         /// <value>What Qualithm decided when the device was claimed: at most six, most consequential first. Returned by getDevice; empty for a device created without a claim.</value>
@@ -293,6 +301,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Tags: ").Append(Tags).Append("\n");
             sb.Append("  Level: ").Append(Level).Append("\n");
             sb.Append("  Checks: ").Append(Checks).Append("\n");
+            sb.Append("  Attention: ").Append(Attention).Append("\n");
             sb.Append("  Decisions: ").Append(Decisions).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
