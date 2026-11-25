@@ -39,7 +39,7 @@ namespace Qualithm.Platform.Model
         /// </summary>
         /// <param name="name">name.</param>
         /// <param name="scopeId">A scope in the device&#39;s zone; a device stays in the zone it was claimed in.</param>
-        /// <param name="parked">Parking holds until a member unparks the device: it can&#39;t connect or write meanwhile, and its credentials and history stay. Parking an idle-parked device makes it a member&#39;s park. An idle park lifts when the device next connects in its zone with a valid credential.</param>
+        /// <param name="parked">Parking holds until a member unparks the device: it can&#39;t connect or write meanwhile, but it can renew its credentials, so they and its history stay. Parking an idle-parked device makes it a member&#39;s park. An idle park lifts when the device next connects in its zone with a valid credential.</param>
         /// <param name="tags">Replaces the device&#39;s tags; &#x60;[]&#x60; clears them. Stored lowercased.</param>
         public UpdateDeviceRequest(string name = default, string scopeId = default, bool parked = default, List<string> tags = default)
         {
@@ -66,9 +66,9 @@ namespace Qualithm.Platform.Model
         public string ScopeId { get; set; }
 
         /// <summary>
-        /// Parking holds until a member unparks the device: it can&#39;t connect or write meanwhile, and its credentials and history stay. Parking an idle-parked device makes it a member&#39;s park. An idle park lifts when the device next connects in its zone with a valid credential
+        /// Parking holds until a member unparks the device: it can&#39;t connect or write meanwhile, but it can renew its credentials, so they and its history stay. Parking an idle-parked device makes it a member&#39;s park. An idle park lifts when the device next connects in its zone with a valid credential
         /// </summary>
-        /// <value>Parking holds until a member unparks the device: it can&#39;t connect or write meanwhile, and its credentials and history stay. Parking an idle-parked device makes it a member&#39;s park. An idle park lifts when the device next connects in its zone with a valid credential</value>
+        /// <value>Parking holds until a member unparks the device: it can&#39;t connect or write meanwhile, but it can renew its credentials, so they and its history stay. Parking an idle-parked device makes it a member&#39;s park. An idle park lifts when the device next connects in its zone with a valid credential</value>
         [DataMember(Name = "parked", EmitDefaultValue = true)]
         public bool Parked { get; set; }
 
