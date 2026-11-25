@@ -131,16 +131,16 @@ namespace Qualithm.Platform.Model
             TokenRevokeAny = 14,
 
             /// <summary>
-            /// Enum SpaceRead for value: space.read
+            /// Enum ScopeRead for value: scope.read
             /// </summary>
-            [EnumMember(Value = "space.read")]
-            SpaceRead = 15,
+            [EnumMember(Value = "scope.read")]
+            ScopeRead = 15,
 
             /// <summary>
-            /// Enum SpaceWrite for value: space.write
+            /// Enum ScopeWrite for value: scope.write
             /// </summary>
-            [EnumMember(Value = "space.write")]
-            SpaceWrite = 16,
+            [EnumMember(Value = "scope.write")]
+            ScopeWrite = 16,
 
             /// <summary>
             /// Enum DeviceRead for value: device.read
