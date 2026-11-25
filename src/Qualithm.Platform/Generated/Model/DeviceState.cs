@@ -47,7 +47,8 @@ namespace Qualithm.Platform.Model
         /// <param name="online">Whether the device was seen within the offline window (required).</param>
         /// <param name="lastSeenAt">When the device was last seen (required).</param>
         /// <param name="metrics">The device&#39;s current metrics (required).</param>
-        public DeviceState(string deviceId = default, string scopeId = default, bool online = default, DateTime lastSeenAt = default, Dictionary<string, decimal> metrics = default)
+        /// <param name="primary">primary (required).</param>
+        public DeviceState(string deviceId = default, string scopeId = default, bool online = default, DateTime lastSeenAt = default, Dictionary<string, decimal> metrics = default, DeviceStatePrimary primary = default)
         {
             // to ensure "deviceId" is required (not null)
             if (deviceId == null)
@@ -69,6 +70,12 @@ namespace Qualithm.Platform.Model
                 throw new ArgumentNullException("metrics is a required property for DeviceState and cannot be null");
             }
             this.Metrics = metrics;
+            // to ensure "primary" is required (not null)
+            if (primary == null)
+            {
+                throw new ArgumentNullException("primary is a required property for DeviceState and cannot be null");
+            }
+            this.Primary = primary;
         }
 
         /// <summary>
@@ -116,6 +123,12 @@ namespace Qualithm.Platform.Model
         public Dictionary<string, decimal> Metrics { get; set; }
 
         /// <summary>
+        /// Gets or Sets Primary
+        /// </summary>
+        [DataMember(Name = "primary", IsRequired = true, EmitDefaultValue = true)]
+        public DeviceStatePrimary Primary { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -128,6 +141,7 @@ namespace Qualithm.Platform.Model
             sb.Append("  Online: ").Append(Online).Append("\n");
             sb.Append("  LastSeenAt: ").Append(LastSeenAt).Append("\n");
             sb.Append("  Metrics: ").Append(Metrics).Append("\n");
+            sb.Append("  Primary: ").Append(Primary).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
