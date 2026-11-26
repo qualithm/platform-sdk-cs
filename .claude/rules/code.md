@@ -42,5 +42,5 @@ Where `scripts/generate` exists, `Generated/` is the client it writes from `open
 script after a spec change, never edit the output by hand, and leave it outside the lint, coverage
 and error rules here.
 
-`.github/workflows/ci.yaml` is generated from `dx/ci-templates/`; change the template and run
-`dx ci sync` from dx, never edit it here. `CI Required` and `PR Title` are required.
+`.github/workflows/ci.yaml` is generated from `dx/ci-templates/` by `dx ci sync`; never edit it
+here. Required checks: `CI Required`, `PR Title`, `Decision Citations`.
